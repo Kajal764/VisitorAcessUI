@@ -1,0 +1,124 @@
+<nav class="navbar justify-content-center" style="background-color: #e3f2fd;">
+  <a class="navbar-brand">
+    <span style="font-weight: bold"> Register here...</span>
+  </a>
+</nav>
+
+<div class="d-flex justify-content-center">
+  <div class="main-container">
+
+
+    <form name="form" [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && onSubmit()">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" placeholder="First Name" class="form-control" formControlName="firstName"
+                 [ngClass]="{'is-invalid':registrationForm.get('firstName').touched && registrationForm.get('firstName').invalid}"
+                 required/>
+          <div *ngIf="registrationForm.get('firstName').touched && registrationForm.get('firstName').invalid"
+               class="invalid-feedback">
+            <div *ngIf="registrationForm.get('firstName').errors.required"> first name is required.</div>
+            <div *ngIf="registrationForm.get('firstName').errors.pattern">first name is invalid</div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <input type="text" placeholder="Last Name" class="form-control" formControlName="lastName"
+                 [ngClass]="{'is-invalid':registrationForm.get('lastName').touched && registrationForm.get('lastName').invalid}"
+                 required/>
+          <div *ngIf="registrationForm.get('lastName').touched && registrationForm.get('lastName').invalid"
+               class="invalid-feedback">
+            <div *ngIf="registrationForm.get('lastName').errors.required"> last name is required.</div>
+            <div *ngIf="registrationForm.get('lastName').errors.pattern">last name is invalid</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" placeholder="Employee Id" class="form-control" formControlName="empId"
+                 [ngClass]="{'is-invalid':registrationForm.get('empId').touched && registrationForm.get('empId').invalid}"
+                 required/>
+          <div *ngIf="registrationForm.get('empId').touched && registrationForm.get('empId').invalid"
+               class="invalid-feedback">
+            <div *ngIf="registrationForm.get('empId').errors.required">Employee id required</div>
+            <div *ngIf="registrationForm.get('empId').errors.pattern"> Employee id should be 7 character</div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <input type="password" class="form-control" placeholder="password" formControlName="password"
+                 [ngClass]="{'is-invalid':registrationForm.get('password').touched && registrationForm.get('password').invalid}"/>
+          <div *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid"
+               class="invalid-feedback">
+            <div *ngIf="registrationForm.get('password').errors.required">Password is required</div>
+            <div *ngIf="registrationForm.get('password').errors.pattern">Password should contain
+              uppercase,lowercase,digit and symbol and 8 character long
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Email" formControlName="email"
+               [ngClass]="{'is-invalid':registrationForm.get('email').touched && registrationForm.get('email').invalid}"/>
+        <div *ngIf="registrationForm.get('email').touched && registrationForm.get('email').invalid"
+             class="invalid-feedback">
+          <div *ngIf="registrationForm.get('email').errors.required">Email Name is required</div>
+          <div *ngIf="registrationForm.get('email').errors.pattern">Email must be a valid email Address</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="number" placeholder="Mobile no" class="form-control" formControlName="mobileNo"
+               [ngClass]="{'is-invalid':registrationForm.get('mobileNo').touched && registrationForm.get('mobileNo').invalid}"
+               required/>
+        <div *ngIf="registrationForm.get('mobileNo').touched && registrationForm.get('mobileNo').invalid"
+             class="invalid-feedback">
+          <div *ngIf="registrationForm.get('mobileNo').errors.required">Mobile No required</div>
+          <div *ngIf="registrationForm.get('mobileNo').errors.pattern"> Mobile No should e valid</div>
+        </div>
+      </div>
+
+      <div class="form-group ">
+        <span style=" color: gray;padding-right: 10px ;font-size: 110%">Role </span>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" formControlName="role" name="Employee" type="radio" name="inlineRadioOptions"
+                 id="inlineRadio1" value="Employee" (click)="check()">
+          <label class="form-check-label" for="inlineRadio1">Employee</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="Manager" formControlName="role" type="radio" name="inlineRadioOptions"
+                 id="inlineRadio2" value="Manager" (click)="check()">
+          <label class="form-check-label" for="inlineRadio2">Manager</label>
+        </div>
+      </div>
+
+      <div *ngIf="isEmployee">
+        <div class="form-group">
+          <input type="text" placeholder="Manager Name" class="form-control" formControlName="managerName"
+                 [ngClass]="{'is-invalid':registrationForm.get('managerName').touched && registrationForm.get('managerName').invalid}"
+                 required/>
+          <div *ngIf="registrationForm.get('managerName').touched && registrationForm.get('managerName').invalid"
+               class="invalid-feedback">
+            <div *ngIf="registrationForm.get('managerName').errors.required"> Manager name is required.</div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="d-flex justify-content-center">
+        <button class="justify-content-center" type="submit" class="btn btn-primary"
+                [disabled]="!registrationForm.valid">Sign in
+        </button>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div style=" margin-top: 20px;font-size: 15px">Already have an account ?
+          <span style="color: cornflowerblue; font-weight: bold; padding-left: 10px">Login here</span>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
