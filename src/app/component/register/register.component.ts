@@ -1,5 +1,6 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-register',
@@ -25,14 +26,14 @@ export class RegisterComponent implements OnInit {
     role: new FormControl('', Validators.required),
     managerName: new FormControl('')
   });
+  private responseData: any;
+  private flag = false;
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-
   }
-
 
   onSubmit() {
     const data = {
@@ -45,7 +46,19 @@ export class RegisterComponent implements OnInit {
       role: this.registrationForm.get('role').value,
       managerName: this.registrationForm.get('managerName').value
     };
-    console.log(data);
+    if (this.registrationForm.invalid === false) {
+      if (this.registrationForm.get('role').value === 'Manager') {
+        data.managerName = 'admin';
+      }
+
+      this.userService.register(data)
+        .subscribe(response => {
+          this.responseData = response.body;
+          this.flag = true;
+        }, (error) => {
+          this.responseData = error.error;
+        });
+    }
   }
 
   check() {
@@ -55,5 +68,8 @@ export class RegisterComponent implements OnInit {
     if (this.registrationForm.get('role').value === 'Manager') {
       this.isEmployee = false;
     }
+
   }
+
+
 }
