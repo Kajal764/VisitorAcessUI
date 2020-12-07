@@ -24,7 +24,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              
+              "D:/VisitorAccess/VisitorAccessUI/node_modules/bootstrap/dist/css/bootstrap.min.css",
+               "D:/VisitorAccess/VisitorAccessUI/node_modules/jquery/dist/jquery.min.js",
+             "D:/VisitorAccess/VisitorAccessUI/node_modules/font-awesome/css/font-awesome.css"
+            
+
             ],
             "scripts": []
           },

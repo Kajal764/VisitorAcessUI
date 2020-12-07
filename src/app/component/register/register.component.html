@@ -52,7 +52,7 @@
         </div>
 
         <div class="form-group col-md-6">
-          <input type="password" class="form-control" placeholder="password" formControlName="password"
+          <input type="text" class="form-control" placeholder="password" formControlName="password"
                  [ngClass]="{'is-invalid':registrationForm.get('password').touched && registrationForm.get('password').invalid}"/>
           <div *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid"
                class="invalid-feedback">
