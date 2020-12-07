@@ -1,0 +1,54 @@
+<nav class="navbar justify-content-center" style="background-color: #e3f2fd;">
+  <a class="navbar-brand">
+    <span style="font-weight: bold"> Welcome</span>
+  </a>
+</nav>
+
+<br>
+<div class="d-flex justify-content-center">
+  <div *ngIf="managerListFlag" class="alert alert-secondary " role="alert" style="width: 60%">
+    No pending request
+  </div>
+</div>
+
+<div *ngIf="!managerListFlag" class="d-flex justify-content-center">
+  <div class="main-container">
+    <div class="row">
+      <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">Registration request</div>
+    </div>
+
+    <div style="padding-top: 20px">
+      <table class="table table-hover table-bordered ">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">Employee Id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Mobile No</th>
+          <th scope="col">Manager Name</th>
+          <th scope="col">Action</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of managerList">
+          <th scope="row">{{user.empId}}</th>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.mobileNo}}</td>
+          <td>{{user.managerName}}</td>
+          <td class="text-danger">
+            <button type="button" (click)="request(user,true)" class="btn btn-success pull-right">Accept</button>
+          </td>
+          <td class="text-danger">
+            <button type="button" (click)="request(user,false)" class="btn btn-danger pull-right">Reject</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

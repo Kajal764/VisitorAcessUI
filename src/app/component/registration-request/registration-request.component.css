@@ -1,0 +1,11 @@
+.main-container {
+  align-items: center;
+  padding: 20px;
+  width: 70%;
+  height: auto;
+  margin-top: 2%;
+  border-radius: 1%;
+  border: 1px solid lightgrey;
+  box-shadow: 2px 2px #888888;
+  justify-content: center;
+}
