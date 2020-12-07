@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './component/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { RaiseodcrequestComponent } from './component/raiseodcrequest/raiseodcrequest.component';
+import { ViewuserrequestsComponent } from './component/viewuserrequests/viewuserrequests.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    RaiseodcrequestComponent,
+    ViewuserrequestsComponent
   ],
   imports: [
     BrowserModule,

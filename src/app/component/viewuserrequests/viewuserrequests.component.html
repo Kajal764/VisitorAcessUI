@@ -1,0 +1,29 @@
+<!-- <app-userprofile></app-userprofile> -->
+<div class="panel panel-primary">
+    <div class="col-md-7 offset-1">
+      <table class="table table-bordered table-hover table-dark">
+        <thead>
+          <tr>
+            <th>Employee Id</th>
+            <th>Start Date</th> 
+            <th>End Date</th>
+            <th>Access From</th>
+            <th>Access Till</th>
+            <th>Status</th>
+            <th>Odc</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of userRequests">
+            <td>{{request.empId}}</td>
+            <td>{{request.startDate}}</td> 
+            <td>{{request.endDate}}</td>
+            <td>{{request.startTime}}</td>
+            <td>{{request.endTime}}</td>
+            <td>{{request.odc}}</td>
+            <!-- <td *ngIf="request.status = false">Pending</td>    -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
