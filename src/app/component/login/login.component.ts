@@ -22,11 +22,13 @@ export class LoginComponent implements OnInit {
 
   logins() {
     this.loginService.login(this.lg.empId, this.lg.password).subscribe(result => {
+        // @ts-ignore
+        localStorage.setItem('user', JSON.stringify(result.empId));
         if (result) {
           this.lg = result;
           this.res = false;
           if ((this.lg.role === 'Manager') && (this.lg.accountActive === true)) {
-            this.router.navigate(['home-admin']);
+            this.router.navigate(['manager']);
           } else if ((this.lg.role === 'Employee') && (this.lg.accountActive === true)) {
             this.router.navigate(['home-admin']);
           } else if (this.lg.role === 'Admin') {

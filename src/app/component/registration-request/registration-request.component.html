@@ -12,9 +12,13 @@
 </div>
 
 <div *ngIf="!managerListFlag" class="d-flex justify-content-center">
-  <div class="main-container">
+  <div>
+
     <div class="row">
       <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">Registration request</div>
+      <div class="col-5 text-right">
+        <button type="button" class="btn btn-info pull-right" >Visitor Access request</button>
+      </div>
     </div>
 
     <div style="padding-top: 20px">
@@ -32,7 +36,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let user of managerList">
+        <tr *ngFor="let user of EmployeeList">
           <th scope="row">{{user.empId}}</th>
           <td>{{user.firstName}}</td>
           <td>{{user.lastName}}</td>

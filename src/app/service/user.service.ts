@@ -50,7 +50,7 @@ export class UserService {
       .pipe(catchError(this.handleError));
   }
 
-  getUserRequestList(empId: number) {
+  getUserRequestList(empId: string) {
     return this.httpClient.get<User[]>('http://localhost:8080/user/manager/registration-request/' + empId)
       .pipe(catchError(this.handleError));
   }

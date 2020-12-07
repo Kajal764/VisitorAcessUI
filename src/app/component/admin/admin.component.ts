@@ -13,6 +13,8 @@ export class AdminComponent implements OnInit {
   public userList: User[];
   public message: any;
   private responseData: any;
+  private isRegisterRequest = false;
+  private managerList: User[];
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -50,6 +52,18 @@ export class AdminComponent implements OnInit {
   }
 
   redirectToRegistrationRequest() {
-    this.router.navigate(['register-request']);
+    this.isRegisterRequest = true;
+    this.getManagerRegistrationRequest();
+    // this.router.navigate(['register-request']);
+  }
+
+  private getManagerRegistrationRequest(): void {
+    this.userService.getManagerList()
+      .subscribe(data => {
+          this.managerList = data;
+        },
+        error => {
+          this.message = error.error.message;
+        });
   }
 }
