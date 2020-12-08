@@ -9,13 +9,13 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class ViewuserrequestsComponent implements OnInit {
 
-  userRequests:VisitorRequest[];
-  empId:number=2541785;
-  constructor(private userService:UserService) { }
+  userRequests: VisitorRequest[];
+  empId: number = 2372884;
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.getUserRequest(this.empId).subscribe((data)=>{this.userRequests=data;},
-    (error)=>console.log(error))
+    this.userService.getUserRequest(this.empId).subscribe((data) => { this.userRequests = data; },
+      (error) => console.log(error))
   }
 
 }

@@ -1,0 +1,35 @@
+.h{
+    text-align: center;
+   color:skyblue;
+   text-shadow: 2px 2px black;
+
+}
+.hh{
+    
+    margin-left: 100px;
+    text-shadow: 2px 2px 	#FFFFFF;
+
+
+}
+.p {
+    border-radius: 5px;
+    /* background-color: #f2f2f2; */
+    /* background-color:#C0C0C0; */
+    /* background-color:#E3D9D7; */
+    background-color: #DEDCDC;
+    
+    margin-left:350px;
+    margin-right: 350px;
+    margin-top:30px;
+  }
+
+.bottom{
+    text-align:center;
+}
+
+.bodybg-color {
+    background-color:red;
+}
+h5{
+    color: red;
+}

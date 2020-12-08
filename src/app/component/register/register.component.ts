@@ -1,5 +1,7 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { login } from 'src/app/login';
 import {UserService} from '../../service/user.service';
 
 @Component({
@@ -8,8 +10,8 @@ import {UserService} from '../../service/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  namePattern = '^[A-Za-z]{2,16}$';
+  managers:login[];
+  namePattern = '^[A-Za-z]{1,16}$';
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,40}$';
   passwordPattern = '^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%]).{8,})$';
   empId = '^[0-9]\\d{6}$';
@@ -29,10 +31,11 @@ export class RegisterComponent implements OnInit {
   private responseData: any;
   private flag = false;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,private router:Router) {
   }
 
   ngOnInit() {
+    
   }
 
   onSubmit() {
@@ -55,6 +58,7 @@ export class RegisterComponent implements OnInit {
         .subscribe(response => {
           this.responseData = response.body;
           this.flag = true;
+this.router.navigate(['login'])
         }, (error) => {
           this.responseData = error.error;
         });

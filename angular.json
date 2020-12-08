@@ -24,13 +24,13 @@
               "src/assets"
             ],
             "styles": [
-              "D:/DemoProject/VisitorAcessUI/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
-              "D:/DemoProject/VisitorAcessUI/node_modules/font-awesome/css/font-awesome.min.css"
+              "./node_modules/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": [
-              "D:/DemoProject/VisitorAcessUI/node_modules/jquery/dist/jquery.js",
-              "D:/DemoProject/VisitorAcessUI/node_modules/bootstrap/dist/js/bootstrap.js"
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {

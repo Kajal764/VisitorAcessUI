@@ -11,25 +11,22 @@ import { UserService } from 'src/app/service/user.service';
 export class RaiseodcrequestComponent implements OnInit {
 
   visitorRequest = new VisitorRequest();
-  success:boolean = false;
-  // odcs:ODCList[] = [
-  //   {odcId:1,odcName:"FRB"},
-  //   {odcId:2,odcName:"Schwab"},
-  //   {odcId:3,odcName:"DOQ"}
-  // ];
-  odcs:ODCList[];
-  constructor(private userService:UserService) { }
+  success: boolean = false;
+  odcs: ODCList[];
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-     this.userService.getAllODC().subscribe((data)=>this.odcs=data)
+    this.userService.getAllODC().subscribe((data) => this.odcs = data)
   }
 
-  raiseRequest(){
-    this.visitorRequest.status="Pending Approval";
-    this.userService.raiseOdcRequest(this.visitorRequest).subscribe((data)=>{this.visitorRequest=data;
-    console.log("success");
-    this.success = !this.success;
-    },(error)=>{console.log(error)}
+  raiseRequest() {
+    this.visitorRequest.status = "Pending Approval";
+    console.log(JSON.stringify(this.visitorRequest.odc));
+    this.userService.raiseOdcRequest(this.visitorRequest).subscribe((data) => {
+      this.visitorRequest = data;
+      console.log("success");
+      this.success = !this.success;
+    }, (error) => { console.log(error) }
     );
   }
 }

@@ -1,9 +1,10 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { VisitorRequest } from '../models/VisitorRequest';
 import { ODCList } from '../models/ODCList';
+import { login } from '../login';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class UserService {
   }
 
   postData(data, url): Observable<any> {
-    return this.httpClient.post<any>(url, data, {observe: 'response' as 'body'})
+    return this.httpClient.post<any>(url, data, { observe: 'response' as 'body' })
       .pipe(catchError(this.handleError));
   }
 
@@ -30,23 +31,46 @@ export class UserService {
       .pipe(catchError(this.handleError));
   }
 
-  raiseOdcRequest(visitorRequest:VisitorRequest)
-  {
-    let body=JSON.stringify(visitorRequest);
-    let options={
-      headers:{
-        "content-Type":"application/json"
+  raiseOdcRequest(visitorRequest: VisitorRequest) {
+    alert(JSON.stringify(visitorRequest));
+    let body = JSON.stringify(visitorRequest);
+    let options = {
+      headers: new HttpHeaders({
+        "content-Type": "application/json"
+      })
+    }
+    return this.httpClient.post<VisitorRequest>("http://localhost:8080/user/raiseOdcRequest", body, options);
+  }
+
+  getUserRequest(empId: number): Observable<VisitorRequest[]> {
+    return this.httpClient.get<VisitorRequest[]>("http://localhost:8080/user/viewUserRequests/" + empId);
+  }
+
+  getAllODC(): Observable<ODCList[]> {
+    return this.httpClient.get<ODCList[]>("http://localhost:8080/user/odcList");
+  }
+
+  getPendingVisitorRequest(): Observable<VisitorRequest[]> {
+    return this.httpClient.get<VisitorRequest[]>("http://localhost:8080/user/visitorRequestByStatus/Pending Approval");
+  }
+
+  approveOdcRequest(visitorRequest: VisitorRequest) {
+    let body = JSON.stringify(visitorRequest);
+    let options = {
+      headers: {
+        "content-Type": "application/json"
       }
     }
-    return this.httpClient.post<VisitorRequest>(this.baseUrl+"raiseOdcRequest",body,options);
+    return this.httpClient.post<boolean>("http://localhost:8080/user/approveAccess", body, options);
   }
-
-  getUserRequest(empId:number):Observable<VisitorRequest[]>{
-    return this.httpClient.get<VisitorRequest[]>(this.baseUrl+"viewUserRequests/"+empId);
-  }
-
-  getAllODC():Observable<ODCList[]>{
-    return this.httpClient.get<ODCList[]>(this.baseUrl+"odcList");
+  rejectOdcRequest(visitorRequest: VisitorRequest) {
+    let body = JSON.stringify(visitorRequest);
+    let options = {
+      headers: {
+        "content-Type": "application/json"
+      }
+    }
+    return this.httpClient.post<boolean>("http://localhost:8080/user/rejectAccess", body, options);
   }
 
 }

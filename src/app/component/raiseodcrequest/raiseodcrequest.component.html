@@ -9,19 +9,22 @@
                         <div class="form-group" align="left">
                             <label for="empId"><b>Employee ID</b></label>
                             <input type="text" placeholder="Enter Your Employee ID" class="form-control" name="empId"
-                                id="empId" required [(ngModel)]="visitorRequest.empId" #EmpID="ngModel" pattern="[0-9]{7}"
-                                [class.is-invalid]="EmpID.touched && EmpID.invalid"  minlength="7" maxlength="7">
+                                id="empId" required [(ngModel)]="visitorRequest.empId" #EmpID="ngModel"
+                                pattern="[0-9]{7}" [class.is-invalid]="EmpID.touched && EmpID.invalid" minlength="7"
+                                maxlength="7">
                             <div *ngIf="EmpID.touched && EmpID.invalid">
                                 <span *ngIf="EmpID.errors.required" style="color:red">EmpID is required</span>
                                 <span *ngIf="EmpID.errors.pattern" style="color:red">Numbers Only</span>
-                                <span *ngIf="EmpID.errors.minlength" style="color:red">ID should be Seven numbers only</span>
-                                <span *ngIf="EmpID.errors.maxlength" style="color:red">ID should be Seven numbers only</span>
+                                <span *ngIf="EmpID.errors.minlength" style="color:red">ID should be Seven numbers
+                                    only</span>
+                                <span *ngIf="EmpID.errors.maxlength" style="color:red">ID should be Seven numbers
+                                    only</span>
                             </div>
                         </div>
                         <div class="form-group" align="left">
                             <label for="startDate"><b>Start Date</b></label>
-                            <input type="date" placeholder="Enter Date" class="form-control" name="startDate" id="startDate"
-                                required [(ngModel)]="visitorRequest.startDate" #StartDate="ngModel"
+                            <input type="date" placeholder="Enter Date" class="form-control" name="startDate"
+                                id="startDate" required [(ngModel)]="visitorRequest.startDate" #StartDate="ngModel"
                                 [class.is-invalid]="StartDate.touched && StartDate.invalid" />
                             <div *ngIf="StartDate.touched && StartDate.invalid">
                                 <span *ngIf="StartDate.errors.required" style="color:red">Date is required</span>
@@ -38,8 +41,8 @@
                         </div>
                         <div class="form-group" align="left">
                             <label for="startTime"><b>Access ODC From</b></label>
-                            <input type="time" placeholder="Enter Time" class="form-control" name="startTime" id="startTime"
-                                required [(ngModel)]="visitorRequest.startTime" #StartTime="ngModel"
+                            <input type="time" placeholder="Enter Time" class="form-control" name="startTime"
+                                id="startTime" required [(ngModel)]="visitorRequest.startTime" #StartTime="ngModel"
                                 [class.is-invalid]="StartTime.touched && StartTime.invalid" />
                             <div *ngIf="StartTime.touched && StartTime.invalid">
                                 <span *ngIf="StartTime.errors.required" style="color:red">Time is required</span>
@@ -54,21 +57,21 @@
                                 <span *ngIf="EndTime.errors.required" style="color:red">Time is required</span>
                             </div>
                         </div>
-    
+
                         <div class="form-group" align="left">
                             <label for="odc"><b>ODC Name</b></label>
-                            <select type="text" multiple="" required placeholder="Select ODC" class="form-control" name="odc"
-                                id="odcName"  [(ngModel)]="visitorRequest.odc" #Odc="ngModel"
+                            <select type="text" required placeholder="Select ODC" class="form-control" name="odc"
+                                id="odcName" [(ngModel)]="visitorRequest.odc" #Odc="ngModel"
                                 [class.is-invalid]="Odc.touched && Odc.invalid">
                                 <option value="">Please select</option>
-                                <option *ngFor='let odc of odcs' [value]="odc">{{odc.odcName}}</option>
+                                <option *ngFor='let odc of odcs' [value]="odc.odcName">{{odc.odcName}}</option>
                             </select>
-                            <p style="color:red">*Press control and select ODC's to access multiple ODC's</p>
+
                             <div *ngIf="Odc.touched && Odc.invalid">
                                 <span *ngIf="Odc.errors.required" style="color:red">Time is required</span>
                             </div>
                         </div>
-    
+
                         <input type="submit" value="Request Access" class="btn btn-success btn-block"
                             [disabled]="request.invalid">
                     </div>
@@ -76,8 +79,7 @@
             </div>
         </div>
     </div>
-    </div>
-    <div *ngIf="success">
-        <p align="center">Request Raised Successfully!!! Pending for approval</p>
-    </div>
-    
+</div>
+<div *ngIf="success">
+    <p align="center">Request Raised Successfully!!! Pending for approval</p>
+</div>

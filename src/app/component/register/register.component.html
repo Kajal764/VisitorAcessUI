@@ -52,7 +52,7 @@
         </div>
 
         <div class="form-group col-md-6">
-          <input type="password" class="form-control" placeholder="password" formControlName="password"
+          <input type="text" class="form-control" placeholder="password" formControlName="password"
                  [ngClass]="{'is-invalid':registrationForm.get('password').touched && registrationForm.get('password').invalid}"/>
           <div *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid"
                class="invalid-feedback">
@@ -99,7 +99,7 @@
         </div>
       </div>
 
-      <div *ngIf="isEmployee">
+      <!-- <div *ngIf="isEmployee">
         <div class="form-group">
           <input type="text" placeholder="Manager Name" class="form-control" formControlName="managerName"
                  [ngClass]="{'is-invalid':registrationForm.get('managerName').touched && registrationForm.get('managerName').invalid}"
@@ -108,6 +108,15 @@
                class="invalid-feedback">
             <div *ngIf="registrationForm.get('managerName').errors.required"> Manager name is required.</div>
           </div>
+        </div>
+      </div> -->
+
+      <div *ngIf="isEmployee">
+        <div class="form-group">
+          <select class="form-control" name="managerName" formControlName="managerName">
+            <option>Choose Manager</option>
+            <option *ngFor="let m of managers">{{m.firstName}} {{m.lastName}}</option>
+          </select>
         </div>
       </div>
 
