@@ -11,11 +11,6 @@ export class AppComponent {
 
   constructor() {
   }
-<<<<<<< HEAD
-  ngOnInit(){
-    // this.router.navigate(['/login']);
-    }
-=======
 
->>>>>>> 13fcce9858a0216fb677b5a82398a65601732e6f
+
 }

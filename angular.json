@@ -24,18 +24,14 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css",
-<<<<<<< HEAD
-              "./node_modules/font-awesome/css/font-awesome.min.css"
-=======
-//
-//              "D:/VisitorAccess/VisitorAccessUI/node_modules/bootstrap/dist/css/bootstrap.min.css",
-//               "D:/VisitorAccess/VisitorAccessUI/node_modules/jquery/dist/jquery.min.js",
-//             "D:/VisitorAccess/VisitorAccessUI/node_modules/font-awesome/css/font-awesome.css"
-//
+                            "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+                            "src/styles.css",
+                            "./node_modules/font-awesome/css/font-awesome.min.css"
 
->>>>>>> 13fcce9858a0216fb677b5a82398a65601732e6f
+              //              "D:/VisitorAccess/VisitorAccessUI/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              //               "D:/VisitorAccess/VisitorAccessUI/node_modules/jquery/dist/jquery.min.js",
+              //             "D:/VisitorAccess/VisitorAccessUI/node_modules/font-awesome/css/font-awesome.css"
+              //
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
@@ -134,6 +130,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "VisitorAccessUI"
 }

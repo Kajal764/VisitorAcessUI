@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         }
       }
       , error => {
-        this.message = error.error;
+        this.message = error.error.message;
         this.res = true;
         this.lg.empId = null;
         this.lg.password = '';
