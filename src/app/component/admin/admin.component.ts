@@ -54,7 +54,6 @@ export class AdminComponent implements OnInit {
   redirectToRegistrationRequest() {
     this.isRegisterRequest = true;
     this.getManagerRegistrationRequest();
-    // this.router.navigate(['register-request']);
   }
 
   private getManagerRegistrationRequest(): void {
@@ -65,5 +64,9 @@ export class AdminComponent implements OnInit {
         error => {
           this.message = error.error.message;
         });
+  }
+
+  redirectToOdc(): void {
+    this.router.navigate(['admin-odc']);
   }
 }

@@ -8,6 +8,7 @@ import {AdminComponent} from './component/admin/admin.component';
 import {RegistrationRequestComponent} from './component/registration-request/registration-request.component';
 import {LoginComponent} from './component/login/login.component';
 import {ManagerComponent} from './component/manager/manager.component';
+import {OdcComponent} from './component/odc/odc.component';
 
 const routes: Routes = [
   {
@@ -34,7 +35,6 @@ const routes: Routes = [
     path: 'managerOdcRequests',
     component: ManagerodcrequestsComponent
   },
-
   {
     path: 'register',
     component: RegisterComponent
@@ -50,6 +50,10 @@ const routes: Routes = [
   {
     path: 'manager',
     component: ManagerComponent
+  },
+  {
+    path: 'admin-odc',
+    component: OdcComponent
   }
 ];
 

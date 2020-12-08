@@ -1,24 +1,26 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { login } from './login';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {login} from './login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  baseurl:string="http://localhost:8081/user/";
+  baseurl: string = 'http://localhost:8080/user/';
 
-  constructor(private http:HttpClient) { }
-  options={
-    headers:new HttpHeaders({
-      "Content-Type":"application/json"
-    })
+  constructor(private http: HttpClient) {
   }
-  login(empId:number,password:string){
 
+  options = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
-    let url=this.baseurl+"login"+"/"+empId+"/"+password;
-    let result=this.http.post<login>(url,this.options);
+  login(empId: number, password: string) {
+    const url = this.baseurl + 'login' + '/' + empId + '/' + password;
+    console.log(url);
+    const result = this.http.post<login>(url, this.options);
     return result;
   }
 }

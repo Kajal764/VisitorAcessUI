@@ -2,6 +2,12 @@
   <nav class="navbar justify-content-center" style="background-color: #e3f2fd;">
     <a class="navbar-brand">
       <span style="font-weight: bold"> Welcome To Admin Page</span>
+      <button type="button" style="margin-left: 90%" class="btn btn-link pull-right" (click)="redirectToOdc()">Add
+        ODC
+      </button>
+      <button type="button" style="background-color: darkcyan;color: white;margin-left: 2%" class="btn pull-right"
+              (click)="redirectToRegister()">Logout
+      </button>
     </a>
   </nav>
   <br>
@@ -12,6 +18,7 @@
         <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">List Of Employee</div>
         <div class="col-5 text-right">
           <button type="button" class="btn btn-info pull-right" (click)="redirectToRegister()">Add Employee</button>
+
           <button type="button" style="margin-left: 40px" class="btn btn-success pull-right"
                   (click)="redirectToRegistrationRequest()">Registration Request
           </button>

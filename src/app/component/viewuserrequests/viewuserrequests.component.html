@@ -10,7 +10,7 @@
         <thead class="thead-light">
           <tr>
             <th scope="col">Employee Id</th>
-            <th scope="col">Start Date</th> 
+            <th scope="col">Start Date</th>
             <th scope="col">End Date</th>
             <th scope="col">Access From</th>
             <th scope="col">Access Till</th>
@@ -21,11 +21,11 @@
         <tbody>
           <tr *ngFor="let request of userRequests">
             <td>{{request.empId}}</td>
-            <td>{{request.startDate}}</td> 
+            <td>{{request.startDate}}</td>
             <td>{{request.endDate}}</td>
             <td>{{request.startTime}}</td>
             <td>{{request.endTime}}</td>
-            <td>{{request.status}}</td>
+            <td class="btn-link">{{request.status}}</td>
             <td>{{request.odc}}</td>
           </tr>
         </tbody>

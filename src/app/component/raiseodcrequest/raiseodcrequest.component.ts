@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ODCList } from 'src/app/models/ODCList';
-import { VisitorRequest } from 'src/app/models/VisitorRequest';
-import { UserService } from 'src/app/service/user.service';
+import {Component, OnInit} from '@angular/core';
+import {ODCList} from 'src/app/models/ODCList';
+import {VisitorRequest} from 'src/app/models/VisitorRequest';
+import {UserService} from 'src/app/service/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-raiseodcrequest',
@@ -11,22 +12,29 @@ import { UserService } from 'src/app/service/user.service';
 export class RaiseodcrequestComponent implements OnInit {
 
   visitorRequest = new VisitorRequest();
-  success: boolean = false;
+  success = false;
   odcs: ODCList[];
-  constructor(private userService: UserService) { }
+
+  constructor(private userService: UserService,
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.userService.getAllODC().subscribe((data) => this.odcs = data)
+    this.userService.getAllODC().subscribe((data) => this.odcs = data);
   }
 
   raiseRequest() {
-    this.visitorRequest.status = "Pending Approval";
-    console.log(JSON.stringify(this.visitorRequest.odc));
+    this.visitorRequest.status = 'Pending Approval';
     this.userService.raiseOdcRequest(this.visitorRequest).subscribe((data) => {
-      this.visitorRequest = data;
-      console.log("success");
-      this.success = !this.success;
-    }, (error) => { console.log(error) }
+        this.visitorRequest = data;
+        this.success = !this.success;
+      }, (error) => {
+        console.log(error);
+      }
     );
+  }
+
+  viewOdcRequest() {
+    this.router.navigate(['viewUserRequest']);
   }
 }

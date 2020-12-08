@@ -12,6 +12,7 @@ import {AdminComponent} from './component/admin/admin.component';
 import {RegistrationRequestComponent} from './component/registration-request/registration-request.component';
 import { LoginComponent } from './component/login/login.component';
 import { ManagerComponent } from './component/manager/manager.component';
+import { OdcComponent } from './component/odc/odc.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ManagerComponent } from './component/manager/manager.component';
     ManagerodcrequestsComponent,
     AdminComponent,
     RegistrationRequestComponent,
-    ManagerComponent
+    ManagerComponent,
+    OdcComponent
   ],
   imports: [
     BrowserModule,

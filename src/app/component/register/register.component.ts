@@ -1,8 +1,9 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import { Router } from '@angular/router';
-import { login } from 'src/app/login';
+import {Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
+import {login} from '../../login';
+import {User} from './User';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,6 @@ import {UserService} from '../../service/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  managers:login[];
   namePattern = '^[A-Za-z]{1,16}$';
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,40}$';
   passwordPattern = '^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%]).{8,})$';
@@ -30,12 +30,20 @@ export class RegisterComponent implements OnInit {
   });
   private responseData: any;
   private flag = false;
+  public managers: User[];
+  private message: any;
 
   constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
-    
+    this.userService.managers()
+      .subscribe(data => {
+          this.managers = data;
+        },
+        error => {
+          this.message = error.error.message;
+        });
   }
 
   onSubmit() {
@@ -49,6 +57,7 @@ export class RegisterComponent implements OnInit {
       role: this.registrationForm.get('role').value,
       managerName: this.registrationForm.get('managerName').value
     };
+    console.log(data);
     if (this.registrationForm.invalid === false) {
       if (this.registrationForm.get('role').value === 'Manager') {
         data.managerName = 'admin';
@@ -56,10 +65,12 @@ export class RegisterComponent implements OnInit {
       this.userService.register(data)
         .subscribe(response => {
           this.responseData = response.body;
+          this.message = response.body.message;
           this.flag = true;
           this.router.navigate(['login']);
         }, (error) => {
-          this.responseData = error.error;
+          this.flag = true;
+          this.message = error.error.message;
         });
     }
   }

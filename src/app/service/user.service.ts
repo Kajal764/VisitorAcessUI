@@ -1,11 +1,9 @@
-
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { VisitorRequest } from '../models/VisitorRequest';
-import { ODCList } from '../models/ODCList';
-import { login } from '../login';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
+import {VisitorRequest} from '../models/VisitorRequest';
+import {ODCList} from '../models/ODCList';
 import {User} from '../component/register/User';
 
 
@@ -13,8 +11,6 @@ import {User} from '../component/register/User';
   providedIn: 'root'
 })
 export class UserService {
-
-  public baseUrl: 'http://localhost:8080/user/';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -24,7 +20,7 @@ export class UserService {
   }
 
   postData(data, url): Observable<any> {
-    return this.httpClient.post<any>(url, data, { observe: 'response' as 'body' })
+    return this.httpClient.post<any>(url, data, {observe: 'response' as 'body'})
       .pipe(catchError(this.handleError));
   }
 
@@ -36,44 +32,45 @@ export class UserService {
 
   raiseOdcRequest(visitorRequest: VisitorRequest) {
     alert(JSON.stringify(visitorRequest));
-    let body = JSON.stringify(visitorRequest);
-    let options = {
+    const body = JSON.stringify(visitorRequest);
+    const options = {
       headers: new HttpHeaders({
-        "content-Type": "application/json"
+        'content-Type': 'application/json'
       })
-    }
-    return this.httpClient.post<VisitorRequest>("http://localhost:8080/user/raiseOdcRequest", body, options);
+    };
+    return this.httpClient.post<VisitorRequest>('http://localhost:8080/user/raiseOdcRequest', body, options);
   }
 
-  getUserRequest(empId: number): Observable<VisitorRequest[]> {
-    return this.httpClient.get<VisitorRequest[]>("http://localhost:8080/user/viewUserRequests/" + empId);
+  getUserRequest(empId: string): Observable<VisitorRequest[]> {
+    return this.httpClient.get<VisitorRequest[]>('http://localhost:8080/user/viewUserRequests/' + empId);
   }
 
   getAllODC(): Observable<ODCList[]> {
-    return this.httpClient.get<ODCList[]>("http://localhost:8080/user/odcList");
+    return this.httpClient.get<ODCList[]>('http://localhost:8080/user/odcList');
   }
 
   getPendingVisitorRequest(): Observable<VisitorRequest[]> {
-    return this.httpClient.get<VisitorRequest[]>("http://localhost:8080/user/visitorRequestByStatus/Pending Approval");
+    return this.httpClient.get<VisitorRequest[]>('http://localhost:8080/user/visitorRequestByStatus/Pending Approval');
   }
 
   approveOdcRequest(visitorRequest: VisitorRequest) {
-    let body = JSON.stringify(visitorRequest);
-    let options = {
+    const body = JSON.stringify(visitorRequest);
+    const options = {
       headers: {
-        "content-Type": "application/json"
+        'content-Type': 'application/json'
       }
-    }
-    return this.httpClient.post<boolean>("http://localhost:8080/user/approveAccess", body, options);
+    };
+    return this.httpClient.post<boolean>('http://localhost:8080/user/approveAccess', body, options);
   }
+
   rejectOdcRequest(visitorRequest: VisitorRequest) {
-    let body = JSON.stringify(visitorRequest);
-    let options = {
+    const body = JSON.stringify(visitorRequest);
+    const options = {
       headers: {
-        "content-Type": "application/json"
+        'content-Type': 'application/json'
       }
-    }
-    return this.httpClient.post<boolean>("http://localhost:8080/user/rejectAccess", body, options);
+    };
+    return this.httpClient.post<boolean>('http://localhost:8080/user/rejectAccess', body, options);
   }
 
   getUserList(): Observable<User[]> {
@@ -102,4 +99,9 @@ export class UserService {
       .pipe(catchError(this.handleError));
   }
 
+  managers(): Observable<any> {
+    const url = 'http://localhost:8080/user/managerList';
+    return this.httpClient.get<User[]>(url)
+      .pipe(catchError(this.handleError));
+  }
 }
