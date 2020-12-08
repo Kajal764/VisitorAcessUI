@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   private responseData: any;
   private flag = false;
 
-  constructor(private userService: UserService,private router:Router) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -53,12 +53,11 @@ export class RegisterComponent implements OnInit {
       if (this.registrationForm.get('role').value === 'Manager') {
         data.managerName = 'admin';
       }
-
       this.userService.register(data)
         .subscribe(response => {
           this.responseData = response.body;
           this.flag = true;
-this.router.navigate(['login'])
+          this.router.navigate(['login']);
         }, (error) => {
           this.responseData = error.error;
         });
@@ -72,8 +71,9 @@ this.router.navigate(['login'])
     if (this.registrationForm.get('role').value === 'Manager') {
       this.isEmployee = false;
     }
-
   }
 
-
+  redirectToLogin() {
+    this.router.navigate(['login']);
+  }
 }
