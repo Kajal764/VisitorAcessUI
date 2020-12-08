@@ -1,3 +1,4 @@
+<app-employeeprofile></app-employeeprofile>
 <div *ngIf="!success">
     <div align="center">
         <div class="row-mt-2">
@@ -68,7 +69,7 @@
                             </select>
 
                             <div *ngIf="Odc.touched && Odc.invalid">
-                                <span *ngIf="Odc.errors.required" style="color:red">Time is required</span>
+                                <span *ngIf="Odc.errors.required" style="color:red">ODC is required</span>
                             </div>
                         </div>
 
