@@ -1,35 +1,34 @@
-<!-- <app-userprofile></app-userprofile> -->
+<app-employeeprofile></app-employeeprofile>
 <div class="d-flex justify-content-center">
-    <div>
-      <div class="row">
-        <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">User Request Details</div>
-      </div>
-<div style="padding-top: 20px">
-    <!-- <div class="col-md-7 offset-1"> -->
+  <div>
+    <div class="row">
+      <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">User Request Details</div>
+    </div>
+    <div style="padding-top: 20px">
       <table class="table table-hover table-bordered ">
         <thead class="thead-light">
-          <tr>
-            <th scope="col">Employee Id</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">Access From</th>
-            <th scope="col">Access Till</th>
-            <th scope="col">Status</th>
-            <th scope="col">Odc</th>
-          </tr>
+        <tr>
+          <th scope="col">Employee Id</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Access From</th>
+          <th scope="col">Access Till</th>
+          <th scope="col">Status</th>
+          <th scope="col">Odc</th>
+        </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let request of userRequests">
-            <td>{{request.empId}}</td>
-            <td>{{request.startDate}}</td>
-            <td>{{request.endDate}}</td>
-            <td>{{request.startTime}}</td>
-            <td>{{request.endTime}}</td>
-            <td class="btn-link">{{request.status}}</td>
-            <td>{{request.odc}}</td>
-          </tr>
+        <tr *ngFor="let request of userRequests">
+          <td>{{request.empId}}</td>
+          <td>{{request.startDate}}</td>
+          <td>{{request.endDate}}</td>
+          <td>{{request.startTime}}</td>
+          <td>{{request.endTime}}</td>
+          <td class="btn-link">{{request.status}}</td>
+          <td>{{request.odc}}</td>
+        </tr>
         </tbody>
       </table>
+    </div>
   </div>
-</div>
 </div>

@@ -1,4 +1,4 @@
-export class ODCList{
-    odcId:number;
-    odcName:string;
+export interface ODCList {
+  odcId: number;
+  odcName: string;
 }

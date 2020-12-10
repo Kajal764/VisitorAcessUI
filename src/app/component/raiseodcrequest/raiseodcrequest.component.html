@@ -1,4 +1,5 @@
-<div *ngIf="!success" style="margin-bottom: 40px">
+<app-employeeprofile></app-employeeprofile>
+<div *ngIf="!success" style="margin-bottom: 50px">
   <div align="center">
     <div class="row-mt-2">
       <div class="col-md-6">
@@ -68,7 +69,7 @@
               </select>
 
               <div *ngIf="Odc.touched && Odc.invalid">
-                <span *ngIf="Odc.errors.required" style="color:red">Odc Name required</span>
+                <span *ngIf="Odc.errors.required" style="color:red">ODC is required</span>
               </div>
             </div>
 
@@ -80,8 +81,6 @@
     </div>
   </div>
 </div>
-
 <div *ngIf="success">
-  <p align="center" class="font-italic;" style="color: red;font-size: 20px;margin-top: 20px">Request Raised
-    Successfully!!! Pending for approval</p>
+  <p align="center">Request Raised Successfully!!! Pending for approval</p>
 </div>

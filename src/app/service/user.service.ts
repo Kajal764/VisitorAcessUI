@@ -104,4 +104,15 @@ export class UserService {
     return this.httpClient.get<User[]>(url)
       .pipe(catchError(this.handleError));
   }
+
+  addOdc(data: { odcId: number; odcName: any }): Observable<any> {
+    const apiUrl = 'http://localhost:8080/user/addOdc';
+    return this.postData(data, apiUrl)
+      .pipe(catchError(this.handleError));
+  }
+
+  deleteODC(odcName: string) {
+    return this.httpClient.delete('http://localhost:8080/user/deleteOdc/' + odcName)
+      .pipe(catchError(this.handleError));
+  }
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {User} from '../register/User';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-manager',
@@ -12,7 +13,8 @@ export class ManagerComponent implements OnInit {
   public userList: User[];
   public message: any;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -30,4 +32,8 @@ export class ManagerComponent implements OnInit {
         });
   }
 
+  logout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
 }

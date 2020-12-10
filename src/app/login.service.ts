@@ -6,7 +6,8 @@ import {login} from './login';
   providedIn: 'root'
 })
 export class LoginService {
-  baseurl: string = 'http://localhost:8080/user/';
+  baseurl = 'http://localhost:8080/user/';
+
 
   constructor(private http: HttpClient) {
   }
@@ -19,7 +20,6 @@ export class LoginService {
 
   login(empId: number, password: string) {
     const url = this.baseurl + 'login' + '/' + empId + '/' + password;
-    console.log(url);
     const result = this.http.post<login>(url, this.options);
     return result;
   }

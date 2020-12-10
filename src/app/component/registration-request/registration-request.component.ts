@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {User} from '../register/User';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration-request',
@@ -9,13 +10,14 @@ import {User} from '../register/User';
 })
 
 export class RegistrationRequestComponent implements OnInit {
-  // public managerList: User[];
   public message: any;
   private responseData: any;
   public managerListFlag = false;
   @Input() public EmployeeList = [];
+  @Input() public isAdmin: boolean;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -36,5 +38,10 @@ export class RegistrationRequestComponent implements OnInit {
           this.responseData = error.error;
         });
     }
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 }

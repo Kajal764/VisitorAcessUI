@@ -47,9 +47,6 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  redirectToRegister() {
-    this.router.navigate(['register']);
-  }
 
   redirectToRegistrationRequest() {
     this.isRegisterRequest = true;
@@ -66,7 +63,9 @@ export class AdminComponent implements OnInit {
         });
   }
 
-  redirectToOdc(): void {
-    this.router.navigate(['admin-odc']);
+
+  logout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 }
