@@ -17,6 +17,7 @@ export class OdcComponent implements OnInit {
   private responseData: any;
   private odc: ODCList[];
   public flag: boolean;
+  private odcId: number;
 
   constructor(private userService: UserService, private router: Router) {
   }
@@ -27,8 +28,10 @@ export class OdcComponent implements OnInit {
           this.odcList = data;
         },
         error => {
+          this.odcId = 1;
           this.message = error.error.message;
         });
+    console.log(this.odcList == undefined);
   }
 
   addOdc() {
@@ -39,8 +42,8 @@ export class OdcComponent implements OnInit {
     this.odcList.push(data);
     this.odcName = '';
     this.userService.addOdc(data)
-      .subscribe(data => {
-          this.responseData = data;
+      .subscribe(res => {
+          this.responseData = res;
         },
         error => {
           this.message = error.error.message;

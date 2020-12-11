@@ -17,7 +17,11 @@ export class ManagerodcrequestsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getPendingVisitorRequest().subscribe((data) => this.visitorRequests = data);
+    this.userService.getPendingVisitorRequest(localStorage.getItem('user'))
+      .subscribe((data) => {
+        this.visitorRequests = data;
+        console.log(data);
+      }, (error) => console.log(error));
   }
 
   approve(request: VisitorRequest) {

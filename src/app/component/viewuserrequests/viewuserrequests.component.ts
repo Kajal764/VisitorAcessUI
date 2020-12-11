@@ -17,10 +17,11 @@ export class ViewuserrequestsComponent implements OnInit {
 
   ngOnInit() {
     this.empId = localStorage.getItem('user');
-    this.userService.getUserRequest(this.empId).subscribe((data) => {
-        this.userRequests = data;
-      },
-      (error) => console.log(error));
+    this.userService.getUserRequest(this.empId)
+      .subscribe((data) => {
+          this.userRequests = data;
+        },
+        (error) => console.log(error));
   }
 
 }

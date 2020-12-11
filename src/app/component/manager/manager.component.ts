@@ -18,17 +18,19 @@ export class ManagerComponent implements OnInit {
   }
 
   ngOnInit() {
-    const item = localStorage.getItem('user');
-    this.getUserList(item);
+    const empId = localStorage.getItem('user');
+    this.getUserList(empId);
   }
 
-  private getUserList(item: string): void {
-    this.userService.getUserRequestList(item)
+  private getUserList(empId: string): void {
+    this.userService.getUserRequestList(empId)
       .subscribe(data => {
           this.userList = data;
         },
         error => {
           this.message = error.error.message;
+          console.log(error.error);
+          console.log(this.message);
         });
   }
 

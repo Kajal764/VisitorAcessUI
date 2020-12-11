@@ -33,6 +33,8 @@ export class UserService {
   raiseOdcRequest(visitorRequest: VisitorRequest) {
     alert(JSON.stringify(visitorRequest));
     const body = JSON.stringify(visitorRequest);
+    console.log('body ');
+    console.log(body);
     const options = {
       headers: new HttpHeaders({
         'content-Type': 'application/json'
@@ -49,8 +51,10 @@ export class UserService {
     return this.httpClient.get<ODCList[]>('http://localhost:8080/user/odcList');
   }
 
-  getPendingVisitorRequest(): Observable<VisitorRequest[]> {
-    return this.httpClient.get<VisitorRequest[]>('http://localhost:8080/user/visitorRequestByStatus/Pending Approval');
+  getPendingVisitorRequest(empId: string): Observable<VisitorRequest[]> {
+    const url = 'http://localhost:8080/user/pendingVisitorRequest/' + empId;
+    console.log(url);
+    return this.httpClient.get<VisitorRequest[]>(url);
   }
 
   approveOdcRequest(visitorRequest: VisitorRequest) {

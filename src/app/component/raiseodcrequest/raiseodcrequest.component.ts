@@ -14,6 +14,7 @@ export class RaiseodcrequestComponent implements OnInit {
   visitorRequest = new VisitorRequest();
   success = false;
   odcs: ODCList[];
+  private loginUser: number;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -24,14 +25,21 @@ export class RaiseodcrequestComponent implements OnInit {
   }
 
   raiseRequest() {
+    this.loginUser = Number(localStorage.getItem('user'));
+    this.visitorRequest.employee = 0;
+    if (this.loginUser == this.visitorRequest.empId) {
+      this.visitorRequest.employee = 1;
+    }
     this.visitorRequest.status = 'Pending Approval';
-    this.userService.raiseOdcRequest(this.visitorRequest).subscribe((data) => {
-        this.visitorRequest = data;
-        this.success = !this.success;
-      }, (error) => {
-        console.log(error);
-      }
-    );
+    this.visitorRequest.managerEmpID = 123;
+    this.userService.raiseOdcRequest(this.visitorRequest)
+      .subscribe((data) => {
+          this.visitorRequest = data;
+          this.success = !this.success;
+        }, (error) => {
+          console.log(error);
+        }
+      );
   }
 
   viewOdcRequest() {

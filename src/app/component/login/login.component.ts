@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
 
   logins() {
     this.loginService.login(this.lg.empId, this.lg.password).subscribe(result => {
-        console.log(result);
         localStorage.setItem('user', JSON.stringify(result.empId));
         if (result) {
           this.lg = result;
@@ -57,5 +56,4 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
 }

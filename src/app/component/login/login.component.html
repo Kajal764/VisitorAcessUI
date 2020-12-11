@@ -1,15 +1,15 @@
-<nav class="navbar justify-content-center" style="background-color: #e3f2fd;">
+<nav class="navbar justify-content-center" style="background-color: #8289C4;">
   <a class="navbar-brand">
-    <span style="font-weight: bold"> Login here...</span>
+    <span style="font-weight: bold;color:white;"> Login here...</span>
   </a>
 </nav>
 
-  <br>
-  <div class="d-flex justify-content-center">
-    <div  *ngIf="res" class="alert alert-secondary " role="alert" style="width: 60%">
-      {{message}}
-    </div>
+<br>
+<div class="d-flex justify-content-center">
+  <div *ngIf="res" class="alert alert-secondary " role="alert" style="width: 60%">
+    {{message}}
   </div>
+</div>
 
 <div class="p">
   <br>
@@ -24,17 +24,17 @@
         <div class="form-group">
 
           <label for="password"><b>Password</b></label><br>
-          <input #password="ngModel" type="password" placeholder="Enter your Password" [(ngModel)]="lg.password"
+          <input #password="ngModel" type="password" placeholder="Enter your Password"
+                 [(ngModel)]="lg.password"
                  name="password" required class="form-control" required>
-
         </div>
         <br>
         <div class="bottom">
-
-          <input type="submit" class="btn btn-danger" value="Login" [disabled]="logForm.invalid" (click)="logins()">
+          <input type="submit" class="btn btn-danger" value="Login"
+                 [disabled]="logForm.invalid" (click)="logins()">
           &nbsp;&nbsp;&nbsp;<br>
           <a [routerLink]="['/register']" routerLinkActive="active"
-             class="link" >New Registration?</a>
+             class="link">New Registration?</a>
         </div>
         <br>
       </form>

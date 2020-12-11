@@ -15,6 +15,8 @@ export class AdminComponent implements OnInit {
   private responseData: any;
   private isRegisterRequest = false;
   private managerList: User[];
+  public odcFlag = false;
+  public addOdcFlag = false;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -50,6 +52,8 @@ export class AdminComponent implements OnInit {
 
   redirectToRegistrationRequest() {
     this.isRegisterRequest = true;
+    this.odcFlag = false;
+    this.addOdcFlag = false;
     this.getManagerRegistrationRequest();
   }
 
@@ -67,5 +71,19 @@ export class AdminComponent implements OnInit {
   logout() {
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
+  }
+
+
+  odcRequest() {
+    this.odcFlag = true;
+    this.isRegisterRequest = true;
+    this.addOdcFlag = false;
+  }
+
+  addOdc() {
+    this.addOdcFlag = true;
+    this.isRegisterRequest = false;
+    this.odcFlag = false;
+    this.addOdcFlag = true;
   }
 }
