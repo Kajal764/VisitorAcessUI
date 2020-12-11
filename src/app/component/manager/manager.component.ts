@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
-import {User} from '../register/User';
+import {User} from '../../models/User';
 import {Router} from '@angular/router';
 
 @Component({
@@ -12,6 +12,9 @@ export class ManagerComponent implements OnInit {
 
   public userList: User[];
   public message: any;
+  private raisedRequestFlag = false;
+  private registrationRequest = true;
+  private odcFlag = false;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -37,5 +40,17 @@ export class ManagerComponent implements OnInit {
   logout() {
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
+  }
+
+  odcRequest() {
+    this.odcFlag = true;
+    this.raisedRequestFlag = false;
+    this.registrationRequest = false;
+  }
+
+  raisedRequest() {
+    this.odcFlag = false;
+    this.raisedRequestFlag = true;
+    this.registrationRequest = false;
   }
 }

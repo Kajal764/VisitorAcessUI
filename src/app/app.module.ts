@@ -13,7 +13,6 @@ import {AdminComponent} from './component/admin/admin.component';
 import {RegistrationRequestComponent} from './component/registration-request/registration-request.component';
 import {ManagerComponent} from './component/manager/manager.component';
 import {OdcComponent} from './component/odc/odc.component';
-import {ManagerprofileComponent} from './component/managerprofile/managerprofile.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
 
 @NgModule({
@@ -28,7 +27,6 @@ import {EmployeeprofileComponent} from './component/employeeprofile/employeeprof
     RegistrationRequestComponent,
     ManagerComponent,
     OdcComponent,
-    ManagerprofileComponent,
     EmployeeprofileComponent
   ],
   imports: [

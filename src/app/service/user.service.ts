@@ -4,7 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {VisitorRequest} from '../models/VisitorRequest';
 import {ODCList} from '../models/ODCList';
-import {User} from '../component/register/User';
+import {User} from '../models/User';
 
 
 @Injectable({
