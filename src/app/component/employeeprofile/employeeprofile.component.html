@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8289C4;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -6,19 +6,31 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" style="font-weight: bold;font-size: 20px" href="raiseOdcRequest">Employee</a>
+        <a class="nav-link" style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px"
+           href="employee-odc-access">Employee</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="raiseOdcRequest"><i class="fa fa-ticket" aria-hidden="true">Raise ODC Request</i></a>
+        <a class="nav-link" style="color: white" (click)="odcRequest()"><i
+          class="fa fa-ticket" aria-hidden="true">Raise
+          ODC Request</i></a>
       </li>
+
       <li class="nav-item active">
-        <a class="nav-link" href="viewUserRequest"><i class="fa fa-calendar-check-o" aria-hidden="true">View My
-          Requests</i></a>
+        <a class="nav-link" style="color: white" (click)="showOdcListStatus()"><i class="fa fa-bars" aria-hidden="true">
+          View ODC Requests</i>
+        </a>
       </li>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
     </form>
   </div>
 </nav>
-<router-outlet></router-outlet>
+
+<br>
+<app-raiseodcrequest *ngIf="odcFlag==true && viewListFlag==false">
+</app-raiseodcrequest>
+
+<app-viewuserrequests *ngIf="viewListFlag==true && odcFlag==false">
+</app-viewuserrequests>

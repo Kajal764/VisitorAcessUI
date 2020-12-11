@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
           if ((this.lg.role === 'Manager') && (this.lg.accountActive === true)) {
             this.router.navigate(['manager']);
           } else if ((this.lg.role === 'Employee') && (this.lg.accountActive === true)) {
-            this.router.navigate(['raiseOdcRequest']);
+            this.router.navigate(['employee-odc-access']);
           } else if (this.lg.role === 'Admin') {
             if (this.lg.accountActive === true) {
               this.router.navigate(['home-admin']);

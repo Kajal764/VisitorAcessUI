@@ -9,6 +9,7 @@ import {RegistrationRequestComponent} from './component/registration-request/reg
 import {LoginComponent} from './component/login/login.component';
 import {ManagerComponent} from './component/manager/manager.component';
 import {OdcComponent} from './component/odc/odc.component';
+import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
 
 const routes: Routes = [
   {
@@ -54,7 +55,11 @@ const routes: Routes = [
   {
     path: 'admin-odc',
     component: OdcComponent
-  }
+  },
+  {
+    path: 'employee-odc-access',
+    component: EmployeeprofileComponent
+  },
 ];
 
 @NgModule({
