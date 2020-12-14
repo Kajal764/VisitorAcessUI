@@ -70,6 +70,7 @@ export class AdminComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
 

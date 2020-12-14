@@ -17,18 +17,18 @@ export class EmployeeprofileComponent implements OnInit {
   }
 
   logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
 
   showOdcListStatus() {
     this.viewListFlag = true;
     this.odcFlag = false;
-    console.log('inside show odc');
   }
 
   odcRequest() {
     this.viewListFlag = false;
     this.odcFlag = true;
-    console.log("inside odc req");
   }
 }

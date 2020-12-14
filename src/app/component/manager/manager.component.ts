@@ -29,6 +29,7 @@ export class ManagerComponent implements OnInit {
     this.userService.getUserRequestList(empId)
       .subscribe(data => {
           this.userList = data;
+          console.log(this.userList);
         },
         error => {
           this.message = error.error.message;
@@ -39,6 +40,7 @@ export class ManagerComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
 

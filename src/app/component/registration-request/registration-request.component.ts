@@ -42,6 +42,7 @@ export class RegistrationRequestComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
 }

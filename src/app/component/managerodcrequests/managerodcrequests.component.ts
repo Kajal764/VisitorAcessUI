@@ -25,25 +25,24 @@ export class ManagerodcrequestsComponent implements OnInit {
   }
 
   approve(request: VisitorRequest) {
+    request.status = 'Approved';
     this.userService.approveOdcRequest(request).subscribe((data) => {
         this.success = data;
-        console.log(this.success);
-        this.router.navigate(['/managerOdcRequests']);
       },
       (error) => console.log(error));
   }
 
   reject(request: VisitorRequest) {
+    request.status = 'Rejected';
     this.userService.rejectOdcRequest(request).subscribe((data) => {
         this.success = data;
-        this.router.navigate(['/managerOdcRequests']);
       },
       (error) => console.log(error));
   }
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
-
 }

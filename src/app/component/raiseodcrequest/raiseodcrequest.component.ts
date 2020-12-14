@@ -3,7 +3,7 @@ import {ODCList} from 'src/app/models/ODCList';
 import {VisitorRequest} from 'src/app/models/VisitorRequest';
 import {UserService} from 'src/app/service/user.service';
 import {Router} from '@angular/router';
-import { User } from 'src/app/models/User';
+import {User} from 'src/app/models/User';
 
 @Component({
   selector: 'app-raiseodcrequest',
@@ -16,8 +16,6 @@ export class RaiseodcrequestComponent implements OnInit {
   success = false;
   odcs: ODCList[];
   private loginUser: number;
-  public managers: User[];
-  private message: any;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -25,23 +23,19 @@ export class RaiseodcrequestComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getAllODC().subscribe((data) => this.odcs = data);
-    this.userService.managers()
-      .subscribe(data => {
-          this.managers = data;
-        },
-        error => {
-          this.message = error.error.message;
-        });
+    this.loginUser = Number(localStorage.getItem('user'));
+    this.visitorRequest.employee = 0;
+    if (localStorage.getItem('role') === 'Employee') {
+      {
+        this.visitorRequest.empId = this.loginUser;
+        this.visitorRequest.employee = 1;
+      }
+    }
   }
 
   raiseRequest() {
-    this.loginUser = Number(localStorage.getItem('user'));
-    this.visitorRequest.employee = this.loginUser;
-    if (this.loginUser == this.visitorRequest.empId) {
-      this.visitorRequest.employee = 1;
-    }
     this.visitorRequest.status = 'Pending Approval';
-    // this.visitorRequest.managerEmpID = 123;
+    this.visitorRequest.managerEmpID = 123;
     this.userService.raiseOdcRequest(this.visitorRequest)
       .subscribe((data) => {
           this.visitorRequest = data;
@@ -50,9 +44,5 @@ export class RaiseodcrequestComponent implements OnInit {
           console.log(error);
         }
       );
-  }
-
-  viewOdcRequest() {
-    this.router.navigate(['viewUserRequest']);
   }
 }

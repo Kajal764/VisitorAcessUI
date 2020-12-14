@@ -72,19 +72,6 @@
               </div>
             </div>
 
-            <div class="form-group" align="left">
-              <label for="managerEmpID"><b>Manager</b></label>
-              <select type="text" required placeholder="Select Manager" class="form-control" name="managerEmpID"
-              id="managerEmpID" [(ngModel)]="visitorRequest.managerEmpID" #ManagerEmpId="ngModel"
-              [class.is-invalid]="ManagerEmpId.touched && ManagerEmpId.invalid">
-                <option>Choose Manager</option>
-                <option *ngFor="let m of managers" [value]="m.empId">{{m.firstName}} {{m.lastName}}</option>
-              </select>
-              <div *ngIf="ManagerEmpId.touched && ManagerEmpId.invalid">
-                <span *ngIf="ManagerEmpId.errors.required" style="color:red">Manager is required</span>
-              </div>
-            </div>
-
             <input type="submit" value="Request Access" class="btn btn-success btn-block"
                    [disabled]="request.invalid">
           </div>
@@ -93,6 +80,7 @@
     </div>
   </div>
 </div>
+
 <div *ngIf="success">
   <p align="center">Request Raised Successfully!!! Pending for approval</p>
 </div>
