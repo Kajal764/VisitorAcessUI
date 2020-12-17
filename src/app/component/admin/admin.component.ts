@@ -61,6 +61,7 @@ export class AdminComponent implements OnInit {
     this.userService.getManagerList()
       .subscribe(data => {
           this.managerList = data;
+          console.log(this.managerList.length);
         },
         error => {
           this.message = error.error.message;

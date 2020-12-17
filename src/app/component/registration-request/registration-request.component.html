@@ -1,11 +1,10 @@
-
 <div class="d-flex justify-content-center">
-  <div *ngIf="managerListFlag" class="alert alert-secondary " role="alert" style="width: 60%">
-    No pending request
+  <div *ngIf="managerListFlag== true">
+    <img src="../../../assets/norecord-found.png" class="image">
   </div>
 </div>
 
-<div *ngIf="!managerListFlag" class="d-flex justify-content-center">
+<div *ngIf="managerListFlag==false" class="d-flex justify-content-center">
   <div>
     <div class="row">
       <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">Registration request</div>

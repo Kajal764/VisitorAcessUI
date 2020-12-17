@@ -13,8 +13,8 @@ export class ManagerComponent implements OnInit {
   public userList: User[];
   public message: any;
   private raisedRequestFlag = false;
-  private registrationRequest = true;
-  private odcFlag = false;
+  private registrationRequest = false;
+  private odcFlag = true;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -54,5 +54,11 @@ export class ManagerComponent implements OnInit {
     this.odcFlag = false;
     this.raisedRequestFlag = true;
     this.registrationRequest = false;
+  }
+
+  registartion() {
+    this.odcFlag = false;
+    this.raisedRequestFlag = false;
+    this.registrationRequest = true;
   }
 }

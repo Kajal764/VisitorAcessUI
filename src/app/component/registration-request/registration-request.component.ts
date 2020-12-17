@@ -21,6 +21,9 @@ export class RegistrationRequestComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.EmployeeList == undefined) {
+      this.managerListFlag = true;
+    }
   }
 
   request(user: User, status: boolean): void {
@@ -31,6 +34,9 @@ export class RegistrationRequestComponent implements OnInit {
     const index = this.EmployeeList.indexOf(user);
     if (index !== -1) {
       this.EmployeeList.splice(index, 1);
+      if (this.EmployeeList.length === 0) {
+        this.managerListFlag = true;
+      }
       this.userService.registrationRequest(data)
         .subscribe(response => {
           this.responseData = response.body;
