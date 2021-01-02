@@ -1,26 +1,26 @@
 <div class="d-flex justify-content-center">
   <div style="padding-bottom: 20px">
     <div class="row">
-      <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">Request Raised for ODC Access</div>
+      <div class="col-7" style="color: navy;font-weight: bold;font-size: 150%;font-family: Roboto">Visitor access request</div>
     </div>
-    <div style="padding-top: 20px">
+    <div style="padding-top: 20px;font-family: Roboto">
       <table class="table table-hover table-bordered ">
         <thead class="thead-light">
         <tr>
-          <th scope="col">Employee Id</th>
+          <th scope="col" >Employee Id</th>
           <th scope="col">Start Date</th>
-          <th scope="col">End Date</th>
-          <th scope="col">Access From</th>
-          <th scope="col">Access Till</th>
-          <th scope="col">Status</th>
-          <th scope="col">Odc</th>
-          <th scope="col">Approve</th>
-          <th scope="col">Reject</th>
+          <th scope="col" >End Date</th>
+          <th scope="col" >Access From</th>
+          <th scope="col" >Access Till</th>
+          <th scope="col" >Status</th>
+          <th scope="col" >Odc</th>
+          <th scope="col" >Approve</th>
+          <th scope="col" >Reject</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody style="font-family: Roboto">
         <tr *ngFor="let request of visitorRequests">
-          <td>{{request.empId}}</td>
+          <td style="font-weight: bold"> {{request.empId}}</td>
           <td>{{request.startDate}}</td>
           <td>{{request.endDate}}</td>
           <td>{{request.startTime}}</td>

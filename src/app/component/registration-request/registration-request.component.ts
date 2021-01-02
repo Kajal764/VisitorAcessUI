@@ -12,18 +12,16 @@ import {Router} from '@angular/router';
 export class RegistrationRequestComponent implements OnInit {
   public message: any;
   private responseData: any;
-  public managerListFlag = false;
   @Input() public EmployeeList = [];
   @Input() public isAdmin: boolean;
+  @Input() public isPendingRequest: boolean;
 
   constructor(private userService: UserService,
               private router: Router) {
   }
 
   ngOnInit() {
-    if (this.EmployeeList == undefined) {
-      this.managerListFlag = true;
-    }
+
   }
 
   request(user: User, status: boolean): void {
@@ -35,7 +33,7 @@ export class RegistrationRequestComponent implements OnInit {
     if (index !== -1) {
       this.EmployeeList.splice(index, 1);
       if (this.EmployeeList.length === 0) {
-        this.managerListFlag = true;
+        this.isPendingRequest = false;
       }
       this.userService.registrationRequest(data)
         .subscribe(response => {

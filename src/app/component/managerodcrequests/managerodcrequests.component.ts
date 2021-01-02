@@ -20,7 +20,6 @@ export class ManagerodcrequestsComponent implements OnInit {
     this.userService.getPendingVisitorRequest(localStorage.getItem('user'))
       .subscribe((data) => {
         this.visitorRequests = data;
-        console.log(data);
       }, (error) => console.log(error));
   }
 

@@ -17,6 +17,7 @@ export class AdminComponent implements OnInit {
   private managerList: User[];
   public odcFlag = false;
   public addOdcFlag = false;
+  public isPendingRequest: boolean;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -61,13 +62,13 @@ export class AdminComponent implements OnInit {
     this.userService.getManagerList()
       .subscribe(data => {
           this.managerList = data;
-          console.log(this.managerList.length);
+          this.isPendingRequest = true;
         },
         error => {
           this.message = error.error.message;
+          this.isPendingRequest = false;
         });
   }
-
 
   logout() {
     localStorage.removeItem('user');

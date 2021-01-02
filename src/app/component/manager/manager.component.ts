@@ -15,6 +15,7 @@ export class ManagerComponent implements OnInit {
   private raisedRequestFlag = false;
   private registrationRequest = false;
   private odcFlag = true;
+  public isPendingRequest: boolean;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -29,12 +30,11 @@ export class ManagerComponent implements OnInit {
     this.userService.getUserRequestList(empId)
       .subscribe(data => {
           this.userList = data;
-          console.log(this.userList);
+          this.isPendingRequest = true;
         },
         error => {
           this.message = error.error.message;
-          console.log(error.error);
-          console.log(this.message);
+          this.isPendingRequest = false;
         });
   }
 
