@@ -16,6 +16,7 @@ import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
 import { OdcmanagerComponent } from './odcmanager/odcmanager.component';
 import { ViewodcmanagersComponent } from './component/viewodcmanagers/viewodcmanagers.component';
+import { OdcmanagerrequestsComponent } from './component/odcmanagerrequests/odcmanagerrequests.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ViewodcmanagersComponent } from './component/viewodcmanagers/viewodcman
     OdcComponent,
     EmployeeprofileComponent,
     OdcmanagerComponent,
-    ViewodcmanagersComponent
+    ViewodcmanagersComponent,
+    OdcmanagerrequestsComponent
   ],
   imports: [
     BrowserModule,

@@ -25,15 +25,15 @@ export class ManagerodcrequestsComponent implements OnInit {
 
   approve(request: VisitorRequest) {
     request.status = 'Accepted By Manager';
-    this.userService.approveOdcRequest(request).subscribe((data) => {
+    this.userService.approveOrRejectOdcRequest(request).subscribe((data) => {
         this.success = data;
       },
       (error) => console.log(error));
   }
 
   reject(request: VisitorRequest) {
-    request.status = 'Rejected';
-    this.userService.rejectOdcRequest(request).subscribe((data) => {
+    request.status = 'Rejected By Manager';
+    this.userService.approveOrRejectOdcRequest(request).subscribe((data) => {
         this.success = data;
       },
       (error) => console.log(error));

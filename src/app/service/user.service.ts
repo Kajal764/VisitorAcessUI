@@ -61,24 +61,20 @@ export class UserService {
     return this.httpClient.get<VisitorRequest[]>(url);
   }
 
-  approveOdcRequest(visitorRequest: VisitorRequest) {
-    const body = JSON.stringify(visitorRequest);
-    const options = {
-      headers: {
-        'content-Type': 'application/json'
-      }
-    };
-    return this.httpClient.post<boolean>('http://localhost:8080/user/approveAccess', body, options);
+  getOdcManagerRequests(odcName: string): Observable<VisitorRequest[]> {
+    const url = 'http://localhost:8080/user/getAllOdcManagerRequests/' + odcName;
+    console.log(url);
+    return this.httpClient.get<VisitorRequest[]>(url);
   }
 
-  rejectOdcRequest(visitorRequest: VisitorRequest) {
+  approveOrRejectOdcRequest(visitorRequest: VisitorRequest) {
     const body = JSON.stringify(visitorRequest);
     const options = {
       headers: {
         'content-Type': 'application/json'
       }
     };
-    return this.httpClient.post<boolean>('http://localhost:8080/user/rejectAccess', body, options);
+    return this.httpClient.post<boolean>('http://localhost:8080/user/approveOrRejectAccess', body, options);
   }
 
   getUserList(): Observable<User[]> {

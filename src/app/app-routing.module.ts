@@ -12,6 +12,7 @@ import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
 import { OdcmanagerComponent } from './odcmanager/odcmanager.component';
 import { ViewodcmanagersComponent } from './component/viewodcmanagers/viewodcmanagers.component';
+import { OdcmanagerrequestsComponent } from './component/odcmanagerrequests/odcmanagerrequests.component';
 
 const routes: Routes = [
   {
@@ -69,6 +70,10 @@ component:OdcmanagerComponent
   {
     path:'viewOdcManagers/:odcName',
     component:ViewodcmanagersComponent
+  },
+  {
+    path:'odcManagerRequests',
+    component:OdcmanagerrequestsComponent
   }
 ];
 

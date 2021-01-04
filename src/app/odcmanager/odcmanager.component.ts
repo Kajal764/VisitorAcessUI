@@ -45,9 +45,11 @@ export class OdcmanagerComponent implements OnInit {
   }
 
   odcRequest() {
-    this.odcFlag = true;
-    this.raisedRequestFlag = false;
-    this.registrationRequest = false;
+    // this.odcFlag = true;
+    // this.raisedRequestFlag = false;
+    // this.registrationRequest = false;
+    this.router.navigate(['/odcManagerRequests']);
+    //add name of the odc here
   }
 
   raisedRequest() {
