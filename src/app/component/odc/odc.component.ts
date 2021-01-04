@@ -66,6 +66,10 @@ export class OdcComponent implements OnInit {
 
   }
 
+  view(odcName:string){
+    this.router.navigate(['/viewOdcManagers',odcName])
+  }
+
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('role');

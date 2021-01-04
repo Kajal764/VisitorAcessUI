@@ -51,6 +51,10 @@ export class UserService {
     return this.httpClient.get<ODCList[]>('http://localhost:8080/user/odcList');
   }
 
+  getOdcManagers(odcName:string):Observable<User[]> {
+    return this.httpClient.get<User[]>('http://localhost:8080/user/viewOdcManagers/'+odcName);
+  }
+
   getPendingVisitorRequest(empId: string): Observable<VisitorRequest[]> {
     const url = 'http://localhost:8080/user/pendingVisitorRequest/' + empId;
     console.log(url);

@@ -11,6 +11,7 @@ import {ManagerComponent} from './component/manager/manager.component';
 import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
 import { OdcmanagerComponent } from './odcmanager/odcmanager.component';
+import { ViewodcmanagersComponent } from './component/viewodcmanagers/viewodcmanagers.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,10 @@ component:OdcmanagerComponent
     path: 'employee-odc-access',
     component: EmployeeprofileComponent
   },
+  {
+    path:'viewOdcManagers/:odcName',
+    component:ViewodcmanagersComponent
+  }
 ];
 
 @NgModule({

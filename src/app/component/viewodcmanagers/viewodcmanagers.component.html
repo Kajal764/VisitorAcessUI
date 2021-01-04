@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center">
+    <div style="font-family: Roboto">
+      <div class="row">
+        <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">ODC Managers</div>
+      </div>
+      <div style="padding-top: 20px">
+        <table class="table table-hover table-bordered ">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let manager of odcManagers">
+            <td>{{manager.empId}}</td>
+            <td>{{manager.firstName+" "+manager.lastName}} </td>
+            <td>{{manager.email}}</td>
+            <td>{{manager.mobileNo}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
