@@ -24,7 +24,7 @@ export class ManagerodcrequestsComponent implements OnInit {
   }
 
   approve(request: VisitorRequest) {
-    request.status = 'Approved';
+    request.status = 'Accepted By Manager';
     this.userService.approveOdcRequest(request).subscribe((data) => {
         this.success = data;
       },

@@ -14,6 +14,7 @@ import {RegistrationRequestComponent} from './component/registration-request/reg
 import {ManagerComponent} from './component/manager/manager.component';
 import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
+import { OdcmanagerComponent } from './odcmanager/odcmanager.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {EmployeeprofileComponent} from './component/employeeprofile/employeeprof
     RegistrationRequestComponent,
     ManagerComponent,
     OdcComponent,
-    EmployeeprofileComponent
+    EmployeeprofileComponent,
+    OdcmanagerComponent
   ],
   imports: [
     BrowserModule,

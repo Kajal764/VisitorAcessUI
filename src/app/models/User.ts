@@ -8,4 +8,5 @@ export interface User {
   role: string;
   managerName: string;
   accountActive: boolean;
+  odc:string;
 }

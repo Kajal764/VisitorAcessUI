@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {login} from '../../login';
 import {User} from '../../models/User';
+import { ODCList } from 'src/app/models/ODCList';
 
 @Component({
   selector: 'app-register',
@@ -11,12 +12,15 @@ import {User} from '../../models/User';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  namePattern = '^[A-Za-z]{1,16}$';
+  odcs: ODCList[];
+  
+  namePattern = '^[A-Za-z- ]{1,16}$';
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,40}$';
   passwordPattern = '^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%]).{8,})$';
   empId = '^[0-9]\\d{6}$';
   mobilePattern = '^[0-9]\\d{9}$';
   public isEmployee = false;
+   isOdcManager=false;
 
   registrationForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.pattern(this.namePattern)]),
@@ -26,7 +30,8 @@ export class RegisterComponent implements OnInit {
     mobileNo: new FormControl('', [Validators.required, Validators.pattern(this.mobilePattern)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(this.passwordPattern)]),
     role: new FormControl('', Validators.required),
-    managerName: new FormControl('')
+    managerName: new FormControl(''),
+    odc: new FormControl('')
   });
   private responseData: any;
   private flag = false;
@@ -37,6 +42,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.getAllODC().subscribe((data) => this.odcs = data);
     this.userService.managers()
       .subscribe(data => {
           this.managers = data;
@@ -55,13 +61,14 @@ export class RegisterComponent implements OnInit {
       empId: this.registrationForm.get('empId').value,
       mobileNo: this.registrationForm.get('mobileNo').value,
       role: this.registrationForm.get('role').value,
-      managerName: this.registrationForm.get('managerName').value
+      managerName: this.registrationForm.get('managerName').value,
+      odc:this.registrationForm.get('odc').value
     };
     console.log(data);
     if (this.registrationForm.invalid === false) {
-      if (this.registrationForm.get('role').value === 'Manager') {
-        data.managerName = 'admin';
-      }
+      // if (this.registrationForm.get('role').value === 'Manager') {
+      //   data.managerName = 'admin';
+      // }
       this.userService.register(data)
         .subscribe(response => {
           this.responseData = response.body;
@@ -78,9 +85,15 @@ export class RegisterComponent implements OnInit {
   check() {
     if (this.registrationForm.get('role').value === 'Employee') {
       this.isEmployee = true;
+      this.isOdcManager = false;
     }
     if (this.registrationForm.get('role').value === 'Manager') {
+      this.isEmployee = true;
+      this.isOdcManager = false;
+    }
+    if (this.registrationForm.get('role').value === 'odcManager') {
       this.isEmployee = false;
+      this.isOdcManager = true;
     }
   }
 

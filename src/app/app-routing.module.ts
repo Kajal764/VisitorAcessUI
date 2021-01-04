@@ -10,11 +10,16 @@ import {LoginComponent} from './component/login/login.component';
 import {ManagerComponent} from './component/manager/manager.component';
 import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
+import { OdcmanagerComponent } from './odcmanager/odcmanager.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent
+  },
+  {
+path:'odcmanager',
+component:OdcmanagerComponent
   },
   {
     path: 'login',

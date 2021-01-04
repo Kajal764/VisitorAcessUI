@@ -31,7 +31,7 @@ export class UserService {
   }
 
   raiseOdcRequest(visitorRequest: VisitorRequest) {
-    alert(JSON.stringify(visitorRequest));
+   // alert(JSON.stringify(visitorRequest));
     const body = JSON.stringify(visitorRequest);
     console.log('body ');
     console.log(body);

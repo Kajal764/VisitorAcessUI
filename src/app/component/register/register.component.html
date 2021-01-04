@@ -96,6 +96,12 @@
                  id="inlineRadio2" value="Manager" (click)="check()">
           <label class="form-check-label" for="inlineRadio2">Manager</label>
         </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" name="odcManager" formControlName="role" type="radio" name="inlineRadioOptions"
+                 id="inlineRadio2" value="odcManager" (click)="check()">
+          <label class="form-check-label" for="inlineRadio2">ODC Manager</label>
+        </div>
       </div>
 
       <div *ngIf="isEmployee">
@@ -103,6 +109,15 @@
           <select class="form-control" name="managerName" formControlName="managerName">
             <option>Choose Manager</option>
             <option *ngFor="let m of managers">{{m.firstName}} {{m.lastName}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngIf="isOdcManager">
+        <div class="form-group">
+          <select class="form-control" name="odc" formControlName="odc">
+            <option>Choose ODC</option>
+            <option *ngFor="let odc of odcs"  [value]="odc.odcName">{{odc.odcName}}</option>
           </select>
         </div>
       </div>
