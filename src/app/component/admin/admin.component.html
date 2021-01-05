@@ -15,17 +15,14 @@ font-family: Roboto;">
         <a class="nav-link" style="color: white" (click)="addOdc()">
           <i class="fa fa-ticket" aria-hidden="true">Add ODC</i></a>
       </li>
-      <li class="nav-item active" (click)="redirectToRegistrationRequest()">
-        <a class="nav-link" style="color: white"><i class="fa fa-calendar-check-o" aria-hidden="true">Registration
-          Requests</i>
-        </a>
-      </li>
+
       <li class="nav-item active">
         <a class="nav-link" href="register" style="color: white"><i class="fa fa-user-circle" aria-hidden="true">Add
           Employee</i></a>
       </li>
       <li class="nav-item active">
-        <button class="btn btn-outline-light my-2 my-sm-0" style="color: black  " (click)="odcRequest()"><i class="fa fa-bars" aria-hidden="true"> Visitor Access Request</i>
+        <button class="btn btn-outline-light my-2 my-sm-0" style="color: black  " (click)="odcRequest()"><i
+          class="fa fa-bars" aria-hidden="true"> Visitor Access Request</i>
         </button>
       </li>
     </ul>
@@ -36,7 +33,7 @@ font-family: Roboto;">
 </nav>
 <br>
 
-<div style="font-family: Roboto" *ngIf="isRegisterRequest==false && odcFlag==false && addOdcFlag==false">
+<div style="font-family: Roboto" *ngIf="odcFlag==false && addOdcFlag==false">
   <div class="d-flex justify-content-center">
     <div>
       <div class="row">
@@ -75,12 +72,6 @@ font-family: Roboto;">
     </div>
   </div>
 </div>
-
-<app-registration-request *ngIf="isRegisterRequest==true && odcFlag==false"
-                          [EmployeeList]="managerList"
-                          [isAdmin]="true"
-                          [isPendingRequest]=isPendingRequest>
-</app-registration-request>
 
 <app-managerodcrequests *ngIf="odcFlag">
 </app-managerodcrequests>
