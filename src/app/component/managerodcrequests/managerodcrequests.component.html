@@ -28,10 +28,10 @@
           <td class="btn-link">{{request.status}}</td>
           <td>{{request.odc}}</td>
           <td class="text-success">
-            <button (click)="approve(request)" type="button" class="btn btn-success pull-right">Approve</button>
+            <button (click)="approve(request);Approve.disabled=true" type="button" #Approve id="approve" class="btn btn-success pull-right">Approve</button>
           </td>
           <td class="text-danger">
-            <button (click)="reject(request)" type="button" class="btn btn-danger pull-right">Reject</button>
+            <button (click)="reject(request);Approve.disabled=true" type="button" #Reject id="reject" class="btn btn-danger pull-right">Reject</button>
           </td>
         </tr>
         </tbody>

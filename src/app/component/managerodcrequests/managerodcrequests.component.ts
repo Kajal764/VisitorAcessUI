@@ -12,7 +12,6 @@ export class ManagerodcrequestsComponent implements OnInit {
 
   visitorRequests: VisitorRequest[];
   success: boolean;
-
   constructor(private userService: UserService, private router: Router) {
   }
 

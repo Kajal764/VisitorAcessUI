@@ -33,10 +33,10 @@
           <td>{{user.mobileNo}}</td>
           <td>{{user.managerName}}</td>
           <td class="text-danger">
-            <button type="button" (click)="request(user,true)" class="btn btn-success pull-right">Accept</button>
+            <button type="button" (click)="request(user,true);Approve.disabled=true" #Approve id="approve" class="btn btn-success pull-right">Accept</button>
           </td>
           <td class="text-danger">
-            <button type="button" (click)="request(user,false)" class="btn btn-danger pull-right">Reject</button>
+            <button type="button" (click)="request(user,false);Approve.disabled=true" #Reject id="reject" class="btn btn-danger pull-right">Reject</button>
           </td>
         </tr>
         </tbody>
