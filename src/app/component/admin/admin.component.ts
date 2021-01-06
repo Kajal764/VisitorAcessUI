@@ -13,11 +13,8 @@ export class AdminComponent implements OnInit {
   public userList: User[];
   public message: any;
   private responseData: any;
-  private isRegisterRequest = false;
-  private managerList: User[];
   public odcFlag = false;
   public addOdcFlag = false;
-  public isPendingRequest: boolean;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -50,26 +47,6 @@ export class AdminComponent implements OnInit {
     }
   }
 
-
-  redirectToRegistrationRequest() {
-    this.isRegisterRequest = true;
-    this.odcFlag = false;
-    this.addOdcFlag = false;
-    this.getManagerRegistrationRequest();
-  }
-
-  private getManagerRegistrationRequest(): void {
-    this.userService.getManagerList()
-      .subscribe(data => {
-          this.managerList = data;
-          this.isPendingRequest = true;
-        },
-        error => {
-          this.message = error.error.message;
-          this.isPendingRequest = false;
-        });
-  }
-
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
@@ -79,14 +56,11 @@ export class AdminComponent implements OnInit {
 
   odcRequest() {
     this.odcFlag = true;
-    this.isRegisterRequest = true;
     this.addOdcFlag = false;
   }
 
   addOdc() {
     this.addOdcFlag = true;
-    this.isRegisterRequest = false;
     this.odcFlag = false;
-    this.addOdcFlag = true;
   }
 }
