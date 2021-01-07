@@ -5,32 +5,28 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px"
-           href="employee-odc-access">Employee</a>
+           href="raiseOdcRequest">Employee</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" style="color: white" (click)="odcRequest()"><i
+      <li class="nav-item ">
+        <a class="nav-link" style="color: white" routerLinkActive="active" routerLink="/raiseOdcRequest" ><i
           class="fa fa-ticket" aria-hidden="true">Raise
           ODC Request</i></a>
       </li>
 
-      <li class="nav-item active">
-        <a class="nav-link" style="color: white" (click)="showOdcListStatus()"><i class="fa fa-bars" aria-hidden="true">
+      <li class="nav-item ">
+        <a class="nav-link" routerLinkActive="active" routerLink="/view-odc-Request"
+           style="color: white" ><i class="fa fa-eye" aria-hidden="true">
           View ODC Requests</i>
         </a>
       </li>
-
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
+      <button style="padding: 8px 20px;margin-right: 20px" class="btn btn-outline-light my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
     </form>
   </div>
 </nav>
 
 <br>
-<app-raiseodcrequest *ngIf="odcFlag==true && viewListFlag==false">
-</app-raiseodcrequest>
 
-<app-viewuserrequests *ngIf="viewListFlag==true && odcFlag==false">
-</app-viewuserrequests>

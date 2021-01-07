@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { VisitorRequest } from 'src/app/models/VisitorRequest';
-import { UserService } from 'src/app/service/user.service';
+import {Component, OnInit} from '@angular/core';
+import {VisitorRequest} from 'src/app/models/VisitorRequest';
+import {UserService} from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-odcmanagerrequests',
@@ -9,13 +9,15 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class OdcmanagerrequestsComponent implements OnInit {
 
-  odcRequests:VisitorRequest[];
-  odcName:string;
-  success:boolean;
-  constructor(private userService:UserService) { }
+  odcRequests: VisitorRequest[];
+  odcName: string;
+  success: boolean;
+
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
-    this.userService.getOdcManagerRequests("FRB") .subscribe((data) => {
+    this.userService.getOdcManagerRequests('FRB').subscribe((data) => {
       this.odcRequests = data;
     }, (error) => console.log(error));
   }

@@ -3,7 +3,6 @@ import {ODCList} from 'src/app/models/ODCList';
 import {VisitorRequest} from 'src/app/models/VisitorRequest';
 import {UserService} from 'src/app/service/user.service';
 import {Router} from '@angular/router';
-import {User} from 'src/app/models/User';
 
 @Component({
   selector: 'app-raiseodcrequest',
@@ -16,12 +15,18 @@ export class RaiseodcrequestComponent implements OnInit {
   success = false;
   odcs: ODCList[];
   private loginUser: number;
+  public isEmployee: boolean;
 
   constructor(private userService: UserService,
               private router: Router) {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('role') === 'Employee') {
+      this.isEmployee = true;
+    } else {
+      this.isEmployee = false;
+    }
     this.userService.getAllODC().subscribe((data) => this.odcs = data);
     this.loginUser = Number(localStorage.getItem('user'));
     this.visitorRequest.employee = 0;

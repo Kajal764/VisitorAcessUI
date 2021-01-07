@@ -29,12 +29,12 @@ export class LoginComponent implements OnInit {
           this.lg = result;
           this.res = false;
           if ((this.lg.role === 'Manager') && (this.lg.accountActive === true)) {
-            this.router.navigate(['manager']);
+            this.router.navigate(['odc-request']);
           } else if ((this.lg.role === 'Employee') && (this.lg.accountActive === true)) {
-            this.router.navigate(['employee-odc-access']);
-          }else if ((this.lg.role === 'odcManager') && (this.lg.accountActive === true)) {
+            this.router.navigate(['raiseOdcRequest']);
+          } else if ((this.lg.role === 'odcManager') && (this.lg.accountActive === true)) {
             this.router.navigate(['odcmanager']);
-          }else if (this.lg.role === 'Admin') {
+          } else if (this.lg.role === 'Admin') {
             if (this.lg.accountActive === true) {
               this.router.navigate(['home-admin']);
             } else {

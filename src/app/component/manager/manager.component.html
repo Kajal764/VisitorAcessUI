@@ -5,44 +5,48 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" style="font-weight: bold;font-size: 20px;
-        margin-right: 20px;color: white;font-family: Roboto" href="manager">Manager</a>
+        margin-right: 20px;color: white;font-family: Roboto" href="odc-request">Manager</a>
       </li>
 
-      <li class="nav-item active">
-        <a class="nav-link" style="color: white" (click)="odcRequest()"><i class="fa fa-bars" aria-hidden="true">
-          Visitor Access Request</i>
-        </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" style="color: white" (click)="registartion()"><i class="fa fa-user-circle"
-                                                                             aria-hidden="true">
-          Registration Request</i>
+      <li class="nav-item ">
+        <a class="nav-link" routerLinkActive="active" routerLink="/odc-request"
+           style="color: white">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+          ODC Access Request
         </a>
       </li>
 
-      <li class="nav-item active">
-        <a class="nav-link" style="color: white" (click)="raisedRequest()">
+      <li class="nav-item ">
+        <a class="nav-link" routerLinkActive="active" routerLink="/register-request"
+           style="color: white">
+          <i class="fa fa-user-circle" aria-hidden="true"></i>
+          Registration Request
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" style="color: white" routerLinkActive="active" routerLink="/raiseOdcRequest">
           <i class="fa fa-calendar-check-o" aria-hidden="true">
-            Request ODC For Employee</i></a>
+            Raise ODC Request </i></a>
       </li>
+
+      <li class="nav-item ">
+        <a class="nav-link" routerLinkActive="active" routerLink="/view-odc-Request"
+           style="color: white">
+          <i class="fa fa-eye" aria-hidden="true">
+            View ODC Requests</i>
+        </a>
+      </li>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
+      <button style="padding: 8px 20px;margin-right: 20px" class="btn btn-outline-light my-2 my-sm-0" type="submit"
+              (click)="logout()">Logout
+      </button>
     </form>
   </div>
 </nav>
 <br>
 
-<app-registration-request *ngIf="registrationRequest==true"
-                          [EmployeeList]="userList"
-                          [isAdmin]="false"
-                          [isPendingRequest]=isPendingRequest>
-</app-registration-request>
-
-<app-managerodcrequests *ngIf="odcFlag==true">
-</app-managerodcrequests>
-
-<app-raiseodcrequest *ngIf="raisedRequestFlag==true">
-</app-raiseodcrequest>

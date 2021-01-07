@@ -13,8 +13,6 @@ export class AdminComponent implements OnInit {
   public userList: User[];
   public message: any;
   private responseData: any;
-  public odcFlag = false;
-  public addOdcFlag = false;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -53,14 +51,4 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-
-  odcRequest() {
-    this.odcFlag = true;
-    this.addOdcFlag = false;
-  }
-
-  addOdc() {
-    this.addOdcFlag = true;
-    this.odcFlag = false;
-  }
 }

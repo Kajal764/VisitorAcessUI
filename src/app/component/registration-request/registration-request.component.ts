@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {User} from '../../models/User';
 import {Router} from '@angular/router';
@@ -12,16 +12,28 @@ import {Router} from '@angular/router';
 export class RegistrationRequestComponent implements OnInit {
   public message: any;
   private responseData: any;
-  @Input() public EmployeeList = [];
-  @Input() public isAdmin: boolean;
-  @Input() public isPendingRequest: boolean;
+  public userList: User[];
+  public isPendingRequest: boolean;
 
   constructor(private userService: UserService,
               private router: Router) {
   }
 
   ngOnInit() {
+    const empId = localStorage.getItem('user');
+    this.getUserList(empId);
+  }
 
+  private getUserList(empId: string): void {
+    this.userService.getUserRequestList(empId)
+      .subscribe(data => {
+          this.userList = data;
+          this.isPendingRequest = true;
+        },
+        error => {
+          this.message = error.error.message;
+          this.isPendingRequest = false;
+        });
   }
 
   request(user: User, status: boolean): void {
@@ -29,10 +41,10 @@ export class RegistrationRequestComponent implements OnInit {
       empId: user.empId,
       status
     };
-    const index = this.EmployeeList.indexOf(user);
+    const index = this.userList.indexOf(user);
     if (index !== -1) {
-      this.EmployeeList.splice(index, 1);
-      if (this.EmployeeList.length === 0) {
+      this.userList.splice(index, 1);
+      if (this.userList.length === 0) {
         this.isPendingRequest = false;
       }
       this.userService.registrationRequest(data)

@@ -10,9 +10,9 @@ import {LoginComponent} from './component/login/login.component';
 import {ManagerComponent} from './component/manager/manager.component';
 import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
-import { OdcmanagerComponent } from './odcmanager/odcmanager.component';
-import { ViewodcmanagersComponent } from './component/viewodcmanagers/viewodcmanagers.component';
-import { OdcmanagerrequestsComponent } from './component/odcmanagerrequests/odcmanagerrequests.component';
+import {OdcmanagerComponent} from './odcmanager/odcmanager.component';
+import {ViewodcmanagersComponent} from './component/viewodcmanagers/viewodcmanagers.component';
+import {OdcmanagerrequestsComponent} from './component/odcmanagerrequests/odcmanagerrequests.component';
 
 const routes: Routes = [
   {
@@ -20,8 +20,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-path:'odcmanager',
-component:OdcmanagerComponent
+    path: 'odcmanager',
+    component: OdcmanagerComponent
   },
   {
     path: 'login',
@@ -36,11 +36,11 @@ component:OdcmanagerComponent
     component: RaiseodcrequestComponent
   },
   {
-    path: 'viewUserRequest',
+    path: 'view-odc-Request',
     component: ViewuserrequestsComponent
   },
   {
-    path: 'managerOdcRequests',
+    path: 'odc-request',
     component: ManagerodcrequestsComponent
   },
   {
@@ -68,12 +68,12 @@ component:OdcmanagerComponent
     component: EmployeeprofileComponent
   },
   {
-    path:'viewOdcManagers/:odcName',
-    component:ViewodcmanagersComponent
+    path: 'viewOdcManagers/:odcName',
+    component: ViewodcmanagersComponent
   },
   {
-    path:'odcManagerRequests',
-    component:OdcmanagerrequestsComponent
+    path: 'odcManagerRequests',
+    component: OdcmanagerrequestsComponent
   }
 ];
 

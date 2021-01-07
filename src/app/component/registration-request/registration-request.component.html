@@ -1,5 +1,7 @@
+<app-manager></app-manager>
+
 <div class="d-flex justify-content-center">
-  <div *ngIf="isPendingRequest== false">
+  <div *ngIf="isPendingRequest== false" class="d-flex justify-content-center">
     <img src="../../../assets/NoRecordFound.jpg" class="image">
   </div>
 </div>
@@ -25,7 +27,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let user of EmployeeList">
+        <tr *ngFor="let user of userList">
           <th scope="row">{{user.empId}}</th>
           <td>{{user.firstName}}</td>
           <td>{{user.lastName}}</td>
@@ -33,10 +35,14 @@
           <td>{{user.mobileNo}}</td>
           <td>{{user.managerName}}</td>
           <td class="text-danger">
-            <button type="button" (click)="request(user,true);Approve.disabled=true" #Approve id="approve" class="btn btn-success pull-right">Accept</button>
+            <button type="button" (click)="request(user,true);Approve.disabled=true" #Approve id="approve"
+                    class="btn btn-success pull-right">Accept
+            </button>
           </td>
           <td class="text-danger">
-            <button type="button" (click)="request(user,false);Approve.disabled=true" #Reject id="reject" class="btn btn-danger pull-right">Reject</button>
+            <button type="button" (click)="request(user,false);Approve.disabled=true" #Reject id="reject"
+                    class="btn btn-danger pull-right">Reject
+            </button>
           </td>
         </tr>
         </tbody>

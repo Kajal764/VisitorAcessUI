@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {login} from '../../login';
 import {User} from '../../models/User';
-import { ODCList } from 'src/app/models/ODCList';
+import {ODCList} from 'src/app/models/ODCList';
 
 @Component({
   selector: 'app-register',
@@ -13,14 +13,14 @@ import { ODCList } from 'src/app/models/ODCList';
 })
 export class RegisterComponent implements OnInit {
   odcs: ODCList[];
-  
+
   namePattern = '^[A-Za-z- ]{1,16}$';
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,40}$';
   passwordPattern = '^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%]).{8,})$';
   empId = '^[0-9]\\d{6}$';
   mobilePattern = '^[0-9]\\d{9}$';
   public isEmployee = false;
-   isOdcManager=false;
+  isOdcManager = false;
 
   registrationForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.pattern(this.namePattern)]),
@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
       mobileNo: this.registrationForm.get('mobileNo').value,
       role: this.registrationForm.get('role').value,
       managerName: this.registrationForm.get('managerName').value,
-      odc:this.registrationForm.get('odc').value
+      odc: this.registrationForm.get('odc').value
     };
     console.log(data);
     if (this.registrationForm.invalid === false) {

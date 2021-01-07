@@ -7,8 +7,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./employeeprofile.component.css']
 })
 export class EmployeeprofileComponent implements OnInit {
-  private viewListFlag = false;
-  private odcFlag = true;
 
   constructor(private router: Router) {
   }
@@ -22,13 +20,4 @@ export class EmployeeprofileComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  showOdcListStatus() {
-    this.viewListFlag = true;
-    this.odcFlag = false;
-  }
-
-  odcRequest() {
-    this.viewListFlag = false;
-    this.odcFlag = true;
-  }
 }
