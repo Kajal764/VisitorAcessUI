@@ -6,7 +6,7 @@
   margin-top: 2%;
   border-radius: 1%;
   border: 1px solid lightgrey;
-  box-shadow: 2px 2px #888888;
+  box-shadow: 0 0 1px rgba(0,0,0,0.6);
 }
 
 .main {
@@ -16,5 +16,6 @@
   margin-top: 2%;
   border-radius: 1%;
   border: 1px solid lightgrey;
-  box-shadow: 2px 2px #888888;
+  box-shadow: 0 0 1px rgba(0,0,0,0.6);
 }
+

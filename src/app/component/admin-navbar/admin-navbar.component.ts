@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,7 +8,8 @@ import {Router} from '@angular/router';
 })
 export class AdminNavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
@@ -18,6 +19,7 @@ export class AdminNavbarComponent implements OnInit {
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
+
 
 
 }

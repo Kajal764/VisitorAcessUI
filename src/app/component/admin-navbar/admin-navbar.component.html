@@ -6,34 +6,36 @@ font-family: Roboto;">
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link"
-           style="font-weight: bold;font-size: 20px ; color: white; margin-right: 20px; font-family: Roboto"
-           href="home-admin">ADMIN</a>
+      <li>
+        <a class="nav-link" href="home-admin"
+           style="font-weight: bold;font-size: 20px ; color: white ; margin-right: 20px; font-family: Roboto"
+        >ADMIN</a>
       </li>
 
       <li class="nav-item ">
-        <a class="nav-link" href="home-admin" style="color: white">
+        <a class="nav-link" routerLinkActive="active" routerLink="/home-admin" style="color: white;margin: 0px">
           <i class="fa fa-address-card" aria-hidden="true"></i>
           List Of Employee
         </a>
       </li>
 
       <li class="nav-item ">
-        <a class="nav-link" href="admin-odc" style="color: white">
+        <a class="nav-link" routerLink="/admin-odc" routerLinkActive="active" style="color: white">
           <i class="fa fa-ticket" aria-hidden="true">Add ODC</i>
         </a>
       </li>
 
-      <li class="nav-item active">
-        <a class="nav-link" href="register" style="color: white"><i class="fa fa-user-circle" aria-hidden="true">Add
-          Employee</i></a>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/register" style="color:  white">
+          <i class="fa fa-user-circle" aria-hidden="true"></i> Add Employee</a>
       </li>
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
+      <button style="padding: 8px 20px;margin-right: 20px" class="btn btn-outline-light my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
     </form>
   </div>
 </nav>
 <br>
+
+
