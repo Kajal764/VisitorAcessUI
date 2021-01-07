@@ -1,3 +1,5 @@
+<app-admin-navbar></app-admin-navbar>
+
 <div class="d-flex justify-content-center">
   <div *ngIf="flag" class="alert alert-secondary " role="alert" style="width: 60%">
     {{message}}
@@ -31,7 +33,8 @@
       <tr *ngFor="let odc of odcList">
         <td>{{odc.odcName}}</td>
         <td class="text-success">
-          <button (click)="view(odc.odcName)" type="button" class="btn btn-success pull-right">View ODC Managers</button>
+          <button (click)="view(odc.odcName)" type="button" class="btn btn-success pull-right">View ODC Managers
+          </button>
         </td>
         <td class="text-danger">
           <button (click)="deleteOdc(odc)" type="button" class="btn btn-danger pull-right">Remove ODC</button>

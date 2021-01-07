@@ -17,6 +17,7 @@ import {EmployeeprofileComponent} from './component/employeeprofile/employeeprof
 import { OdcmanagerComponent } from './odcmanager/odcmanager.component';
 import { ViewodcmanagersComponent } from './component/viewodcmanagers/viewodcmanagers.component';
 import { OdcmanagerrequestsComponent } from './component/odcmanagerrequests/odcmanagerrequests.component';
+import { AdminNavbarComponent } from './component/admin-navbar/admin-navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { OdcmanagerrequestsComponent } from './component/odcmanagerrequests/odcm
     EmployeeprofileComponent,
     OdcmanagerComponent,
     ViewodcmanagersComponent,
-    OdcmanagerrequestsComponent
+    OdcmanagerrequestsComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,

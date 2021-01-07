@@ -1,37 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8289C4;
-font-family: Roboto;">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link"
-           style="font-weight: bold;font-size: 20px ; color: white; margin-right: 20px; font-family: Roboto"
-           href="home-admin">ADMIN</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" style="color: white" (click)="addOdc()">
-          <i class="fa fa-ticket" aria-hidden="true">Add ODC</i></a>
-      </li>
 
-      <li class="nav-item active">
-        <a class="nav-link" href="register" style="color: white"><i class="fa fa-user-circle" aria-hidden="true">Add
-          Employee</i></a>
-      </li>
-      <li class="nav-item active">
-        <button class="btn btn-outline-light my-2 my-sm-0" style="color: black  " (click)="odcRequest()"><i
-          class="fa fa-bars" aria-hidden="true"> Visitor Access Request</i>
-        </button>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
-    </form>
-  </div>
-</nav>
-<br>
+<app-admin-navbar></app-admin-navbar>
 
 <div style="font-family: Roboto" *ngIf="odcFlag==false && addOdcFlag==false">
   <div class="d-flex justify-content-center">
