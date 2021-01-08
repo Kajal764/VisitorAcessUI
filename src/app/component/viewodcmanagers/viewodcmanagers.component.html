@@ -1,28 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8289C4;
+font-family: Roboto;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li>
+        <a class="nav-link" href="home-admin"
+           style="font-weight: bold;font-size: 20px ; color: white ; margin-right: 20px; font-family: Roboto"
+        >ADMIN</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/viewOdcManagers/{{odcName}}"
+           style="color: white">
+          <i class="fa fa-ticket" aria-hidden="true"></i>ODC Users
+        </a>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button style="padding: 8px 20px;margin-right: 20px" class="btn btn-outline-light my-2 my-sm-0" type="submit"
+              (click)="logout()">Logout
+      </button>
+    </form>
+  </div>
+</nav>
+<br>
+
+
 <div class="d-flex justify-content-center">
-    <div style="font-family: Roboto">
-      <div class="row">
-        <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">ODC Managers</div>
-      </div>
-      <div style="padding-top: 20px">
-        <table class="table table-hover table-bordered ">
-          <thead class="thead-light">
-          <tr>
-            <th scope="col">Employee Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Contact</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let manager of odcManagers">
-            <td>{{manager.empId}}</td>
-            <td>{{manager.firstName+" "+manager.lastName}} </td>
-            <td>{{manager.email}}</td>
-            <td>{{manager.mobileNo}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="container" style="font-family: Roboto">
+    <div class="row">
+      <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">ODC Managers</div>
+    </div>
+    <div style="padding-top: 20px">
+      <table class="table table-hover table-bordered ">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">ODC</th>
+          <th scope="col">Employee Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contact</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let manager of odcManagers">
+          <td>{{manager.odc}}</td>
+          <td>{{manager.empId}}</td>
+          <td>{{manager.firstName + " " + manager.lastName}} </td>
+          <td>{{manager.email}}</td>
+          <td>{{manager.mobileNo}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  
+</div>

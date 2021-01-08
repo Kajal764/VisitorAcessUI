@@ -16,7 +16,7 @@
           <th scope="col" >Access From</th>
           <th scope="col" >Access Till</th>
           <th scope="col" >Status</th>
-          <th scope="col" >Odc</th>
+          <th scope="col" >ODC</th>
           <th scope="col" >Approve</th>
           <th scope="col" >Reject</th>
         </tr>
@@ -26,8 +26,8 @@
           <td style="font-weight: bold"> {{request.empId}}</td>
           <td>{{request.startDate}}</td>
           <td>{{request.endDate}}</td>
-          <td>{{request.startTime}}</td>
-          <td>{{request.endTime}}</td>
+          <td>{{request.startTime | time24to12Transform}}</td>
+          <td>{{request.endTime | time24to12Transform}}</td>
           <td class="btn-link">{{request.status}}</td>
           <td>{{request.odc}}</td>
           <td class="text-success">

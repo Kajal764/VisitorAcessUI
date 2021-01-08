@@ -18,6 +18,7 @@ import { OdcmanagerComponent } from './odcmanager/odcmanager.component';
 import { ViewodcmanagersComponent } from './component/viewodcmanagers/viewodcmanagers.component';
 import { OdcmanagerrequestsComponent } from './component/odcmanagerrequests/odcmanagerrequests.component';
 import { AdminNavbarComponent } from './component/admin-navbar/admin-navbar.component';
+import {Time24to12Format} from './component/time24to12.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AdminNavbarComponent } from './component/admin-navbar/admin-navbar.comp
     OdcmanagerComponent,
     ViewodcmanagersComponent,
     OdcmanagerrequestsComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    Time24to12Format
   ],
   imports: [
     BrowserModule,

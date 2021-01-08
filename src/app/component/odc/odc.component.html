@@ -8,19 +8,10 @@
 
 <div class="d-flex justify-content-center" style="font-family: Roboto">
   <div class="main-container">
-    <!-- <ul class="list-group list-group-flush">
-      <label><b>ODC </b></label>
-      <li *ngFor="let odc of odcList"
-          class="list-group-item list-group-item-primary d-flex justify-content-between">
-        <div style="font-size: 20px"> {{odc.odcName}}</div>
-        <svg width="1.5em" height="1.5em" (click)="deleteOdc(odc)" viewBox="0 0 16 16" class="bi bi-x-circle-fill"
-             fill="currentColor"
-             xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd"
-                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-        </svg>
-      </li>
-    </ul> -->
+    <div class="row">
+      <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%; margin-bottom: 5px">
+        ODC List</div>
+    </div>
     <table class="table table-hover table-bordered ">
       <thead class="thead-light">
       <tr>
@@ -46,7 +37,7 @@
 
   <div class="main" style="margin-left: 30px">
     <ul class="list-group list-group-flush">
-      <label><b>Enter odc name</b></label>
+      <label><b>Enter ODC Name</b></label>
       <input type="text" [(ngModel)]="odcName" required/>
     </ul>
     <div class="d-flex justify-content-center">
