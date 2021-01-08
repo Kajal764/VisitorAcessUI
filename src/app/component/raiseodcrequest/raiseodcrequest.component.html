@@ -32,7 +32,7 @@
             </div>
             <div class="form-group" align="left">
               <label for="startDate"><b>Start Date</b></label>
-              <input type="date" placeholder="Enter Date" class="form-control" name="startDate"
+              <input type="date" min="{{currentDate|date:'yyyy-MM-dd'}}" placeholder="Enter Date" class="form-control" name="startDate"
                      id="startDate" required [(ngModel)]="visitorRequest.startDate" #StartDate="ngModel"
                      [class.is-invalid]="StartDate.touched && StartDate.invalid"/>
               <div *ngIf="StartDate.touched && StartDate.invalid">
@@ -41,7 +41,7 @@
             </div>
             <div class="form-group" align="left">
               <label for="endDate"><b>End Date</b></label>
-              <input type="date" placeholder="Enter Date" class="form-control" name="endDate" id="endDate"
+              <input type="date" min="{{currentDate|date:'yyyy-MM-dd'}}" placeholder="Enter Date" class="form-control" name="endDate" id="endDate"
                      required [(ngModel)]="visitorRequest.endDate" #EndDate="ngModel"
                      [class.is-invalid]="EndDate.touched && EndDate.invalid"/>
               <div *ngIf="EndDate.touched && EndDate.invalid">

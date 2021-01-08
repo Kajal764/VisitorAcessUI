@@ -16,7 +16,7 @@ export class RaiseodcrequestComponent implements OnInit {
   odcs: ODCList[];
   private loginUser: number;
   public isEmployee: boolean;
-
+  currentDate:Date=new Date();
   constructor(private userService: UserService,
               private router: Router) {
   }
