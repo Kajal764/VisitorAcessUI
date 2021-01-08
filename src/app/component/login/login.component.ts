@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.lg.empId, this.lg.password).subscribe(result => {
         localStorage.setItem('user', JSON.stringify(result.empId));
         localStorage.setItem('role', result.role);
+        localStorage.setItem('odc',result.odc);
+        console.log(localStorage.getItem('odc'));
         if (result) {
           this.lg = result;
           this.res = false;

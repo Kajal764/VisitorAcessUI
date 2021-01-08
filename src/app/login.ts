@@ -8,4 +8,6 @@ export class login {
   role: string;
   managerName: string;
   accountActive: boolean;
+  odc:string;
+  flag:boolean;
 }
