@@ -3,3 +3,10 @@
   margin-top: 20px;
   height: 150%;
 }
+
+.container{
+  width: 70%;
+  border: 1px solid lightgrey;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+  margin-bottom: 30px;
+}

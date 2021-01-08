@@ -30,9 +30,9 @@ export class RaiseodcrequestComponent implements OnInit {
     this.userService.getAllODC().subscribe((data) => this.odcs = data);
     this.loginUser = Number(localStorage.getItem('user'));
     this.visitorRequest.employee = 0;
+    this.visitorRequest.empId = this.loginUser;
     if (localStorage.getItem('role') === 'Employee') {
       {
-        this.visitorRequest.empId = this.loginUser;
         this.visitorRequest.employee = 1;
       }
     }

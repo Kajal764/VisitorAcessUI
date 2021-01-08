@@ -1,0 +1,29 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.container{
+  width: 60%;
+  border: 1px solid lightgrey;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.active {
+  color: #8289C4 !important;
+  background-color: white !important;
+  border-radius: 5px;
+  margin: 0px;
+  border: #8289C4 1px solid;
+  position: relative;
+}
+
+
+a {
+  margin-left: 10px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}

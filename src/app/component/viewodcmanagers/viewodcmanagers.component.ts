@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/models/User';
-import { UserService } from 'src/app/service/user.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {User} from 'src/app/models/User';
+import {UserService} from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-viewodcmanagers',
@@ -10,17 +10,25 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class ViewodcmanagersComponent implements OnInit {
 
-  odcManagers:User[];
-  odcName:string;
-  constructor(private userService:UserService,private route:ActivatedRoute) { }
+  odcManagers: User[];
+  odcName: string;
+
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit() {
     this.odcName = this.route.snapshot.params.odcName;
     this.userService.getOdcManagers(this.odcName)
-    .subscribe((data) => {
-        this.odcManagers = data;
-      },
-      (error) => console.log(error));
+      .subscribe((data) => {
+          this.odcManagers = data;
+        },
+        (error) => console.log(error));
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('role');
+    this.router.navigate(['/login']);
   }
 
 }

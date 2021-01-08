@@ -66,8 +66,8 @@ export class OdcComponent implements OnInit {
 
   }
 
-  view(odcName:string){
-    this.router.navigate(['/viewOdcManagers',odcName])
+  view(odcName: string) {
+    this.router.navigate(['/viewOdcManagers', odcName]);
   }
 
   logout() {

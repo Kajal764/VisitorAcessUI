@@ -7,7 +7,7 @@
   <app-employeeprofile></app-employeeprofile>
 </div>
 
-<div *ngIf="!success" style="margin-bottom: 50px;">
+<div *ngIf="!success"  style="margin-bottom: 50px;">
   <div align="center">
     <div class="row-mt-2">
       <div class="col-md-6">
@@ -20,7 +20,7 @@
               <input type="text" placeholder="Enter Your Employee ID" class="form-control" name="empId"
                      id="empId" required [(ngModel)]="visitorRequest.empId" #EmpID="ngModel"
                      pattern="[0-9]{7}" [class.is-invalid]="EmpID.touched && EmpID.invalid" minlength="7"
-                     maxlength="7">
+                     maxlength="7" disabled>
               <div *ngIf="EmpID.touched && EmpID.invalid">
                 <span *ngIf="EmpID.errors.required" style="color:red">EmpID is required</span>
                 <span *ngIf="EmpID.errors.pattern" style="color:red">Numbers Only</span>
