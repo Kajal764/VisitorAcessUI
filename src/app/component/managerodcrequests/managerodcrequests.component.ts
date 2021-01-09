@@ -12,7 +12,9 @@ export class ManagerodcrequestsComponent implements OnInit {
 
   visitorRequests: VisitorRequest[];
   success: boolean;
-  
+  public flag: boolean;
+
+
   constructor(private userService: UserService, private router: Router) {
   }
 
@@ -20,7 +22,10 @@ export class ManagerodcrequestsComponent implements OnInit {
     this.userService.getPendingVisitorRequest(localStorage.getItem('user'))
       .subscribe((data) => {
         this.visitorRequests = data;
-      }, (error) => console.log(error));
+        this.visitorRequests.length === 0 ? this.flag = true : this.flag = false;
+      }, (error) => {
+        console.log(error);
+      });
   }
 
   approve(request: VisitorRequest) {
@@ -38,7 +43,6 @@ export class ManagerodcrequestsComponent implements OnInit {
       },
       (error) => console.log(error));
   }
-
 
 
   logout() {

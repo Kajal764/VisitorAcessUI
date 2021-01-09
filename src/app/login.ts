@@ -3,11 +3,11 @@ export class login {
   lastName: string;
   email: string;
   password: string;
-  empId: number;
+  empId: string;
   mobileNo: number;
   role: string;
   managerName: string;
   accountActive: boolean;
-  odc:string;
-  flag:boolean;
+  odc: string;
+  flag: boolean;
 }

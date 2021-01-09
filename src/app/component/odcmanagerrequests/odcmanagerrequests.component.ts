@@ -17,9 +17,13 @@ export class OdcmanagerrequestsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getOdcManagerRequests(localStorage.getItem('odc')).subscribe((data) => {
-      this.odcRequests = data;
-    }, (error) => console.log(error));
+    this.userService.getOdcManagerRequests(localStorage.getItem('odc'))
+      .subscribe((data) => {
+        this.odcRequests = data;
+      }, (error) => {
+        console.log(error);
+
+      });
   }
 
   approve(request: VisitorRequest) {

@@ -18,7 +18,8 @@ export class LoginService {
     })
   };
 
-  login(empId: number, password: string) {
+  login(empId: string, password: string) {
+    console.log("login" ,empId);
     const url = this.baseurl + 'login' + '/' + empId + '/' + password;
     const result = this.http.post<login>(url, this.options);
     return result;

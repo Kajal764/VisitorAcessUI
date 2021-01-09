@@ -15,6 +15,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
   }
 
+
   handleError(error: HttpErrorResponse): Observable<never> {
     return throwError(error);
   }
@@ -31,7 +32,6 @@ export class UserService {
   }
 
   raiseOdcRequest(visitorRequest: VisitorRequest) {
-   // alert(JSON.stringify(visitorRequest));
     const body = JSON.stringify(visitorRequest);
     console.log('body ');
     console.log(body);
@@ -51,19 +51,17 @@ export class UserService {
     return this.httpClient.get<ODCList[]>('http://localhost:8080/user/odcList');
   }
 
-  getOdcManagers(odcName:string):Observable<User[]> {
-    return this.httpClient.get<User[]>('http://localhost:8080/user/viewOdcManagers/'+odcName);
+  getOdcManagers(odcName: string): Observable<User[]> {
+    return this.httpClient.get<User[]>('http://localhost:8080/user/viewOdcManagers/' + odcName);
   }
 
   getPendingVisitorRequest(empId: string): Observable<VisitorRequest[]> {
     const url = 'http://localhost:8080/user/pendingVisitorRequest/' + empId;
-    console.log(url);
     return this.httpClient.get<VisitorRequest[]>(url);
   }
 
   getOdcManagerRequests(odcName: string): Observable<VisitorRequest[]> {
     const url = 'http://localhost:8080/user/getAllOdcManagerRequests/' + odcName;
-    console.log(url);
     return this.httpClient.get<VisitorRequest[]>(url);
   }
 
@@ -82,7 +80,7 @@ export class UserService {
       .pipe(catchError(this.handleError));
   }
 
-  deleteUser(empId: number): Observable<any> {
+  deleteUser(empId: string): Observable<any> {
     return this.httpClient.delete('http://localhost:8080/user/' + empId)
       .pipe(catchError(this.handleError));
   }
@@ -92,13 +90,14 @@ export class UserService {
       .pipe(catchError(this.handleError));
   }
 
-  registrationRequest(data: { empId: number; status: boolean }) {
+  registrationRequest(data: { empId: string; status: boolean }) {
     const apiUrl = 'http://localhost:8080/user/registration-request';
     return this.postData(data, apiUrl)
       .pipe(catchError(this.handleError));
   }
 
   getUserRequestList(empId: string) {
+    console.log("req" ,empId);
     return this.httpClient.get<User[]>('http://localhost:8080/user/manager/registration-request/' + empId)
       .pipe(catchError(this.handleError));
   }

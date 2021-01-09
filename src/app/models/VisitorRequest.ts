@@ -1,11 +1,11 @@
 export class VisitorRequest {
-  empId: number;
+  empId: string;
   startDate: string;
   endDate: string;
   startTime: string;
   endTime: string;
   odc: string;
   status: string;
-  managerEmpID: number;
+  managerEmpID: string;
   employee: number;
 }

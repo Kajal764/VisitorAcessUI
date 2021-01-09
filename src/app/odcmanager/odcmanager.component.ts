@@ -26,7 +26,7 @@ export class OdcmanagerComponent implements OnInit {
     this.getUserList(empId);
   }
 
-  private getUserList(empId: string): void {
+  private getUserList(empId: any): void {
     this.userService.getUserRequestList(empId)
       .subscribe(data => {
           this.userList = data;

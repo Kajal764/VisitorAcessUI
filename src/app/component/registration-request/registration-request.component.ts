@@ -14,14 +14,19 @@ export class RegistrationRequestComponent implements OnInit {
   private responseData: any;
   public userList: User[];
   public isPendingRequest: boolean;
+  public empId: string;
 
   constructor(private userService: UserService,
               private router: Router) {
   }
 
   ngOnInit() {
-    const empId = localStorage.getItem('user');
-    this.getUserList(empId);
+
+    this.empId = localStorage.getItem('user');
+    console.log(JSON.stringify(this.empId));
+    console.log( localStorage.getItem('role'));
+    console.log(this.empId);
+    this.getUserList(this.empId);
   }
 
   private getUserList(empId: string): void {
