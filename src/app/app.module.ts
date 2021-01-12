@@ -14,11 +14,13 @@ import {RegistrationRequestComponent} from './component/registration-request/reg
 import {ManagerComponent} from './component/manager/manager.component';
 import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
-import { OdcmanagerComponent } from './odcmanager/odcmanager.component';
-import { ViewodcmanagersComponent } from './component/viewodcmanagers/viewodcmanagers.component';
-import { OdcmanagerrequestsComponent } from './component/odcmanagerrequests/odcmanagerrequests.component';
-import { AdminNavbarComponent } from './component/admin-navbar/admin-navbar.component';
+import {OdcmanagerComponent} from './odcmanager/odcmanager.component';
+import {ViewodcmanagersComponent} from './component/viewodcmanagers/viewodcmanagers.component';
+import {OdcmanagerrequestsComponent} from './component/odcmanagerrequests/odcmanagerrequests.component';
+import {AdminNavbarComponent} from './component/admin-navbar/admin-navbar.component';
 import {Time24to12Format} from './component/time24to12.pipe';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ConfirmationPopupComponent} from './component/confirmation-popup/confirmation-popup.component';
 
 @NgModule({
   declarations: [
@@ -37,17 +39,20 @@ import {Time24to12Format} from './component/time24to12.pipe';
     ViewodcmanagersComponent,
     OdcmanagerrequestsComponent,
     AdminNavbarComponent,
-    Time24to12Format
+    Time24to12Format,
+    ConfirmationPopupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmationPopupComponent]
 })
 export class AppModule {
 }

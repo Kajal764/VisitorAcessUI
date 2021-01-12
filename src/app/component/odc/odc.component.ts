@@ -3,6 +3,9 @@ import {UserService} from '../../service/user.service';
 import {ODCList} from '../../models/ODCList';
 import {ObservedValueOf} from 'rxjs';
 import {Router} from '@angular/router';
+import {User} from '../../models/User';
+import {ConfirmationPopupComponent} from '../confirmation-popup/confirmation-popup.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-odc',
@@ -19,7 +22,9 @@ export class OdcComponent implements OnInit {
   public flag: boolean;
   private odcId: number;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService,
+              private router: Router,
+              private modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -75,4 +80,27 @@ export class OdcComponent implements OnInit {
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
+
+  openPopup(odc: ODCList) {
+    const ref = this.modalService.open(ConfirmationPopupComponent);
+    ref.componentInstance.data = odc.odcName;
+    ref.componentInstance.isOdc = true;
+    ref.result.then((Yes) => {
+        this.deleteOdc(odc);
+      },
+      (Cancel) => {
+      });
+  }
+
+  // openPopup(user: User) {
+  //   const ref = this.modalService.open(ConfirmationPopupComponent);
+  //   ref.componentInstance.data = user.firstName;
+  //   ref.result.then((Yes) => {
+  //       console.log('yes');
+  //       this.deleteUser(user);
+  //     },
+  //     (Cancel) => {
+  //       console.log('noo');
+  //     });
+  // }
 }

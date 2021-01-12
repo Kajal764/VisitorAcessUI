@@ -30,7 +30,9 @@
             <td>{{user.mobileNo}}</td>
             <td>{{user.managerName}}</td>
             <td class="text-danger">
-              <button (click)="deleteUser(user)" type="button" class="btn btn-danger pull-right">Delete</button>
+              <button (click)="openPopup(user)"
+                      type="button" class="btn btn-danger pull-right">Delete
+              </button>
             </td>
           </tr>
           </tbody>
@@ -39,4 +41,3 @@
     </div>
   </div>
 </div>
-

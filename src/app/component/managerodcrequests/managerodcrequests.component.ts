@@ -44,7 +44,6 @@ export class ManagerodcrequestsComponent implements OnInit {
       (error) => console.log(error));
   }
 
-
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('role');

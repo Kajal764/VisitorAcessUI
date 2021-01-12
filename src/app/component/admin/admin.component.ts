@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Type} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {User} from '../../models/User';
 import {Router} from '@angular/router';
-
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ConfirmationPopupComponent} from '../confirmation-popup/confirmation-popup.component';
 
 @Component({
   selector: 'app-admin',
@@ -10,13 +11,15 @@ import {Router} from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+
+  constructor(private userService: UserService,
+              private router: Router,
+              private modalService: NgbModal) {
+  }
+
   public userList: User[];
   public message: any;
   private responseData: any;
-
-  constructor(private userService: UserService,
-              private router: Router) {
-  }
 
   ngOnInit() {
     this.getUserList();
@@ -51,4 +54,20 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+
+  openPopup(user: User) {
+    const ref = this.modalService.open(ConfirmationPopupComponent);
+    ref.componentInstance.data = user.firstName;
+    ref.componentInstance.isOdc = false;
+    ref.result.then((Yes) => {
+        console.log('yes');
+        this.deleteUser(user);
+      },
+      (Cancel) => {
+        console.log('noo');
+      });
+  }
 }
+
+
+
