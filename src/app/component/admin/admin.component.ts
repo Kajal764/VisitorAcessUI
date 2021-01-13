@@ -4,6 +4,7 @@ import {User} from '../../models/User';
 import {Router} from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmationPopupComponent} from '../confirmation-popup/confirmation-popup.component';
+import {NgxNotificationService} from 'ngx-notification';
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +15,8 @@ export class AdminComponent implements OnInit {
 
   constructor(private userService: UserService,
               private router: Router,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private ngxNotificationService: NgxNotificationService) {
   }
 
   public userList: User[];
@@ -60,12 +62,16 @@ export class AdminComponent implements OnInit {
     ref.componentInstance.data = user.firstName;
     ref.componentInstance.isOdc = false;
     ref.result.then((Yes) => {
-        console.log('yes');
         this.deleteUser(user);
+        this.sendNotification('Profile deleted successfully !!!');
       },
       (Cancel) => {
         console.log('noo');
       });
+  }
+
+  sendNotification(message: string) {
+    this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
   }
 }
 

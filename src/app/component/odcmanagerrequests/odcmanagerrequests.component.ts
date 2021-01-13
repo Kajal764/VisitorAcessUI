@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {VisitorRequest} from 'src/app/models/VisitorRequest';
 import {UserService} from 'src/app/service/user.service';
+import {NgxNotificationService} from 'ngx-notification';
 
 @Component({
   selector: 'app-odcmanagerrequests',
@@ -14,7 +15,8 @@ export class OdcmanagerrequestsComponent implements OnInit {
   success: boolean;
   requestsPresent:boolean;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private ngxNotificationService: NgxNotificationService) {
   }
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class OdcmanagerrequestsComponent implements OnInit {
     request.status = 'Approved';
     this.userService.approveOrRejectOdcRequest(request).subscribe((data) => {
         this.success = data;
+        this.sendNotification('Request Approved');
       },
       (error) => console.log(error));
   }
@@ -42,7 +45,13 @@ export class OdcmanagerrequestsComponent implements OnInit {
     request.status = 'Rejected';
     this.userService.approveOrRejectOdcRequest(request).subscribe((data) => {
         this.success = data;
+        this.sendNotification('Request Rejected');
+
       },
       (error) => console.log(error));
+  }
+
+  sendNotification(message: string) {
+    this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
   }
 }

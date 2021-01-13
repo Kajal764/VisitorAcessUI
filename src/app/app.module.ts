@@ -21,6 +21,9 @@ import {AdminNavbarComponent} from './component/admin-navbar/admin-navbar.compon
 import {Time24to12Format} from './component/time24to12.pipe';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmationPopupComponent} from './component/confirmation-popup/confirmation-popup.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgxNotificationComponent} from 'ngx-notification';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import {ConfirmationPopupComponent} from './component/confirmation-popup/confirm
     OdcmanagerrequestsComponent,
     AdminNavbarComponent,
     Time24to12Format,
-    ConfirmationPopupComponent
+    ConfirmationPopupComponent,
+    NgxNotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import {ConfirmationPopupComponent} from './component/confirmation-popup/confirm
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

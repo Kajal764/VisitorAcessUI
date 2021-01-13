@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {VisitorRequest} from 'src/app/models/VisitorRequest';
 import {UserService} from 'src/app/service/user.service';
+import {NgxNotificationService} from 'ngx-notification';
 
 @Component({
   selector: 'app-managerodcrequests',
@@ -15,7 +16,8 @@ export class ManagerodcrequestsComponent implements OnInit {
   public flag: boolean;
 
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router,
+              private ngxNotificationService: NgxNotificationService) {
   }
 
   ngOnInit() {
@@ -30,6 +32,7 @@ export class ManagerodcrequestsComponent implements OnInit {
 
   approve(request: VisitorRequest) {
     request.status = 'Accepted By Manager';
+    this.sendNotification('Request Accepted');
     this.userService.approveOrRejectOdcRequest(request).subscribe((data) => {
         this.success = data;
       },
@@ -38,6 +41,7 @@ export class ManagerodcrequestsComponent implements OnInit {
 
   reject(request: VisitorRequest) {
     request.status = 'Rejected By Manager';
+    this.sendNotification('Request Rejected ');
     this.userService.approveOrRejectOdcRequest(request).subscribe((data) => {
         this.success = data;
       },
@@ -48,5 +52,9 @@ export class ManagerodcrequestsComponent implements OnInit {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
+  }
+
+  sendNotification(message: string) {
+    this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
   }
 }
