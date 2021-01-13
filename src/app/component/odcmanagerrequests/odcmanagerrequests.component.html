@@ -1,4 +1,4 @@
-
+<app-odcmanager></app-odcmanager>
 <div class="d-flex justify-content-center">
   <div style="padding-bottom: 20px" >
     <div class="row">
@@ -25,14 +25,14 @@
           <td style="font-weight: bold"> {{request.empId}}</td>
           <td>{{request.startDate}}</td>
           <td>{{request.endDate}}</td>
-          <td>{{request.startTime }}</td>
-          <td>{{request.endTime}}</td>
+          <td>{{request.startTime | time24to12Transform }}</td>
+          <td>{{request.endTime  | time24to12Transform}}</td>
           <td class="btn-link">{{request.status}}</td>
           <td class="text-success">
-            <button (click)="approve(request)" type="button" class="btn btn-success pull-right">Approve</button>
+            <button  (click)="approve(request);Approve.disabled=true" type="button" #Approve id="approve" class="btn btn-success pull-right">Approve</button>
           </td>
           <td class="text-danger">
-            <button (click)="reject(request)" type="button" class="btn btn-danger pull-right">Reject</button>
+            <button (click)="reject(request);Approve.disabled=true;Reject.disabled=true" type="button" #Reject id="reject" class="btn btn-danger pull-right">Reject</button>
           </td>
         </tr>
         </tbody>

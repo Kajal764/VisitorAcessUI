@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8289C4; font-family: Roboto">
+<!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8289C4; font-family: Roboto">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
     </form>
   </div>
 </nav>
-<br>
+<br> -->
 
 <!--  <app-registration-request *ngIf="registrationRequest==true"-->
 <!--                            [EmployeeList]="userList"-->
@@ -47,3 +47,46 @@
 <!--  <app-raiseodcrequest *ngIf="raisedRequestFlag==true">-->
 <!--  </app-raiseodcrequest>-->
 <!-- -->
+
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8289C4;
+font-family: Roboto;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li>
+        <a class="nav-link" href="/odcManagerRequests"
+           style="font-weight: bold;font-size: 20px ; color: white ; margin-right: 20px; font-family: Roboto"
+        >ODC Manager</a>
+      </li>
+
+      <li class="nav-item ">
+        <a class="nav-link" routerLinkActive="active" routerLink="/odcManagerRequests" style="color: white;margin: 0px">
+          <i class="fa fa-address-card" aria-hidden="true"></i>
+          Visitor Access Request
+        </a>
+      </li>
+
+      <!-- <li class="nav-item ">
+        <a class="nav-link" routerLink="/admin-odc" routerLinkActive="active" style="color: white">
+          <i class="fa fa-ticket" aria-hidden="true">Add ODC</i>
+        </a>
+      </li> -->
+
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/register" style="color:  white">
+          <i class="fa fa-user-circle" aria-hidden="true"></i> Add Employee</a>
+      </li> -->
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button style="padding: 8px 20px;margin-right: 20px" class="btn btn-outline-light my-2 my-sm-0" type="submit" (click)="logout()">Logout</button>
+    </form>
+  </div>
+</nav>
+<br>
+
+

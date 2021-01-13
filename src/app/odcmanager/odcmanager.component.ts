@@ -52,16 +52,16 @@ export class OdcmanagerComponent implements OnInit {
     //add name of the odc here
   }
 
-  raisedRequest() {
-    this.odcFlag = false;
-    this.raisedRequestFlag = true;
-    this.registrationRequest = false;
-  }
+  // raisedRequest() {
+  //   this.odcFlag = false;
+  //   this.raisedRequestFlag = true;
+  //   this.registrationRequest = false;
+  // }
 
-  registartion() {
-    this.odcFlag = false;
-    this.raisedRequestFlag = false;
-    this.registrationRequest = true;
-  }
+  // registartion() {
+  //   this.odcFlag = false;
+  //   this.raisedRequestFlag = false;
+  //   this.registrationRequest = true;
+  // }
 
 }
