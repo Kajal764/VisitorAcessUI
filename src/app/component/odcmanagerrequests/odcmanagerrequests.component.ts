@@ -12,6 +12,7 @@ export class OdcmanagerrequestsComponent implements OnInit {
   odcRequests: VisitorRequest[];
   odcName: string;
   success: boolean;
+  requestsPresent:boolean;
 
   constructor(private userService: UserService) {
   }
@@ -20,9 +21,12 @@ export class OdcmanagerrequestsComponent implements OnInit {
     this.userService.getOdcManagerRequests(localStorage.getItem('odc'))
       .subscribe((data) => {
         this.odcRequests = data;
+        this.requestsPresent = true;
+        console.log(this.requestsPresent);
       }, (error) => {
         console.log(error);
-
+        this.requestsPresent = false;
+        console.log(this.requestsPresent);
       });
   }
 

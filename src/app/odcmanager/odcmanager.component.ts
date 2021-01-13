@@ -23,20 +23,20 @@ export class OdcmanagerComponent implements OnInit {
 
   ngOnInit() {
     const empId = localStorage.getItem('user');
-    this.getUserList(empId);
+    // this.getUserList(empId);
   }
 
-  private getUserList(empId: any): void {
-    this.userService.getUserRequestList(empId)
-      .subscribe(data => {
-          this.userList = data;
-          this.isPendingRequest = true;
-        },
-        error => {
-          this.message = error.error.message;
-          this.isPendingRequest = false;
-        });
-  }
+  // private getUserList(empId: any): void {
+  //   this.userService.getUserRequestList(empId)
+  //     .subscribe(data => {
+  //         this.userList = data;
+  //         this.isPendingRequest = true;
+  //       },
+  //       error => {
+  //         this.message = error.error.message;
+  //         this.isPendingRequest = false;
+  //       });
+  // }
 
   logout() {
     localStorage.removeItem('user');

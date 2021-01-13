@@ -1,5 +1,11 @@
 <app-odcmanager></app-odcmanager>
 <div class="d-flex justify-content-center">
+  <div *ngIf="requestsPresent==false" class="d-flex justify-content-center">
+    <img src="../../../assets/NoRecordFound.jpg" class="image">
+  </div>
+</div>
+
+<div *ngIf="requestsPresent==true" class="d-flex justify-content-center">
   <div style="padding-bottom: 20px" >
     <div class="row">
       <div class="col-7" style="color: navy;font-weight: bold;font-size: 150%;font-family: Roboto">Visitor access

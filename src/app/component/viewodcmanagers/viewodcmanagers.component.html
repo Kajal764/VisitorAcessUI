@@ -28,8 +28,12 @@ font-family: Roboto;">
   </div>
 </nav>
 <br>
-
 <div class="d-flex justify-content-center">
+  <div *ngIf="odcManagersPresent== false" class="d-flex justify-content-center">
+    <img src="../../../assets/NoRecordFound.jpg" class="image">
+  </div>
+</div>
+<div *ngIf="odcManagersPresent== true" class="d-flex justify-content-center">
   <div class="container" style="font-family: Roboto">
     <div class="row">
       <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">ODC Managers</div>

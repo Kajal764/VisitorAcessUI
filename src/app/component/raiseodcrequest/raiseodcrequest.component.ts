@@ -37,6 +37,11 @@ export class RaiseodcrequestComponent implements OnInit {
         this.visitorRequest.employee = 1;
       }
     }
+    if (localStorage.getItem('role') === 'Manager') {
+      {
+        this.visitorRequest.employee = 2;
+      }
+    }
   }
 
   raiseRequest() {
