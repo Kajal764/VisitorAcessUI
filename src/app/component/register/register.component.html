@@ -1,4 +1,4 @@
-<nav class="navbar justify-content-center"  style="background-color: #8289C4;">
+<nav class="navbar justify-content-center" style="background-color: #8289C4;">
   <a class="navbar-brand">
     <span style="font-weight: bold;color: white"> Register here...</span>
   </a>
@@ -98,7 +98,8 @@
         </div>
 
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="odcManager" formControlName="role" type="radio" name="inlineRadioOptions"
+          <input class="form-check-input" name="odcManager" formControlName="role" type="radio"
+                 name="inlineRadioOptions"
                  id="inlineRadio2" value="odcManager" (click)="check()">
           <label class="form-check-label" for="inlineRadio2">ODC Manager</label>
         </div>
@@ -115,9 +116,9 @@
 
       <div *ngIf="isOdcManager">
         <div class="form-group">
+          <option>Choose ODC</option>
           <select class="form-control" name="odc" formControlName="odc">
-            <option>Choose ODC</option>
-            <option *ngFor="let odc of odcs"  [value]="odc.odcName">{{odc.odcName}}</option>
+            <option *ngFor="let odc of odcs" [value]="odc.odcName">{{odc.odcName}}</option>
           </select>
         </div>
       </div>

@@ -15,6 +15,7 @@ export class RegistrationRequestComponent implements OnInit {
   public userList: User[];
   public isPendingRequest: boolean;
   public empId: string;
+  private isAdmin: boolean;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -22,10 +23,12 @@ export class RegistrationRequestComponent implements OnInit {
 
   ngOnInit() {
 
+    if (localStorage.getItem('role') === 'Admin') {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
     this.empId = localStorage.getItem('user');
-    console.log(JSON.stringify(this.empId));
-    console.log( localStorage.getItem('role'));
-    console.log(this.empId);
     this.getUserList(this.empId);
   }
 
@@ -33,6 +36,7 @@ export class RegistrationRequestComponent implements OnInit {
     this.userService.getUserRequestList(empId)
       .subscribe(data => {
           this.userList = data;
+          console.log(this.userList);
           this.isPendingRequest = true;
         },
         error => {

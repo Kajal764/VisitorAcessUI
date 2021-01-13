@@ -97,7 +97,6 @@ export class UserService {
   }
 
   getUserRequestList(empId: string) {
-    console.log("req" ,empId);
     return this.httpClient.get<User[]>('http://localhost:8080/user/manager/registration-request/' + empId)
       .pipe(catchError(this.handleError));
   }

@@ -1,4 +1,5 @@
-<app-manager></app-manager>
+<app-admin-navbar *ngIf="isAdmin===true"></app-admin-navbar>
+<app-manager *ngIf="isAdmin===false"></app-manager>
 
 <div class="d-flex justify-content-center">
   <div *ngIf="isPendingRequest== false" class="d-flex justify-content-center">
@@ -40,7 +41,8 @@
             </button>
           </td>
           <td class="text-danger">
-            <button type="button" (click)="request(user,false);Approve.disabled=true;Reject.disabled=true" #Reject id="reject"
+            <button type="button" (click)="request(user,false);Approve.disabled=true;Reject.disabled=true" #Reject
+                    id="reject"
                     class="btn btn-danger pull-right">Reject
             </button>
           </td>
