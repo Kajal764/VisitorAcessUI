@@ -13,7 +13,8 @@ export class OdcmanagerrequestsComponent implements OnInit {
   odcRequests: VisitorRequest[];
   odcName: string;
   success: boolean;
-  requestsPresent:boolean;
+  requestsPresent: boolean;
+  public message: any;
 
   constructor(private userService: UserService,
               private ngxNotificationService: NgxNotificationService) {
@@ -24,11 +25,13 @@ export class OdcmanagerrequestsComponent implements OnInit {
       .subscribe((data) => {
         this.odcRequests = data;
         this.requestsPresent = true;
-        console.log(this.requestsPresent);
+        if (this.odcRequests.length === 0) {
+          this.requestsPresent = false;
+          this.message = 'No Pending Request !!!';
+        }
       }, (error) => {
-        console.log(error);
+        this.message = error.error.message;
         this.requestsPresent = false;
-        console.log(this.requestsPresent);
       });
   }
 

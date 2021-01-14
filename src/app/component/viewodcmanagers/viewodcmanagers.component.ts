@@ -12,7 +12,9 @@ export class ViewodcmanagersComponent implements OnInit {
 
   odcManagers: User[];
   odcName: string;
-  odcManagersPresent:boolean;
+  odcManagersPresent: boolean;
+  public isListPresent = true;
+
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
   }
 
@@ -21,10 +23,13 @@ export class ViewodcmanagersComponent implements OnInit {
     this.userService.getOdcManagers(this.odcName)
       .subscribe((data) => {
           this.odcManagers = data;
+          if (this.odcManagers.length === 0) {
+            this.isListPresent = false;
+          }
           this.odcManagersPresent = true;
         },
         (error) => console.log(error));
-        this.odcManagersPresent = false;
+    this.odcManagersPresent = false;
   }
 
   logout() {

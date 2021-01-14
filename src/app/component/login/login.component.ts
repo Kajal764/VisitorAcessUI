@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
                 this.lg.role = [];
               }
             } else {
-              this.message = 'User dont have access of ' + this.selectRole + ' role';
+              this.message = 'User dont have permission to login as ' + this.selectRole;
               this.res = true;
               this.lg.empId = null;
               this.lg.password = '';

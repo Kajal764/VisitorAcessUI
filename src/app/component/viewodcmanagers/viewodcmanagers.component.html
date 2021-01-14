@@ -28,12 +28,18 @@ font-family: Roboto;">
   </div>
 </nav>
 <br>
+
+
 <div class="d-flex justify-content-center">
-  <div *ngIf="odcManagersPresent== false" class="d-flex justify-content-center">
-    <img src="../../../assets/NoRecordFound.jpg" class="image">
+  <div *ngIf="isListPresent=== false">
+    <div class="d-flex flex-column">
+      <div class="p-2"> <img class="image" src="../../../assets/download.png" class="image"></div>
+      <div class="text">ODC Manager Not Assigned !!!</div>
+    </div>
   </div>
 </div>
-<div *ngIf="odcManagersPresent== true" class="d-flex justify-content-center">
+
+<div *ngIf="isListPresent=== true" class="d-flex justify-content-center">
   <div class="container" style="font-family: Roboto">
     <div class="row">
       <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">ODC Managers</div>

@@ -1,4 +1,3 @@
-
 <div *ngIf="isEmployee===false">
   <app-manager></app-manager>
 </div>
@@ -8,8 +7,11 @@
 </div>
 
 <div class="d-flex justify-content-center">
-  <div *ngIf="listFlag=== false" class="d-flex justify-content-center">
-    <img src="../../../assets/NoRecordFound.jpg" class="image">
+  <div *ngIf="listFlag== false">
+    <div class="d-flex flex-column">
+      <div class="p-2"><img class="image" src="../../../assets/download.png" class="image"></div>
+      <div class="text">Request Not Raised For ODC !!!</div>
+    </div>
   </div>
 </div>
 
