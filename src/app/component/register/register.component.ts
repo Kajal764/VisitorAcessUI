@@ -79,6 +79,7 @@ export class RegisterComponent implements OnInit {
   }
 
   check() {
+    alert(this.registrationForm.get('role').value)
     if (this.registrationForm.get('role').value === 'Employee') {
       this.isEmployee = true;
       this.isOdcManager = false;

@@ -92,8 +92,8 @@
       </div>
 
       <div class="form-group ">
-        <span style=" color: gray;padding-right: 10px ;font-size: 110%">Role </span>
-        <div class="form-check form-check-inline">
+        <span style=" padding-right: 10px ;font-size: 110%"><b>Role</b> </span><br>
+        <!-- <div class="form-check form-check-inline">
           <input class="form-check-input" formControlName="role" name="Employee" type="radio" name="inlineRadioOptions"
                  id="inlineRadio1" value="Employee" (click)="check()">
           <label class="form-check-label" for="inlineRadio1">Employee</label>
@@ -109,7 +109,16 @@
                  name="inlineRadioOptions"
                  id="inlineRadio2" value="odcManager" (click)="check()">
           <label class="form-check-label" for="inlineRadio2">ODC Manager</label>
-        </div>
+        </div> -->
+        <input type="checkbox" class="form-check-input" formControlName="role" id="role1" name="role11" value="employee" (click)="check()">
+        <label for="employee" > Employee</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="checkbox" class="form-check-input" formControlName="role" id="role2" name="role12" value="manager" (click)="check()">
+        <label for="manager" > Manager</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <input type="checkbox" class="form-check-input" formControlName="role" id="role3" name="role13" value="odcManager" (click)="check()">
+        <label for="odcManager" > ODC Manager</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="checkbox" class="form-check-input" formControlName="role" id="role4" name="role14" value="admin" (click)="check()">
+        <label for="admin" >Admin</label><br>
       </div>
 
       <div *ngIf="isEmployee">

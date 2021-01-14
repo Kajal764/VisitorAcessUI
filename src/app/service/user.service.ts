@@ -11,10 +11,14 @@ import {User} from '../models/User';
   providedIn: 'root'
 })
 export class UserService {
-
+  baseurl = 'http://localhost:8080/user/';
   constructor(private httpClient: HttpClient) {
   }
-
+  options = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   handleError(error: HttpErrorResponse): Observable<never> {
     return throwError(error);
@@ -27,6 +31,7 @@ export class UserService {
 
   register(data: { password: any; email: any }): Observable<any> {
     const apiUrl = 'http://localhost:8080/user/register';
+    alert(JSON.stringify(data));
     return this.postData(data, apiUrl)
       .pipe(catchError(this.handleError));
   }
@@ -116,5 +121,12 @@ export class UserService {
   deleteODC(odcName: string) {
     return this.httpClient.delete('http://localhost:8080/user/deleteOdc/' + odcName)
       .pipe(catchError(this.handleError));
+  }
+
+  login(empId: string, password: string) {
+    console.log("login" ,empId);
+    const url = this.baseurl + 'login' + '/' + empId + '/' + password;
+    const result = this.httpClient.post<User>(url, this.options);
+    return result;
   }
 }
