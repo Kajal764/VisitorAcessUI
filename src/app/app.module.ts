@@ -23,6 +23,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmationPopupComponent} from './component/confirmation-popup/confirmation-popup.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxNotificationComponent} from 'ngx-notification';
+import { GridModule } from '@syncfusion/ej2-angular-grids';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import {NgxNotificationComponent} from 'ngx-notification';
     Time24to12Format,
     ConfirmationPopupComponent,
     NgxNotificationComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import {NgxNotificationComponent} from 'ngx-notification';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    GridModule
   ],
   providers: [],
   bootstrap: [AppComponent],

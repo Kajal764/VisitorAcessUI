@@ -38,7 +38,7 @@ export class RaiseodcrequestComponent implements OnInit {
   raiseRequest() {
     this.manager = localStorage.getItem('managerName');
     console.log(this.manager);
-    if(this.manager === 'Admin ')
+    if(this.manager === 'Admin')
       this.visitorRequest.status = 'Accepted By Manager';
     else
       this.visitorRequest.status = 'Pending Approval';

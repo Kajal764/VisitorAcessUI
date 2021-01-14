@@ -26,8 +26,10 @@
           <th scope="col" >Access Till</th>
           <th scope="col" >Status</th>
           <th scope="col" >ODC</th>
-          <th scope="col" >Approve</th>
-          <th scope="col" >Reject</th>
+          <th scope="col" ><input type="checkbox" (change)="acceptAll($event)">&nbsp; <button (click)="approveSelected()"
+           type="button" #Approve id="approve" class="btn btn-success pull-right">Approve All</button></th>
+          <th scope="col" ><input type="checkbox" (change)="rejectAll($event)">&nbsp; <button (click)="approveSelected()"
+            type="button" #Reject id="reject" class="btn btn-danger pull-right">Reject All</button></th>
         </tr>
         </thead>
         <tbody style="font-family: Roboto">
@@ -39,15 +41,42 @@
           <td>{{request.endTime | time24to12Transform}}</td>
           <td class="btn-link">{{request.status}}</td>
           <td>{{request.odc}}</td>
-          <td class="text-success">
+          <!-- <td class="text-success">
             <button (click)="approve(request);Approve.disabled=true" type="button" #Approve id="approve" class="btn btn-success pull-right">Accept</button>
-          </td>
-          <td class="text-danger">
+          </td> -->
+          <td><input type="checkbox" [checked]="Accept" (change)="selectedForApproval($event,request)">&nbsp;<button (click)="approve(request);Approve.disabled=true" type="button" #Approve id="approve" class="btn btn-success pull-right">Accept</button></td>
+          <td><input type="checkbox" [checked]="Reject" (change)="selectedForRejection($event,request)">&nbsp;<button (click)="reject(request);Approve.disabled=true;Reject.disabled=true" type="button" #Reject id="reject" class="btn btn-danger pull-right">Reject</button></td>
+          <!-- <td class="text-danger">
             <button (click)="reject(request);Approve.disabled=true;Reject.disabled=true" type="button" #Reject id="reject" class="btn btn-danger pull-right">Reject</button>
-          </td>
+          </td> -->
         </tr>
         </tbody>
       </table>
     </div>
+    <!-- <div class="d-flex justify-content-center">
+      <div style="padding-bottom: 20px" *ngIf="flag===false">
+        <div style="padding-top: 20px;font-family: Roboto">
+      <ejs-grid [dataSource]='visitorRequests' height='315px'>
+         <e-columns>
+          <e-column type='checkbox' width='50'></e-column>
+          <e-column field='empId' headerText='Employee Id'  width=150></e-column> 
+          <e-column field='startDate' headerText='Start Date' width=150></e-column> 
+          <e-column field='endDate' headerText='End Date' width=150></e-column> 
+          <e-column field='startTime' headerText='Start Time' format='time24to12Transform' width=150></e-column> 
+          <e-column field='endTime' headerText='End Date' width=150></e-column>
+          <e-column field='status' headerText='Status' width=150></e-column> 
+          <e-column field='odc' headerText='ODC' width=150></e-column>  -->
+          <!-- <e-column headerText='Approve' width=150><ejs-button class="btn btn-success pull-right">Remove</ejs-button></e-column>  -->
+          <!-- <e-column headerText='Approve' width=150> <button (click)="approve(request);Approve.disabled=true" type="button" #Approve id="approve" class="btn btn-success pull-right">Accept</button></e-column> -->
+          <!-- <td> <e-column field='startDate' headerText='Start Date' width=150></e-column></td> 
+          <td> <e-column field='startDate' headerText='Start Date' width=150></e-column></td>  -->
+            <!-- <e-column field='ShipCity' headerText='Ship City' width=150></e-column>
+            <e-column field='ShipName' headerText='Ship Name' width=150></e-column> -->
+        <!-- </e-columns>
+        </ejs-grid>
+      </div>
+      </div>
+    </div> -->
+      
   </div>
 </div>

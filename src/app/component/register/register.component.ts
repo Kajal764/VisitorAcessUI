@@ -1,5 +1,5 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {login} from '../../login';
@@ -22,6 +22,13 @@ export class RegisterComponent implements OnInit {
   public isEmployee = false;
   isOdcManager = false;
 
+  // public role: [
+  //   {description: 'Employee', value: 'Employee'},
+  //   {description: "Manager", value: 'Manager'},
+  //   {description: "ODC-Manager", value: 'ODC-Manager'},
+  //   {description: "Admin", value: 'Admin'}
+  // ];
+
   registrationForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.pattern(this.namePattern)]),
     lastName: new FormControl('', [Validators.required, Validators.pattern(this.namePattern)]),
@@ -30,6 +37,7 @@ export class RegisterComponent implements OnInit {
     mobileNo: new FormControl('', [Validators.required, Validators.pattern(this.mobilePattern)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(this.passwordPattern)]),
     role: new FormControl('', Validators.required),
+    //  role: new FormArray([],Validators.required),
     managerName: new FormControl(''),
     odc: new FormControl('')
   });
@@ -113,5 +121,9 @@ export class RegisterComponent implements OnInit {
     }
 
   }
+
+ 
+  
+ 
 
 }

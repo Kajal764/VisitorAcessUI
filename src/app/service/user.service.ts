@@ -79,6 +79,15 @@ export class UserService {
     };
     return this.httpClient.post<boolean>('http://localhost:8080/user/approveOrRejectAccess', body, options);
   }
+  approveOrRejectOdcRequestMultiple(visitorRequest: VisitorRequest[]) {
+    const body = JSON.stringify(visitorRequest);
+    const options = {
+      headers: {
+        'content-Type': 'application/json'
+      }
+    };
+    return this.httpClient.post<boolean>('http://localhost:8080/user/approveOrRejectAccess', body, options);
+  }
 
   getUserList(): Observable<User[]> {
     return this.httpClient.get<User[]>('http://localhost:8080/user/list')
