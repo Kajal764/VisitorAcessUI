@@ -5,7 +5,7 @@ export class login {
   password: string;
   empId: string;
   mobileNo: number;
-  role: string;
+  role: [];
   managerName: string;
   accountActive: boolean;
   odc: string;

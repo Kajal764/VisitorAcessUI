@@ -64,11 +64,7 @@ export class RegisterComponent implements OnInit {
       managerName: this.registrationForm.get('managerName').value,
       odc: this.registrationForm.get('odc').value
     };
-    console.log(data);
     if (this.registrationForm.invalid === false) {
-      // if (this.registrationForm.get('role').value === 'Manager') {
-      //   data.managerName = 'admin';
-      // }
       this.userService.register(data)
         .subscribe(response => {
           this.responseData = response.body;

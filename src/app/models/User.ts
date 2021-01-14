@@ -5,7 +5,7 @@ export interface User {
   password: string;
   empId: string;
   mobileNo: number;
-  role: string;
+  role: [];
   managerName: string;
   accountActive: boolean;
   odc: string;
