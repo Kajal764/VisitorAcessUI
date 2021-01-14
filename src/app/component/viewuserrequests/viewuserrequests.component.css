@@ -1,12 +1,22 @@
-.image{
-  width: 40%;
-  margin-top: 20px;
-  height: 150%;
-}
 
 .container{
   width: 70%;
   border: 1px solid lightgrey;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
   margin-bottom: 30px;
+}
+
+.image {
+  margin-top: 20px;
+  width: 70%;
+}
+
+.text {
+  font-family: Roboto;
+  color: navy;
+  margin: 20px;
+  font-weight: bold;
+  margin-left: 5px;
+  font-size: 25px;
+  text-shadow: 1px 2px lightgray;
 }

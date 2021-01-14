@@ -1,5 +1,14 @@
-.image{
-  width: 40%;
+.image {
   margin-top: 20px;
-  height: 150%;
+  width: 80%;
+}
+
+.text {
+  font-family: Roboto;
+  color: navy;
+  margin: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 30px;
+  text-shadow: 3px 2px lightgray;
 }

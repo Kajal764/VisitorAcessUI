@@ -2,8 +2,11 @@
 <app-manager *ngIf="isAdmin===false"></app-manager>
 
 <div class="d-flex justify-content-center">
-  <div *ngIf="isPendingRequest== false" class="d-flex justify-content-center">
-    <img src="../../../assets/NoRecordFound.jpg" class="image">
+  <div *ngIf="isPendingRequest== false">
+    <div class="d-flex flex-column">
+      <div class="p-2"> <img class="image" src="../../../assets/download.png" class="image"></div>
+      <div class="text">No Pending Request !!!</div>
+    </div>
   </div>
 </div>
 
