@@ -96,4 +96,21 @@ export class RegisterComponent implements OnInit {
   redirectToLogin() {
     this.router.navigate(['login']);
   }
+  
+  
+  viewPassword(){
+    var pass = document.getElementById('password-field');
+    console.log(pass);
+    var icon = document.getElementById('pass-status');
+    console.log(icon);
+    if(pass.getAttribute('type')==='password'){
+    pass.setAttribute('type','text');
+    icon.setAttribute('class','fa fa-eye-slash icon');
+    }else{
+      pass.setAttribute('type','password');
+      icon.setAttribute('class','fa fa-eye icon')
+    }
+
+  }
+
 }

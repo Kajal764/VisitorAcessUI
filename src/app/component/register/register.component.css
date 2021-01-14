@@ -8,3 +8,12 @@
   border: 1px solid lightgrey;
   box-shadow: 2px 2px #888888;
 }
+
+.icon{
+  float: right;
+  margin-right: 6px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+  color:black;
+}

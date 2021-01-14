@@ -16,6 +16,7 @@
     <form name="form" [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && onSubmit()">
       <div class="form-row">
         <div class="form-group col-md-6">
+          <label for="firstName"><b>First Name</b></label>
           <input type="text" placeholder="First Name" class="form-control" formControlName="firstName"
                  [ngClass]="{'is-invalid':registrationForm.get('firstName').touched && registrationForm.get('firstName').invalid}"
                  required/>
@@ -27,6 +28,7 @@
         </div>
 
         <div class="form-group col-md-6">
+          <label for="lastName"><b>Last Name</b></label>
           <input type="text" placeholder="Last Name" class="form-control" formControlName="lastName"
                  [ngClass]="{'is-invalid':registrationForm.get('lastName').touched && registrationForm.get('lastName').invalid}"
                  required/>
@@ -40,6 +42,7 @@
 
       <div class="form-row">
         <div class="form-group col-md-6">
+          <label for="empId"><b>Employee ID</b></label>
           <input type="text" placeholder="Employee Id" class="form-control" formControlName="empId"
                  [ngClass]="{'is-invalid':registrationForm.get('empId').touched && registrationForm.get('empId').invalid}"
                  required/>
@@ -51,8 +54,11 @@
         </div>
 
         <div class="form-group col-md-6">
-          <input type="text" class="form-control" placeholder="Password" formControlName="password"
+          <label for="password"><b>Password</b></label>
+          <div>
+          <input type="password" class="form-control" placeholder="Password" formControlName="password" id="password-field"
                  [ngClass]="{'is-invalid':registrationForm.get('password').touched && registrationForm.get('password').invalid}"/>
+                 <i id="pass-status" class="fa fa-eye icon" aria-hidden="true" (click)="viewPassword()"></i></div>
           <div *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid"
                class="invalid-feedback">
             <div *ngIf="registrationForm.get('password').errors.required">Password is required</div>
@@ -64,6 +70,7 @@
       </div>
 
       <div class="form-group">
+        <label for="email"><b>Email</b></label>
         <input type="text" class="form-control" placeholder="Email" formControlName="email"
                [ngClass]="{'is-invalid':registrationForm.get('email').touched && registrationForm.get('email').invalid}"/>
         <div *ngIf="registrationForm.get('email').touched && registrationForm.get('email').invalid"
@@ -74,6 +81,7 @@
       </div>
 
       <div class="form-group">
+        <label for="mobileNo"><b>Contact Number</b></label>
         <input type="number" placeholder="Mobile no" class="form-control" formControlName="mobileNo"
                [ngClass]="{'is-invalid':registrationForm.get('mobileNo').touched && registrationForm.get('mobileNo').invalid}"
                required/>
