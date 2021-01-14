@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { User } from 'src/app/models/User';
 import {login} from '../../login';
 import {LoginService} from '../../login.service';
 
@@ -11,11 +10,10 @@ import {LoginService} from '../../login.service';
 })
 export class LoginComponent implements OnInit {
 
-  // lg: login = new login();
-  public lg:User;
+  lg: login = new login();
   message: string;
   res = false;
-  public listOfRole = ['Admin', 'Odc-Manager', 'Manager', 'Employee',];
+  public listOfRole = ['Admin', 'Odc-Manager', 'Manager', 'Employee'];
   private selectRole: any;
 
   constructor(private loginService: LoginService,
@@ -31,10 +29,10 @@ export class LoginComponent implements OnInit {
       this.selectRole = this.lg.role;
       localStorage.setItem('user', result.empId);
       localStorage.setItem('role', this.selectRole);
-      localStorage.setItem('odc', result.odc);
-      localStorage.setItem('managerName',result.managerName);
+      // localStorage.setItem('odc', result.odc);
+      localStorage.setItem('managerName', result.managerName);
       if (result) {
-        // this.lg = result;
+        this.lg = result;
         this.res = false;
         if (this.lg.accountActive === true) {
           this.lg.role.forEach(value => {
@@ -75,5 +73,6 @@ export class LoginComponent implements OnInit {
 
   changeWebsite($event) {
     this.lg.role = $event.target.value;
+    console.log(this.lg.role);
   }
 }

@@ -57,7 +57,7 @@
           <label for="password"><b>Password</b></label>
           <input type="password" class="form-control" placeholder="Password" formControlName="password" id="password-field"
                  [ngClass]="{'is-invalid':registrationForm.get('password').touched && registrationForm.get('password').invalid}"/>
-                 <i id="pass-status" class="fa fa-eye icon" aria-hidden="true" (click)="viewPassword()"></i>
+                 <i id="pass-status" class="fa fa-eye icon" aria-hidden="true" style="margin-right: 30px;" (click)="viewPassword()"></i>
           <div *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid"
                class="invalid-feedback">
             <div *ngIf="registrationForm.get('password').errors.required">Password is required</div>
