@@ -20,7 +20,7 @@ export class OdcmanagerrequestsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getOdcManagerRequests(localStorage.getItem('odc'))
+    this.userService.getOdcManagerRequests(localStorage.getItem('user'))
       .subscribe((data) => {
         this.odcRequests = data;
         this.requestsPresent = true;

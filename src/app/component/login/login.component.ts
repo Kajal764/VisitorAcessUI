@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import { User } from 'src/app/models/User';
 import {login} from '../../login';
 import {LoginService} from '../../login.service';
 
@@ -10,7 +11,8 @@ import {LoginService} from '../../login.service';
 })
 export class LoginComponent implements OnInit {
 
-  lg: login = new login();
+  // lg: login = new login();
+  public lg:User;
   message: string;
   res = false;
   public listOfRole = ['Admin', 'Odc-Manager', 'Manager', 'Employee',];
@@ -30,8 +32,9 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('user', result.empId);
       localStorage.setItem('role', this.selectRole);
       localStorage.setItem('odc', result.odc);
+      localStorage.setItem('managerName',result.managerName);
       if (result) {
-        this.lg = result;
+        // this.lg = result;
         this.res = false;
         if (this.lg.accountActive === true) {
           this.lg.role.forEach(value => {

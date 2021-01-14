@@ -4,7 +4,7 @@ export class VisitorRequest {
   endDate: string;
   startTime: string;
   endTime: string;
-  odc: string;
+  odc: [];
   status: string;
   managerEmpID: string;
 }

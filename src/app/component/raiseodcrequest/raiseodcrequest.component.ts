@@ -17,6 +17,7 @@ export class RaiseodcrequestComponent implements OnInit {
   private loginUser: any;
   public isEmployee: boolean;
   currentDate: Date = new Date();
+  manager:string;
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -31,10 +32,16 @@ export class RaiseodcrequestComponent implements OnInit {
     this.userService.getAllODC().subscribe((data) => this.odcs = data);
     this.loginUser = localStorage.getItem('user');
     this.visitorRequest.empId = this.loginUser;
+
   }
 
   raiseRequest() {
-    this.visitorRequest.status = 'Pending Approval';
+    this.manager = localStorage.getItem('managerName');
+    console.log(this.manager);
+    if(this.manager === 'Admin ')
+      this.visitorRequest.status = 'Accepted By Manager';
+    else
+      this.visitorRequest.status = 'Pending Approval';
     this.visitorRequest.managerEmpID = '123';
     this.userService.raiseOdcRequest(this.visitorRequest)
       .subscribe((data) => {

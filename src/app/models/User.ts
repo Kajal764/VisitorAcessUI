@@ -8,5 +8,5 @@ export interface User {
   role: [];
   managerName: string;
   accountActive: boolean;
-  odc: string;
+  odc: [];
 }
