@@ -3,6 +3,7 @@ import {UserService} from '../../service/user.service';
 import {User} from '../../models/User';
 import {Router} from '@angular/router';
 import {RegistrationRequest} from '../../models/RegistrationRequest';
+import {NgxNotificationService} from 'ngx-notification';
 
 
 @Component({
@@ -20,11 +21,11 @@ export class RegistrationRequestComponent implements OnInit {
   private isAdmin: boolean;
   Accept = false;
   Reject = false;
-  // selectedRequests: RegistrationRequest[] = [];
   selectedRequests: any = [];
 
   constructor(private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private ngxNotificationService: NgxNotificationService) {
   }
 
   ngOnInit() {
@@ -116,11 +117,16 @@ export class RegistrationRequestComponent implements OnInit {
     this.userService.registrationRequest(this.selectedRequests)
       .subscribe(response => {
         this.responseData = response.body;
+        this.sendNotification(this.responseData.message);
         if (this.selectedRequests.length > 1) {
           this.isPendingRequest = false;
         }
       }, (error) => {
         this.responseData = error.error;
       });
+  }
+
+  sendNotification(message: string) {
+    this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
   }
 }

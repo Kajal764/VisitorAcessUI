@@ -1,5 +1,6 @@
 <app-admin-navbar *ngIf="isAdmin===true"></app-admin-navbar>
 <app-manager *ngIf="isAdmin===false"></app-manager>
+<lib-ngx-notification></lib-ngx-notification>
 
 <div class="d-flex justify-content-center">
   <div *ngIf="isPendingRequest== false">
@@ -31,7 +32,7 @@
                    style="margin-left: 1%;margin-top: 1%" (change)="acceptAll($event,true)">
             <button type="button" (click)="requestAll();"
                     style="padding-left: 30px"
-                    class="btn btn-outline-success my-2 my-sm-0 pull-right">Accept All
+                    class="btn btn-outline-success my-2 my-sm-0 pull-right">Approve All
             </button>
           <th scope="col"><input class="form-check-input" type="checkbox"
                                  style="margin-left: 1%;margin-top: 1%" (change)="rejectAll($event,false)">
@@ -59,7 +60,7 @@
             <button type="button" (click)="request(user);"
                     id="approve" style="padding-left: 30px"
                     class="btn btn-outline-success my-2 my-sm-0 pull-right"
-            >Accept
+            >Approve
             </button>
           </td>
           <td class="text-danger">

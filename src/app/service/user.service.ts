@@ -12,8 +12,10 @@ import {User} from '../models/User';
 })
 export class UserService {
   baseurl = 'http://localhost:8080/user/';
+
   constructor(private httpClient: HttpClient) {
   }
+
   options = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -78,6 +80,7 @@ export class UserService {
     };
     return this.httpClient.post<boolean>('http://localhost:8080/user/approveOrRejectAccess', body, options);
   }
+
   approveOrRejectOdcRequestMultiple(visitorRequest: VisitorRequest[]) {
     const body = JSON.stringify(visitorRequest);
     const options = {
@@ -132,7 +135,7 @@ export class UserService {
   }
 
   login(empId: string, password: string) {
-    console.log("login" ,empId);
+    console.log('login', empId);
     const url = this.baseurl + 'login' + '/' + empId + '/' + password;
     const result = this.httpClient.post<User>(url, this.options);
     return result;

@@ -2,7 +2,7 @@
 
 <lib-ngx-notification></lib-ngx-notification>
 
-<div style="font-family: Roboto">
+<div style="font-family: Roboto;">
   <div class="d-flex justify-content-center">
     <div>
       <div class="row">
@@ -25,7 +25,11 @@
           <tbody>
           <tr *ngFor="let user of userList">
             <th scope="row">{{user.empId}}</th>
-            <td>{{user.role}}</td>
+            <td>
+              <ul style="list-style-type:square;">
+                <li *ngFor="let r of user.role">{{r}}</li>
+              </ul>
+            </td>
             <td>{{user.firstName}}</td>
             <td>{{user.lastName}}</td>
             <td>{{user.email}}</td>
