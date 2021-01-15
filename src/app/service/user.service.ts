@@ -29,9 +29,8 @@ export class UserService {
       .pipe(catchError(this.handleError));
   }
 
-  register(data: { password: any; email: any }): Observable<any> {
+  register(data): Observable<any> {
     const apiUrl = 'http://localhost:8080/user/register';
-    alert(JSON.stringify(data));
     return this.postData(data, apiUrl)
       .pipe(catchError(this.handleError));
   }

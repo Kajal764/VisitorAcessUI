@@ -55,9 +55,11 @@
 
         <div class="form-group col-md-6">
           <label for="password"><b>Password</b></label>
-          <input type="password" class="form-control" placeholder="Password" formControlName="password" id="password-field"
+          <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                 id="password-field"
                  [ngClass]="{'is-invalid':registrationForm.get('password').touched && registrationForm.get('password').invalid}"/>
-                 <i id="pass-status" class="fa fa-eye icon" aria-hidden="true" style="margin-right: 30px;" (click)="viewPassword()"></i>
+          <i id="pass-status" class="fa fa-eye-slash icon" aria-hidden="true" style="margin-right: 30px;"
+             (click)="viewPassword()"></i>
           <div *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid"
                class="invalid-feedback">
             <div *ngIf="registrationForm.get('password').errors.required">Password is required</div>
@@ -92,63 +94,45 @@
       </div>
 
       <div class="form-group ">
-        <span style=" padding-right: 10px ;font-size: 110%"><b>Role</b> </span><br>
-
-        <div *ngFor="let choice of role; let i=index" class="col-md-2">
-          <label>
-            <input type="checkbox" [value]="choice.value" (change)="onCheckChange($event)">
-            {{choice.description}}
-          </label>
-        </div>
-
-        <!-- <input type="checkbox" class="form-check-input" formControlName="role" id="role1" name="role11" value="employee" (click)="check()">
-        <label for="employee" > Employee</label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="checkbox" class="form-check-input" formControlName="role" id="role2" name="role12" value="manager" (click)="check()">
-        <label for="manager" > Manager</label>&nbsp;&nbsp;&nbsp;&nbsp;
-
-        <input type="checkbox" class="form-check-input" formControlName="role" id="role3" name="role13" value="odcManager" (click)="check()">
-        <label for="odcManager" > ODC Manager</label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="checkbox" class="form-check-input" formControlName="role" id="role4" name="role14" value="admin" (click)="check()">
-        <label for="admin" >Admin</label><br> -->
-
-
-        <!-- <div class="form-check form-check-inline">
-          <input class="form-check-input" formControlName="role" name="Employee" type="radio" name="inlineRadioOptions"
-                 id="inlineRadio1" value="Employee" (click)="check()">
-          <label class="form-check-label" for="inlineRadio1">Employee</label>
+        <label for="role" style="margin-right: 20px"><b>Role</b></label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Employee" style="margin-left: 5px"
+                 (change)="getSelectedRole($event)" checked>
+          <label class="form-check-label" style="margin-left: 5px" for="inlineCheckbox1">Employee</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="Manager" formControlName="role" type="radio" name="inlineRadioOptions"
-                 id="inlineRadio2" value="Manager" (click)="check()">
-          <label class="form-check-label" for="inlineRadio2">Manager</label>
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Manager" style="margin-left: 5px"
+                 (change)="getSelectedRole($event)">
+          <label class="form-check-label" style="margin-left: 5px" for="inlineCheckbox1">Manager</label>
         </div>
-
         <div class="form-check form-check-inline">
-          <input class="form-check-input" name="odcManager" formControlName="role" type="radio"
-                 name="inlineRadioOptions"
-                 id="inlineRadio2" value="odcManager" (click)="check()">
-          <label class="form-check-label" for="inlineRadio2">ODC Manager</label>
-        </div> -->
-
-
-        
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Odc-Manager"
+                 style="margin-left: 5px"
+                 (change)="getSelectedRole($event)">
+          <label class="form-check-label" style="margin-left: 5px" for="inlineCheckbox1">Odc-Manager</label>
+        </div>
+        <br>
       </div>
 
       <div *ngIf="isEmployee">
+        <label for="manager"><b>Select Manager</b></label>
         <div class="form-group">
           <select class="form-control" name="managerName" formControlName="managerName">
-            <option>Choose Manager</option>
+            <option>Select Manager</option>
             <option *ngFor="let m of managers">{{m.firstName}} {{m.lastName}}</option>
           </select>
         </div>
       </div>
 
       <div *ngIf="isOdcManager">
-        <div class="form-group">
-          <option>Choose ODC</option>
-          <select class="form-control" name="odc" formControlName="odc">
-            <option *ngFor="let odc of odcs" [value]="odc.odcName">{{odc.odcName}}</option>
-          </select>
+        <label for="odc" style="margin-right: 20px"><b>Select ODC</b></label>
+        <div class="form-check form-check-inline">
+          <div *ngFor="let odc of odcs">
+            <input class="form-check-input" type="checkbox"
+                   style="margin-left: 5px"
+                   (change)="getSelectedOdc($event,odc.odcName)">
+            <label class="form-check-label" style="margin-left: 5px" for="inlineCheckbox1">{{odc.odcName}}</label>
+          </div>
         </div>
       </div>
 
