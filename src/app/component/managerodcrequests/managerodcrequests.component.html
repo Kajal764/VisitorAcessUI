@@ -3,12 +3,6 @@
 
 <lib-ngx-notification></lib-ngx-notification>
 
-<!--<div class="d-flex justify-content-center">-->
-<!--  <div *ngIf="flag===true" class="d-flex justify-content-center">-->
-<!--    <img src="../../../assets/NoRecordFound.jpg" class="image">-->
-<!--  </div>-->
-<!--</div>-->
-
 <div class="d-flex justify-content-center">
   <div *ngIf="flag===true">
     <div class="d-flex flex-column">
@@ -67,16 +61,16 @@
       <ejs-grid [dataSource]='visitorRequests' height='315px'>
          <e-columns>
           <e-column type='checkbox' width='50'></e-column>
-          <e-column field='empId' headerText='Employee Id'  width=150></e-column> 
-          <e-column field='startDate' headerText='Start Date' width=150></e-column> 
-          <e-column field='endDate' headerText='End Date' width=150></e-column> 
-          <e-column field='startTime' headerText='Start Time' format='time24to12Transform' width=150></e-column> 
+          <e-column field='empId' headerText='Employee Id'  width=150></e-column>
+          <e-column field='startDate' headerText='Start Date' width=150></e-column>
+          <e-column field='endDate' headerText='End Date' width=150></e-column>
+          <e-column field='startTime' headerText='Start Time' format='time24to12Transform' width=150></e-column>
           <e-column field='endTime' headerText='End Date' width=150></e-column>
-          <e-column field='status' headerText='Status' width=150></e-column> 
+          <e-column field='status' headerText='Status' width=150></e-column>
           <e-column field='odc' headerText='ODC' width=150></e-column>  -->
           <!-- <e-column headerText='Approve' width=150><ejs-button class="btn btn-success pull-right">Remove</ejs-button></e-column>  -->
           <!-- <e-column headerText='Approve' width=150> <button (click)="approve(request);Approve.disabled=true" type="button" #Approve id="approve" class="btn btn-success pull-right">Accept</button></e-column> -->
-          <!-- <td> <e-column field='startDate' headerText='Start Date' width=150></e-column></td> 
+          <!-- <td> <e-column field='startDate' headerText='Start Date' width=150></e-column></td>
           <td> <e-column field='startDate' headerText='Start Date' width=150></e-column></td>  -->
             <!-- <e-column field='ShipCity' headerText='Ship City' width=150></e-column>
             <e-column field='ShipName' headerText='Ship Name' width=150></e-column> -->
@@ -85,6 +79,6 @@
       </div>
       </div>
     </div> -->
-      
+
   </div>
 </div>

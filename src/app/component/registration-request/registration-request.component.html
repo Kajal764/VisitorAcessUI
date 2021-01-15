@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-center">
   <div *ngIf="isPendingRequest== false">
     <div class="d-flex flex-column">
-      <div class="p-2"> <img class="image" src="../../../assets/download.png" class="image"></div>
+      <div class="p-2"><img class="image" src="../../../assets/download.png" class="image"></div>
       <div class="text">No Pending Request !!!</div>
     </div>
   </div>
@@ -26,8 +26,20 @@
           <th scope="col">Email</th>
           <th scope="col">Mobile No</th>
           <th scope="col">Manager Name</th>
-          <th scope="col">Action</th>
-          <th scope="col">Action</th>
+          <th scope="col">
+            <input class="form-check-input" type="checkbox"
+                   style="margin-left: 1%;margin-top: 1%" (change)="acceptAll($event,true)">
+            <button type="button" (click)="requestAll();"
+                    style="padding-left: 30px"
+                    class="btn btn-outline-success my-2 my-sm-0 pull-right">Accept All
+            </button>
+          <th scope="col"><input class="form-check-input" type="checkbox"
+                                 style="margin-left: 1%;margin-top: 1%" (change)="rejectAll($event,false)">
+            <button type="button" (click)="requestAll();"
+                    style="padding-left: 30px"
+                    class="btn btn-outline-danger my-2 my-sm-0 pull-right">Reject All
+            </button>
+          </th>
         </tr>
         </thead>
         <tbody>
@@ -38,15 +50,26 @@
           <td>{{user.email}}</td>
           <td>{{user.mobileNo}}</td>
           <td>{{user.managerName}}</td>
-          <td class="text-danger">
-            <button type="button" (click)="request(user,true);Approve.disabled=true" #Approve id="approve"
-                    class="btn btn-success pull-right">Accept
+
+          <td>
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                   style="margin-left: 2.5%;margin-top: 1%" [checked]="Accept"
+                   [value]="user.empId"
+                   (change)="selectedForApproval($event,user.empId,true)">
+            <button type="button" (click)="request(user);"
+                    id="approve" style="padding-left: 30px"
+                    class="btn btn-outline-success my-2 my-sm-0 pull-right"
+            >Accept
             </button>
           </td>
           <td class="text-danger">
-            <button type="button" (click)="request(user,false);Approve.disabled=true;Reject.disabled=true" #Reject
-                    id="reject"
-                    class="btn btn-danger pull-right">Reject
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4"
+                   style="margin-left: 2.5%;margin-top: 1%" [checked]="Reject"
+                   (change)="selectedForApproval($event,user.empId,false)">
+            <button type="button" (click)="request(user);"
+                    id="reject" style="padding-left: 30px"
+                    class="btn btn-outline-danger my-2 my-sm-0 pull-right"
+            >Reject
             </button>
           </td>
         </tr>

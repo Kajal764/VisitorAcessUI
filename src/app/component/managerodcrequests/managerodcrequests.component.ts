@@ -4,7 +4,7 @@ import {VisitorRequest} from 'src/app/models/VisitorRequest';
 import {UserService} from 'src/app/service/user.service';
 import {NgxNotificationService} from 'ngx-notification';
 
-import { SelectionSettingsModel } from '@syncfusion/ej2-angular-grids';
+import {SelectionSettingsModel} from '@syncfusion/ej2-angular-grids';
 
 @Component({
   selector: 'app-managerodcrequests',
@@ -17,7 +17,7 @@ export class ManagerodcrequestsComponent implements OnInit {
   success: boolean;
   public flag: boolean;
   public selectionOptions: SelectionSettingsModel;
-  selectedRequests:VisitorRequest[]=[];
+  selectedRequests: VisitorRequest[] = [];
 
   constructor(private userService: UserService, private router: Router,
               private ngxNotificationService: NgxNotificationService) {
@@ -43,7 +43,7 @@ export class ManagerodcrequestsComponent implements OnInit {
       (error) => console.log(error));
   }
 
-  approveSelected(){
+  approveSelected() {
     // request.status = 'Accepted By Manager';
     this.sendNotification('Request Accepted');
     this.userService.approveOrRejectOdcRequestMultiple(this.selectedRequests).subscribe((data) => {
@@ -71,53 +71,54 @@ export class ManagerodcrequestsComponent implements OnInit {
   sendNotification(message: string) {
     this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
   }
-  Accept=false;
- 
-  acceptAll(selected){
-    if(selected.target.checked == true){
-      this.Accept= true;
-    this.selectedRequests = this.visitorRequests;
-    console.log(this.selectedRequests)
-    }
-    else{
-    this.Accept= false;
-    this.selectedRequests = [];
-    console.log(this.selectedRequests)
+
+  Accept = false;
+
+  acceptAll(selected) {
+    if (selected.target.checked == true) {
+      this.Accept = true;
+      this.selectedRequests = this.visitorRequests;
+      console.log(this.selectedRequests);
+    } else {
+      this.Accept = false;
+      this.selectedRequests = [];
+      console.log(this.selectedRequests);
     }
   }
 
-  Reject=false;
-  rejectAll(selected){
-    if(selected.target.checked == true){
-      this.Reject= true;
-    this.selectedRequests = this.visitorRequests;
-    console.log(this.selectedRequests)
-    }
-    else{
-    this.Reject= false;
-    this.selectedRequests = [];
-    console.log(this.selectedRequests)
-    }
-  }
-  selectedForApproval(e,req:VisitorRequest){
-    if(e.target.checked == true){
-      req.status ='Accepted By Manager';
-      this.selectedRequests.push(req);
-      console.log(this.selectedRequests)
-    }else{
-      this.selectedRequests.pop();
-      console.log(this.selectedRequests) 
+  Reject = false;
+
+  rejectAll(selected) {
+    if (selected.target.checked == true) {
+      this.Reject = true;
+      this.selectedRequests = this.visitorRequests;
+      console.log(this.selectedRequests);
+    } else {
+      this.Reject = false;
+      this.selectedRequests = [];
+      console.log(this.selectedRequests);
     }
   }
 
-  selectedForRejection(e,req:VisitorRequest){
-    if(e.target.checked == true){
-      req.status ='Rejected By Manager';
+  selectedForApproval(e, req: VisitorRequest) {
+    if (e.target.checked == true) {
+      req.status = 'Accepted By Manager';
       this.selectedRequests.push(req);
-      console.log(this.selectedRequests)
-    }else{
+      console.log(this.selectedRequests);
+    } else {
       this.selectedRequests.pop();
-      console.log(this.selectedRequests) 
+      console.log(this.selectedRequests);
+    }
+  }
+
+  selectedForRejection(e, req: VisitorRequest) {
+    if (e.target.checked == true) {
+      req.status = 'Rejected By Manager';
+      this.selectedRequests.push(req);
+      console.log(this.selectedRequests);
+    } else {
+      this.selectedRequests.pop();
+      console.log(this.selectedRequests);
     }
   }
 }

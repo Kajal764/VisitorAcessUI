@@ -24,6 +24,7 @@ export class OdcmanagerrequestsComponent implements OnInit {
     this.userService.getOdcManagerRequests(localStorage.getItem('user'))
       .subscribe((data) => {
         this.odcRequests = data;
+        console.log(this.odcRequests);
         this.requestsPresent = true;
         if (this.odcRequests.length === 0) {
           this.requestsPresent = false;

@@ -103,7 +103,7 @@ export class UserService {
       .pipe(catchError(this.handleError));
   }
 
-  registrationRequest(data: { empId: string; status: boolean }) {
+  registrationRequest(data) {
     const apiUrl = 'http://localhost:8080/user/registration-request';
     return this.postData(data, apiUrl)
       .pipe(catchError(this.handleError));
