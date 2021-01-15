@@ -2,9 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {User} from '../../models/User';
 import {Router} from '@angular/router';
-import {RegistrationRequest} from '../../models/RegistrationRequest';
 import {NgxNotificationService} from 'ngx-notification';
-
 
 @Component({
   selector: 'app-registration-request',
@@ -20,8 +18,7 @@ export class RegistrationRequestComponent implements OnInit {
   public empId: string;
   private isAdmin: boolean;
   Accept = false;
-  Reject = false;
-  selectedRequests: any = [];
+  requests: any = [];
 
   constructor(private userService: UserService,
               private router: Router,
@@ -29,7 +26,6 @@ export class RegistrationRequestComponent implements OnInit {
   }
 
   ngOnInit() {
-
     if (localStorage.getItem('role') === 'Admin') {
       this.isAdmin = true;
     } else {
@@ -51,74 +47,18 @@ export class RegistrationRequestComponent implements OnInit {
         });
   }
 
-  request(user: User): void {
-    const index = this.userList.indexOf(user);
-    if (index !== -1) {
-      this.userList.splice(index, 1);
-      if (this.userList.length === 0) {
-        this.isPendingRequest = false;
-      }
-      this.requestAll();
-    }
-  }
-
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
 
-
-  acceptAll(event, status: boolean) {
-    if (event.target.checked === true) {
-      this.Accept = true;
-      this.userList.forEach(value => {
-        const data = {
-          empId: value.empId,
-          status
-        };
-        this.selectedRequests.push(data);
-      });
-    } else {
-      this.Accept = false;
-      this.selectedRequests = [];
-    }
-  }
-
-  rejectAll(event, status: boolean) {
-    if (event.target.checked === true) {
-      this.Reject = true;
-      this.userList.forEach(value => {
-        const data = {
-          empId: value.empId,
-          status
-        };
-        this.selectedRequests.push(data);
-      });
-    } else {
-      this.Reject = false;
-      this.selectedRequests = [];
-    }
-  }
-
-  selectedForApproval(event, empId: string, status: boolean) {
-    const data = {
-      empId,
-      status
-    };
-    if (event.target.checked === true) {
-      this.selectedRequests.push(data);
-    } else {
-      this.selectedRequests = this.selectedRequests.filter(m => m.empId !== data.empId);
-    }
-  }
-
   requestAll() {
-    this.userService.registrationRequest(this.selectedRequests)
+    this.userService.registrationRequest(this.requests)
       .subscribe(response => {
         this.responseData = response.body;
         this.sendNotification(this.responseData.message);
-        if (this.selectedRequests.length > 1) {
+        if (this.requests.length > 1) {
           this.isPendingRequest = false;
         }
       }, (error) => {
@@ -129,4 +69,47 @@ export class RegistrationRequestComponent implements OnInit {
   sendNotification(message: string) {
     this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
   }
+
+  approve() {
+    this.requests.forEach(value => {
+      value.status = true;
+    });
+    this.requestAll();
+  }
+
+  reject() {
+    this.requests.forEach(value => {
+      value.status = false;
+    });
+    this.requestAll();
+  }
+
+  acceptAll(event) {
+    if (event.target.checked === true) {
+      this.Accept = true;
+      this.userList.forEach(value => {
+        const data = {
+          empId: value.empId,
+          status: true
+        };
+        this.requests.push(data);
+      });
+    } else {
+      this.Accept = false;
+      this.requests = [];
+    }
+  }
+
+  selectedForApproval(event, user: User) {
+    const data = {
+      empId: user.empId,
+      status: true
+    };
+    if (event.target.checked === true) {
+      this.requests.push(user);
+    } else {
+      this.requests = this.requests.filter(m => m.empId !== user.empId);
+    }
+  }
+
 }

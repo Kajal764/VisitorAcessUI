@@ -16,8 +16,9 @@ export class ManagerodcrequestsComponent implements OnInit {
   public flag: boolean;
   AcceptedByManager = 'Accepted By Manager';
   RejectedByManager = 'Rejected By Manager';
-  PendingApproval = 'Pending_Approval';
-
+  PendingApproval = 'Pending Approval';
+  Accept = false;
+  requests: VisitorRequest[] = [];
 
   constructor(private userService: UserService, private router: Router,
               private ngxNotificationService: NgxNotificationService) {
@@ -34,20 +35,26 @@ export class ManagerodcrequestsComponent implements OnInit {
       });
   }
 
-  approve(request: VisitorRequest) {
-    request.status = 'Accepted By Manager';
+  approve() {
+    this.requests.forEach(value => {
+      value.status = 'Accepted By Manager';
+    });
     this.sendNotification('Request Accepted');
-    this.userService.approveOrRejectOdcRequest(request).subscribe((data) => {
+    this.userService.approveOrRejectOdcRequestMultiple(this.requests).subscribe((data) => {
         this.success = data;
+        this.requests = [];
       },
       (error) => console.log(error));
   }
 
-  reject(request: VisitorRequest) {
-    request.status = 'Rejected By Manager';
+  reject() {
+    this.requests.forEach(value => {
+      value.status = 'Rejected By Manager';
+    });
     this.sendNotification('Request Rejected ');
-    this.userService.approveOrRejectOdcRequest(request).subscribe((data) => {
+    this.userService.approveOrRejectOdcRequestMultiple(this.requests).subscribe((data) => {
         this.success = data;
+        this.requests = [];
       },
       (error) => console.log(error));
   }
@@ -60,5 +67,23 @@ export class ManagerodcrequestsComponent implements OnInit {
 
   sendNotification(message: string) {
     this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
+  }
+
+  acceptAll(event) {
+    if (event.target.checked === true) {
+      this.Accept = true;
+      this.requests = this.visitorRequests;
+    } else {
+      this.Accept = false;
+      this.requests = [];
+    }
+  }
+
+  selectedForApproval(event, visitorRequests: VisitorRequest) {
+    if (event.target.checked === true) {
+      this.requests.push(visitorRequests);
+    } else {
+      this.requests = this.requests.filter(m => m.visitorRequestId !== visitorRequests.visitorRequestId);
+    }
   }
 }

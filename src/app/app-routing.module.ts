@@ -10,9 +10,9 @@ import {LoginComponent} from './component/login/login.component';
 import {ManagerComponent} from './component/manager/manager.component';
 import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
-import {OdcmanagerComponent} from './odcmanager/odcmanager.component';
 import {ViewodcmanagersComponent} from './component/viewodcmanagers/viewodcmanagers.component';
 import {OdcmanagerrequestsComponent} from './component/odcmanagerrequests/odcmanagerrequests.component';
+import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
 
 const routes: Routes = [
   {
