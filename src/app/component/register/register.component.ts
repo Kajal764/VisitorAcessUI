@@ -99,9 +99,7 @@ export class RegisterComponent implements OnInit {
       pass.setAttribute('type', 'password');
       icon.setAttribute('class', 'fa fa-eye-slash icon');
     }
-
   }
-
 
   getSelectedRole($event) {
     if ($event.target.checked) {

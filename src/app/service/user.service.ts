@@ -11,7 +11,7 @@ import {User} from '../models/User';
   providedIn: 'root'
 })
 export class UserService {
-  baseurl = 'http://localhost:8080/user/';
+  baseurl = 'http://localhost:8080/visitor/user';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -32,7 +32,7 @@ export class UserService {
   }
 
   register(data): Observable<any> {
-    const apiUrl = 'http://localhost:8080/user/register';
+    const apiUrl = this.baseurl + '/register';
     return this.postData(data, apiUrl)
       .pipe(catchError(this.handleError));
   }
@@ -46,39 +46,29 @@ export class UserService {
         'content-Type': 'application/json'
       })
     };
-    return this.httpClient.post<VisitorRequest>('http://localhost:8080/user/raiseOdcRequest', body, options);
+    return this.httpClient.post<VisitorRequest>(this.baseurl + '/raiseOdcRequest', body, options);
   }
 
   getUserRequest(empId: string): Observable<VisitorRequest[]> {
-    return this.httpClient.get<VisitorRequest[]>('http://localhost:8080/user/viewUserRequests/' + empId);
+    return this.httpClient.get<VisitorRequest[]>(this.baseurl + '/viewUserRequests/' + empId);
   }
 
   getAllODC(): Observable<ODCList[]> {
-    return this.httpClient.get<ODCList[]>('http://localhost:8080/user/odcList');
+    return this.httpClient.get<ODCList[]>(this.baseurl + '/odcList');
   }
 
   getOdcManagers(odcName: string): Observable<User[]> {
-    return this.httpClient.get<User[]>('http://localhost:8080/user/viewOdcManagers/' + odcName);
+    return this.httpClient.get<User[]>(this.baseurl + '/viewOdcManagers/' + odcName);
   }
 
   getPendingVisitorRequest(empId: string): Observable<VisitorRequest[]> {
-    const url = 'http://localhost:8080/user/pendingVisitorRequest/' + empId;
+    const url = this.baseurl + '/pendingVisitorRequest/' + empId;
     return this.httpClient.get<VisitorRequest[]>(url);
   }
 
   getOdcManagerRequests(odcName: string): Observable<VisitorRequest[]> {
-    const url = 'http://localhost:8080/user/getAllOdcManagerRequests/' + odcName;
+    const url = this.baseurl + '/getAllOdcManagerRequests/' + odcName;
     return this.httpClient.get<VisitorRequest[]>(url);
-  }
-
-  approveOrRejectOdcRequest(visitorRequest: VisitorRequest) {
-    const body = JSON.stringify(visitorRequest);
-    const options = {
-      headers: {
-        'content-Type': 'application/json'
-      }
-    };
-    return this.httpClient.post<boolean>('http://localhost:8080/user/approveOrRejectAccess', body, options);
   }
 
   approveOrRejectOdcRequestMultiple(visitorRequest: VisitorRequest[]) {
@@ -88,54 +78,49 @@ export class UserService {
         'content-Type': 'application/json'
       }
     };
-    return this.httpClient.post<boolean>('http://localhost:8080/user/approveOrRejectAccess', body, options);
+    return this.httpClient.post<boolean>(this.baseurl + '/approveOrRejectAccess', body, options);
   }
 
   getUserList(): Observable<User[]> {
-    return this.httpClient.get<User[]>('http://localhost:8080/user/list')
+    return this.httpClient.get<User[]>(this.baseurl + '/list')
       .pipe(catchError(this.handleError));
   }
 
   deleteUser(empId: string): Observable<any> {
-    return this.httpClient.delete('http://localhost:8080/user/' + empId)
+    return this.httpClient.delete(this.baseurl + '/' + empId)
       .pipe(catchError(this.handleError));
   }
 
-  getManagerList(): Observable<User[]> {
-    return this.httpClient.get<User[]>('http://localhost:8080/user/manager/registration-request-list')
-      .pipe(catchError(this.handleError));
-  }
 
   registrationRequest(data) {
-    const apiUrl = 'http://localhost:8080/user/registration-request';
+    const apiUrl = this.baseurl + '/registration-request';
     return this.postData(data, apiUrl)
       .pipe(catchError(this.handleError));
   }
 
   getUserRequestList(empId: string) {
-    return this.httpClient.get<User[]>('http://localhost:8080/user/manager/registration-request/' + empId)
+    return this.httpClient.get<User[]>(this.baseurl + '/manager/registration-request/' + empId)
       .pipe(catchError(this.handleError));
   }
 
   managers(): Observable<any> {
-    const url = 'http://localhost:8080/user/managerList';
+    const url = this.baseurl + '/managerList';
     return this.httpClient.get<User[]>(url)
       .pipe(catchError(this.handleError));
   }
 
   addOdc(data: { odcId: number; odcName: any }): Observable<any> {
-    const apiUrl = 'http://localhost:8080/user/addOdc';
+    const apiUrl = this.baseurl + '/addOdc';
     return this.postData(data, apiUrl)
       .pipe(catchError(this.handleError));
   }
 
   deleteODC(odcName: string) {
-    return this.httpClient.delete('http://localhost:8080/user/deleteOdc/' + odcName)
+    return this.httpClient.delete(this.baseurl + '/deleteOdc/' + odcName)
       .pipe(catchError(this.handleError));
   }
 
   login(empId: string, password: string) {
-    console.log('login', empId);
     const url = this.baseurl + 'login' + '/' + empId + '/' + password;
     const result = this.httpClient.post<User>(url, this.options);
     return result;
