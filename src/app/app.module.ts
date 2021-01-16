@@ -14,7 +14,6 @@ import {RegistrationRequestComponent} from './component/registration-request/reg
 import {ManagerComponent} from './component/manager/manager.component';
 import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
-import {OdcmanagerComponent} from './odcmanager/odcmanager.component';
 import {ViewodcmanagersComponent} from './component/viewodcmanagers/viewodcmanagers.component';
 import {OdcmanagerrequestsComponent} from './component/odcmanagerrequests/odcmanagerrequests.component';
 import {AdminNavbarComponent} from './component/admin-navbar/admin-navbar.component';
@@ -23,8 +22,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmationPopupComponent} from './component/confirmation-popup/confirmation-popup.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxNotificationComponent} from 'ngx-notification';
+
 import { GridModule } from '@syncfusion/ej2-angular-grids';
 import { AssetsmanagementComponent } from './assetsmanagement/assetsmanagement.component';
+
+import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
+
 
 
 @NgModule({
@@ -46,9 +49,13 @@ import { AssetsmanagementComponent } from './assetsmanagement/assetsmanagement.c
     AdminNavbarComponent,
     Time24to12Format,
     ConfirmationPopupComponent,
+
     NgxNotificationComponent,
     AssetsmanagementComponent
     
+
+
+
   ],
   imports: [
     BrowserModule,

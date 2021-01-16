@@ -12,22 +12,17 @@ import {ODCList} from 'src/app/models/ODCList';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  odcs: ODCList[];
+  public odcs: ODCList[];
 
   namePattern = '^[A-Za-z- ]{1,16}$';
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,40}$';
   passwordPattern = '^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%]).{8,})$';
   empId = '^[0-9]\\d{6}$';
   mobilePattern = '^[0-9]\\d{9}$';
-  public isEmployee = false;
+  public isEmployee = true;
   isOdcManager = false;
-
-  // public role: [
-  //   {description: 'Employee', value: 'Employee'},
-  //   {description: "Manager", value: 'Manager'},
-  //   {description: "ODC-Manager", value: 'ODC-Manager'},
-  //   {description: "Admin", value: 'Admin'}
-  // ];
+  public roles = ['Employee'];
+  public selectOdc = [];
 
   registrationForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.pattern(this.namePattern)]),
@@ -36,10 +31,9 @@ export class RegisterComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
     mobileNo: new FormControl('', [Validators.required, Validators.pattern(this.mobilePattern)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(this.passwordPattern)]),
-    role: new FormControl('', Validators.required),
-    //  role: new FormArray([],Validators.required),
+    role: new FormControl(''),
     managerName: new FormControl(''),
-    odc: new FormControl('')
+    odc: new FormControl(''),
   });
   private responseData: any;
   private flag = false;
@@ -68,9 +62,9 @@ export class RegisterComponent implements OnInit {
       password: this.registrationForm.get('password').value,
       empId: this.registrationForm.get('empId').value,
       mobileNo: this.registrationForm.get('mobileNo').value,
-      role: this.registrationForm.get('role').value,
+      role: this.roles,
       managerName: this.registrationForm.get('managerName').value,
-      odc: this.registrationForm.get('odc').value
+      odc: this.selectOdc
     };
     if (this.registrationForm.invalid === false) {
       this.userService.register(data)
@@ -79,51 +73,55 @@ export class RegisterComponent implements OnInit {
           this.message = response.body.message;
           this.flag = true;
           this.router.navigate(['login']);
+          this.selectOdc = [];
+          this.roles = [];
         }, (error) => {
           this.flag = true;
           this.message = error.error.message;
         });
+
     }
   }
 
-  check() {
-    alert(this.registrationForm.get('role').value)
-    if (this.registrationForm.get('role').value === 'Employee') {
-      this.isEmployee = true;
-      this.isOdcManager = false;
-    }
-    if (this.registrationForm.get('role').value === 'Manager') {
-      this.isEmployee = true;
-      this.isOdcManager = false;
-    }
-    if (this.registrationForm.get('role').value === 'odcManager') {
-      this.isEmployee = false;
-      this.isOdcManager = true;
-    }
-  }
 
   redirectToLogin() {
     this.router.navigate(['login']);
   }
-  
-  
-  viewPassword(){
-    var pass = document.getElementById('password-field');
-    console.log(pass);
-    var icon = document.getElementById('pass-status');
-    console.log(icon);
-    if(pass.getAttribute('type')==='password'){
-    pass.setAttribute('type','text');
-    icon.setAttribute('class','fa fa-eye-slash icon');
-    }else{
-      pass.setAttribute('type','password');
-      icon.setAttribute('class','fa fa-eye icon')
-    }
 
+
+  viewPassword() {
+    const pass = document.getElementById('password-field');
+    const icon = document.getElementById('pass-status');
+    if (pass.getAttribute('type') === 'password') {
+      pass.setAttribute('type', 'text');
+      icon.setAttribute('class', 'fa fa-eye icon');
+    } else {
+      pass.setAttribute('type', 'password');
+      icon.setAttribute('class', 'fa fa-eye-slash icon');
+    }
   }
 
- 
-  
- 
+  getSelectedRole($event) {
+    if ($event.target.checked) {
+      this.roles.push($event.target.value);
+      if ($event.target.value === 'Odc-Manager') {
+        this.isOdcManager = true;
+        this.isEmployee = false;
+      }
+    } else {
+      this.roles = this.roles.filter(m => m !== $event.target.value);
+      if ($event.target.value === 'Odc-Manager') {
+        this.isOdcManager = false;
+        this.isEmployee = true;
+      }
+    }
+  }
 
+  getSelectedOdc($event, odcName: string) {
+    if ($event.target.checked) {
+      this.selectOdc.push(odcName);
+    } else {
+      this.selectOdc = this.roles.filter(m => m !== odcName);
+    }
+  }
 }

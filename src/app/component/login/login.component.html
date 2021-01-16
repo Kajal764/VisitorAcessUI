@@ -23,11 +23,10 @@
                  name="empId" required class="form-control" required>
         </div>
         <div class="form-group">
-
           <label for="password"><b>Password</b></label><br>
           <input #password="ngModel" type="password" placeholder="Enter your Password"
                  [(ngModel)]="lg.password"
-                 name="password" required class="form-control">
+                 name="password" required class="form-control"/>
         </div>
 
         <label for="role"><b>Role</b></label><br>
@@ -36,6 +35,7 @@
           <option *ngFor="let role of listOfRole">{{role}}</option>
         </select>
         <br>
+
 
         <div class="bottom">
           <input type="submit" class="btn btn-danger" value="Login"

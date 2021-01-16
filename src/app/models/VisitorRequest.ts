@@ -7,4 +7,5 @@ export class VisitorRequest {
   odc: [];
   status: string;
   managerEmpID: string;
+  visitorRequestId:number
 }

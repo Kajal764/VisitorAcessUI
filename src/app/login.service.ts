@@ -7,8 +7,7 @@ import {User} from './models/User';
   providedIn: 'root'
 })
 export class LoginService {
-  baseurl = 'http://localhost:8080/user/';
-
+  baseurl = 'http://localhost:8080/visitor/user/';
 
   constructor(private http: HttpClient) {
   }
