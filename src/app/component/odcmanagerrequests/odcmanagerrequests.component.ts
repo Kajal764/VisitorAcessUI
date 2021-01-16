@@ -20,7 +20,8 @@ export class OdcmanagerrequestsComponent implements OnInit {
   public AcceptedByManager = 'Accepted By Manager';
 
   constructor(private userService: UserService,
-              private ngxNotificationService: NgxNotificationService) {
+              private ngxNotificationService: NgxNotificationService)
+               {
   }
 
   ngOnInit() {

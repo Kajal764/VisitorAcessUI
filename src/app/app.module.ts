@@ -24,6 +24,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxNotificationComponent} from 'ngx-notification';
 import {GridModule} from '@syncfusion/ej2-angular-grids';
 import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
+import { AssetRequestsComponent } from './component/asset-requests/asset-requests.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
     AdminNavbarComponent,
     Time24to12Format,
     ConfirmationPopupComponent,
-    NgxNotificationComponent
+    NgxNotificationComponent,
+    AssetRequestsComponent
 
   ],
   imports: [

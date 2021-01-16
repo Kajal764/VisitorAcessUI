@@ -1,0 +1,70 @@
+<app-odcmanager></app-odcmanager>
+
+<lib-ngx-notification></lib-ngx-notification>
+
+<div class="d-flex justify-content-center">
+  <div *ngIf="requestsPresent==false">
+    <div class="d-flex flex-column">
+      <div class="p-2"><img class="image" src="../../../assets/download.png" class="image"></div>
+      <div class="text">{{message}}</div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="requestsPresent==true" class="d-flex justify-content-center">
+
+  <div style="padding-bottom: 20px">
+    <div class="row">
+      <div class="col-7" style="color: navy;font-weight: bold;font-size: 150%;font-family: Roboto">Visitor access
+        request
+      </div>
+    </div>
+    <div style="margin-top: 20px">
+      <button type="button"
+              style="margin-right: 20px" (click)="approve()"
+              class="btn btn-success">Approve
+      </button>
+      <button type="button" (click)="reject()"
+              class="btn btn-danger">Reject
+      </button>
+    </div>
+    <div style="padding-top: 20px;font-family: Roboto">
+      <table class="table table-hover table-bordered ">
+        <thead class="thead-light">
+        <tr>
+          <th>
+            <input class="form-check-input" type="checkbox" (click)="acceptAll($event)"
+                   style="margin-left: 1%;">
+            <span style="margin-left: 40px">Select</span>
+          </th>
+          <th scope="col">Serial Number</th>
+          <th scope="col">Asset Model</th>
+          <th scope="col">Asset Type</th>
+          <th scope="col">Employee ID</th>
+          <th scope="col">Requested Date</th>
+          <th scope="col">ODC Name</th>
+          <th scope="col">Reason</th>
+          <th scope="col">Status</th>
+        </tr>
+        </thead>
+        <tbody style="font-family: Roboto">
+        <tr *ngFor="let request of assetRequest">
+          <input class="form-check-input" type="checkbox"
+                 [checked]="Accept"
+                 (change)="selectedForApproval($event,request)"
+                 style="margin-left: 3.5%;margin-top: 1%">
+                 <td> {{request.serialNumber}}</td>
+                 <td>{{request.name}}</td>
+                 <td>{{request.type}}</td>
+                 <td>{{request.empId}}</td>
+                 <td>{{request.dateAndTime}}</td>
+                 <td>{{request.odcName}}</td>
+                 <td>{{request.reason}}</td>
+          <td class="btn-link" *ngIf="request.status==AcceptedByManager">Pending Approval</td>
+          <td class="btn-link" *ngIf="request.status!=AcceptedByManager">{{request.status}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
