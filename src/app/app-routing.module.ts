@@ -12,8 +12,10 @@ import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
 import {ViewodcmanagersComponent} from './component/viewodcmanagers/viewodcmanagers.component';
 import {OdcmanagerrequestsComponent} from './component/odcmanagerrequests/odcmanagerrequests.component';
+import { AssetsmanagementComponent } from './assetsmanagement/assetsmanagement.component';
 import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
 import { AssetRequestsComponent } from './component/asset-requests/asset-requests.component';
+
 
 const routes: Routes = [
   {
@@ -79,6 +81,10 @@ const routes: Routes = [
   {
     path: 'assetRequests',
     component: AssetRequestsComponent
+  },
+  {
+    path:'assetmanagement',
+    component:AssetsmanagementComponent
   }
 ];
 

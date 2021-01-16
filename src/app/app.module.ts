@@ -22,9 +22,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmationPopupComponent} from './component/confirmation-popup/confirmation-popup.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxNotificationComponent} from 'ngx-notification';
-import {GridModule} from '@syncfusion/ej2-angular-grids';
+
+import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { AssetsmanagementComponent } from './assetsmanagement/assetsmanagement.component';
+
 import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
 import { AssetRequestsComponent } from './component/asset-requests/asset-requests.component';
+
 
 
 @NgModule({
@@ -46,8 +50,11 @@ import { AssetRequestsComponent } from './component/asset-requests/asset-request
     AdminNavbarComponent,
     Time24to12Format,
     ConfirmationPopupComponent,
+
     NgxNotificationComponent,
-    AssetRequestsComponent
+    AssetRequestsComponent,
+    AssetsmanagementComponent
+    
 
   ],
   imports: [

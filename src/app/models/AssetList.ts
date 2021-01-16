@@ -1,3 +1,4 @@
+
 export class AssetList {
     serialNumber :string;
 	name :string;
