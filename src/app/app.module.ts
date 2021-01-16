@@ -24,6 +24,7 @@ import {ConfirmationPopupComponent} from './component/confirmation-popup/confirm
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxNotificationComponent} from 'ngx-notification';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { AssetsmanagementComponent } from './assetsmanagement/assetsmanagement.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { GridModule } from '@syncfusion/ej2-angular-grids';
     AdminNavbarComponent,
     Time24to12Format,
     ConfirmationPopupComponent,
-    NgxNotificationComponent
+    NgxNotificationComponent,
+    AssetsmanagementComponent
     
   ],
   imports: [

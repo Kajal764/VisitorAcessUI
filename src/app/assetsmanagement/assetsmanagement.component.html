@@ -1,0 +1,130 @@
+
+<div *ngIf="isEmployee===false">
+    <app-manager></app-manager>
+  </div>
+  
+  <div *ngIf="isEmployee===true">
+    <app-employeeprofile></app-employeeprofile>
+  </div>
+  
+  <div *ngIf="!success"  style="margin-bottom: 50px;">
+    <div align="center">
+      <div class="row-mt-2">
+        <div class="col-md-6">
+          <form #request="ngForm" autocomplete="off" (ngSubmit)="addAsset()" class="box">
+            <div class="container">
+              <h3>Please fill in this form to raise request to add assets</h3>
+              <hr>
+              <div class="form-group" align="left">
+                <label for="serialNumber"><b>Serial Number</b></label>
+                <input type="text" placeholder="Enter Asset Serial Number" class="form-control" name="serialNumber"
+                       id="serialNumber" required [(ngModel)]="asset.serialNumber" #SerialNumber="ngModel"
+                       pattern="[0-9A-Z]*" [class.is-invalid]="SerialNumber.touched && SerialNumber.invalid"
+                        >
+                <div *ngIf="SerialNumber.touched && SerialNumber.invalid">
+                  <span *ngIf="SerialNumber.errors.required" style="color:red">Serial Number is required</span>
+                  <span *ngIf="SerialNumber.errors.pattern" style="color:red">Invalid format</span>
+                  
+                  
+                </div>
+              </div>
+              <div class="form-group" align="left">
+                <label for="name"><b>Asset Model</b></label>
+                <input type="text" placeholder="Enter Asset Model" class="form-control" name="name"
+                       id="name" required [(ngModel)]="asset.name" #name="ngModel"
+                       pattern="[0-9A-Z]*" [class.is-invalid]="name.touched && name.invalid" 
+                       >
+                <div *ngIf="name.touched && name.invalid">
+                  <span *ngIf="name.errors.required" style="color:red">Asset model is required</span>
+                  <span *ngIf="name.errors.pattern" style="color:red">Invalid format</span>
+                 
+                </div>
+              </div>
+              <div class="form-group" align="left">
+                <label for="type"><b>Asset Type</b></label>
+                <select type="text" required placeholder="Select Asset Type" class="form-control" name="type"
+                        id="type" [(ngModel)]="asset.type" #type="ngModel"
+                        [class.is-invalid]="type.touched && type.invalid">
+                  <option value=""disabled >Please select</option>
+                  <option value="mouse">Mouse</option>
+                  <option value="keyboard">Keyboard</option>
+                  <option value="laptop">Laptop</option>
+                  <option value="cpu">CPU</option>
+                  <option value="monitor">Monitor</option>
+                  <option value="other">Other</option>
+                </select>
+  
+                <div *ngIf="type.touched && type.invalid">
+                  <span *ngIf="type.errors.required" style="color:red">Asset type is required</span>
+                </div>
+              </div>
+
+              <div class="form-group" align="left">
+                <label for="empId"><b>Employee Id</b></label>
+                <input type="text" placeholder="Enter Employee Id" class="form-control" name="empId"
+                       id="empId" required [(ngModel)]="asset.empId" #empId="ngModel"
+                       pattern="[0-9]{7}" [class.is-invalid]="empId.touched && empId.invalid" 
+                       >
+                <div *ngIf="empId.touched && empId.invalid">
+                  <span *ngIf="empId.errors.required" style="color:red">Employee Id is required</span>
+                  <span *ngIf="empId.errors.pattern" style="color:red">Invalid format</span>
+                  <span *ngIf="empId.errors.minlength" style="color:red">ID should be Seven numbers
+                                      only</span>
+                  <span *ngIf="empId.errors.maxlength" style="color:red">ID should be Seven numbers
+                                      only</span>
+                </div>
+              </div>
+
+              <!-- <div class="form-group" align="left">
+                <label for="startDate"><b> Date</b></label>
+                <input type="date" min="{{currentDate|date:'yyyy-MM-dd'}}" placeholder="Enter Date" class="form-control" name="startDate"
+                       id="startDate" required [(ngModel)]="visitorRequest.startDate" #StartDate="ngModel"
+                       [class.is-invalid]="StartDate.touched && StartDate.invalid"/>
+                <div *ngIf="StartDate.touched && StartDate.invalid">
+                  <span *ngIf="StartDate.errors.required" style="color:red">Date is required</span>
+                </div>
+              </div> -->
+
+
+              <div class="form-group" align="left">
+                <label for="odcName"><b>ODC Name</b></label>
+                <select type="text" required placeholder="Select ODC" class="form-control" name="odcName"
+                        id="odcName" [(ngModel)]="asset.odcName" #Odc="ngModel"
+                        [class.is-invalid]="Odc.touched && Odc.invalid">
+                  <option value="" disabled>Please select</option>
+                  <option *ngFor='let odc of odcs' [value]="odc.odcName">{{odc.odcName}}</option>
+                </select>
+  
+                <div *ngIf="Odc.touched && Odc.invalid">
+                  <span *ngIf="Odc.errors.required" style="color:red">ODC is required</span>
+                </div>
+              </div>
+
+              <div class="form-group" align="left">
+                <label for="reason"><b>Reason</b></label>
+                <select type="text" required placeholder="Choose Reason" class="form-control" name="reason"
+                        id="reason" [(ngModel)]="asset.reason" #reason="ngModel"
+                        [class.is-invalid]="reason.touched && reason.invalid">
+                  <option value="" disabled >Please Choose</option>
+                  <option value="damaged" >Damaged</option>
+                  <option value="newAsset" >New Asset</option>
+                </select>
+  
+                <div *ngIf="reason.touched && reason.invalid">
+                  <span *ngIf="reason.errors.required" style="color:red">Reason is required</span>
+                </div>
+              </div>
+  
+              <input type="submit" value="Add Asset" class="btn btn-success btn-block"
+                     [disabled]="request.invalid">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="success">
+    <p align="center">Request Raised Successfully!!! Pending for approval</p>
+  </div>
+  
