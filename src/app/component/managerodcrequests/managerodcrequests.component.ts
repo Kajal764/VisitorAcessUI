@@ -43,6 +43,7 @@ export class ManagerodcrequestsComponent implements OnInit {
     this.userService.approveOrRejectOdcRequestMultiple(this.requests).subscribe((data) => {
         this.success = data;
         this.requests = [];
+        this.Accept = false;
       },
       (error) => console.log(error));
   }
@@ -55,6 +56,7 @@ export class ManagerodcrequestsComponent implements OnInit {
     this.userService.approveOrRejectOdcRequestMultiple(this.requests).subscribe((data) => {
         this.success = data;
         this.requests = [];
+        this.Accept = false;
       },
       (error) => console.log(error));
   }
@@ -73,6 +75,8 @@ export class ManagerodcrequestsComponent implements OnInit {
     if (event.target.checked === true) {
       this.Accept = true;
       this.requests = this.visitorRequests;
+      this.requests = this.requests.filter(m => m.status !== this.AcceptedByManager);
+      this.requests = this.requests.filter(m => m.status !== this.RejectedByManager);
     } else {
       this.Accept = false;
       this.requests = [];

@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
       this.selectRole = this.lg.role;
       localStorage.setItem('user', result.empId);
       localStorage.setItem('role', this.selectRole);
-      // localStorage.setItem('odc', result.odc);
       localStorage.setItem('managerName', result.managerName);
       if (result) {
         this.lg = result;

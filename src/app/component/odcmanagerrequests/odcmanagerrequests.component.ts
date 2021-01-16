@@ -70,11 +70,12 @@ export class OdcmanagerrequestsComponent implements OnInit {
     if (event.target.checked === true) {
       this.Accept = true;
       this.requests = this.odcRequests;
+      this.requests = this.requests.filter(m => m.status !== 'Approved');
+      this.requests = this.requests.filter(m => m.status !== 'Rejected');
     } else {
       this.Accept = false;
       this.requests = [];
     }
-    console.log(this.requests);
   }
 
   selectedForApproval(event, visitorRequests: VisitorRequest) {

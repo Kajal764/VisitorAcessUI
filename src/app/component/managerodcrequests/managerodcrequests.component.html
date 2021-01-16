@@ -59,7 +59,8 @@
           <td>{{request.endTime | time24to12Transform}}</td>
           <td class="btn-link" *ngIf="request.status===AcceptedByManager">Approved</td>
           <td class="btn-link" *ngIf="request.status===RejectedByManager">Rejected</td>
-          <td class="btn-link" *ngIf="request.status!=AcceptedByManager && RejectedByManager">{{request.status}}</td>
+          <td class="btn-link"
+              *ngIf="request.status!=AcceptedByManager && request.status!=RejectedByManager">{{request.status}}</td>
           <td>{{request.odc}}</td>
         </tr>
         </tbody>
