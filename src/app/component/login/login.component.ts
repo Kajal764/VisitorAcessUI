@@ -38,11 +38,13 @@ export class LoginComponent implements OnInit {
           this.lg.role.forEach(value => {
             if (value === this.selectRole) {
               if (value === 'Manager') {
-                this.router.navigate(['odc-request']);
+                this.router.navigate(['commonpage']);
               } else if (value === 'Employee') {
-                this.router.navigate(['raiseOdcRequest']);
+               // this.router.navigate(['raiseOdcRequest']);
+              
+               this.router.navigate(['commonpage'],this.selectRole);
               } else if (value === 'Odc-Manager') {
-                this.router.navigate(['odcManagerRequests']);
+                this.router.navigate(['commonpage']);
               } else if (value === 'Admin') {
                 this.router.navigate(['home-admin']);
               } else {

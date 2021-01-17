@@ -12,6 +12,7 @@ import { UserService } from '../service/user.service';
 export class AssetsmanagementComponent implements OnInit {
   odcs: ODCList[];
 asset:AssetList=new AssetList();
+addmore=false;
 
   constructor(private userService: UserService,
     private router: Router) { }
@@ -32,9 +33,13 @@ asset:AssetList=new AssetList();
         console.log(error);
       }
     );
+}
 
 
+
+addMore(){
+this.addmore=true;
+    
   }
-
-
+ 
 }
