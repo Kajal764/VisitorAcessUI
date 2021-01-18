@@ -1,13 +1,15 @@
 
 export class AssetList {
+	requestId:number;
     serialNumber :string;
 	name :string;
 	type :string;
 	empId :string;
-    dateAndTime :string;
 	odcName :string;
 	reason :string;
-	flag :string;
-	status :string;
-    dateOfApproval :string;
+	isCurrentOdc:boolean;
+	assetCondition :string;
+	fromDate :Date;
+	tillDate :Date;
+	status:string;
 }

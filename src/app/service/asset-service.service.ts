@@ -27,4 +27,12 @@ export class AssetServiceService {
     const body = JSON.stringify(assetRequest);
     return this.httpClient.post<boolean>(this.baseurl + '/approveOrRejectRequest', body, this.options);
   }
+  getAssetList(empId:string): Observable<AssetList[]> {
+    const url = this.baseurl + '/view-assetList/'+empId;
+    return this.httpClient.get<AssetList[]>(url);
+  }
+  getAssetListForOdcManager(empId:string): Observable<AssetList[]> {
+    const url = this.baseurl + '/assetList/'+empId;
+    return this.httpClient.get<AssetList[]>(url);
+  }
 }

@@ -19,7 +19,7 @@
               <div class="form-group" align="left">
                 <label for="serialNumber"><b>Serial Number</b></label>
                 <input type="text" placeholder="Enter Asset Serial Number" class="form-control" name="serialNumber"
-                       id="serialNumber" required [(ngModel)]="asset.serialNumber" #SerialNumber="ngModel"
+                       id="serialNumber" required [(ngModel)]="asset.assetInfos.serialNumber" #SerialNumber="ngModel"
                        pattern="[0-9A-Za-z]*" [class.is-invalid]="SerialNumber.touched && SerialNumber.invalid"
                         >
                 <div *ngIf="SerialNumber.touched && SerialNumber.invalid">
@@ -32,7 +32,7 @@
               <div class="form-group" align="left">
                 <label for="name"><b>Asset Model</b></label>
                 <input type="text" placeholder="Enter Asset Model" class="form-control" name="name"
-                       id="name" required [(ngModel)]="asset.name" #name="ngModel"
+                       id="name" required [(ngModel)]="asset.assetInfos.name" #name="ngModel"
                        pattern="[0-9A-Za-z]*" [class.is-invalid]="name.touched && name.invalid" 
                        >
                 <div *ngIf="name.touched && name.invalid">

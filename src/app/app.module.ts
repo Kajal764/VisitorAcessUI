@@ -29,6 +29,7 @@ import { AssetRequestsComponent } from './component/asset-requests/asset-request
 import { AssetmanagementnavComponent } from './assetmanagementnav/assetmanagementnav.component';
 import { CommonpageComponent } from './commonpage/commonpage.component';
 import { ViewassetstatusComponent } from './viewassetstatus/viewassetstatus.component';
+import { ViewallassetsComponent } from './component/viewallassets/viewallassets.component';
 
 
 
@@ -56,7 +57,8 @@ import { ViewassetstatusComponent } from './viewassetstatus/viewassetstatus.comp
     AssetsmanagementComponent,
     AssetmanagementnavComponent,
     CommonpageComponent,
-    ViewassetstatusComponent
+    ViewassetstatusComponent,
+    ViewallassetsComponent
     
   ],
   imports: [

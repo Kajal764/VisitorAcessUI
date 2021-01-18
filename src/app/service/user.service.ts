@@ -6,6 +6,7 @@ import {VisitorRequest} from '../models/VisitorRequest';
 import {ODCList} from '../models/ODCList';
 import {User} from '../models/User';
 import { AssetList } from '../models/AssetList';
+import { AssetDto } from '../models/AssetDto';
 
 
 @Injectable({
@@ -131,6 +132,7 @@ export class UserService {
 
   addAsset(asset:AssetList):Observable<AssetList>{
     const body = JSON.stringify(asset);
+    alert(JSON.stringify(asset))
     console.log('body ');
     console.log(body);
     const options = {
