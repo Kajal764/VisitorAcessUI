@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
               } else if (value === 'Odc-Manager') {
                 this.router.navigate(['commonpage']);
               } else if (value === 'Admin') {
-                this.router.navigate(['home-admin']);
+                this.router.navigate(['commonpage']);
               } else {
                 this.message = 'Login Failed!!!Account is not activated....';
                 this.res = true;

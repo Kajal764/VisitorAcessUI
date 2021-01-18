@@ -8,9 +8,11 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class AssetmanagementnavComponent implements OnInit {
 
+  role:string;
   constructor(private router:Router) { }
 
   ngOnInit() {
+    this.role = localStorage.getItem('role');
   }
   logout() {
     localStorage.removeItem('user');

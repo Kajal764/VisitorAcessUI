@@ -4,21 +4,36 @@ font-family: Roboto">
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a class="nav-link" style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;font-family: Roboto"
+      <li  class="nav-item ">
+        <a *ngIf="role==='Employee'" class="nav-link" style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;font-family: Roboto"
            href="assetmanagementnav">Employee</a>
+           <a *ngIf="role==='Manager'" class="nav-link" style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;font-family: Roboto"
+           href="assetmanagementnav">Manager</a>
+           <a *ngIf="role==='Odc-Manager'" class="nav-link" style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;font-family: Roboto"
+           href="assetmanagementnav">ODC Manager</a>
+           <a *ngIf="role==='Admin'" class="nav-link" style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;font-family: Roboto"
+           href="assetmanagementnav">Admin</a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" style="color: white" routerLinkActive="active" routerLink="/assetmanagement" ><i
           class="fa fa-ticket" aria-hidden="true"></i>Add Asset</a>
       </li>
-
       <li class="nav-item ">
-        <a class="nav-link" routerLinkActive="active" routerLink="/viewAssetList"
+        <a *ngIf="role==='Employee' || role==='Manager'"class="nav-link" routerLinkActive="active" routerLink="/viewAssetList"
            style="color: white;font-family: Roboto" ><i class="fa fa-eye" aria-hidden="true"></i>
           View Asset Status
+        </a>
+        <a *ngIf="role==='Odc-Manager' || role==='Admin'"class="nav-link" routerLinkActive="active" routerLink="/assetRequests"
+           style="color: white;font-family: Roboto" ><i class="fa fa-eye" aria-hidden="true"></i>
+          View Asset Requests
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a *ngIf="role==='Odc-Manager' || role==='Admin'"class="nav-link" routerLinkActive="active" routerLink="/viewAssets"
+           style="color: white;font-family: Roboto" ><i class="fa fa-eye" aria-hidden="true"></i>
+          View All Asset 
         </a>
       </li>
     </ul>

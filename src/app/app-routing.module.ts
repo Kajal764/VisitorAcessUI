@@ -19,6 +19,7 @@ import { AssetmanagementnavComponent } from './assetmanagementnav/assetmanagemen
 import { CommonpageComponent } from './commonpage/commonpage.component';
 import { ViewassetstatusComponent } from './viewassetstatus/viewassetstatus.component';
 import { ViewallassetsComponent } from './component/viewallassets/viewallassets.component';
+import { ViewassetlistComponent } from './component/viewassetlist/viewassetlist.component';
 
 
 
@@ -106,6 +107,10 @@ const routes: Routes = [
   {
     path:'viewAssetList',
     component:ViewallassetsComponent
+  },
+  {
+    path:'viewAssets',
+    component:ViewassetlistComponent
   }
 ];
 

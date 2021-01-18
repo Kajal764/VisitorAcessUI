@@ -25,7 +25,7 @@ export class AssetRequestsComponent implements OnInit {
     private ngxNotificationService: NgxNotificationService) { }
 
   ngOnInit() {
-    this.assetService.getPendingAssetRequest()
+    this.assetService.getPendingAssetRequest(localStorage.getItem('user'))
       .subscribe((data) => {
         this.assetRequest = data;
         this.requestsPresent = true;

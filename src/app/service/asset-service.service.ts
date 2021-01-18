@@ -19,8 +19,8 @@ export class AssetServiceService {
     })
   };
 
-  getPendingAssetRequest(): Observable<AssetList[]> {
-    const url = this.baseurl + '/pendingAssetRequest';
+  getPendingAssetRequest(empId:string): Observable<AssetList[]> {
+    const url = this.baseurl + '/pendingAssetRequest/'+empId;
     return this.httpClient.get<AssetList[]>(url);
   }
 
