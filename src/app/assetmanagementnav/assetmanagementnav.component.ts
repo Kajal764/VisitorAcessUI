@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-assetmanagementnav',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssetmanagementnavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
+  }
+  logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('role');
+    this.router.navigate(['/login']);
   }
 
 }

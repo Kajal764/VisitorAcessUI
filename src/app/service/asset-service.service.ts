@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AssetList } from '../models/AssetList';
 import {Observable, throwError} from 'rxjs';
+import { AssetData } from '../models/AssetData';
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +28,9 @@ export class AssetServiceService {
     const body = JSON.stringify(assetRequest);
     return this.httpClient.post<boolean>(this.baseurl + '/approveOrRejectRequest', body, this.options);
   }
-  getAssetList(empId:string): Observable<AssetList[]> {
+  getAssetList(empId:string): Observable<AssetData[]> {
     const url = this.baseurl + '/view-assetList/'+empId;
-    return this.httpClient.get<AssetList[]>(url);
+    return this.httpClient.get<AssetData[]>(url);
   }
   getAssetListForOdcManager(empId:string): Observable<AssetList[]> {
     const url = this.baseurl + '/assetList/'+empId;

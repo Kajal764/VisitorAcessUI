@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-commonpage',
@@ -13,7 +13,7 @@ export class CommonpageComponent implements OnInit {
   isOdcManager=false;
   isAdmin=false;
 
-  constructor(private activatedRoute:ActivatedRoute) { }
+  constructor(private activatedRoute:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
   //this.selectRole= this.activatedRoute.snapshot.params.selectRole;
@@ -31,6 +31,10 @@ this.isAdmin=true;
 
   }
 
-
+  logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('role');
+    this.router.navigate(['/login']);
+  }
 
 }

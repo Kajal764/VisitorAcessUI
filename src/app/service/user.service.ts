@@ -7,6 +7,7 @@ import {ODCList} from '../models/ODCList';
 import {User} from '../models/User';
 import { AssetList } from '../models/AssetList';
 import { AssetDto } from '../models/AssetDto';
+import { AssetData } from '../models/AssetData';
 
 
 @Injectable({
@@ -130,9 +131,9 @@ export class UserService {
     return result;
   }
 
-  addAsset(asset:AssetList):Observable<AssetList>{
+  addAsset(asset:AssetData):Observable<AssetData>{
     const body = JSON.stringify(asset);
-    alert(JSON.stringify(asset))
+   
     console.log('body ');
     console.log(body);
     const options = {
