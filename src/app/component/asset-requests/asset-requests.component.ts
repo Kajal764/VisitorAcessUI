@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxNotificationService } from 'ngx-notification';
 import { AssetList } from 'src/app/models/AssetList';
-import { AssetServiceService } from 'src/app/service/asset-service.service';
+import { AssetService } from 'src/app/service/asset.service';
 
 @Component({
   selector: 'app-asset-requests',
@@ -16,13 +16,13 @@ export class AssetRequestsComponent implements OnInit {
   public isPendingRequest: boolean;
   private isAdmin: boolean;
   Accept = false;
-  requests: any = []; 
+  requests: any = [];
   requestsPresent:boolean;
   message :string;
   success:boolean;
 
-  constructor(private assetService: AssetServiceService, private router: Router,
-    private ngxNotificationService: NgxNotificationService) { }
+  constructor(private assetService: AssetService, private router: Router,
+              private ngxNotificationService: NgxNotificationService) { }
 
   ngOnInit() {
     this.assetService.getPendingAssetRequest(localStorage.getItem('user'))

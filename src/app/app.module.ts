@@ -31,7 +31,7 @@ import { CommonpageComponent } from './commonpage/commonpage.component';
 import { ViewassetstatusComponent } from './viewassetstatus/viewassetstatus.component';
 import { ViewallassetsComponent } from './component/viewallassets/viewallassets.component';
 import { ViewassetlistComponent } from './component/viewassetlist/viewassetlist.component';
-
+import {AssetHistoryComponent} from './asset-history/asset-history.component';
 
 
 @NgModule({
@@ -60,8 +60,9 @@ import { ViewassetlistComponent } from './component/viewassetlist/viewassetlist.
     CommonpageComponent,
     ViewassetstatusComponent,
     ViewallassetsComponent,
-    ViewassetlistComponent
-    
+    ViewassetlistComponent,
+    AssetHistoryComponent
+
   ],
   imports: [
     BrowserModule,

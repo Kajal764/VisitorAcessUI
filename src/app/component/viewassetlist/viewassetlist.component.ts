@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AssetList } from 'src/app/models/AssetList';
-import { AssetServiceService } from 'src/app/service/asset-service.service';
+import { AssetService } from 'src/app/service/asset.service';
 
 @Component({
   selector: 'app-viewassetlist',
@@ -11,7 +11,7 @@ export class ViewassetlistComponent implements OnInit {
 
   assetList:AssetList[];
   isListPresent:boolean=true;
-  constructor(private assetService:AssetServiceService) { }
+  constructor(private assetService:AssetService) { }
 
   ngOnInit() {
     this.assetService.getAssetListForOdcManager(localStorage.getItem('user'))

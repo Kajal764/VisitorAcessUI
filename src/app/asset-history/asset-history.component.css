@@ -1,0 +1,36 @@
+
+.card{
+  margin: 20px;
+}
+
+.card:hover {
+  border: 1px solid lightgrey;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.laptop{
+  width: 115%;
+  margin: 20px;
+  margin-top: 40px;
+}
+
+.keyboard{
+  margin: 20px;
+  width: 115%;
+  height: 35%;
+  margin-top: 55px;
+}
+
+.monitor{
+  width: 115%;
+  margin: 20px;
+  height: 50%;
+  margin-top: 55px;
+}
+.cpu{
+  width: 115%;
+  margin: 20px;
+  height: 60%;
+  margin-top: 55px;
+}
+

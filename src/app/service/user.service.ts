@@ -5,9 +5,9 @@ import {catchError} from 'rxjs/operators';
 import {VisitorRequest} from '../models/VisitorRequest';
 import {ODCList} from '../models/ODCList';
 import {User} from '../models/User';
-import { AssetList } from '../models/AssetList';
-import { AssetDto } from '../models/AssetDto';
-import { AssetData } from '../models/AssetData';
+import {AssetList} from '../models/AssetList';
+import {AssetDto} from '../models/AssetDto';
+import {AssetData} from '../models/AssetData';
 
 
 @Injectable({
@@ -60,7 +60,7 @@ export class UserService {
   getAllODC(): Observable<ODCList[]> {
 
     return this.httpClient.get<ODCList[]>('http://localhost:8080/visitor/user/odcList');
-}
+  }
 
   getOdcManagers(odcName: string): Observable<User[]> {
     return this.httpClient.get<User[]>(this.baseurl + '/viewOdcManagers/' + odcName);
@@ -131,17 +131,15 @@ export class UserService {
     return result;
   }
 
-  addAsset(asset:AssetData):Observable<AssetData>{
+  addAsset(asset: AssetData): Observable<AssetData> {
     const body = JSON.stringify(asset);
-   
-    console.log('body ');
-    console.log(body);
     const options = {
       headers: new HttpHeaders({
         'content-Type': 'application/json'
       })
     };
-    return this.httpClient.post<AssetList>('http://localhost:8080/visitor/asset/addAsset', body, options);
+    return this.httpClient.post<AssetData>
+    ('http://localhost:8080/visitor/asset/addAsset', body, options);
   }
 
 }

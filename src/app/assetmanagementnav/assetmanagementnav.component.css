@@ -1,0 +1,21 @@
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.active {
+  color: #8289C4 !important;
+  background-color: white !important;
+  border-radius: 5px;
+  margin: 0px;
+  border: #8289C4 1px solid;
+  position: relative;
+}
+
+a {
+  margin-left: 10px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
