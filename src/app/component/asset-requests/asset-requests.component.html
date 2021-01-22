@@ -1,4 +1,3 @@
-<!-- <app-odcmanager></app-odcmanager> -->
 <app-assetmanagementnav></app-assetmanagementnav>
 <lib-ngx-notification></lib-ngx-notification>
 
@@ -6,7 +5,7 @@
   <div *ngIf="requestsPresent==false">
     <div class="d-flex flex-column">
       <div class="p-2"><img class="image" src="../../../assets/download.png" class="image"></div>
-      <div class="text">{{message}}</div>
+      <div class="text">No Pending Request !!!</div>
     </div>
   </div>
 </div>
@@ -53,13 +52,13 @@
                  [checked]="Accept"
                  (change)="selectedForApproval($event,request)"
                  style="margin-left: 3.5%;margin-top: 1%">
-                 <td> {{request.serialNumber}}</td>
-                 <td>{{request.name}}</td>
-                 <td>{{request.type}}</td>
-                 <td>{{request.empId}}</td>
-                 <td>{{request.dateAndTime}}</td>
-                 <td>{{request.odcName}}</td>
-                 <td>{{request.reason}}</td>
+          <td> {{request.serialNumber}}</td>
+          <td>{{request.name}}</td>
+          <td>{{request.type}}</td>
+          <td>{{request.empId}}</td>
+          <td>{{request.dateAndTime}}</td>
+          <td>{{request.odcName}}</td>
+          <td>{{request.reason}}</td>
           <td class="btn-link" *ngIf="request.status==AcceptedByManager">Pending Approval</td>
           <td class="btn-link" *ngIf="request.status!=AcceptedByManager">{{request.status}}</td>
         </tr>

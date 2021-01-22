@@ -1,4 +1,15 @@
 <app-assetmanagementnav></app-assetmanagementnav>
+
+<div class="d-flex justify-content-center">
+  <div *ngIf="searchDataFound===true">
+    <div class="d-flex flex-column">
+      <div class="p-2"><img class="image" src="../../../assets/download.png" class="image"></div>
+      <div class="text">Asset Not Found With {{search}} Serial Number !!!</div>
+    </div>
+  </div>
+</div>
+
+
 <div class="d-flex justify-content-center" style="font-family: poppins">
   <div>
     <div *ngFor="let assetData of assetList">

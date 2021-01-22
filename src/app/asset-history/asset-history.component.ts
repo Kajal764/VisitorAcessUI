@@ -1,9 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AssetData} from '../models/AssetData';
 import {AssetService} from '../service/asset.service';
-import {InteractionService} from '../service/interaction.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AssetList} from '../models/AssetList';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-asset-history',
@@ -22,21 +20,27 @@ export class AssetHistoryComponent implements OnInit {
   public isTypeOther = 'other';
   @Input() public search: string;
   mySubscription: any;
+  searchDataFound = false;
 
   constructor(private assetService: AssetService,
-              private interactionService: InteractionService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
 
+    // tslint:disable-next-line:only-arrow-functions
+    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+      return false;
+    };
+
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+      }
+    });
   }
 
   ngOnInit(): void {
     this.search = this.route.snapshot.params.value;
-    // this.interactionService.searchData$
-    //   .subscribe(data => {
-    //     this.search = data;
-    //     console.log(this.search);
-    //     this.getSearchList(data);
-    //   });
     this.getSearchList(this.search);
   }
 
@@ -44,7 +48,9 @@ export class AssetHistoryComponent implements OnInit {
     this.assetService.getSearchList(search)
       .subscribe(data => {
           this.assetList = data;
-          console.log(this.assetList);
+          if (this.assetList.length === 0) {
+            this.searchDataFound = true;
+          }
         },
         error => {
           this.message = error.error.message;

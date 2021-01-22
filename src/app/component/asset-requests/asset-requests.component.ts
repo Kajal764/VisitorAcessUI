@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgxNotificationService } from 'ngx-notification';
-import { AssetList } from 'src/app/models/AssetList';
-import { AssetService } from 'src/app/service/asset.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {NgxNotificationService} from 'ngx-notification';
+import {AssetList} from 'src/app/models/AssetList';
+import {AssetService} from 'src/app/service/asset.service';
 
 @Component({
   selector: 'app-asset-requests',
@@ -11,18 +11,20 @@ import { AssetService } from 'src/app/service/asset.service';
 })
 export class AssetRequestsComponent implements OnInit {
 
-  assetRequest:AssetList[];
+  assetRequest: AssetList[];
   public flag: boolean;
   public isPendingRequest: boolean;
   private isAdmin: boolean;
   Accept = false;
   requests: any = [];
-  requestsPresent:boolean;
-  message :string;
-  success:boolean;
+  requestsPresent: boolean;
+  // message = 'Asset Not Added !!!';
+  success: boolean;
+  private message: any;
 
   constructor(private assetService: AssetService, private router: Router,
-              private ngxNotificationService: NgxNotificationService) { }
+              private ngxNotificationService: NgxNotificationService) {
+  }
 
   ngOnInit() {
     this.assetService.getPendingAssetRequest(localStorage.getItem('user'))
@@ -31,7 +33,6 @@ export class AssetRequestsComponent implements OnInit {
         this.requestsPresent = true;
         if (this.assetRequest.length === 0) {
           this.requestsPresent = false;
-          this.message = 'No Pending Request !!!';
         }
       }, (error) => {
         this.message = error.error.message;

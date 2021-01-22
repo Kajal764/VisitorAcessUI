@@ -1,5 +1,21 @@
 
-.card{
+.active {
+  color: #8289C4 !important;
+  background-color: white !important;
+  border-radius: 5px;
+  margin: 0px;
+  border: #8289C4 1px solid;
+  position: relative;
+}
+
+a {
+  margin-left: 10px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.card {
   margin: 20px;
 }
 
@@ -8,29 +24,59 @@
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.laptop{
+.laptop {
   width: 115%;
   margin: 20px;
   margin-top: 40px;
 }
 
-.keyboard{
+.keyboard {
   margin: 20px;
   width: 115%;
   height: 35%;
   margin-top: 55px;
 }
 
-.monitor{
+.monitor {
   width: 115%;
   margin: 20px;
   height: 50%;
   margin-top: 55px;
 }
-.cpu{
+
+.cpu {
   width: 115%;
   margin: 20px;
   height: 60%;
   margin-top: 55px;
 }
 
+.active {
+  color: #8289C4 !important;
+  background-color: white !important;
+  border-radius: 5px;
+  margin: 0px;
+  border: #8289C4 1px solid;
+  position: relative;
+}
+
+a {
+  margin-left: 10px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.image {
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.text {
+  font-family: Roboto;
+  color: navy;
+  margin: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 3px 2px lightgray;
+}
