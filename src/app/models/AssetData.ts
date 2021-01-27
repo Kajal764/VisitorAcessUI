@@ -1,3 +1,4 @@
+
 import { AssetInfo } from "./AssetInfo";
 
 export class AssetData{
@@ -16,3 +17,6 @@ export class AssetData{
     assetInfos:AssetInfo[];
     // assetInfos:Array<AssetInfo>=[];
 }
+
+
+

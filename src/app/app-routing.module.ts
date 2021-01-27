@@ -12,14 +12,21 @@ import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
 import {ViewodcmanagersComponent} from './component/viewodcmanagers/viewodcmanagers.component';
 import {OdcmanagerrequestsComponent} from './component/odcmanagerrequests/odcmanagerrequests.component';
-import { AssetsmanagementComponent } from './assetsmanagement/assetsmanagement.component';
+import {AssetsmanagementComponent} from './assetsmanagement/assetsmanagement.component';
 import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
-import { AssetRequestsComponent } from './component/asset-requests/asset-requests.component';
-import { AssetmanagementnavComponent } from './assetmanagementnav/assetmanagementnav.component';
-import { CommonpageComponent } from './commonpage/commonpage.component';
 
-import { ViewallassetsComponent } from './component/viewallassets/viewallassets.component';
-import { ViewassetlistComponent } from './component/viewassetlist/viewassetlist.component';
+
+
+
+
+
+import {AssetRequestsComponent} from './component/asset-requests/asset-requests.component';
+import {AssetmanagementnavComponent} from './assetmanagementnav/assetmanagementnav.component';
+import {CommonpageComponent} from './commonpage/commonpage.component';
+
+import {ViewallassetsComponent} from './component/viewallassets/viewallassets.component';
+import {ViewassetlistComponent} from './component/viewassetlist/viewassetlist.component';
+import {AssetHistoryComponent} from './asset-history/asset-history.component';
 
 
 
@@ -89,26 +96,34 @@ const routes: Routes = [
     component: AssetRequestsComponent
   },
   {
-    path:'assetmanagement',
-    component:AssetsmanagementComponent
+    path: 'assetmanagement',
+    component: AssetsmanagementComponent
   },
   {
-    path:'assetmanagementnav',
-    component:AssetmanagementnavComponent
+    path: 'assetmanagementnav',
+    component: AssetmanagementnavComponent
   },
   {
-    path:'commonpage',
-    component:CommonpageComponent
+    path: 'commonpage',
+    component: CommonpageComponent
+  },
+ 
+
+
+
+  {
+    path: 'viewAssetList',
+    component: ViewallassetsComponent
   },
 
   {
-    path:'viewAssetList',
-    component:ViewallassetsComponent
+    path: 'viewAssets',
+    component: ViewassetlistComponent
   },
   {
-    path:'viewAssets',
-    component:ViewassetlistComponent
-  }
+    path: 'asset-history/:value',
+    component: AssetHistoryComponent
+  },
 ];
 
 @NgModule({

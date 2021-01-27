@@ -1,0 +1,62 @@
+<app-assetmanagementnav></app-assetmanagementnav>
+
+<div class="d-flex justify-content-center">
+  <div *ngIf="searchDataFound===true">
+    <div class="d-flex flex-column">
+      <div class="p-2"><img class="image" src="../../../assets/download.png" class="image"></div>
+      <div class="text">Asset Not Found With {{search}} Serial Number !!!</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-center" style="font-family: poppins">
+  <div>
+    <div *ngFor="let assetData of assetList">
+      <div class="card mb-3" style="max-width: 700px;">
+        <div class="row g-0">
+          <div class="col-md-3" style="margin-right: 20px">
+            <img *ngIf="assetData.type===isTypeLaptop" src="../../../assets/laptop.png" class="laptop" alt="...">
+            <img *ngIf="assetData.type==isTypeKeyboard" src="../../../assets/key1.jpg" class="keyboard" alt="...">
+            <img *ngIf="assetData.type==isTypeMonitor" src="../../../assets/monitor.png" class="monitor" alt="...">
+            <img *ngIf="assetData.type==isTypeMouse" src="../../../assets/mouse.jpg" class="monitor" alt="...">
+            <img *ngIf="assetData.type==isTypeCpu" src="../../../assets/cpu-1.jpg" class="cpu" alt="...">
+            <span *ngIf="assetData.type==isTypeOther" class="cpu" alt="...">Other</span>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Serial no - {{assetData.serialNumber}}</h5>
+              <span>Employee Id <small style="font-size: 15px"
+                                       class="text-muted"> - {{assetData.empId}}</small></span><br>
+              <span>{{assetData.type}} Model <small style="font-size: 15px"
+                                                    class="text-muted">- {{assetData.name}}</small></span><br>
+
+              <span>{{assetData.type}} is <small style="font-size: 15px"
+                                                 class="text-muted">{{assetData.assetCondition}}</small></span><br>
+              <span *ngIf="assetData.currentOdc===false">{{assetData.type}} were in <small style="font-size: 15px"
+                                                                                           class="text-muted"> {{assetData.odcName}}
+                 </small>odc</span>
+              <span *ngIf="assetData.currentOdc===true && assetData.fromDate!==null">{{assetData.type}} is in <small
+                style="font-size: 15px"
+                class="text-muted">{{assetData.odcName}}
+                </small>odc</span>
+
+              <span *ngIf="assetData.currentOdc===false"><br>For the period of <small style="font-size: 15px"
+                                                                                      class="text-muted"> - {{assetData.fromDate | date :'short'}}
+                <span style="font-weight: bold"> to </span> {{assetData.tillDate | date :'short'}}</small>
+              </span>
+              <span *ngIf="assetData.currentOdc===true && assetData.fromDate!==null"><br>For the period of <small
+                style="font-size: 15px"
+                class="text-muted"> - {{assetData.fromDate | date :'short'}}
+                <span style="font-weight: bold"> to </span> Current</small>
+              </span>
+              <span *ngIf="assetData.fromDate===null">To Add {{assetData.type}} in {{assetData.odcName}} Odc , request not approved !!!</span>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

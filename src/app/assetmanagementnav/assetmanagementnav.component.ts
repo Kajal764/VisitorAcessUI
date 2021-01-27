@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-assetmanagementnav',
@@ -8,16 +8,28 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class AssetmanagementnavComponent implements OnInit {
 
-  role:string;
-  constructor(private router:Router) { }
+
+  constructor(private router: Router) {
+  }
+
+  search: string;
+  role: string;
+  searchData: any;
 
   ngOnInit() {
     this.role = localStorage.getItem('role');
   }
+
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
+
+
+  redirectToSearch(value: string) {
+    this.router.navigate(['/asset-history', value]);
+  }
+
 
 }
