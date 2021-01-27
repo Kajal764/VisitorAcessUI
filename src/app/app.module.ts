@@ -28,7 +28,7 @@ import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
 import { AssetRequestsComponent } from './component/asset-requests/asset-requests.component';
 import { AssetmanagementnavComponent } from './assetmanagementnav/assetmanagementnav.component';
 import { CommonpageComponent } from './commonpage/commonpage.component';
-import { ViewassetstatusComponent } from './viewassetstatus/viewassetstatus.component';
+
 import { ViewallassetsComponent } from './component/viewallassets/viewallassets.component';
 import { ViewassetlistComponent } from './component/viewassetlist/viewassetlist.component';
 
@@ -58,7 +58,7 @@ import { ViewassetlistComponent } from './component/viewassetlist/viewassetlist.
     AssetsmanagementComponent,
     AssetmanagementnavComponent,
     CommonpageComponent,
-    ViewassetstatusComponent,
+    
     ViewallassetsComponent,
     ViewassetlistComponent
     

@@ -133,7 +133,7 @@ export class UserService {
 
   addAsset(asset:AssetData):Observable<AssetData>{
     const body = JSON.stringify(asset);
-   
+   alert(JSON.stringify(asset))
     console.log('body ');
     console.log(body);
     const options = {
@@ -141,7 +141,8 @@ export class UserService {
         'content-Type': 'application/json'
       })
     };
-    return this.httpClient.post<AssetList>('http://localhost:8080/visitor/asset/addAsset', body, options);
+    alert(JSON.stringify(asset))
+    return this.httpClient.post<AssetData>('http://localhost:8080/visitor/asset/addAsset', body, options);
   }
 
 }
