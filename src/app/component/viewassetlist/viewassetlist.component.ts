@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {AssetList} from 'src/app/models/AssetList';
 import {AssetService} from 'src/app/service/asset.service';
+import {InteractionService} from '../../service/interaction.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-viewassetlist',
@@ -10,9 +12,13 @@ import {AssetService} from 'src/app/service/asset.service';
 export class ViewassetlistComponent implements OnInit {
 
   assetList: AssetList[];
-  isListPresent: boolean = true;
+  isListPresent = true;
+  searchText = '';
 
-  constructor(private assetService: AssetService) {
+
+  constructor(private assetService: AssetService,
+              private interactionService: InteractionService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -24,6 +30,14 @@ export class ViewassetlistComponent implements OnInit {
           }
         },
         (error) => console.log(error));
+
+    this.interactionService.searchData$
+      .subscribe(data => {
+        this.searchText = data;
+      });
   }
 
+  viewHistory(serialNumber: string) {
+    this.router.navigate(['/asset-history', serialNumber]);
+  }
 }

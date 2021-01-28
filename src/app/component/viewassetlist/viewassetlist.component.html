@@ -1,4 +1,3 @@
-
 <app-assetmanagementnav></app-assetmanagementnav>
 
 <div class="d-flex justify-content-center">
@@ -24,15 +23,19 @@
           <th scope="col">Asset Type</th>
           <th scope="col">Asset Condition</th>
           <th scope="col">ODC Name</th>
+          <th scope="col">History</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let asset of assetList">
+        <tr *ngFor="let asset of assetList | appFilter: searchText">
           <td>{{asset.serialNumber}}</td>
           <td>{{asset.name}}</td>
           <td>{{asset.type}}</td>
           <td>{{asset.assetCondition}}</td>
           <td class="btn-link">{{asset.odcName}}</td>
+          <td>
+            <button mat-button color="accent" (click)="viewHistory(asset.serialNumber)">View</button>
+          </td>
         </tr>
         </tbody>
       </table>

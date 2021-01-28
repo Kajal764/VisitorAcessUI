@@ -16,10 +16,6 @@ import {AssetsmanagementComponent} from './assetsmanagement/assetsmanagement.com
 import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
 
 
-
-
-
-
 import {AssetRequestsComponent} from './component/asset-requests/asset-requests.component';
 import {AssetmanagementnavComponent} from './assetmanagementnav/assetmanagementnav.component';
 import {CommonpageComponent} from './commonpage/commonpage.component';
@@ -27,7 +23,6 @@ import {CommonpageComponent} from './commonpage/commonpage.component';
 import {ViewallassetsComponent} from './component/viewallassets/viewallassets.component';
 import {ViewassetlistComponent} from './component/viewassetlist/viewassetlist.component';
 import {AssetHistoryComponent} from './asset-history/asset-history.component';
-
 
 
 const routes: Routes = [
@@ -107,8 +102,6 @@ const routes: Routes = [
     path: 'commonpage',
     component: CommonpageComponent
   },
- 
-
 
 
   {

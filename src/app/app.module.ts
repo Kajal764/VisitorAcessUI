@@ -28,10 +28,12 @@ import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
 import { AssetRequestsComponent } from './component/asset-requests/asset-requests.component';
 import { AssetmanagementnavComponent } from './assetmanagementnav/assetmanagementnav.component';
 import { CommonpageComponent } from './commonpage/commonpage.component';
-
 import { ViewallassetsComponent } from './component/viewallassets/viewallassets.component';
 import { ViewassetlistComponent } from './component/viewassetlist/viewassetlist.component';
 import {AssetHistoryComponent} from './asset-history/asset-history.component';
+import {FilterPipe} from './component/viewassetlist/FilterPipe';
+import {MatIconModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -58,10 +60,10 @@ import {AssetHistoryComponent} from './asset-history/asset-history.component';
     AssetsmanagementComponent,
     AssetmanagementnavComponent,
     CommonpageComponent,
-    
     ViewallassetsComponent,
     ViewassetlistComponent,
-    AssetHistoryComponent
+    AssetHistoryComponent,
+    FilterPipe
 
   ],
   imports: [
@@ -72,7 +74,9 @@ import {AssetHistoryComponent} from './asset-history/asset-history.component';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-    GridModule
+    GridModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],
