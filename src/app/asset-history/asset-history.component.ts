@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AssetData} from '../models/AssetData';
 import {AssetService} from '../service/asset.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {InteractionService} from '../service/interaction.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-asset-history',
@@ -19,16 +18,13 @@ export class AssetHistoryComponent implements OnInit {
   public isTypeMonitor = 'monitor';
   public isTypeMouse = 'mouse';
   public isTypeOther = 'other';
-  mySubscription: any;
   searchDataFound = false;
   public role: string;
   public search: any;
-  searchText: any;
 
   constructor(private assetService: AssetService,
               private route: ActivatedRoute,
-              private router: Router,
-              private interactionService: InteractionService) {
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -57,8 +53,5 @@ export class AssetHistoryComponent implements OnInit {
         });
   }
 
-  searchData(event: any) {
-    this.interactionService.sendData(event);
-  }
 }
 

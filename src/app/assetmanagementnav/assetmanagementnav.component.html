@@ -45,13 +45,6 @@ font-family: Roboto">
       </li>
     </ul>
 
-    <div *ngIf="role==='Odc-Manager' || role==='Admin'" style="width: 39%">
-      <input aria-label="Search" style="padding-left: 10px"
-             [ngModel]="searchText" class="form-control "
-             (ngModelChange)="searchData($event)"
-             type="text" placeholder="Search...">
-    </div>
-
     <form class="form-inline my-2 my-lg-0">
       <a class="nav-link" style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;font-family: Roboto"
          href="commonpage"><i class="fa fa-chevron-circle-left"></i>Back</a>

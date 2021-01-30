@@ -40,10 +40,9 @@
           <th scope="col">Asset Model</th>
           <th scope="col">Asset Type</th>
           <th scope="col">Employee ID</th>
-          <th scope="col">Requested Date</th>
           <th scope="col">ODC Name</th>
-          <th scope="col">Reason</th>
           <th scope="col">Status</th>
+          <th scope="col">Movement</th>
         </tr>
         </thead>
         <tbody style="font-family: Roboto">
@@ -53,14 +52,12 @@
                  (change)="selectedForApproval($event,request)"
                  style="margin-left: 3.5%;margin-top: 1%">
           <td> {{request.serialNumber}}</td>
-          <td>{{request.name}}</td>
+          <td>{{request.description}}</td>
           <td>{{request.type}}</td>
           <td>{{request.empId}}</td>
-          <td>{{request.dateAndTime}}</td>
           <td>{{request.odcName}}</td>
-          <td>{{request.reason}}</td>
-          <td class="btn-link" *ngIf="request.status==AcceptedByManager">Pending Approval</td>
-          <td class="btn-link" *ngIf="request.status!=AcceptedByManager">{{request.status}}</td>
+          <td class="btn-link">{{request.status}}</td>
+          <td>{{request.movement}}</td>
         </tr>
         </tbody>
       </table>

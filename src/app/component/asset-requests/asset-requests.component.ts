@@ -18,7 +18,6 @@ export class AssetRequestsComponent implements OnInit {
   Accept = false;
   requests: any = [];
   requestsPresent: boolean;
-  // message = 'Asset Not Added !!!';
   success: boolean;
   private message: any;
 
@@ -27,7 +26,7 @@ export class AssetRequestsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.assetService.getPendingAssetRequest(localStorage.getItem('user'))
+    this.assetService.getPendingAssetRequest(localStorage.getItem('user'), 'Pending Approval')
       .subscribe((data) => {
         this.assetRequest = data;
         this.requestsPresent = true;
@@ -42,7 +41,7 @@ export class AssetRequestsComponent implements OnInit {
 
   approve() {
     this.requests.forEach(value => {
-      value.status = 'Approved';
+      value.requestStatus = 'Approved';
     });
     this.sendNotification('Request Approved');
     this.assetService.approveOrRejectAssetRequestMultiple(this.requests).subscribe((data) => {
@@ -54,7 +53,7 @@ export class AssetRequestsComponent implements OnInit {
 
   reject() {
     this.requests.forEach(value => {
-      value.status = 'Rejected';
+      value.requestStatus = 'Rejected';
     });
     this.sendNotification('Request Rejected ');
     this.assetService.approveOrRejectAssetRequestMultiple(this.requests).subscribe((data) => {
@@ -72,8 +71,8 @@ export class AssetRequestsComponent implements OnInit {
     if (event.target.checked === true) {
       this.Accept = true;
       this.requests = this.assetRequest;
-      this.requests = this.requests.filter(m => m.status !== 'Approved');
-      this.requests = this.requests.filter(m => m.status !== 'Rejected');
+      this.requests = this.requests.filter(m => m.requestStatus !== 'Approved');
+      this.requests = this.requests.filter(m => m.requestStatus !== 'Rejected');
     } else {
       this.Accept = false;
       this.requests = [];
@@ -85,7 +84,6 @@ export class AssetRequestsComponent implements OnInit {
       this.requests.push(assetRequests);
     } else {
       this.requests = this.requests.filter(m => m.serialNumber !== assetRequests.serialNumber);
-      // alert('In else')
     }
     console.log(this.requests);
   }

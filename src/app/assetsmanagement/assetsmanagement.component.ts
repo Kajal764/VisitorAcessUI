@@ -2,9 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
 import {AssetData} from '../models/AssetData';
-import {AssetDto} from '../models/AssetDto';
 import {AssetInfo} from '../models/AssetInfo';
-import {AssetList} from '../models/AssetList';
 import {ODCList} from '../models/ODCList';
 import {UserService} from '../service/user.service';
 
@@ -15,14 +13,12 @@ import {UserService} from '../service/user.service';
 })
 export class AssetsmanagementComponent implements OnInit {
   odcs: ODCList[];
-  asset: AssetData = new AssetData();
+  asset: AssetData;
   assets: AssetData;
   assetInfos: AssetInfo = new AssetInfo();
-  assetInfob = [];
   addmore = false;
   count: number;
   arr = [];
-
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -31,7 +27,6 @@ export class AssetsmanagementComponent implements OnInit {
   ngOnInit() {
     this.userService.getAllODC().subscribe((data) => this.odcs = data);
     this.asset.empId = localStorage.getItem('user');
-
 
   }
 

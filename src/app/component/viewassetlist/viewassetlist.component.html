@@ -9,29 +9,37 @@
   </div>
 </div>
 
+
 <div class="d-flex justify-content-center">
   <div *ngIf="isListPresent=== true" class="container" style="font-family: Roboto">
-    <div class="row">
-      <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">All Assets</div>
+    <div class="d-flex justify-content-between">
+      <div style="color: navy;font-weight: bold;font-size: 120%">All Assets</div>
+      <div style="width: 28.5%">
+        <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+               [(ngModel)]="searchText" placeholder="Search..."
+               autofocus>
+      </div>
     </div>
     <div style="padding-top: 20px">
       <table class="table table-hover table-bordered ">
         <thead class="thead-light">
         <tr>
+          <th scope="col">Request Id</th>
           <th scope="col">Serial Number</th>
-          <th scope="col">Asset Model</th>
+          <th scope="col">Asset Description</th>
           <th scope="col">Asset Type</th>
-          <th scope="col">Asset Condition</th>
+          <th scope="col">Asset Status</th>
           <th scope="col">ODC Name</th>
           <th scope="col">History</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let asset of assetList | appFilter: searchText">
+          <td>{{asset.requestId}}</td>
           <td>{{asset.serialNumber}}</td>
-          <td>{{asset.name}}</td>
+          <td>{{asset.description}}</td>
           <td>{{asset.type}}</td>
-          <td>{{asset.assetCondition}}</td>
+          <td>{{asset.status}}</td>
           <td class="btn-link">{{asset.odcName}}</td>
           <td>
             <button mat-button color="accent" (click)="viewHistory(asset.serialNumber)">View</button>
