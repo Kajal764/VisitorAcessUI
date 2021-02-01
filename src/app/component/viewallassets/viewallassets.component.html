@@ -11,7 +11,7 @@
     <div *ngIf="isListPresent== false">
         <div class="d-flex flex-column">
             <div class="p-2"><img class="image" src="../../../assets/download.png" class="image"></div>
-            <div class="text">Request Not Raised For ODC !!!</div>
+            <div class="text">Request Not Raised  !!!</div>
         </div>
     </div>
 </div>
@@ -19,7 +19,38 @@
 <div class="d-flex justify-content-center">
     <div *ngIf="isListPresent=== true" class="container" style="font-family: Roboto">
         <div class="row">
-            <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">ODC Request</div>
+            <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">Asset Request&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-filter" aria-hidden="true"></i>
+               
+                    <!-- <button class="btn btn-primary" type="dropdown" >Asset Types -->
+                    <!-- <span class="caret"></span></button> -->
+                  
+                    <select name="filters" id="filters" style="font-family: italic">
+                        <option value=""disabled>Filter the requests</option>
+                      <optgroup label="Based On Asset Types">
+                          
+                        <option value="laptop">Laptop</option>
+                        <option value="mouse">Mouse</option>
+                        <option value="monitor">Monitor</option>
+                        <option value="laptopCharger">Laptop Charger</option>
+                        <option value="projector">Projector</option>
+                        <option value="powerCable">Power Cable</option>
+                        <option value="vcaCable">VCA Cable</option>
+                        <option value="extensionCable">Extension Cable</option>
+                        <option value="tokens">Tokens</option>
+                        <option value="telephone">Telephone</option>
+                      </optgroup>
+                      <optgroup label="Based On Request Status">
+                        <option value="pendingApproval">Pending Approval</option>
+                        <option value="approved">Approved</option>
+                      </optgroup>
+                    </select>
+                  
+            
+            
+            
+            
+            </div>
         </div>
         <div style="padding-top: 20px">
             <table class="table table-hover table-bordered ">

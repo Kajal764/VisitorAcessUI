@@ -14,7 +14,7 @@
 <div class="p">
   <br>
   <div class="row">
-    <div class="col-md-5 offset-4">
+    <div class="col-md-6 offset-3">
       <form #logForm="ngForm">
         <div class="form-group">
 
@@ -26,14 +26,32 @@
           <label for="password"><b>Password</b></label><br>
           <input #password="ngModel" type="password" placeholder="Enter your Password"
                  [(ngModel)]="lg.password"
-                 name="password" required class="form-control"/>
+                 name="password" required class="form-control" id="password-field" />
+                  <i id="pass-status" class="fa fa-eye-slash icon" aria-hidden="true" style="margin-right: 30px;"
+            (click)="viewPassword()" ></i>
         </div>
+        
+
+
 
         <label for="role"><b>Role</b></label><br>
+
+<input type="radio" id="employee" name="role"  value="Employee" checked >
+<label for="employee">Employee</label>&nbsp;
+<input type="radio" id="admin" name="role" [(ngModel)]="lg.role" value="Admin">
+<label for="admin">Admin</label>&nbsp;
+<input type="radio" id="odcManager" name="role" [(ngModel)]="lg.role" value="Odc-Manager">
+<label for="odcManager">ODC Manager</label>&nbsp;
+<input type="radio" id="manager" name="role" [(ngModel)]="lg.role" value="Manager">
+<label for="manager">Manager</label>
+
+
+
+        <!-- <label for="role"><b>Role</b></label><br>
         <select class="form-control" (change)="changeWebsite($event)">
           <option disabled>Select Role</option>
           <option *ngFor="let role of listOfRole">{{role}}</option>
-        </select>
+        </select> -->
         <br>
 
 

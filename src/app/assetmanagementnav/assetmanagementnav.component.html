@@ -25,12 +25,12 @@ font-family: Roboto">
           class="fa fa-ticket" aria-hidden="true"></i>Add Asset</a>
       </li>
       <li class="nav-item ">
-        <a *ngIf="role==='Employee' || role==='Manager'" class="nav-link" routerLinkActive="active"
+        <a *ngIf="role==='Employee' || role==='Manager'|| role==='Admin'" class="nav-link" routerLinkActive="active"
            routerLink="/viewAssetList"
            style="color: white;font-family: Roboto"><i class="fa fa-eye" aria-hidden="true"></i>
           View Asset Status
         </a>
-        <a *ngIf="role==='Odc-Manager' || role==='Admin'" class="nav-link" routerLinkActive="active"
+        <a *ngIf="role==='Odc-Manager'" class="nav-link" routerLinkActive="active"
            routerLink="/assetRequests"
            style="color: white;font-family: Roboto"><i class="fa fa-eye" aria-hidden="true"></i>
           View Asset Requests

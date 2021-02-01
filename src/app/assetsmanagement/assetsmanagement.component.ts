@@ -84,33 +84,40 @@ addAsset()
 //    'requestId':0,
 //    'status':"Pending Approval",
 //    'tillDate':""
-this.assetInfos={serialNumber:"MPS889",name:"jjjj"},{serialNumber:"MPS887",name:"kkkkk"};
-this.assetInfob.push(this.assetInfos)
-this.asset={
+// this.assetInfos={serialNumber:"MPS889",name:"jjjj"},{serialNumber:"MPS887",name:"kkkkk"};
+// this.assetInfob.push(this.assetInfos)
+// this.asset={
   // 'assetInfos':[{'name':"Cable23",
   //  'serialNumber':"MPS117"},
   //  {'name':"Cable89",
   //  'serialNumber':"MPS118"}
   // ],
- 'assetInfos':this.assetInfob,
-   'empId':"0000000",
-   'odcName':"Pune A",
-   'reason':"new asset",
-   'type':"laptop",
-   'assetCondition':"",
-   'fromDate':"",
-   'isCurrentOdc':false,
-   'requestId':0,
-   'status':"Pending Approval",
-   'tillDate':""
+//  'assetInfos':this.assetInfob,
+//    'empId':"0000000",
+//    'odcName':"Pune A",
+//    'reason':"new asset",
+//    'type':"laptop",
+//    'assetCondition':"",
+//    'fromDate':"",
+//    'isCurrentOdc':false,
+//    'requestId':0,
+//    'status':"Pending Approval",
+//    'tillDate':""
   
-}
+// }
  
-  alert(JSON.stringify(this.asset));
+this.asset.status="Pending Approval";
+if(this.asset.reason==="newAsset")
+this.asset.assetCondition="Working";
+else
+this.asset.assetCondition="Damaged";
+this.asset.isCurrentOdc=true;
+
+
       this.userService.addAsset(this.asset)
       .subscribe((data) => {
           this.asset = data;
-          alert('success');
+          
           this.router.navigate(['viewAssetList'])
          // this.success = !this.success;
         }, (error) => {
@@ -136,3 +143,4 @@ $("#request").formRepeater();
     this.router.navigate(['/login']);
   }
 }
+

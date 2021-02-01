@@ -3,8 +3,8 @@ import { AssetInfo } from "./AssetInfo";
 
 export class AssetData{
     requestId:number;
-    // serialNumber :string;
-    // name :string;
+    serialNumber :string;
+     name :string;
     type :string;
     empId :string;
     odcName :string;
@@ -14,7 +14,7 @@ export class AssetData{
     fromDate :string;
     tillDate :string;
     status:string;
-    assetInfos:AssetInfo[];
+    //assetInfos:AssetInfo[];
     // assetInfos:Array<AssetInfo>=[];
 }
 
