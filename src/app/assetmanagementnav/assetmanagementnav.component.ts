@@ -14,7 +14,6 @@ export class AssetmanagementnavComponent implements OnInit {
 
   search: string;
   role: string;
-  searchData: any;
 
   ngOnInit() {
     this.role = localStorage.getItem('role');
@@ -25,11 +24,5 @@ export class AssetmanagementnavComponent implements OnInit {
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
-
-
-  redirectToSearch(value: string) {
-    this.router.navigate(['/asset-history', value]);
-  }
-
 
 }

@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AssetData} from '../models/AssetData';
 import {AssetService} from '../service/asset.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-asset-history',
@@ -18,30 +18,26 @@ export class AssetHistoryComponent implements OnInit {
   public isTypeMonitor = 'monitor';
   public isTypeMouse = 'mouse';
   public isTypeOther = 'other';
-  @Input() public search: string;
-  mySubscription: any;
   searchDataFound = false;
+  public role: string;
+  public search: any;
 
   constructor(private assetService: AssetService,
               private route: ActivatedRoute,
               private router: Router) {
-
-    // tslint:disable-next-line:only-arrow-functions
-    this.router.routeReuseStrategy.shouldReuseRoute = function() {
-      return false;
-    };
-
-    this.mySubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        // Trick the Router into believing it's last link wasn't previously loaded
-        this.router.navigated = false;
-      }
-    });
   }
 
   ngOnInit(): void {
+    this.role = localStorage.getItem('role');
     this.search = this.route.snapshot.params.value;
     this.getSearchList(this.search);
+  }
+
+
+  logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('role');
+    this.router.navigate(['/login']);
   }
 
   private getSearchList(search: string) {

@@ -1,4 +1,9 @@
 
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 .active {
   color: #8289C4 !important;
   background-color: white !important;
@@ -25,46 +30,30 @@ a {
 }
 
 .laptop {
-  width: 115%;
+  width: 90%;
   margin: 20px;
   margin-top: 40px;
 }
 
 .keyboard {
   margin: 20px;
-  width: 115%;
-  height: 35%;
-  margin-top: 55px;
+  width: 90%;
+  height: 50%;
+  margin-top: 35px;
 }
 
 .monitor {
-  width: 115%;
+  width: 80%;
   margin: 20px;
   height: 50%;
   margin-top: 55px;
 }
 
 .cpu {
-  width: 115%;
+  width: 90%;
   margin: 20px;
-  height: 60%;
-  margin-top: 55px;
-}
-
-.active {
-  color: #8289C4 !important;
-  background-color: white !important;
-  border-radius: 5px;
-  margin: 0px;
-  border: #8289C4 1px solid;
-  position: relative;
-}
-
-a {
-  margin-left: 10px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
+  height: 70%;
+  margin-top: 35px;
 }
 
 .image {

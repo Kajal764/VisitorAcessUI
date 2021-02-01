@@ -1,9 +1,9 @@
-import { AssetInfo } from "./AssetInfo";
+import {AssetInfo} from './AssetInfo';
 
-export class AssetDto{
-    assetInfos:AssetInfo[];
-    type :string;
-    empId :string;
-    odcName :string;
-    reason :string;
+export class AssetDto {
+  assetInfos: AssetInfo[];
+  type: string;
+  empId: string;
+  odcName: string;
+  reason: string;
 }

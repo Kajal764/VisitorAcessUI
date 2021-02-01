@@ -18,7 +18,6 @@ export class OdcComponent implements OnInit {
   private message: any;
   public odcList: ODCList[];
   private responseData: any;
-  private odc: ODCList[];
   public flag: boolean;
   private odcId: number;
 
@@ -36,7 +35,6 @@ export class OdcComponent implements OnInit {
           this.odcId = 1;
           this.message = error.error.message;
         });
-    console.log(this.odcList == undefined);
   }
 
   addOdc() {
@@ -92,15 +90,4 @@ export class OdcComponent implements OnInit {
       });
   }
 
-  // openPopup(user: User) {
-  //   const ref = this.modalService.open(ConfirmationPopupComponent);
-  //   ref.componentInstance.data = user.firstName;
-  //   ref.result.then((Yes) => {
-  //       console.log('yes');
-  //       this.deleteUser(user);
-  //     },
-  //     (Cancel) => {
-  //       console.log('noo');
-  //     });
-  // }
 }
