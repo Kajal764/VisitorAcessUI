@@ -21,8 +21,8 @@ export class AssetService {
     })
   };
 
-  getPendingAssetRequest(empId: string): Observable<AssetList[]> {
-    const url = this.baseurl + '/pendingAssetRequest/' + empId;
+  getPendingAssetRequest(empId: string, type: string): Observable<AssetList[]> {
+    const url = this.baseurl + '/pendingAssetRequest/' + empId + '/' + type;
     return this.httpClient.get<AssetList[]>(url);
   }
 
@@ -36,12 +36,13 @@ export class AssetService {
     return this.httpClient.get<AssetData[]>(url);
   }
 
-  getAssetListForOdcManager(empId: string): Observable<AssetList[]> {
-    const url = this.baseurl + '/assetList/' + empId;
+  getAssetListForOdcManager(empId: string, type: string): Observable<AssetList[]> {
+    const url = this.baseurl + '/assetList/' + empId + '/' + type;
     return this.httpClient.get<AssetList[]>(url);
   }
 
   getSearchList(serialNumber: string): Observable<AssetData[]> {
     return this.httpClient.get<AssetData[]>(this.baseurl + '/assetTraker/' + serialNumber);
   }
+
 }

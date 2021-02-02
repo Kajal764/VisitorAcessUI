@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-commonpage',
@@ -17,6 +18,7 @@ export class CommonpageComponent implements OnInit {
 
   ngOnInit() {
   //this.selectRole= this.activatedRoute.snapshot.params.selectRole;
+  
   this.role=localStorage.getItem('role');
 
  if(this.role==="Employee")
@@ -28,6 +30,11 @@ this.isOdcManager=true;
 else
 this.isAdmin=true;
 
+$(".main-container,.main").click(function() {
+  window.location = $(this).find("a").attr("href"); 
+  return false;
+});
+  
 
   }
 
@@ -36,5 +43,7 @@ this.isAdmin=true;
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
   }
+  
+
 
 }

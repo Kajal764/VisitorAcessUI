@@ -22,29 +22,43 @@
     .main {
         background-color: rgb(241, 234, 234);
         width: 200px;
+        
         border: 5px solid  rgb(144, 138, 194);
         padding: 50px;
          margin: 20px; 
+        
+         
          border-radius: 25px;
          text-align: center;
         }
   
-  .main-container {
+  .main-container{
     background-color: rgb(241, 234, 234);
     width: 200px;
     border: 5px solid  rgb(144, 138, 194);
     padding: 50px;
     margin: 20px;
+  
     border-radius: 25px;
     text-align: center;
+    
+    
+  }
+  .b:hover{
+    background-color:rgb(144, 138, 194);
+     border-radius: 25px;
+     margin: 3px;
+     cursor: pointer;
+    
+  }
+  div{
+    color:rgb(51, 51, 204);
   }
 
- div:hover {
+ /* div:hover {
     color: hotpink;
-  }
-  .main:hover{
-      color:lightskyblue;
-  }
+  } */
+  
 
   .mmm{
       margin-top: 200px;

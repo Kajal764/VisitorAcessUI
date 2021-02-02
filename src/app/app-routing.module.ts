@@ -14,10 +14,12 @@ import {ViewodcmanagersComponent} from './component/viewodcmanagers/viewodcmanag
 import {OdcmanagerrequestsComponent} from './component/odcmanagerrequests/odcmanagerrequests.component';
 import {AssetsmanagementComponent} from './assetsmanagement/assetsmanagement.component';
 import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
+
+
 import {AssetRequestsComponent} from './component/asset-requests/asset-requests.component';
 import {AssetmanagementnavComponent} from './assetmanagementnav/assetmanagementnav.component';
 import {CommonpageComponent} from './commonpage/commonpage.component';
-import {ViewassetstatusComponent} from './viewassetstatus/viewassetstatus.component';
+
 import {ViewallassetsComponent} from './component/viewallassets/viewallassets.component';
 import {ViewassetlistComponent} from './component/viewassetlist/viewassetlist.component';
 import {AssetHistoryComponent} from './asset-history/asset-history.component';
@@ -102,14 +104,16 @@ const routes: Routes = [
     path: 'commonpage',
     component: CommonpageComponent,canActivate:[ AuthGuard]
   },
-  {
-    path: 'viewassetstatus',
-    component: ViewassetstatusComponent,canActivate:[ AuthGuard]
-  },
+  // {
+  //   path: 'viewassetstatus',
+  //   component: ViewassetstatusComponent,canActivate:[ AuthGuard]
+  // },
+
   {
     path: 'viewAssetList',
     component: ViewallassetsComponent,canActivate:[ AuthGuard]
   },
+
   {
     path: 'viewAssets',
     component: ViewassetlistComponent,canActivate:[ AuthGuard]

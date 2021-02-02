@@ -1,5 +1,4 @@
-import { AssetInfo } from "./AssetInfo";
-
+import {AssetInfo} from './AssetInfo';
 export class AssetDto{
     assetInfos:AssetInfo[];
     empId :string;

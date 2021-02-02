@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgxNotificationService } from 'ngx-notification';
-import { AssetList } from 'src/app/models/AssetList';
-import { AssetService } from 'src/app/service/asset.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {NgxNotificationService} from 'ngx-notification';
+import {AssetList} from 'src/app/models/AssetList';
+import {AssetService} from 'src/app/service/asset.service';
 
 @Component({
   selector: 'app-asset-requests',
@@ -11,28 +11,29 @@ import { AssetService } from 'src/app/service/asset.service';
 })
 export class AssetRequestsComponent implements OnInit {
 
-  assetRequest:AssetList[];
+  assetRequest: AssetList[];
   public flag: boolean;
   public isPendingRequest: boolean;
   private isAdmin: boolean;
   Accept = false;
   requests: any = [];
   requestsPresent:boolean;
-  message :string;
+  private message: any;
   success:boolean;
   assetTypes = ['All','Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
   selectedText:string='All';
+
   constructor(private assetService: AssetService, private router: Router,
-              private ngxNotificationService: NgxNotificationService) { }
+              private ngxNotificationService: NgxNotificationService) {
+  }
 
   ngOnInit() {
-    this.assetService.getPendingAssetRequest(localStorage.getItem('user'))
+    this.assetService.getPendingAssetRequest(localStorage.getItem('user'), 'Pending Approval')
       .subscribe((data) => {
         this.assetRequest = data;
         this.requestsPresent = true;
         if (this.assetRequest.length === 0) {
           this.requestsPresent = false;
-          this.message = 'No Pending Request !!!';
         }
       }, (error) => {
         this.message = error.error.message;
@@ -42,7 +43,7 @@ export class AssetRequestsComponent implements OnInit {
 
   approve() {
     this.requests.forEach(value => {
-      value.status = 'Approved';
+      value.requestStatus = 'Approved';
     });
     this.sendNotification('Request Approved');
     this.assetService.approveOrRejectAssetRequestMultiple(this.requests).subscribe((data) => {
@@ -54,7 +55,7 @@ export class AssetRequestsComponent implements OnInit {
 
   reject() {
     this.requests.forEach(value => {
-      value.status = 'Rejected';
+      value.requestStatus = 'Rejected';
     });
     this.sendNotification('Request Rejected ');
     this.assetService.approveOrRejectAssetRequestMultiple(this.requests).subscribe((data) => {
@@ -72,8 +73,8 @@ export class AssetRequestsComponent implements OnInit {
     if (event.target.checked === true) {
       this.Accept = true;
       this.requests = this.assetRequest;
-      this.requests = this.requests.filter(m => m.status !== 'Approved');
-      this.requests = this.requests.filter(m => m.status !== 'Rejected');
+      this.requests = this.requests.filter(m => m.requestStatus !== 'Approved');
+      this.requests = this.requests.filter(m => m.requestStatus !== 'Rejected');
     } else {
       this.Accept = false;
       this.requests = [];
@@ -85,7 +86,6 @@ export class AssetRequestsComponent implements OnInit {
       this.requests.push(assetRequests);
     } else {
       this.requests = this.requests.filter(m => m.serialNumber !== assetRequests.serialNumber);
-      // alert('In else')
     }
     console.log(this.requests);
   }

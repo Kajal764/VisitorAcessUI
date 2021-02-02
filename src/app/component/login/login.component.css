@@ -30,3 +30,12 @@
 h5 {
   color: red;
 }
+
+.icon{
+  float: right;
+  margin-right: 6px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+  color:black;
+}

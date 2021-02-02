@@ -1,9 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AssetData} from '../models/AssetData';
 import {AssetService} from '../service/asset.service';
-import {InteractionService} from '../service/interaction.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AssetList} from '../models/AssetList';
 
 @Component({
   selector: 'app-asset-history',
@@ -20,31 +18,35 @@ export class AssetHistoryComponent implements OnInit {
   public isTypeMonitor = 'monitor';
   public isTypeMouse = 'mouse';
   public isTypeOther = 'other';
-  @Input() public search: string;
-  mySubscription: any;
+  searchDataFound = false;
+  public role: string;
+  public search: any;
 
   constructor(private assetService: AssetService,
-              private interactionService: InteractionService,
-              private route: ActivatedRoute) {
-
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
+    this.role = localStorage.getItem('role');
     this.search = this.route.snapshot.params.value;
-    // this.interactionService.searchData$
-    //   .subscribe(data => {
-    //     this.search = data;
-    //     console.log(this.search);
-    //     this.getSearchList(data);
-    //   });
     this.getSearchList(this.search);
+  }
+
+
+  logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('role');
+    this.router.navigate(['/login']);
   }
 
   private getSearchList(search: string) {
     this.assetService.getSearchList(search)
       .subscribe(data => {
           this.assetList = data;
-          console.log(this.assetList);
+          if (this.assetList.length === 0) {
+            this.searchDataFound = true;
+          }
         },
         error => {
           this.message = error.error.message;

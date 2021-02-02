@@ -43,8 +43,6 @@ export class UserService {
 
   raiseOdcRequest(visitorRequest: VisitorRequest) {
     const body = JSON.stringify(visitorRequest);
-    console.log('body ');
-    console.log(body);
     const options = {
       headers: new HttpHeaders({
         'content-Type': 'application/json'
@@ -58,7 +56,6 @@ export class UserService {
   }
 
   getAllODC(): Observable<ODCList[]> {
-
     return this.httpClient.get<ODCList[]>('http://localhost:8080/visitor/user/odcList');
   }
 
@@ -150,8 +147,8 @@ export class UserService {
         'content-Type': 'application/json'
       })
     };
-    return this.httpClient.post<AssetDto>
-    ('http://localhost:8080/visitor/asset/addAsset', body, options);
+    return this.httpClient.post<AssetDto>('http://localhost:8080/visitor/asset/addAsset', body, options);
+
   }
 
 }

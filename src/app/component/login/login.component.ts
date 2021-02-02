@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {login} from '../../login';
 import {LoginService} from '../../login.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +17,8 @@ export class LoginComponent implements OnInit {
   public listOfRole = ['Admin', 'Odc-Manager', 'Manager', 'Employee'];
   private selectRole: any;
 
+ 
+
   constructor(private loginService: LoginService,
               private router: Router) {
   }
@@ -24,9 +27,16 @@ export class LoginComponent implements OnInit {
   }
 
   logins() {
+   
     this.loginService.login(this.lg.empId, this.lg.password).subscribe(result => {
       console.log(result);
+
+
       this.selectRole = this.lg.role;
+      if(this.selectRole!=='Odc-Manager'&&this.selectRole!=='Manager'&&this.selectRole!=='Admin')
+      this.selectRole="Employee";//Because of default checked value of radio button
+      
+      
       localStorage.setItem('user', result.empId);
       localStorage.setItem('role', this.selectRole);
       localStorage.setItem('managerName', result.managerName);
@@ -36,6 +46,7 @@ export class LoginComponent implements OnInit {
         this.res = false;
         if (this.lg.accountActive === true) {
           this.lg.role.forEach(value => {
+           
             if (value === this.selectRole) {
               if (value === 'Manager') {
                 this.router.navigate(['commonpage']);
@@ -68,14 +79,27 @@ export class LoginComponent implements OnInit {
       this.message = error.error;
       this.res = true;
       this.lg.empId = null;
+      
       this.lg.password = '';
       this.lg.role = [];
     });
   }
 
-  changeWebsite($event) {
-    this.lg.role = $event.target.value;
+  viewPassword() {
+    const pass = document.getElementById('password-field');
+    const icon = document.getElementById('pass-status');
+    if (pass.getAttribute('type') === 'password') {
+      pass.setAttribute('type', 'text');
+      icon.setAttribute('class', 'fa fa-eye icon');
+    } else {
+      pass.setAttribute('type', 'password');
+      icon.setAttribute('class', 'fa fa-eye-slash icon');
+    }
   }
 
+
+  // changeWebsite($event) {
+  //   this.lg.role = $event.target.value;
+  // }
 
 }

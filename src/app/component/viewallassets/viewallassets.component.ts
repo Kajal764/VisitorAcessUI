@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AssetData } from 'src/app/models/AssetData';
-import { AssetList } from 'src/app/models/AssetList';
-import { AssetService } from 'src/app/service/asset.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AssetData} from 'src/app/models/AssetData';
+import {AssetList} from 'src/app/models/AssetList';
+import {AssetService} from 'src/app/service/asset.service';
 
 @Component({
   selector: 'app-viewallassets',
@@ -16,7 +16,9 @@ export class ViewallassetsComponent implements OnInit {
   role:string;
   assetTypes = ['All','Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
   selectedText:string='All';
-  constructor(private assetService:AssetService, private router:Router) { }
+  constructor(private assetService: AssetService, private router: Router) {
+  }
+
 
   ngOnInit() {
     this.assetService.getAssetList(localStorage.getItem('user'))
@@ -28,13 +30,13 @@ export class ViewallassetsComponent implements OnInit {
           }
         },
         (error) => console.log(error));
-      }
+  }
 
-      logout() {
-        localStorage.removeItem('user');
-        localStorage.removeItem('role');
-        this.router.navigate(['/login']);
-      }
+  logout() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('role');
+    this.router.navigate(['/login']);
+  }
 
 
 }
