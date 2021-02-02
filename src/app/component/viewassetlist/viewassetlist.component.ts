@@ -11,6 +11,8 @@ export class ViewassetlistComponent implements OnInit {
 
   assetList:AssetList[];
   isListPresent:boolean=true;
+  assetTypes = ['All','Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
+  selectedText:string='All';
   constructor(private assetService:AssetService) { }
 
   ngOnInit() {

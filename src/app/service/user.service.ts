@@ -16,7 +16,7 @@ import {AssetData} from '../models/AssetData';
 export class UserService {
 
   baseurl = 'http://localhost:8080/visitor/user/';
-
+  asset:AssetDto;
   constructor(private httpClient: HttpClient) {
   }
 
@@ -115,6 +115,7 @@ export class UserService {
   }
 
   addOdc(data: { odcId: number; odcName: any }): Observable<any> {
+    alert(JSON.stringify(data));
     const apiUrl = this.baseurl + '/addOdc';
     return this.postData(data, apiUrl)
       .pipe(catchError(this.handleError));
@@ -131,14 +132,25 @@ export class UserService {
     return result;
   }
 
-  addAsset(asset: AssetData): Observable<AssetData> {
+  // addAsset(asset: AssetData): Observable<AssetData> {
+  //   const body = JSON.stringify(asset);
+  //   const options = {
+  //     headers: new HttpHeaders({
+  //       'content-Type': 'application/json'
+  //     })
+  //   };
+  //   return this.httpClient.post<AssetData>
+  //   ('http://localhost:8080/visitor/asset/addAsset', body, options);
+  // }
+
+  addAsset(asset: AssetDto): Observable<AssetDto> {
     const body = JSON.stringify(asset);
     const options = {
       headers: new HttpHeaders({
         'content-Type': 'application/json'
       })
     };
-    return this.httpClient.post<AssetData>
+    return this.httpClient.post<AssetDto>
     ('http://localhost:8080/visitor/asset/addAsset', body, options);
   }
 

@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {AssetList} from '../models/AssetList';
 import {Observable} from 'rxjs';
 import {AssetData} from '../models/AssetData';
+import { AssetDto } from '../models/AssetDto';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import {AssetData} from '../models/AssetData';
 export class AssetService {
 
   baseurl = 'http://localhost:8080/visitor/asset';
-
+  
   constructor(private httpClient: HttpClient) {
   }
 

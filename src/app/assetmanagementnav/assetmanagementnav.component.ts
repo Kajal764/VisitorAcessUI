@@ -21,9 +21,10 @@ export class AssetmanagementnavComponent implements OnInit {
   }
 
   logout() {
+    if(confirm('Are you sure you want to logout?')){
     localStorage.removeItem('user');
     localStorage.removeItem('role');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']);}
   }
 
 

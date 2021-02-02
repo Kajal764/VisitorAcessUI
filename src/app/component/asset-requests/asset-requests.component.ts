@@ -20,7 +20,8 @@ export class AssetRequestsComponent implements OnInit {
   requestsPresent:boolean;
   message :string;
   success:boolean;
-
+  assetTypes = ['All','Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
+  selectedText:string='All';
   constructor(private assetService: AssetService, private router: Router,
               private ngxNotificationService: NgxNotificationService) { }
 

@@ -36,7 +36,7 @@
               </div>
 
 
-              <div class="form-group" align="left">
+              <!-- <div class="form-group" align="left">
                 <label for="serialNumber"><b>Serial Number</b></label>
                 <input type="text" placeholder="Enter Asset Serial Number" class="form-control" name="serialNumber"
                        id="serialNumber" required [(ngModel)]="asset.serialNumber" #SerialNumber="ngModel"
@@ -48,8 +48,8 @@
                   
                   
                 </div>
-              </div>
-              <div class="form-group" align="left">
+              </div> -->
+              <!-- <div class="form-group" align="left">
                 <label for="name"><b>Asset Model</b></label>
                 <input type="text" placeholder="Enter Asset Model" class="form-control" name="name"
                        id="name" required [(ngModel)]="asset.name" #name="ngModel"
@@ -60,7 +60,7 @@
                   <span *ngIf="name.errors.pattern" style="color:red">Invalid format</span>
                  
                 </div>
-              </div>
+              </div> -->
               <div class="form-group" align="left">
                 <label for="type"><b>Asset Type</b></label>
                 <select type="text" required placeholder="Select Asset Type" class="form-control" name="type"
@@ -121,13 +121,25 @@
                 </div>
               </div>
 
-
+              <div class="form-group" align="left">
+                <label for="numberOfAsset"><b>Number of Assets</b></label>
+                <input type="text" placeholder="Enter number of Assets you want to add" class="form-control" name="numberOfAsset"
+                       id="numberOfAsset" required [(ngModel)]="count" #numberOfAsset="ngModel"
+                       pattern="[0-9]" minlength="1" maxlength="2" [class.is-invalid]="numberOfAsset.touched && numberOfAsset.invalid" 
+                      >
+                <div *ngIf="numberOfAsset.touched && numberOfAsset.invalid">
+                  <span *ngIf="numberOfAsset.errors.required" style="color:red">Enter number of assets</span>
+                  <span *ngIf="numberOfAsset.errors.pattern" style="color:red">Invalid format</span>
+                  <!-- <span *ngIf="numberOfAsset.errors.minlength" style="color:red"></span>
+                  <span *ngIf="numberOfAsset.errors.maxlength" style="color:red"></span> -->
+                </div>
+              </div>
 
               <!-- <input type="submit" value="Add More" class="btn btn-danger" (onClick)="addMore()"> -->
               <br><br>
   
               <input type="submit" value="Add Asset" class="btn btn-success btn-block"
-                     [disabled]="request.invalid">
+                     >
             </div>
           </form>
         </div>

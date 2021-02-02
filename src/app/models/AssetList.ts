@@ -1,14 +1,15 @@
 export class AssetList {
   requestId: number;
   serialNumber: string;
-  name: string;
+  description: string;
   type: string;
   empId: string;
   odcName: string;
-  reason: string;
+  status: string;
   isCurrentOdc: boolean;
-  assetCondition: string;
+  movement:string;
+  requestStatus: string;
   fromDate: Date;
   tillDate: Date;
-  status: string;
 }
+

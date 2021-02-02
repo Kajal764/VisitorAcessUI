@@ -15,9 +15,22 @@
 
   <div style="padding-bottom: 20px">
     <div class="row">
-      <div class="col-7" style="color: navy;font-weight: bold;font-size: 150%;font-family: Roboto">Visitor access
-        request
-      </div>
+      <!-- <div class="col-7" style="color: navy;font-weight: bold;font-size: 150%;font-family: Roboto">Asset
+        requests
+      </div> -->
+      <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">Asset Requests &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;&nbsp;
+         <select type="text" required placeholder="All"
+                  [(ngModel)]="selectedText">
+           <option value="" disabled>Filter the requests</option>
+           <optgroup label="Based On Asset Types">
+           <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option>
+           </optgroup>
+           <optgroup label="Based On Request Status">
+             <option value="Pending Approval">Pending Approval</option>
+             <option value="Approved">Approved</option>
+           </optgroup>
+         </select>
     </div>
     <div style="margin-top: 20px">
       <button type="button"
@@ -41,28 +54,37 @@
           <th scope="col">Asset Model</th>
           <th scope="col">Asset Type</th>
           <th scope="col">Employee ID</th>
-          <th scope="col">Requested Date</th>
+          <!-- <th scope="col">Requested Date</th> -->
           <th scope="col">ODC Name</th>
-          <th scope="col">Reason</th>
+          <th scope="col">Movement</th>
           <th scope="col">Status</th>
         </tr>
         </thead>
         <tbody style="font-family: Roboto">
-        <tr *ngFor="let request of assetRequest">
+          <ng-container *ngFor="let request of assetRequest">
+            <tr *ngIf="selectedText=='All' || selectedText==asset.type || selectedText==asset.requestStatus">
+        <!-- <tr *ngFor="let request of assetRequest"> -->
           <input class="form-check-input" type="checkbox"
                  [checked]="Accept"
                  (change)="selectedForApproval($event,request)"
                  style="margin-left: 3.5%;margin-top: 1%">
                  <td> {{request.serialNumber}}</td>
-                 <td>{{request.name}}</td>
+                 <td>{{request.description}}</td>
                  <td>{{request.type}}</td>
                  <td>{{request.empId}}</td>
-                 <td>{{request.dateAndTime}}</td>
+                 <!-- <td>{{request.dateAndTime}}</td> -->
                  <td>{{request.odcName}}</td>
-                 <td>{{request.reason}}</td>
+                 <td>{{request.movement}}</td>
           <td class="btn-link" *ngIf="request.status==AcceptedByManager">Pending Approval</td>
-          <td class="btn-link" *ngIf="request.status!=AcceptedByManager">{{request.status}}</td>
+          <td class="btn-link" *ngIf="request.status!=AcceptedByManager">{{request.requestStatus}}</td>
         </tr>
+        </ng-container>
+
+        <tr *ngIf="!assetRequest || assetRequest.length==0">
+          <td colspan="6">
+              No Requests to Display
+          </td>
+      </tr>
         </tbody>
       </table>
     </div>

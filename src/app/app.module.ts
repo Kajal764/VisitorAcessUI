@@ -32,6 +32,10 @@ import { ViewassetstatusComponent } from './viewassetstatus/viewassetstatus.comp
 import { ViewallassetsComponent } from './component/viewallassets/viewallassets.component';
 import { ViewassetlistComponent } from './component/viewassetlist/viewassetlist.component';
 import {AssetHistoryComponent} from './asset-history/asset-history.component';
+import { AddassetComponent } from './addasset/addasset.component';
+import { AuthGuard } from './service/auth.guard';
+import { AuthService } from './service/auth.service';
+import { LoginService } from './login.service';
 
 
 @NgModule({
@@ -61,7 +65,8 @@ import {AssetHistoryComponent} from './asset-history/asset-history.component';
     ViewassetstatusComponent,
     ViewallassetsComponent,
     ViewassetlistComponent,
-    AssetHistoryComponent
+    AssetHistoryComponent,
+    AddassetComponent
 
   ],
   imports: [
@@ -74,7 +79,7 @@ import {AssetHistoryComponent} from './asset-history/asset-history.component';
     BrowserAnimationsModule,
     GridModule
   ],
-  providers: [],
+  providers: [AuthGuard,AuthService,LoginService],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationPopupComponent]
 })

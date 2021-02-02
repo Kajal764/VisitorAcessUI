@@ -1,4 +1,6 @@
 export class AssetInfo{
     serialNumber:string;
-    name:string;
+    description:string;
+    type:string;
+    status:string;
 }

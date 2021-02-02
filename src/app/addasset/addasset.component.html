@@ -1,0 +1,166 @@
+<app-assetmanagementnav></app-assetmanagementnav>
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+    <div class="card m-3">
+        <h5 class="card-header">Add asset details</h5>
+        <div class="card-body">
+            <div class="form-row">
+
+                <div class="form-group col-md-2.5">
+                    <label for="empId"><b>Employee ID</b></label>
+                    <input type="text" placeholder="Employee Id" class="form-control" formControlName="empId"
+                        [ngClass]="{'is-invalid':dynamicForm.get('empId').touched && dynamicForm.get('empId').invalid}"
+                        required disabled />
+                    <div *ngIf="dynamicForm.get('empId').touched && dynamicForm.get('empId').invalid"
+                        class="invalid-feedback">
+                        <div *ngIf="dynamicForm.get('empId').errors.required">Employee id required</div>
+                        <div *ngIf="dynamicForm.get('empId').errors.pattern"> Employee id should be 7 character</div>
+                    </div>
+                </div>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <!-- <div class="form-group"> -->
+
+                <div class="form-group col-md-2.5">
+
+                    <label><b>Type of Movement</b></label>
+                          <br/>
+                        <input type="radio" value="Inward" formControlName="movement" (change)="changeMovement($event)" [ngClass]="{'is-invalid': submitted && f.movement.errors && f.movement.touched}">
+                        &nbsp;<span>Inward</span>&nbsp;
+                          <input type="radio" value="Outward" formControlName="movement" (change)="changeMovement($event)" [ngClass]="{'is-invalid': submitted && f.movement.errors}">
+                          &nbsp; <span>Outward</span>&nbsp;
+                          <input type="radio" value="Transferred" formControlName="movement" (change)="changeMovement($event)" [ngClass]="{'is-invalid': submitted && f.movement.errors}">
+                          &nbsp; <span>Transferred</span>&nbsp;
+                      <div *ngIf="f.movement.touched && f.movement.errors && submitted" class="invalid-feedback">
+                        <div *ngIf="f.movement.errors.required">Odc Name is required</div>
+                    </div>
+                </div>
+
+
+
+                &nbsp; &nbsp; &nbsp; &nbsp;
+
+                <div class="form-group col-md-3" *ngIf="movementSelected">
+                    <label *ngIf="movementValue=='Inward'" ><b>To ODC</b></label>
+                    <label *ngIf="movementValue=='Transferred'" ><b>Transferred to ODC</b></label>
+                    <!-- <label *ngIf="movementValue=='Outward'" ><b>To Store</b></label> -->
+                    <select formControlName="odcName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.odcName.errors && f.odcName.touched }">
+                        <option value="" disabled>Select ODC</option>
+                        <option *ngFor="let odc of odcs">{{odc.odcName}}</option>
+                    </select>
+                    <!-- <select formControlName="odcName" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.odcName.errors }"  *ngIf="movementValue=='Outward'">
+                    <option value="" disabled>Select ODC</option>
+                    <option *ngIf="movementValue=='Outward'" value="Store">Store</option>
+                </select> -->
+                    <div *ngIf="f.odcName.touched && ssubmitted && f.odcName.errors" class="invalid-feedback">
+                        <div *ngIf="f.odcName.errors.required">Odc Name is required</div>
+                    </div>
+                </div>
+            <!-- </div> -->
+
+            &nbsp; &nbsp; &nbsp; &nbsp;
+
+                <div class="form-group col-md-3">
+                    <label><b>Number of Assets</b></label>
+                    <select formControlName="numberOfAssets" class="form-control" (change)="onChangeAssets($event)"
+                        [ngClass]="{ 'is-invalid': submitted && f.numberOfAssets.errors }">
+                        <option value="" disabled>Select number of Assets</option>
+                        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">{{i}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.numberOfAssets.errors" class="invalid-feedback">
+                        <div *ngIf="f.numberOfAssets.errors.required">Number of assets is required</div>
+                    </div>
+                </div>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <!-- <div class="form-group">
+                    <label><b>Asset Type</b></label>
+                    <select formControlName="assettype" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.assettype.errors }">
+                        <option value="" disabled>Select type of asset</option>
+                        <option *ngFor="let i of assetTypes">{{i}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.assettype.errors" class="invalid-feedback">
+                        <div *ngIf="f.assettype.errors.required">Type of asset is required</div>
+                    </div>
+                </div>
+                &nbsp; &nbsp; &nbsp; &nbsp; -->
+                <!-- <div class="form-group">
+                    <label><b>Status</b></label>
+                    <select formControlName="reason" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.reason.errors }">
+                        <option value="" disabled>Select the Status</option>
+                        <option *ngFor="let i of reasons">{{i}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.reason.errors" class="invalid-feedback">
+                        <div *ngIf="f.reason.errors.required">Type of asset is required</div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div *ngFor="let asset of t.controls; let i = index" class="list-group list-group-flush">
+            <div class="list-group-item">
+                <h5 class="card-title">Asset {{i + 1}}</h5>
+                <div [formGroup]="asset" class="form-row">
+                    <div class="form-group col-3">
+                        <label>Asset Serial Number: </label>
+                        <input type="text" formControlName="serialNumber" class="form-control"
+                            [ngClass]="{ 'is-invalid':asset.controls.serialNumber.errors && asset.controls.serialNumber.touched}"
+                            placeholder="Enter Serial Number" />
+                        <div *ngIf="(asset.controls.serialNumber.dirty || asset.controls.serialNumber.touched) && asset.controls.serialNumber.errors && asset.controls.serialNumber.touched"
+                            class="invalid-feedback">
+                            <div *ngIf="asset.controls.serialNumber.errors.required">serial Number is required</div>
+                            <div *ngIf="asset.controls.serialNumber.errors.pattern">Serial Number should not contain special characters</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-3">
+                        <label><b>Asset Type</b></label>
+                        <select formControlName="type" class="form-control"
+                        [ngClass]="{ 'is-invalid':asset.controls.type.errors && asset.controls.type.touched}">
+                            <option value="" disabled>Select type of asset</option>
+                            <option *ngFor="let i of assetTypes">{{i}}</option>
+                        </select>
+                        <div *ngIf="(asset.controls.type.dirty || asset.controls.type.touched) && asset.controls.type.errors && asset.controls.type.touched"
+                            class="invalid-feedback">
+                            <div *ngIf="asset.controls.type.errors.required">Asset Type is required</div>
+                            <!-- <div *ngIf="asset.controls.serialNumber.errors.pattern">Name should have atleast 3 letters and atmost 15 letters</div> -->
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-3">
+                        <label><b>Asset Model</b></label>
+                        <input type="text" formControlName="description" class="form-control"
+                            [ngClass]="{ 'is-invalid':asset.controls.description.errors && asset.controls.description.touched}" 
+                            placeholder="Enter Model description"/>
+                        <div *ngIf="asset.controls.description.errors && asset.controls.description.touched" class="invalid-feedback">
+                            <span *ngIf="asset.controls.description.errors.required">Description is required</span>
+                            <span *ngIf="asset.controls.description.errors.pattern">Description should not contain special characters</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-3">
+                        <label><b>Status of Asset</b></label>
+                        <select formControlName="status" class="form-control"
+                        [ngClass]="{ 'is-invalid':asset.controls.status.errors && asset.controls.status.touched}">
+                            <option value="" disabled>Select the Status</option>
+                            <option *ngFor="let i of reasons">{{i}}</option>
+                        </select>
+                        <div *ngIf="asset.controls.status.errors && asset.controls.status.touched" class="invalid-feedback">
+                            <span *ngIf="asset.controls.status.errors.required">Status is required</span>
+                            <!-- <span *ngIf="asset.controls.name.errors.pattern">Email must be a valid email address</span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <button class="btn btn-primary mr-1" [disabled]="dynamicForm.invalid">Add Assets</button>
+            <!-- <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button> -->
+            <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
+        </div>
+
+
+
+    </div>
+</form>

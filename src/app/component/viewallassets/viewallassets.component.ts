@@ -14,6 +14,8 @@ export class ViewallassetsComponent implements OnInit {
   assetList:AssetData[];
   isListPresent:boolean =true ;
   role:string;
+  assetTypes = ['All','Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
+  selectedText:string='All';
   constructor(private assetService:AssetService, private router:Router) { }
 
   ngOnInit() {

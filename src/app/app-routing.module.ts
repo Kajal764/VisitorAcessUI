@@ -21,6 +21,8 @@ import {ViewassetstatusComponent} from './viewassetstatus/viewassetstatus.compon
 import {ViewallassetsComponent} from './component/viewallassets/viewallassets.component';
 import {ViewassetlistComponent} from './component/viewassetlist/viewassetlist.component';
 import {AssetHistoryComponent} from './asset-history/asset-history.component';
+import { AddassetComponent } from './addasset/addasset.component';
+import { AuthGuard } from './service/auth.guard';
 
 
 const routes: Routes = [
@@ -30,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'odcmanager',
-    component: OdcmanagerComponent
+    component: OdcmanagerComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'login',
@@ -38,84 +40,88 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'raiseOdcRequest',
-    component: RaiseodcrequestComponent
+    component: RaiseodcrequestComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'view-odc-Request',
-    component: ViewuserrequestsComponent
+    component: ViewuserrequestsComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'odc-request',
-    component: ManagerodcrequestsComponent
+    component: ManagerodcrequestsComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'home-admin',
-    component: AdminComponent
+    component: AdminComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'register-request',
-    component: RegistrationRequestComponent
+    component: RegistrationRequestComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'manager',
-    component: ManagerComponent
+    component: ManagerComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'admin-odc',
-    component: OdcComponent
+    component: OdcComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'employee-odc-access',
-    component: EmployeeprofileComponent
+    component: EmployeeprofileComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'viewOdcManagers/:odcName',
-    component: ViewodcmanagersComponent
+    component: ViewodcmanagersComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'odcManagerRequests',
-    component: OdcmanagerrequestsComponent
+    component: OdcmanagerrequestsComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'assetRequests',
-    component: AssetRequestsComponent
+    component: AssetRequestsComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'assetmanagement',
-    component: AssetsmanagementComponent
+    component: AssetsmanagementComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'assetmanagementnav',
-    component: AssetmanagementnavComponent
+    component: AssetmanagementnavComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'commonpage',
-    component: CommonpageComponent
+    component: CommonpageComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'viewassetstatus',
-    component: ViewassetstatusComponent
+    component: ViewassetstatusComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'viewAssetList',
-    component: ViewallassetsComponent
+    component: ViewallassetsComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'viewAssets',
-    component: ViewassetlistComponent
+    component: ViewassetlistComponent,canActivate:[ AuthGuard]
   },
   {
     path: 'asset-history/:value',
-    component: AssetHistoryComponent
+    component: AssetHistoryComponent,canActivate:[ AuthGuard]
   },
+  {
+    path: 'addAsset',
+    component: AddassetComponent,canActivate:[ AuthGuard]
+  }
 ];
 
 @NgModule({
