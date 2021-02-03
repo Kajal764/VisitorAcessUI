@@ -14,6 +14,7 @@ export class OdcmanagerrequestsComponent implements OnInit {
   odcName: string;
   success: boolean;
   requestsPresent: boolean;
+  selectedText:string='All';
   public message: any;
   public Accept = false;
   requests: VisitorRequest[] = [];

@@ -27,8 +27,10 @@
         <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option>
         </optgroup>
         <optgroup label="Based On Request Status">
+          <option value="All">All</option>
           <option value="Pending Approval">Pending Approval</option>
           <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
         </optgroup>
       </select>
     </div>
@@ -59,6 +61,11 @@
             <button mat-button color="accent" (click)="viewHistory(asset.serialNumber)">View</button>
           </td>
         </tr>
+        <tr *ngIf="!assetList || assetList.length==0">
+          <td colspan="7">
+              No Requests to Display
+          </td>
+      </tr>
         </ng-container>
         </tbody>
       </table>

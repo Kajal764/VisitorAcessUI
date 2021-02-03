@@ -25,6 +25,21 @@
       <button type="button" (click)="reject()"
               class="btn btn-danger">Reject
       </button>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;&nbsp;
+      <select type="text" required placeholder="All"
+               [(ngModel)]="selectedText">
+        <option value="" disabled>Filter the requests</option>
+        <optgroup label="Based On Request Status">
+          <option value="All">All</option>
+          <option value="Pending Approval">Pending Approval</option>
+          <option value="Accepted By Manager">Approved</option>
+          <option value="Rejected By Manager">Rejected</option>
+        </optgroup>
+      </select>
+
+
     </div>
     <div style="padding-top: 20px;font-family: Roboto">
       <table class="table table-hover table-bordered ">
@@ -45,8 +60,9 @@
         </tr>
         </thead>
         <tbody style="font-family: Roboto">
-        <tr *ngFor="let request of visitorRequests">
-
+        <!-- <tr *ngFor="let request of visitorRequests"> -->
+          <ng-container *ngFor="let request of visitorRequests">
+            <tr *ngIf="selectedText=='All'|| selectedText==request.status">
           <input class="form-check-input" type="checkbox"
                  [checked]="Accept && PendingApproval ==request.status"
                  (change)="selectedForApproval($event,request)"
@@ -64,6 +80,7 @@
           <td>{{request.odc}}</td>
 
         </tr>
+        </ng-container>
         </tbody>
       </table>
     </div>
