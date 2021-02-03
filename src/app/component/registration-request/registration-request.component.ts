@@ -3,6 +3,7 @@ import {UserService} from '../../service/user.service';
 import {User} from '../../models/User';
 import {Router} from '@angular/router';
 import {NgxNotificationService} from 'ngx-notification';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-registration-request',
@@ -22,7 +23,7 @@ export class RegistrationRequestComponent implements OnInit {
 
   constructor(private userService: UserService,
               private router: Router,
-              private ngxNotificationService: NgxNotificationService) {
+              private ngxNotificationService: NgxNotificationService,private auth:AuthService) {
   }
 
   ngOnInit() {
@@ -48,9 +49,12 @@ export class RegistrationRequestComponent implements OnInit {
   }
 
   logout() {
+    if(confirm('Are you sure you want to logout?')){
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
+    this.auth.logout();
+    }
   }
 
   requestAll() {

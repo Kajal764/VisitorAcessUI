@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-assetmanagementnav',
@@ -9,7 +10,7 @@ import {Router} from '@angular/router';
 export class AssetmanagementnavComponent implements OnInit {
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private auth:AuthService) {
   }
 
   search: string;
@@ -24,6 +25,7 @@ export class AssetmanagementnavComponent implements OnInit {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);}
+    this.auth.logout();
   }
 
 }

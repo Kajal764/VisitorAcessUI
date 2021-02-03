@@ -96,6 +96,7 @@ count:number;
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
+    
   }
 }
 

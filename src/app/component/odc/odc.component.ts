@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {User} from '../../models/User';
 import {ConfirmationPopupComponent} from '../confirmation-popup/confirmation-popup.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-odc',
@@ -23,7 +24,7 @@ export class OdcComponent implements OnInit {
 
   constructor(private userService: UserService,
               private router: Router,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,private auth:AuthService) {
   }
 
   ngOnInit() {
@@ -74,9 +75,12 @@ export class OdcComponent implements OnInit {
   }
 
   logout() {
+    if(confirm('Are you sure you want to logout?')){
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
+    this.auth.logout();
+    }
   }
 
   openPopup(odc: ODCList) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import * as $ from 'jquery';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-commonpage',
@@ -14,7 +15,7 @@ export class CommonpageComponent implements OnInit {
   isOdcManager=false;
   isAdmin=false;
 
-  constructor(private activatedRoute:ActivatedRoute,private router:Router) { }
+  constructor(private activatedRoute:ActivatedRoute,private router:Router,private auth:AuthService) { }
 
   ngOnInit() {
   //this.selectRole= this.activatedRoute.snapshot.params.selectRole;
@@ -42,6 +43,7 @@ $(".main-container,.main").click(function() {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
+    this.auth.logout();
   }
   
 

@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {AssetData} from 'src/app/models/AssetData';
 import {AssetList} from 'src/app/models/AssetList';
 import {AssetService} from 'src/app/service/asset.service';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-viewallassets',
@@ -16,7 +17,7 @@ export class ViewallassetsComponent implements OnInit {
   role:string;
   assetTypes = ['All','Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
   selectedText:string='All';
-  constructor(private assetService: AssetService, private router: Router) {
+  constructor(private assetService: AssetService, private router: Router,private auth:AuthService) {
   }
 
 
@@ -33,9 +34,12 @@ export class ViewallassetsComponent implements OnInit {
   }
 
   logout() {
+    if(confirm('Are you sure you want to logout?')){
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
+    this.auth.logout();
+    }
   }
 
 

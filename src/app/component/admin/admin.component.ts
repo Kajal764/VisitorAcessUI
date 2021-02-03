@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmationPopupComponent} from '../confirmation-popup/confirmation-popup.component';
 import {NgxNotificationService} from 'ngx-notification';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -16,7 +17,7 @@ export class AdminComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router,
               private modalService: NgbModal,
-              private ngxNotificationService: NgxNotificationService) {
+              private ngxNotificationService: NgxNotificationService,private auth:AuthService) {
   }
 
   public userList: User[];
@@ -51,9 +52,12 @@ export class AdminComponent implements OnInit {
   }
 
   logout() {
+    if(confirm('Are you sure you want to logout?')){
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
+    this.auth.logout();
+    }
   }
 
 

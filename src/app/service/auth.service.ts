@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private myRoute: Router) { }
   sendToken(token: string) {
-    localStorage.setItem("LoggedInUser", token)
+    localStorage.setItem("LoggedInUser", token);
   }
   getToken() {
     return localStorage.getItem("LoggedInUser")

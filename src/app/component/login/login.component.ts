@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 import {login} from '../../login';
 import {LoginService} from '../../login.service';
 
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
  
 
-  constructor(private loginService: LoginService,
+  constructor(private loginService: LoginService,private auth:AuthService,
               private router: Router) {
   }
 
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
         this.res = false;
         if (this.lg.accountActive === true) {
           this.lg.role.forEach(value => {
-           
+            this.auth.sendToken(localStorage.getItem('user'));
             if (value === this.selectRole) {
               if (value === 'Manager') {
                 this.router.navigate(['commonpage']);

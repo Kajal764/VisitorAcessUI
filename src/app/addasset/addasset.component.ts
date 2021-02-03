@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxNotificationService } from 'ngx-notification';
 import { AssetDto } from '../models/AssetDto';
 import { AssetInfo } from '../models/AssetInfo';
 import { ODCList } from '../models/ODCList';
@@ -23,7 +24,8 @@ export class AddassetComponent implements OnInit {
   reasons = ['Working', 'Not Working', 'Unused'];
   movementSelected: boolean = false;
   movementValue: string;
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, 
+    private router: Router, private route: ActivatedRoute,private ngxNotificationService:NgxNotificationService) { }
 
   ngOnInit() {
     this.dynamicForm = this.formBuilder.group({
@@ -92,13 +94,19 @@ export class AddassetComponent implements OnInit {
     .subscribe((data) => {
         this.asset = data;
         alert('success');
-        this.router.navigate(['viewAssetList'])
+        this.sendNotification('Assets Added Successfully!!');
+        // this.router.navigate(['viewAssetList'])
     //  this.success = !this.success;
       }, (error) => {
+        this.sendNotification('Something went wrong please try again!!!')
         console.log(error);
       }
     );
 
+  }
+
+  sendNotification(message: string) {
+    this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
   }
 
   onReset() {
