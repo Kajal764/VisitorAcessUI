@@ -13,7 +13,7 @@ export class ViewuserrequestsComponent implements OnInit {
   private empId: string;
   public isEmployee: boolean;
   public listFlag: boolean;
-
+  selectedText:string='All';
   constructor(private userService: UserService) {
   }
 

@@ -15,6 +15,7 @@ export class ManagerodcrequestsComponent implements OnInit {
   visitorRequests: VisitorRequest[];
   success: boolean;
   public flag: boolean;
+  selectedText:string='All';
   AcceptedByManager = 'Accepted By Manager';
   RejectedByManager = 'Rejected By Manager';
   PendingApproval = 'Pending Approval';
