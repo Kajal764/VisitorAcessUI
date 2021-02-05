@@ -13,22 +13,20 @@ export class AssetRequestsComponent implements OnInit {
 
   assetRequest: AssetList[];
   public flag: boolean;
-  public isPendingRequest: boolean;
-  private isAdmin: boolean;
   Accept = false;
   requests: any = [];
-  requestsPresent:boolean;
+  requestsPresent: boolean;
   private message: any;
-  success:boolean;
-  assetTypes = ['All','Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
-  selectedText:string='All';
+  success: boolean;
+  assetTypes = ['All', 'Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
+  selectedText: string = 'All';
 
   constructor(private assetService: AssetService, private router: Router,
               private ngxNotificationService: NgxNotificationService) {
   }
 
   ngOnInit() {
-    this.assetService.getPendingAssetRequest(localStorage.getItem('user'), 'Pending Approval')
+    this.assetService.getPendingAssetRequest(localStorage.getItem('user'))
       .subscribe((data) => {
         this.assetRequest = data;
         this.requestsPresent = true;
@@ -87,6 +85,5 @@ export class AssetRequestsComponent implements OnInit {
     } else {
       this.requests = this.requests.filter(m => m.serialNumber !== assetRequests.serialNumber);
     }
-    console.log(this.requests);
   }
 }

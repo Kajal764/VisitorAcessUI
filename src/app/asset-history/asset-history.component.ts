@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AssetData} from '../models/AssetData';
 import {AssetService} from '../service/asset.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import { AuthService } from '../service/auth.service';
+import {AuthService} from '../service/auth.service';
 
 @Component({
   selector: 'app-asset-history',
@@ -13,19 +13,24 @@ export class AssetHistoryComponent implements OnInit {
 
   public assetList: AssetData[];
   public message: any;
-  public isTypeLaptop = 'laptop';
-  public isTypeKeyboard = 'keyboard';
-  public isTypeCpu = 'cpu';
-  public isTypeMonitor = 'monitor';
-  public isTypeMouse = 'mouse';
-  public isTypeOther = 'other';
+  public isTypeLaptop = 'Laptop';
+  public isTypeKeyboard = 'Keyboard';
+  public isTypeCpu = 'CPU';
+  public isTypeMonitor = 'Monitor';
+  public isTypeMouse = 'Mouse';
+  public isTypeOther = 'Other';
+  isLaptopCharger = 'Laptop Charger';
+  isProjector = 'Projector';
+  isTelephone = 'Telephone';
+  isCables = 'Cables';
+  isTokens = 'Tokens';
   searchDataFound = false;
   public role: string;
   public search: any;
 
   constructor(private assetService: AssetService,
               private route: ActivatedRoute,
-              private router: Router,private auth:AuthService) {
+              private router: Router, private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -46,6 +51,7 @@ export class AssetHistoryComponent implements OnInit {
     this.assetService.getSearchList(search)
       .subscribe(data => {
           this.assetList = data;
+          console.log(this.assetList);
           if (this.assetList.length === 0) {
             this.searchDataFound = true;
           }

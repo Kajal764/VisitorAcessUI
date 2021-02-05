@@ -7,7 +7,7 @@ export class AssetList {
   odcName: string;
   status: string;
   isCurrentOdc: boolean;
-  movement:string;
+  movement: string;
   requestStatus: string;
   fromDate: Date;
   tillDate: Date;

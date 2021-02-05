@@ -1,13 +1,12 @@
-
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import * as $ from 'jquery';
-import { AssetData } from '../models/AssetData';
+import {AssetData} from '../models/AssetData';
 import {AssetInfo} from '../models/AssetInfo';
-import { AssetDto } from '../models/AssetDto';
-import { AssetList } from '../models/AssetList';
-import { ODCList } from '../models/ODCList';
-import { UserService } from '../service/user.service';
+import {AssetDto} from '../models/AssetDto';
+import {AssetList} from '../models/AssetList';
+import {ODCList} from '../models/ODCList';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-assetsmanagement',
@@ -18,9 +17,9 @@ export class AssetsmanagementComponent implements OnInit {
   odcs: ODCList[];
 
 // asset:AssetData=new AssetData();
-asset:AssetDto=new AssetDto();
-addmore=false;
-count:number;
+  asset: AssetDto = new AssetDto();
+  addmore = false;
+  count: number;
   // asset: AssetData;
   assets: AssetData;
   assetInfos: AssetInfo = new AssetInfo();
@@ -38,7 +37,7 @@ count:number;
 
   }
 
-  addAsset(){
+  addAsset() {
 // this.asset.status="Pending Approval";
     // this.userService.addAsset(this.asset)
     // .subscribe((data) => {
@@ -54,7 +53,7 @@ count:number;
     // this.userService.asset=this.asset;
     this.router.navigate(['/addAsset']);
 
-  // addAsset() {
+    // addAsset() {
 // this.asset.status="Pending Approval";
 // if(this.asset.reason==="newAsset")
 // this.asset.assetCondition="Working";
@@ -66,7 +65,7 @@ count:number;
 //       this.userService.addAsset(this.asset)
 //       .subscribe((data) => {
 //           this.asset = data;
-          
+
 //           this.router.navigate(['viewAssetList'])
 //     alert(JSON.stringify(this.asset));
 //     this.userService.addAsset(this.asset)
@@ -81,8 +80,7 @@ count:number;
 //         }
 //       );
 //   }
-}
-
+  }
 
 
   addMore() {
@@ -96,7 +94,7 @@ count:number;
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
-    
+
   }
 }
 

@@ -11,10 +11,9 @@ export class FilterPipe implements PipeTransform {
     if (!searchText) {
       return items;
     }
-    // searchText = searchText.toLocaleLowerCase();
+    searchText = searchText.toLocaleLowerCase();
     const assetLists = items.filter(it => {
         return it.serialNumber.toLocaleLowerCase().includes(searchText);
-        // || it.name.toLocaleLowerCase().includes(searchText);
       }
     );
     return assetLists;

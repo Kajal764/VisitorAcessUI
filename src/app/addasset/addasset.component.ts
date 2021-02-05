@@ -1,12 +1,12 @@
-import { JsonPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NgxNotificationService } from 'ngx-notification';
-import { AssetDto } from '../models/AssetDto';
-import { AssetInfo } from '../models/AssetInfo';
-import { ODCList } from '../models/ODCList';
-import { UserService } from '../service/user.service';
+import {JsonPipe} from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, FormArray, Validators, FormControl} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NgxNotificationService} from 'ngx-notification';
+import {AssetDto} from '../models/AssetDto';
+import {AssetInfo} from '../models/AssetInfo';
+import {ODCList} from '../models/ODCList';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-addasset',
@@ -24,8 +24,10 @@ export class AddassetComponent implements OnInit {
   reasons = ['Working', 'Not Working', 'Unused'];
   movementSelected: boolean = false;
   movementValue: string;
-  constructor(private formBuilder: FormBuilder, private userService: UserService, 
-    private router: Router, private route: ActivatedRoute,private ngxNotificationService:NgxNotificationService) { }
+
+  constructor(private formBuilder: FormBuilder, private userService: UserService,
+              private router: Router, private route: ActivatedRoute, private ngxNotificationService: NgxNotificationService) {
+  }
 
   ngOnInit() {
     this.dynamicForm = this.formBuilder.group({
@@ -40,19 +42,23 @@ export class AddassetComponent implements OnInit {
     this.userService.getAllODC().subscribe((data) => this.odcs = data);
   }
 
-  get f() { return this.dynamicForm.controls; }
-  get t() { return this.f.assetInfos as FormArray; }
+  get f() {
+    return this.dynamicForm.controls;
+  }
+
+  get t() {
+    return this.f.assetInfos as FormArray;
+  }
 
   changeMovement(e) {
     console.log(e.target.value);
-    this.movementValue = e.target.value
-    if (this.movementValue == "Outward") {
+    this.movementValue = e.target.value;
+    if (this.movementValue == 'Outward') {
       this.movementSelected = false;
-      this.f.odcName.setValue("Store");
+      this.f.odcName.setValue('Store');
       console.log(this.f.odcName.value);
-    }
-    else {
-      this.f.odcName.setValue("");
+    } else {
+      this.f.odcName.setValue('');
       console.log(this.f.odcName);
       this.movementSelected = true;
     }
@@ -63,8 +69,8 @@ export class AddassetComponent implements OnInit {
     if (this.t.length < numberOfAssets) {
       for (let i = this.t.length; i < numberOfAssets; i++) {
         this.t.push(this.formBuilder.group({
-          serialNumber: ['', [Validators.required, Validators.pattern("^[0-9A-Za-z]*$")]],
-          description: ['', [Validators.required, Validators.pattern("^[0-9A-Za-z ]*$")]],
+          serialNumber: ['', [Validators.required, Validators.pattern('^[0-9A-Za-z]*$')]],
+          description: ['', [Validators.required, Validators.pattern('^[0-9A-Za-z ]*$')]],
           type: ['', Validators.required],
           status: ['', Validators.required]
         }));
@@ -77,7 +83,7 @@ export class AddassetComponent implements OnInit {
   }
 
   onSubmit() {
-    alert("clicked on submit");
+    alert('clicked on submit');
     this.submitted = true;
 
     const data = {
@@ -90,18 +96,18 @@ export class AddassetComponent implements OnInit {
     };
 
     alert(JSON.stringify(data));
-     this.userService.addAsset(data)
-    .subscribe((data) => {
-        this.asset = data;
-        alert('success');
-        this.sendNotification('Assets Added Successfully!!');
-        // this.router.navigate(['viewAssetList'])
-    //  this.success = !this.success;
-      }, (error) => {
-        this.sendNotification('Something went wrong please try again!!!')
-        console.log(error);
-      }
-    );
+    this.userService.addAsset(data)
+      .subscribe((data) => {
+          this.asset = data;
+          alert('success');
+          this.sendNotification('Assets Added Successfully!!');
+          // this.router.navigate(['viewAssetList'])
+          //  this.success = !this.success;
+        }, (error) => {
+          this.sendNotification('Something went wrong please try again!!!');
+          console.log(error);
+        }
+      );
 
   }
 

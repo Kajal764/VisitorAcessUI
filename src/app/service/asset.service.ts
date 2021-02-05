@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {AssetList} from '../models/AssetList';
 import {Observable} from 'rxjs';
 import {AssetData} from '../models/AssetData';
-import { AssetDto } from '../models/AssetDto';
+import {AssetDto} from '../models/AssetDto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ import { AssetDto } from '../models/AssetDto';
 export class AssetService {
 
   baseurl = 'http://localhost:8080/visitor/asset';
-  
+
   constructor(private httpClient: HttpClient) {
   }
 
@@ -21,8 +21,8 @@ export class AssetService {
     })
   };
 
-  getPendingAssetRequest(empId: string, type: string): Observable<AssetList[]> {
-    const url = this.baseurl + '/pendingAssetRequest/' + empId + '/' + type;
+  getPendingAssetRequest(empId: string): Observable<AssetList[]> {
+    const url = this.baseurl + '/pendingAssetRequest/' + empId;
     return this.httpClient.get<AssetList[]>(url);
   }
 
@@ -36,8 +36,8 @@ export class AssetService {
     return this.httpClient.get<AssetData[]>(url);
   }
 
-  getAssetListForOdcManager(empId: string, type: string): Observable<AssetList[]> {
-    const url = this.baseurl + '/assetList/' + empId + '/' + type;
+  getAssetListForOdcManager(empId: string): Observable<AssetList[]> {
+    const url = this.baseurl + '/assetList/' + empId;
     return this.httpClient.get<AssetList[]>(url);
   }
 

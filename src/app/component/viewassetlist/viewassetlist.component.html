@@ -19,12 +19,12 @@
                [(ngModel)]="searchText" placeholder="Search..."
                autofocus>
       </div>
-       <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>
+      <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>
       <select type="text" required placeholder="All"
-               [(ngModel)]="selectedText">
+              [(ngModel)]="selectedText">
         <option value="" disabled>Filter the requests</option>
         <optgroup label="Based On Asset Types">
-        <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option>
+          <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option>
         </optgroup>
         <optgroup label="Based On Request Status">
           <option value="Pending Approval">Pending Approval</option>
@@ -46,19 +46,18 @@
         </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let asset of assetList | appFilter: searchText">
-                <tr *ngIf="selectedText=='All' || selectedText==asset.type || selectedText==asset.requestStatus">
-        <!-- <tr *ngFor="let asset of assetList | appFilter: searchText"> -->
-          <td>{{asset.requestId}}</td>
-          <td>{{asset.serialNumber}}</td>
-          <td>{{asset.description}}</td>
-          <td>{{asset.type | uppercase}}</td>
-          <td>{{asset.status}}</td>
-          <td class="btn-link">{{asset.odcName}}</td>
-          <td>
-            <button mat-button color="accent" (click)="viewHistory(asset.serialNumber)">View</button>
-          </td>
-        </tr>
+        <ng-container *ngFor="let asset of assetList | appFilter: searchText">
+          <tr *ngIf="selectedText=='All' || selectedText==asset.type || selectedText==asset.requestStatus">
+            <td>{{asset.requestId}}</td>
+            <td>{{asset.serialNumber}}</td>
+            <td>{{asset.description}}</td>
+            <td>{{asset.type | uppercase}}</td>
+            <td>{{asset.status}}</td>
+            <td class="btn-link">{{asset.odcName}}</td>
+            <td>
+              <button mat-button color="accent" (click)="viewHistory(asset.serialNumber)">View</button>
+            </td>
+          </tr>
         </ng-container>
         </tbody>
       </table>

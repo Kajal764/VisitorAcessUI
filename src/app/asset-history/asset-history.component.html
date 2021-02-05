@@ -66,37 +66,47 @@ font-family: Roboto">
             <img *ngIf="assetData.type==isTypeMonitor" src="../../assets/monitor.png" class="monitor" alt="...">
             <img *ngIf="assetData.type==isTypeMouse" src="../../../assets/mouse.jpg" class="monitor" alt="...">
             <img *ngIf="assetData.type==isTypeCpu" src="../../../assets/cpu-1.jpg" class="cpu" alt="...">
-            <span *ngIf="assetData.type==isTypeOther" class="cpu" alt="...">Other</span>
+            <img *ngIf="assetData.type==isProjector" src="../../assets/projector.jpg" class="cpu" alt="...">
+            <img *ngIf="assetData.type==isLaptopCharger" src="../../assets/charger.png" class="cpu" alt="...">
+            <img *ngIf="assetData.type==isTelephone" src="../../assets/phone.jpg" class="cpu" alt="...">
+            <img *ngIf="assetData.type==isTokens" src="../../assets/token.png" class="cpu" alt="...">
+            <img *ngIf="assetData.type==isCables" src="../../assets/cable.png" class="cpu" alt="...">
+            <div *ngIf="assetData.type==isTypeOther" class="other" alt="...">Other</div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8" style="padding: 15px 10px">
             <div class="card-body">
               <h5 class="card-title">Serial no - {{assetData.serialNumber}}</h5>
-              <span>Employee Id <small style="font-size: 15px"
-                                       class="text-muted"> - {{assetData.empId}}</small></span><br>
-              <span>{{assetData.type}} Model <small style="font-size: 15px"
-                                                    class="text-muted">- {{assetData.name}}</small></span><br>
 
-              <span>{{assetData.type}} is <small style="font-size: 15px"
-                                                 class="text-muted">{{assetData.assetCondition}}</small></span><br>
-              <span *ngIf="assetData.isCurrentOdc===false">{{assetData.type}} were in <small style="font-size: 15px"
-                                                                                             class="text-muted"> {{assetData.odcName}}
+              <span>description <small style="font-size: 15px"
+                                       class="text-muted"> - {{assetData.description}}</small></span><br>
+              <span>Request Id <small style="font-size: 15px"
+                                      class="text-muted"> - {{assetData.requestId}}</small></span><br>
+
+
+              <span> Status is <small style="font-size: 15px"
+                                      class="text-muted">{{assetData.status}}</small></span><br>
+              <span *ngIf="assetData.currentOdc===false">{{assetData.type}} were in <small style="font-size: 15px"
+                                                                                           class="text-muted"> {{assetData.odcName}}
                  </small>odc</span>
-              <span *ngIf="assetData.isCurrentOdc===true && assetData.fromDate!==null">{{assetData.type}} is in <small
+
+              <span *ngIf="assetData.currentOdc===true && assetData.fromDate!==null">{{assetData.type}} is in <small
                 style="font-size: 15px"
                 class="text-muted">{{assetData.odcName}}
                 </small>odc</span>
 
-              <span *ngIf="assetData.isCurrentOdc===false"><br>For the period of <small style="font-size: 15px"
-                                                                                        class="text-muted"> - {{assetData.fromDate | date :'short'}}
+              <span *ngIf="assetData.currentOdc===false"><br>For the period of <small style="font-size: 15px"
+                                                                                      class="text-muted"> - {{assetData.fromDate | date :'short'}}
                 <span style="font-weight: bold"> to </span> {{assetData.tillDate | date :'short'}}</small>
               </span>
-              <span *ngIf="assetData.isCurrentOdc===true && assetData.fromDate!==null"><br>For the period of <small
+              <span *ngIf="assetData.currentOdc===true && assetData.fromDate!==null"><br>For the period of <small
                 style="font-size: 15px"
                 class="text-muted"> - {{assetData.fromDate | date :'short'}}
                 <span style="font-weight: bold"> to </span> Current</small>
               </span>
               <span *ngIf="assetData.fromDate===null">To Add {{assetData.type}} in {{assetData.odcName}} Odc , request not approved !!!</span>
               <br>
+              <span>Added by employee with id<small style="font-size: 15px"
+                                                    class="text-muted"> - {{assetData.empId}}</small></span><br>
             </div>
           </div>
         </div>

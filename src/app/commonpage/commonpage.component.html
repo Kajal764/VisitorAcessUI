@@ -1,20 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8289C4;
 font-family: Roboto">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
         <a class="nav-link"
-          style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;font-family: Roboto">Welcome</a>
+           style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;font-family: Roboto">Dashboard</a>
       </li>
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <button style="padding: 8px 20px;margin-right: 20px" class="btn btn-outline-light my-2 my-sm-0" type="submit"
-        (click)="logout()">Logout</button>
+              (click)="logout()">Logout
+      </button>
     </form>
   </div>
 </nav>
@@ -22,41 +23,34 @@ font-family: Roboto">
 <br>
 <!-- <h3  align="center"><i>Dashboard</i></h3> -->
 
-<div class="mmm">
+<div class="mmm" >
   <div class="d-flex justify-content-center" style="font-family: Roboto">
     <div class="b">
       <div class="main-container">
         <div *ngIf="isEmployee">
           <a href="raiseOdcRequest">Employee Service</a>
-          <!-- Employee Service -->
-          <a href="raiseOdcRequest"></a>
+          <a href="raiseOdcRequest" style="color: white;text-decoration: none"></a>
         </div>
         <div *ngIf="isManager">
           <a href="odc-request">Employee Service</a>
           <!-- Employee Service -->
-          <a href="odc-request"></a>
+          <a href="odc-request" style="color: white;text-decoration: none"></a>
         </div>
         <div *ngIf="isOdcManager">
-          <a href="odcManagerRequests">Employee Service</a>
+          <a href="odcManagerRequests" style="color: white;text-decoration: none">Employee Service</a>
           <!-- Employee Service -->
-          <a href="odcManagerRequests"></a>
+          <a href="odcManagerRequests" style="color: white;text-decoration: none"></a>
         </div>
         <div *ngIf="isAdmin">
-          <a href="home-admin">Employee Service</a>
-          <!-- Employee Service -->
-          <a href="home-admin"></a>
+          <a href="home-admin" style="color: white;text-decoration: none">Employee Service</a>
         </div>
       </div>
-      <!-- <div class="main" style="margin-left: 30px">
-        <a href="assetmanagement">Asset Management</a>
-      </div> -->
+
     </div>
     <div class="b">
-      <div class="main">
+      <div class="main-container" (click)="redirectTo()" style="color: white;text-decoration: none">
         Asset Management
-        <a href="addAsset"></a>
       </div>
     </div>
   </div>
 </div>
-<!-- </div> -->

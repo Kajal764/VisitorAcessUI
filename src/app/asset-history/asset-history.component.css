@@ -69,3 +69,10 @@ a {
   font-size: 20px;
   text-shadow: 3px 2px lightgray;
 }
+
+.other {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 32px;
+  padding-top: 84px;
+}

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { AuthService } from 'src/app/service/auth.service';
+import {AuthService} from 'src/app/service/auth.service';
 import {login} from '../../login';
 import {LoginService} from '../../login.service';
 
@@ -18,9 +18,8 @@ export class LoginComponent implements OnInit {
   public listOfRole = ['Admin', 'Odc-Manager', 'Manager', 'Employee'];
   private selectRole: any;
 
- 
 
-  constructor(private loginService: LoginService,private auth:AuthService,
+  constructor(private loginService: LoginService, private auth: AuthService,
               private router: Router) {
   }
 
@@ -28,20 +27,21 @@ export class LoginComponent implements OnInit {
   }
 
   logins() {
-   
+
     this.loginService.login(this.lg.empId, this.lg.password).subscribe(result => {
       console.log(result);
 
 
       this.selectRole = this.lg.role;
-      if(this.selectRole!=='Odc-Manager'&&this.selectRole!=='Manager'&&this.selectRole!=='Admin')
-      this.selectRole="Employee";//Because of default checked value of radio button
-      
-      
+      if (this.selectRole !== 'Odc-Manager' && this.selectRole !== 'Manager' && this.selectRole !== 'Admin') {
+        this.selectRole = 'Employee';
+      }//Because of default checked value of radio button
+
+
       localStorage.setItem('user', result.empId);
       localStorage.setItem('role', this.selectRole);
       localStorage.setItem('managerName', result.managerName);
-      localStorage.setItem('odcName',result.odc);
+      localStorage.setItem('odcName', result.odc);
       if (result) {
         this.lg = result;
         this.res = false;
@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit {
               if (value === 'Manager') {
                 this.router.navigate(['commonpage']);
               } else if (value === 'Employee') {
-               // this.router.navigate(['raiseOdcRequest']);
-              
-               this.router.navigate(['commonpage'],this.selectRole);
+                // this.router.navigate(['raiseOdcRequest']);
+
+                this.router.navigate(['commonpage'], this.selectRole);
               } else if (value === 'Odc-Manager') {
                 this.router.navigate(['commonpage']);
               } else if (value === 'Admin') {
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
       this.message = error.error;
       this.res = true;
       this.lg.empId = null;
-      
+
       this.lg.password = '';
       this.lg.role = [];
     });

@@ -3,16 +3,15 @@ import {AssetInfo} from './AssetInfo';
 export class AssetData {
   requestId: number;
   serialNumber: string;
-  name: string;
+  description: string;
   empId: string;
   type: string;
   odcName: string;
-  reason: string;
-  assetCondition: string;
   fromDate: Date;
   tillDate: Date;
   status: string;
-  isCurrentOdc: boolean;
+  currentOdc: boolean;
+  movement: string;
+  requestStatus: string;
   assetInfos: AssetInfo[];
-
 }

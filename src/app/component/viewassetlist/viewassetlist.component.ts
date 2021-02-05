@@ -10,24 +10,22 @@ import {Router} from '@angular/router';
 })
 export class ViewassetlistComponent implements OnInit {
 
-  assetList:AssetList[];
-  isListPresent:boolean=true;
-  assetTypes = ['All','Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
-  selectedText:string='All';
+  assetList: AssetList[];
+  isListPresent: boolean = true;
+  assetTypes = ['All', 'Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
+  selectedText: string = 'All';
   searchText = '';
   assetStatus: any;
+
   constructor(private assetService: AssetService, private router: Router) {
   }
 
   ngOnInit() {
-    this.assetService.getAssetListForOdcManager(localStorage.getItem('user'), 'All')
+    this.assetService.getAssetListForOdcManager(localStorage.getItem('user'))
       .subscribe((data) => {
           this.assetList = data;
-          if (this.assetList.length === 0) {
-            this.isListPresent = false;
-          }
         },
-        (error) => console.log(error));
+        (error) => this.isListPresent = false);
   }
 
   viewHistory(serialNumber: string) {
