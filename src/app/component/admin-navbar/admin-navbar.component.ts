@@ -16,10 +16,12 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('role');
-    this.router.navigate(['/login']);
-    this.auth.logout();
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('role');
+      this.router.navigate(['/login']);
+      this.auth.logout();
+    }
   }
 
 

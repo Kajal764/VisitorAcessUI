@@ -12,7 +12,7 @@ export class ViewassetlistComponent implements OnInit {
 
   assetList: AssetList[];
   isListPresent: boolean = true;
-  assetTypes = ['All', 'Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
+  assetTypes = ['All', 'Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens','Extension Cable', 'Other'];
   selectedText: string = 'All';
   searchText = '';
   assetStatus: any;

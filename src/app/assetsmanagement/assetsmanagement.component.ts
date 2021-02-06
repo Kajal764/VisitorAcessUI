@@ -94,7 +94,6 @@ export class AssetsmanagementComponent implements OnInit {
     localStorage.removeItem('user');
     localStorage.removeItem('role');
     this.router.navigate(['/login']);
-
   }
 }
 

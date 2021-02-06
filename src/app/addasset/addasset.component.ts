@@ -20,7 +20,7 @@ export class AddassetComponent implements OnInit {
   dynamicForm: FormGroup;
   submitted = false;
   odcs: ODCList[];
-  assetTypes = ['Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
+  assetTypes = ['Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens','Extension Cable', 'Other'];
   reasons = ['Working', 'Not Working', 'Unused'];
   movementSelected: boolean = false;
   movementValue: string;
@@ -83,7 +83,7 @@ export class AddassetComponent implements OnInit {
   }
 
   onSubmit() {
-    alert('clicked on submit');
+    // alert('clicked on submit');
     this.submitted = true;
 
     const data = {
@@ -95,12 +95,19 @@ export class AddassetComponent implements OnInit {
       movement: this.dynamicForm.get('movement').value
     };
 
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
     this.userService.addAsset(data)
       .subscribe((data) => {
           this.asset = data;
-          alert('success');
-          this.sendNotification('Assets Added Successfully!!');
+          // alert('success');
+          if(data!=null){
+            this.onReset();
+            this.sendNotification('Assets Added Successfully!!');
+            setTimeout(() => {
+              this.router.navigate(['viewAssetList']);
+          }, 5000);
+          }
+         
           // this.router.navigate(['viewAssetList'])
           //  this.success = !this.success;
         }, (error) => {

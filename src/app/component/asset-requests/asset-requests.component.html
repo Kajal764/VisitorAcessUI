@@ -22,13 +22,15 @@
         <select type="text" required placeholder="All"
                 [(ngModel)]="selectedText">
           <option value="" disabled>Filter the requests</option>
-          <optgroup label="Based On Asset Types">
+          <!-- <optgroup label="Based On Asset Types">
             <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option>
-          </optgroup>
-          <optgroup label="Based On Request Status">
+          </optgroup> -->
+          <!-- <optgroup label="Based On Request Status"> -->
+            <option value="All">All</option>
             <option value="Pending Approval">Pending Approval</option>
             <option value="Approved">Approved</option>
-          </optgroup>
+            <option value="Rejected">Rejected</option>
+          <!-- </optgroup> -->
         </select>
       </div>
     </div>
@@ -62,7 +64,7 @@
         </thead>
         <tbody style="font-family: Roboto">
         <ng-container *ngFor="let request of assetRequest">
-          <tr *ngIf="selectedText=='All' || selectedText==request.type || selectedText==request.requestStatus">
+          <tr *ngIf="selectedText=='All' || selectedText==request.requestStatus">
             <!-- <tr *ngFor="let request of assetRequest"> -->
             <input class="form-check-input" type="checkbox"
                    [checked]="Accept"
