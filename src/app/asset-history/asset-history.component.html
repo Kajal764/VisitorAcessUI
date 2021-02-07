@@ -71,6 +71,7 @@ font-family: Roboto">
             <img *ngIf="assetData.type==isTelephone" src="../../assets/phone.jpg" class="cpu" alt="...">
             <img *ngIf="assetData.type==isTokens" src="../../assets/token.png" class="cpu" alt="...">
             <img *ngIf="assetData.type==isCables" src="../../assets/cable.png" class="cpu" alt="...">
+            <img *ngIf="assetData.type==isExtensionCable" src="../../assets/extension.jpg" class="cpu" alt="...">
             <div *ngIf="assetData.type==isTypeOther" class="other" alt="...">Other</div>
           </div>
           <div class="col-md-8" style="padding: 15px 10px">
@@ -82,11 +83,10 @@ font-family: Roboto">
               <span>Request Id <small style="font-size: 15px"
                                       class="text-muted"> - {{assetData.requestId}}</small></span><br>
 
-
-              <span> Status is <small style="font-size: 15px"
-                                      class="text-muted">{{assetData.status}}</small></span><br>
-              <span *ngIf="assetData.currentOdc===false">{{assetData.type}} were in <small style="font-size: 15px"
-                                                                                           class="text-muted"> {{assetData.odcName}}
+              <span> Status - <small style="font-size: 15px"
+                                     class="text-muted">{{assetData.status}}</small></span><br>
+              <span *ngIf="assetData.currentOdc===false">{{assetData.type}} was moved to <small style="font-size: 15px"
+                                                                                                class="text-muted"> {{assetData.odcName}}
                  </small>odc</span>
 
               <span *ngIf="assetData.currentOdc===true && assetData.fromDate!==null">{{assetData.type}} is in <small
@@ -101,7 +101,7 @@ font-family: Roboto">
               <span *ngIf="assetData.currentOdc===true && assetData.fromDate!==null"><br>For the period of <small
                 style="font-size: 15px"
                 class="text-muted"> - {{assetData.fromDate | date :'short'}}
-                <span style="font-weight: bold"> to </span> Current</small>
+                <span style="font-weight: bold"> to </span> Till Date</small>
               </span>
               <span *ngIf="assetData.fromDate===null">To Add {{assetData.type}} in {{assetData.odcName}} Odc , request not approved !!!</span>
               <br>

@@ -3,7 +3,7 @@
 <lib-ngx-notification></lib-ngx-notification>
 
 <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
-    <div class="card m-3">
+    <div class="card m-3" style="font-family: 'Times New Roman';">
         <h5 class="card-header">Add asset details</h5>
         <div class="card-body">
             <div class="form-row">
@@ -134,7 +134,7 @@
                     <div class="form-group col-3">
                         <label><b>Asset Model/Brand/Manufacturer Name</b></label>
                         <input type="text" formControlName="description" class="form-control"
-                            [ngClass]="{ 'is-invalid':asset.controls.description.errors && asset.controls.description.touched}" 
+                            [ngClass]="{ 'is-invalid':asset.controls.description.errors && asset.controls.description.touched}"
                             placeholder="Enter Model description"/>
                         <div *ngIf="asset.controls.description.errors && asset.controls.description.touched" class="invalid-feedback">
                             <span *ngIf="asset.controls.description.errors.required">Description is required</span>

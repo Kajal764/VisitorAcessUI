@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {VisitorRequest} from 'src/app/models/VisitorRequest';
 import {UserService} from 'src/app/service/user.service';
 import {NgxNotificationService} from 'ngx-notification';
-import { AuthService } from 'src/app/service/auth.service';
+import {AuthService} from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-managerodcrequests',
@@ -15,7 +15,7 @@ export class ManagerodcrequestsComponent implements OnInit {
   visitorRequests: VisitorRequest[];
   success: boolean;
   public flag: boolean;
-  selectedText:string='All';
+  selectedText: string = 'All';
   AcceptedByManager = 'Accepted By Manager';
   RejectedByManager = 'Rejected By Manager';
   PendingApproval = 'Pending Approval';
@@ -23,7 +23,7 @@ export class ManagerodcrequestsComponent implements OnInit {
   requests: VisitorRequest[] = [];
 
   constructor(private userService: UserService, private router: Router,
-              private ngxNotificationService: NgxNotificationService,private auth:AuthService) {
+              private ngxNotificationService: NgxNotificationService, private auth: AuthService) {
   }
 
   ngOnInit() {

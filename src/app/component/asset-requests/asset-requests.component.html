@@ -12,7 +12,7 @@
 
 <div *ngIf="requestsPresent==true" class="d-flex justify-content-center">
 
-  <div style="padding-bottom: 20px">
+  <div style="padding-bottom: 20px;font-family: 'Times New Roman'">
     <div class="row">
       <!-- <div class="col-7" style="color: navy;font-weight: bold;font-size: 150%;font-family: Roboto">Asset
         requests
@@ -43,7 +43,7 @@
               class="btn btn-danger">Reject
       </button>
     </div>
-    <div style="padding-top: 20px;font-family: Roboto">
+    <div style="padding-top: 20px;font-family: 'Times New Roman'">
       <table class="table table-hover table-bordered ">
         <thead class="thead-light">
         <tr>
@@ -62,7 +62,7 @@
           <th scope="col">Request Status</th>
         </tr>
         </thead>
-        <tbody style="font-family: Roboto">
+        <tbody style="font-family: 'Times New Roman'">
         <ng-container *ngFor="let request of assetRequest">
           <tr *ngIf="selectedText=='All' || selectedText==request.requestStatus">
             <!-- <tr *ngFor="let request of assetRequest"> -->

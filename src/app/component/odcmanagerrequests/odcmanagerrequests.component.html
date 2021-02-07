@@ -13,9 +13,9 @@
 
 <div *ngIf="requestsPresent==true" class="d-flex justify-content-center">
 
-  <div style="padding-bottom: 20px">
+  <div style="padding-bottom: 20px;font-family: 'Times New Roman'">
     <div class="row">
-      <div class="col-7" style="color: navy;font-weight: bold;font-size: 150%;font-family: Roboto">Visitor access
+      <div class="col-7" style="color: navy;font-weight: bold;font-size: 150%;">Visitor access
         request
       </div>
     </div>
@@ -31,7 +31,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
       <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;&nbsp;
       <select type="text" required placeholder="All"
-               [(ngModel)]="selectedText">
+              [(ngModel)]="selectedText">
         <option value="" disabled>Filter the requests</option>
         <optgroup label="Based On Request Status">
           <option value="All">All</option>
@@ -42,7 +42,7 @@
       </select>
 
     </div>
-    <div style="padding-top: 20px;font-family: Roboto">
+    <div style="padding-top: 20px;">
       <table class="table table-hover table-bordered ">
         <thead class="thead-light">
         <tr>
@@ -60,23 +60,23 @@
           <th scope="col">Status</th>
         </tr>
         </thead>
-        <tbody style="font-family: Roboto">
+        <tbody>
         <!-- <tr *ngFor="let request of odcRequests"> -->
-          <ng-container *ngFor="let request of odcRequests">
-            <tr *ngIf="selectedText=='All'|| selectedText==request.status">
-          <input class="form-check-input" type="checkbox"
-                 [checked]="Accept"
-                 (change)="selectedForApproval($event,request)"
-                 style="margin-left: 3.5%;margin-top: 1%">
-          <td> {{request.empId}}</td>
-          <td>{{request.odc}}</td>
-          <td>{{request.startDate}}</td>
-          <td>{{request.endDate}}</td>
-          <td>{{request.startTime | time24to12Transform }}</td>
-          <td>{{request.endTime  | time24to12Transform}}</td>
-          <td class="btn-link" *ngIf="request.status==AcceptedByManager">Pending Approval</td>
-          <td class="btn-link" *ngIf="request.status!=AcceptedByManager">{{request.status}}</td>
-        </tr>
+        <ng-container *ngFor="let request of odcRequests">
+          <tr *ngIf="selectedText=='All'|| selectedText==request.status">
+            <input class="form-check-input" type="checkbox"
+                   [checked]="Accept"
+                   (change)="selectedForApproval($event,request)"
+                   style="margin-left: 3.5%;margin-top: 1%">
+            <td> {{request.empId}}</td>
+            <td>{{request.odc}}</td>
+            <td>{{request.startDate}}</td>
+            <td>{{request.endDate}}</td>
+            <td>{{request.startTime | time24to12Transform }}</td>
+            <td>{{request.endTime  | time24to12Transform}}</td>
+            <td class="btn-link" *ngIf="request.status==AcceptedByManager">Pending Approval</td>
+            <td class="btn-link" *ngIf="request.status!=AcceptedByManager">{{request.status}}</td>
+          </tr>
         </ng-container>
         </tbody>
       </table>
