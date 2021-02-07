@@ -12,7 +12,6 @@ import {OdcComponent} from './component/odc/odc.component';
 import {EmployeeprofileComponent} from './component/employeeprofile/employeeprofile.component';
 import {ViewodcmanagersComponent} from './component/viewodcmanagers/viewodcmanagers.component';
 import {OdcmanagerrequestsComponent} from './component/odcmanagerrequests/odcmanagerrequests.component';
-import {AssetsmanagementComponent} from './assetsmanagement/assetsmanagement.component';
 import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
 
 
@@ -88,10 +87,7 @@ const routes: Routes = [
     path: 'assetRequests',
     component: AssetRequestsComponent, canActivate: [AuthGuard]
   },
-  {
-    path: 'assetmanagement',
-    component: AssetsmanagementComponent, canActivate: [AuthGuard]
-  },
+  
   {
     path: 'assetmanagementnav',
     component: AssetmanagementnavComponent, canActivate: [AuthGuard]
@@ -109,7 +105,6 @@ const routes: Routes = [
     path: 'viewAssetList',
     component: ViewallassetsComponent, canActivate: [AuthGuard]
   },
-
   {
     path: 'viewAssets',
     component: ViewassetlistComponent, canActivate: [AuthGuard]

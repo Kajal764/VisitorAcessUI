@@ -23,7 +23,7 @@ import {ConfirmationPopupComponent} from './component/confirmation-popup/confirm
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxNotificationComponent} from 'ngx-notification';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
-import { AssetsmanagementComponent } from './assetsmanagement/assetsmanagement.component';
+
 import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
 import { AssetRequestsComponent } from './component/asset-requests/asset-requests.component';
 import { AssetmanagementnavComponent } from './assetmanagementnav/assetmanagementnav.component';
@@ -62,7 +62,6 @@ import {FilterUser} from './component/admin/FilterUser';
     ConfirmationPopupComponent,
     NgxNotificationComponent,
     AssetRequestsComponent,
-    AssetsmanagementComponent,
     AssetmanagementnavComponent,
     CommonpageComponent,
     ViewallassetsComponent,

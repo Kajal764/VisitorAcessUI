@@ -100,9 +100,10 @@ export class AddassetComponent implements OnInit {
       .subscribe((data) => {
           this.asset = data;
           // alert('success');
+          
           if(data!=null){
-            this.onReset();
-            this.sendNotification('Assets Added Successfully!!');
+            this.onReset
+            this.sendNotification('Assets Moved Successfully!!');
             setTimeout(() => {
               this.router.navigate(['viewAssetList']);
           }, 5000);
@@ -111,8 +112,8 @@ export class AddassetComponent implements OnInit {
           // this.router.navigate(['viewAssetList'])
           //  this.success = !this.success;
         }, (error) => {
-          this.sendNotification('Something went wrong please try again!!!');
-          console.log(error);
+          this.sendNotification(error.error);
+          console.log(error.error);
         }
       );
 
