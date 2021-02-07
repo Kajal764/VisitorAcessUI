@@ -5,9 +5,7 @@ import {catchError} from 'rxjs/operators';
 import {VisitorRequest} from '../models/VisitorRequest';
 import {ODCList} from '../models/ODCList';
 import {User} from '../models/User';
-import {AssetList} from '../models/AssetList';
 import {AssetDto} from '../models/AssetDto';
-import {AssetData} from '../models/AssetData';
 
 
 @Injectable({
@@ -16,7 +14,8 @@ import {AssetData} from '../models/AssetData';
 export class UserService {
 
   baseurl = 'http://localhost:8080/visitor/user/';
-  asset:AssetDto;
+  asset: AssetDto;
+
   constructor(private httpClient: HttpClient) {
   }
 
@@ -112,7 +111,6 @@ export class UserService {
   }
 
   addOdc(data: { odcId: number; odcName: any }): Observable<any> {
-    alert(JSON.stringify(data));
     const apiUrl = this.baseurl + '/addOdc';
     return this.postData(data, apiUrl)
       .pipe(catchError(this.handleError));

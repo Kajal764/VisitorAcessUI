@@ -27,6 +27,7 @@ export class AssetHistoryComponent implements OnInit {
   searchDataFound = false;
   public role: string;
   public search: any;
+  isExtensionCable = 'Extension Cable';
 
   constructor(private assetService: AssetService,
               private route: ActivatedRoute,

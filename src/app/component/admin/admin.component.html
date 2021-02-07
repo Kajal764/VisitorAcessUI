@@ -2,13 +2,18 @@
 
 <lib-ngx-notification></lib-ngx-notification>
 
-<div style="font-family: Roboto;">
+<div style="font-family: 'Times New Roman';">
   <div class="d-flex justify-content-center">
     <div>
       <div class="row">
-        <div class="col-7" style="color: navy;font-weight: bold;font-size: 150%">List Of Employee</div>
+        <div class="col-3" style="color: navy;font-weight: bold;font-size: 120%">List Of Employee</div>
+        <div style="width: 28.5%">
+          <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+                 [(ngModel)]="searchText" placeholder="Search..."
+                 autofocus>
+        </div>
       </div>
-      <div style="padding-top: 20px">
+      <div style="padding-top: 20px;width: 990px">
         <table class="table table-hover table-bordered ">
           <thead class="thead-light">
           <tr>
@@ -23,7 +28,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let user of userList">
+          <tr *ngFor="let user of userList  | userFilter: searchText">
             <th scope="row">{{user.empId}}</th>
             <td>
               <ul style="list-style-type:square;">

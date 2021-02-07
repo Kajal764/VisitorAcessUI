@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center" style="font-family: Roboto">
+<div class="d-flex justify-content-center" style="font-family: 'Times New Roman';">
   <div class="main-container">
     <div class="row">
       <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%; margin-bottom: 5px">
@@ -24,17 +24,13 @@
       <tbody>
       <tr *ngFor="let odc of odcList">
         <td>{{odc.odcName}}</td>
-        <td class="text-success">
-          <button (click)="view(odc.odcName)" type="button" class="btn btn-success pull-right">View ODC Managers
+        <td>
+          <button (click)="view(odc.odcName)" type="button" class="btn btn-outline-info">View ODC Managers
           </button>
         </td>
         <td class="text-danger">
-          <button (click)="openPopup(odc)" type="button" class="btn btn-danger pull-right">Remove ODC</button>
+          <button (click)="openPopup(odc)" type="button" class="btn btn-outline-danger">Remove ODC</button>
         </td>
-
-        <!--        <td class="text-danger">-->
-        <!--          <button (click)="deleteOdc(odc)" type="button" class="btn btn-danger pull-right">Remove ODC</button>-->
-        <!--        </td>-->
       </tr>
       </tbody>
     </table>

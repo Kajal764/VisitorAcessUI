@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8289C4;
-font-family: Roboto">
+font-family: 'Times New Roman'">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@ font-family: Roboto">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
         <a class="nav-link"
-           style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;font-family: Roboto">Dashboard</a>
+           style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;">Dashboard</a>
       </li>
 
     </ul>
@@ -21,34 +21,15 @@ font-family: Roboto">
 </nav>
 
 <br>
-<!-- <h3  align="center"><i>Dashboard</i></h3> -->
-
-<div class="mmm" >
-  <div class="d-flex justify-content-center" style="font-family: Roboto">
+<div class="mmm">
+  <div class="d-flex justify-content-center" >
     <div class="b">
-      <div class="main-container">
-        <div *ngIf="isEmployee">
-          <a href="raiseOdcRequest">Employee Service</a>
-          <a href="raiseOdcRequest" style="color: white;text-decoration: none"></a>
-        </div>
-        <div *ngIf="isManager">
-          <a href="odc-request">Employee Service</a>
-          <!-- Employee Service -->
-          <a href="odc-request" style="color: white;text-decoration: none"></a>
-        </div>
-        <div *ngIf="isOdcManager">
-          <a href="odcManagerRequests" style="color: white;text-decoration: none">Employee Service</a>
-          <!-- Employee Service -->
-          <a href="odcManagerRequests" style="color: white;text-decoration: none"></a>
-        </div>
-        <div *ngIf="isAdmin">
-          <a href="home-admin" style="color: white;text-decoration: none">Employee Service</a>
-        </div>
+      <div class="main-container" (click)="redirectToEmployee()" style="color: white;text-decoration: none;font-family: 'Times New Roman'">
+        Employee Service
       </div>
-
     </div>
     <div class="b">
-      <div class="main-container" (click)="redirectTo()" style="color: white;text-decoration: none">
+      <div class="main-container" (click)="redirectTo()" style="color: white;text-decoration: none;font-family: 'Times New Roman'">
         Asset Management
       </div>
     </div>

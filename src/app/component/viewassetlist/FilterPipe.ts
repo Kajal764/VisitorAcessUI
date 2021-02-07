@@ -13,7 +13,7 @@ export class FilterPipe implements PipeTransform {
     }
     searchText = searchText.toLocaleLowerCase();
     const assetLists = items.filter(it => {
-        return it.serialNumber.toLocaleLowerCase().includes(searchText);
+        return it.serialNumber.toLocaleLowerCase().includes(searchText) || it.description.toLocaleLowerCase().includes(searchText);
       }
     );
     return assetLists;

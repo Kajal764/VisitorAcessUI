@@ -38,6 +38,7 @@ import { LoginService } from './login.service';
 import {FilterPipe} from './component/viewassetlist/FilterPipe';
 import {MatIconModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
+import {FilterUser} from './component/admin/FilterUser';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import {MatButtonModule} from '@angular/material/button';
     ViewassetlistComponent,
     AssetHistoryComponent,
     AddassetComponent,
-    FilterPipe
+    FilterPipe,
+    FilterUser
   ],
   imports: [
     BrowserModule,
