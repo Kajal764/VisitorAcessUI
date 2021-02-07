@@ -57,4 +57,19 @@ export class CommonpageComponent implements OnInit {
       this.router.navigate(['/viewAssets']);
     }
   }
+
+  redirect(){
+if(this.isAdmin===true)
+{
+  this.router.navigate(['/home-admin']);
+}else if(this.isEmployee===true)
+{
+  this.router.navigate(['/raiseOdcRequest']);
+}else if(this.isManager===true){
+  this.router.navigate(['/odc-request']);
+}else{
+  this.router.navigate(['/odcManagerRequests']);
+}
+
+  }
 }
