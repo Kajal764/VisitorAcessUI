@@ -83,7 +83,7 @@
 
       <div class="form-group">
         <label for="mobileNo"><b>Contact Number</b></label>
-        <input type="text" placeholder="Please enter your mobile no. (+91-xxxxxxxxxx)" class="form-control" formControlName="mobileNo"
+        <input type="text" placeholder="Please enter your mobile no. (+91-xxxxxxxxxx 0r 10 digits)" class="form-control" formControlName="mobileNo"
                [ngClass]="{'is-invalid':registrationForm.get('mobileNo').touched && registrationForm.get('mobileNo').invalid}"
                 required/>
         <div *ngIf="registrationForm.get('mobileNo').touched && registrationForm.get('mobileNo').invalid"
