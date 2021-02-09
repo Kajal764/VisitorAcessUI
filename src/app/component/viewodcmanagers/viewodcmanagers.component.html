@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8289C4;
-font-family: Roboto;">
+font-family: 'Times New Roman';">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@ font-family: Roboto;">
     <ul class="navbar-nav mr-auto">
       <li>
         <a class="nav-link" href="home-admin"
-           style="font-weight: bold;font-size: 20px ; color: white ; margin-right: 20px; font-family: Roboto"
+           style="font-weight: bold;font-size: 20px ; color: white ; margin-right: 20px;"
         >ADMIN</a>
       </li>
 
@@ -16,6 +16,13 @@ font-family: Roboto;">
         <a class="nav-link" routerLinkActive="active" routerLink="/viewOdcManagers/{{odcName}}"
            style="color: white">
           <i class="fa fa-ticket" aria-hidden="true"></i>ODC Users
+        </a>
+      </li>
+
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/admin-odc" routerLinkActive="active" style="color: white;margin: 0px">
+          <i class="fa fa-ticket" aria-hidden="true"></i>
+          Add ODC
         </a>
       </li>
 
@@ -35,14 +42,14 @@ font-family: Roboto;">
 <div class="d-flex justify-content-center">
   <div *ngIf="isListPresent=== false">
     <div class="d-flex flex-column">
-      <div class="p-2"> <img class="image" src="../../../assets/download.png" class="image"></div>
+      <div class="p-2"><img class="image" src="../../../assets/download.png" class="image"></div>
       <div class="text">ODC Manager Not Assigned !!!</div>
     </div>
   </div>
 </div>
 
 <div *ngIf="isListPresent=== true" class="d-flex justify-content-center">
-  <div class="container" style="font-family: Roboto">
+  <div class="container" style="font-family: 'Times New Roman'">
     <div class="row">
       <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">ODC Managers</div>
     </div>
