@@ -22,6 +22,12 @@ font-family: 'Times New Roman'">
       </li>
 
       <li class="nav-item ">
+        <a class="nav-link" href="commonpage"
+           style="color: white;">
+           <i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
+      </li>
+
+      <li class="nav-item ">
         <a *ngIf="role==='Odc-Manager' || role==='Admin'" class="nav-link" routerLinkActive="active"
            routerLink="/viewAssets"
            style="color: white;"><i class="fa fa-eye" aria-hidden="true"></i>
@@ -51,9 +57,9 @@ font-family: 'Times New Roman'">
 
     <form class="form-inline my-2 my-lg-0">
       <a class="nav-link" style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;"
-         href="commonpage"><i class="fa fa-chevron-circle-left"></i>Back</a>
+      onClick=history.back()><i class="fa fa-chevron-circle-left"></i>Back</a>
       <button style="padding: 8px 20px;margin-right: 20px" class="btn btn-outline-light my-2 my-sm-0" type="submit"
-              (click)="logout()">Logout
+              (click)="logout()">Logout&nbsp;<i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
       </button>
     </form>
 </nav>

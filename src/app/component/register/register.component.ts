@@ -18,8 +18,12 @@ export class RegisterComponent implements OnInit {
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,40}$';
   passwordPattern = '^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%]).{8,})$';
   empId = '^[0-9]\\d{6}$';
-  //mobilePattern = '^[0-9]\\d{9}$';
-  mobilePattern = '([+][1-9]{2}[-])([0-9]\\d{9})$';
+  //mobilePattern = '([+][1-9]{2}[-])([0-9]\\d{9})$';
+
+   mobilePattern = '^([+]?[9]?[1]?[-]?[0-9]{10})$';
+ 
+  //mobilePattern = '^([+][0-9]{12})|([0-9]{10})$'
+  
   public isEmployee = true;
   isOdcManager = false;
   public roles = ['Employee'];
