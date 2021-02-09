@@ -22,19 +22,19 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmationPopupComponent} from './component/confirmation-popup/confirmation-popup.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxNotificationComponent} from 'ngx-notification';
-import { GridModule } from '@syncfusion/ej2-angular-grids';
+import {GridModule} from '@syncfusion/ej2-angular-grids';
 
 import {OdcmanagerComponent} from './component/odcmanager/odcmanager.component';
-import { AssetRequestsComponent } from './component/asset-requests/asset-requests.component';
-import { AssetmanagementnavComponent } from './assetmanagementnav/assetmanagementnav.component';
-import { CommonpageComponent } from './commonpage/commonpage.component';
-import { ViewallassetsComponent } from './component/viewallassets/viewallassets.component';
-import { ViewassetlistComponent } from './component/viewassetlist/viewassetlist.component';
+import {AssetRequestsComponent} from './component/asset-requests/asset-requests.component';
+import {AssetmanagementnavComponent} from './assetmanagementnav/assetmanagementnav.component';
+import {CommonpageComponent} from './commonpage/commonpage.component';
+import {ViewallassetsComponent} from './component/viewallassets/viewallassets.component';
+import {ViewassetlistComponent} from './component/viewassetlist/viewassetlist.component';
 import {AssetHistoryComponent} from './asset-history/asset-history.component';
-import { AddassetComponent } from './addasset/addasset.component';
-import { AuthGuard } from './service/auth.guard';
-import { AuthService } from './service/auth.service';
-import { LoginService } from './login.service';
+import {AddassetComponent} from './addasset/addasset.component';
+import {AuthGuard} from './service/auth.guard';
+import {AuthService} from './service/auth.service';
+import {LoginService} from './login.service';
 import {FilterPipe} from './component/viewassetlist/FilterPipe';
 import {MatIconModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
@@ -81,9 +81,9 @@ import {FilterUser} from './component/admin/FilterUser';
     BrowserAnimationsModule,
     GridModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  providers: [AuthGuard,AuthService,LoginService],
+  providers: [AuthGuard, AuthService, LoginService],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationPopupComponent]
 })

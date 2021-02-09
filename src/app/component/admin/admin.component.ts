@@ -17,7 +17,8 @@ export class AdminComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router,
               private modalService: NgbModal,
-              private ngxNotificationService: NgxNotificationService, private auth: AuthService) {
+              private ngxNotificationService: NgxNotificationService,
+              private auth: AuthService) {
   }
 
   public userList: User[];
@@ -60,7 +61,6 @@ export class AdminComponent implements OnInit {
       this.auth.logout();
     }
   }
-
 
   openPopup(user: User) {
     const ref = this.modalService.open(ConfirmationPopupComponent);

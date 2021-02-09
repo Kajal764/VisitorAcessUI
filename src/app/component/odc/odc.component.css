@@ -1,12 +1,14 @@
 
 .main-container {
   padding: 20px;
-  width: 40%;
+  width: 50%;
   height: auto;
   margin-top: 2%;
   border-radius: 1%;
   border: 1px solid lightgrey;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+  background-color: whitesmoke;
+  margin-bottom: 2%;
 }
 
 .main {
@@ -19,3 +21,21 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
 }
 
+.icon {
+  opacity: 0.6;
+  color: #004000;
+  margin-left: 10px;
+}
+
+button {
+  outline: none;
+}
+
+.deleteButton {
+  color: #b20000;
+  margin-left: 13px;
+}
+
+.tableData {
+  border: 1px solid lightblue;
+}
