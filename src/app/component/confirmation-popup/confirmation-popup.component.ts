@@ -17,8 +17,6 @@ export class ConfirmationPopupComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.data);
-    console.log(this.isOdc);
   }
 
 }

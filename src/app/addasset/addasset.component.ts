@@ -1,10 +1,8 @@
-import {JsonPipe} from '@angular/common';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormArray, Validators, FormControl, PatternValidator} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgxNotificationService} from 'ngx-notification';
 import {AssetDto} from '../models/AssetDto';
-import {AssetInfo} from '../models/AssetInfo';
 import {ODCList} from '../models/ODCList';
 import {UserService} from '../service/user.service';
 
@@ -116,8 +114,8 @@ export class AddassetComponent implements OnInit {
 
     // alert(JSON.stringify(data));
     this.userService.addAsset(data)
-      .subscribe((data) => {
-          this.asset = data;
+      .subscribe((res) => {
+          this.asset = res;
           // alert('success');
           
           if(data!=null){
@@ -128,7 +126,7 @@ export class AddassetComponent implements OnInit {
           //     this.router.navigate(['viewAssetList']);
           // }, 5000);
           }
-         
+
           // this.router.navigate(['viewAssetList'])
           //  this.success = !this.success;
         }, (error) => {
