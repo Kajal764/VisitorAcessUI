@@ -20,8 +20,10 @@ export class RegisterComponent implements OnInit {
   empId = '^[0-9]\\d{6}$';
   //mobilePattern = '([+][1-9]{2}[-])([0-9]\\d{9})$';
 
-   mobilePattern = '^([+]?[9]?[1]?[-]?[0-9]{10})$';
- 
+   //mobilePattern = '^([+]?[9]?[1]?[-]?[0-9]{10})$';
+   //mobilePattern ='^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$';
+   mobilePattern = '^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$';
+
   //mobilePattern = '^([+][0-9]{12})|([0-9]{10})$'
   
   public isEmployee = true;
