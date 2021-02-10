@@ -5,6 +5,7 @@ import {UserService} from '../../service/user.service';
 import {login} from '../../login';
 import {User} from '../../models/User';
 import {ODCList} from 'src/app/models/ODCList';
+import {NgxNotificationService} from 'ngx-notification';
 
 @Component({
   selector: 'app-register',
@@ -19,11 +20,9 @@ export class RegisterComponent implements OnInit {
   passwordPattern = '^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%]).{8,})$';
   empId = '^[0-9]\\d{6}$';
   //mobilePattern = '([+][1-9]{2}[-])([0-9]\\d{9})$';
-
-   mobilePattern = '^([+]?[9]?[1]?[-]?[0-9]{10})$';
- 
+  mobilePattern = '^([+]?[9]?[1]?[-]?[0-9]{10})$';
   //mobilePattern = '^([+][0-9]{12})|([0-9]{10})$'
-  
+
   public isEmployee = true;
   isOdcManager = false;
   public roles = ['Employee'];
@@ -45,11 +44,16 @@ export class RegisterComponent implements OnInit {
   public managers: User[];
   private message: any;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService,
+              private router: Router,
+              private ngxNotificationService: NgxNotificationService) {
   }
 
   ngOnInit() {
-    this.userService.getAllODC().subscribe((data) => this.odcs = data);
+    this.userService.getAllODC().subscribe((data) => {
+      this.odcs = data;
+      this.odcs = this.odcs.filter(m => m.odcId !== 1);
+    });
     this.userService.managers()
       .subscribe(data => {
           this.managers = data;
@@ -77,6 +81,7 @@ export class RegisterComponent implements OnInit {
           this.responseData = response.body;
           this.message = response.body.message;
           this.flag = true;
+          this.sendNotification('Register Successfully !!!');
           this.router.navigate(['login']);
           this.selectOdc = [];
           this.roles = [];
@@ -128,5 +133,9 @@ export class RegisterComponent implements OnInit {
     } else {
       this.selectOdc = this.roles.filter(m => m !== odcName);
     }
+  }
+
+  sendNotification(message: string) {
+    this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
   }
 }
