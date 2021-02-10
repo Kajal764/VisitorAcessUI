@@ -24,6 +24,7 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@ng-bootstrap/ng-bootstrap": "^5.3.1",
     "@syncfusion/ej2-angular-grids": "^18.4.34",
+    "angular-material-expansion-panel": "^0.7.2",
     "bootstrap": "^4.5.3",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",

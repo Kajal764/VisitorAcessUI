@@ -1,0 +1,19 @@
+.main-container {
+    background-color: #adc7e0;
+    width: 1000px;
+    padding: 50px;
+    margin: 20px;
+    border-radius: 25px;
+    text-align: center;
+  }
+  
+
+  
+  .mmm {
+    margin-top: 150px;
+  }
+
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  

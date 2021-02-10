@@ -6,6 +6,8 @@ import {VisitorRequest} from '../models/VisitorRequest';
 import {ODCList} from '../models/ODCList';
 import {User} from '../models/User';
 import {AssetDto} from '../models/AssetDto';
+import { WeeklyReport } from '../models/WeeklyReport';
+
 
 
 @Injectable({
@@ -135,6 +137,21 @@ export class UserService {
       })
     };
     return this.httpClient.post<AssetDto>('http://localhost:8080/visitor/asset/addAsset', body, options);
+  }
+
+
+  saveReport(weeklyReport: WeeklyReport) {
+    const body = JSON.stringify(weeklyReport);
+    const options = {
+      headers: new HttpHeaders({
+        'content-Type': 'application/json'
+      })
+    };
+    return this.httpClient.post<WeeklyReport>(this.baseurl + '/saveReport', body, options);
+  }
+
+  getReport(empId: string) {
+    return this.httpClient.get<WeeklyReport[]>(this.baseurl + '/getReports/' + empId)
   }
 
   editOdc(data: { odcId: number; odcName: string }) {
