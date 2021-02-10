@@ -1,10 +1,8 @@
-import {JsonPipe} from '@angular/common';
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormArray, Validators, FormControl} from '@angular/forms';
+import {FormBuilder, FormGroup, FormArray, Validators, FormControl, PatternValidator} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgxNotificationService} from 'ngx-notification';
 import {AssetDto} from '../models/AssetDto';
-import {AssetInfo} from '../models/AssetInfo';
 import {ODCList} from '../models/ODCList';
 import {UserService} from '../service/user.service';
 
@@ -21,9 +19,10 @@ export class AddassetComponent implements OnInit {
   submitted = false;
   odcs: ODCList[];
   assetTypes = ['Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens','Extension Cable', 'Other'];
-  reasons = ['Working', 'Not Working', 'Unused'];
+  reasons = ['Working', 'Not Working', 'Unused','Unknown'];
   movementSelected: boolean = false;
   movementValue: string;
+  numberPattern = "^[0-9]\\d{3}$"
 
   constructor(private formBuilder: FormBuilder, private userService: UserService,
               private router: Router, private route: ActivatedRoute, private ngxNotificationService: NgxNotificationService) {
@@ -33,7 +32,7 @@ export class AddassetComponent implements OnInit {
     this.dynamicForm = this.formBuilder.group({
       empId: [localStorage.getItem('user'), Validators.required],
       odcName: ['', Validators.required],
-      numberOfAssets: ['', Validators.required],
+      numberOfAssets: ['', [Validators.required,Validators.min(1)]],
       movement: ['', Validators.required],
       // assettype:['',Validators.required],
       // reason:['',Validators.required],
@@ -63,6 +62,24 @@ export class AddassetComponent implements OnInit {
       this.movementSelected = true;
     }
   }
+
+  // onChangeAssets(e) {
+  //   const numberOfAssets = e.target.value || 0;
+  //   if (this.t.length < numberOfAssets) {
+  //     for (let i = this.t.length; i < numberOfAssets; i++) {
+  //       this.t.push(this.formBuilder.group({
+  //         serialNumber: ['', [Validators.required, Validators.pattern('^[0-9A-Za-z]*$')]],
+  //         description: ['', [Validators.required, Validators.pattern('^[0-9A-Za-z ]*$')]],
+  //         type: ['', Validators.required],
+  //         status: ['', Validators.required]
+  //       }));
+  //     }
+  //   } else {
+  //     for (let i = this.t.length; i >= numberOfAssets; i--) {
+  //       this.t.removeAt(i);
+  //     }
+  //   }
+  // }
 
   onChangeAssets(e) {
     const numberOfAssets = e.target.value || 0;
@@ -97,18 +114,19 @@ export class AddassetComponent implements OnInit {
 
     // alert(JSON.stringify(data));
     this.userService.addAsset(data)
-      .subscribe((data) => {
-          this.asset = data;
+      .subscribe((res) => {
+          this.asset = res;
           // alert('success');
           
           if(data!=null){
-            this.onReset
-            this.sendNotification('Assets Moved Successfully!!');
-            setTimeout(() => {
-              this.router.navigate(['viewAssetList']);
-          }, 5000);
+            this.t.clear();
+            this.dynamicForm.get('numberOfAssets').setValue(0);
+            this.sendNotification('Assets Moved Successfully!!Change number of assets to add more');
+          //   setTimeout(() => {
+          //     this.router.navigate(['viewAssetList']);
+          // }, 5000);
           }
-         
+
           // this.router.navigate(['viewAssetList'])
           //  this.success = !this.success;
         }, (error) => {
@@ -121,6 +139,12 @@ export class AddassetComponent implements OnInit {
 
   sendNotification(message: string) {
     this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
+  }
+
+
+
+  removeData(i){
+    this.t.removeAt(i);
   }
 
   onReset() {

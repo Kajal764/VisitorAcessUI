@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   res = false;
   public listOfRole = ['Admin', 'Odc-Manager', 'Manager', 'Employee'];
   private selectRole: any;
-  pass:string;
+  pass: string;
 
 
   constructor(private loginService: LoginService, private auth: AuthService,
@@ -28,17 +28,16 @@ export class LoginComponent implements OnInit {
   }
 
   logins() {
-    
+
     this.loginService.login(this.lg.empId, this.lg.password).subscribe(result => {
       console.log(result);
-      localStorage.setItem('pass',this.lg.password);
-      this.pass=localStorage.getItem('pass');
+      localStorage.setItem('pass', this.lg.password);
+      this.pass = localStorage.getItem('pass');
 
       this.selectRole = this.lg.role;
       if (this.selectRole !== 'Odc-Manager' && this.selectRole !== 'Manager' && this.selectRole !== 'Admin') {
         this.selectRole = 'Employee';
-      }//Because of default checked value of radio button
-
+      }
 
       localStorage.setItem('user', result.empId);
       localStorage.setItem('role', this.selectRole);
