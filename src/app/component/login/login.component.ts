@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   public listOfRole = ['Admin', 'Odc-Manager', 'Manager', 'Employee'];
   private selectRole: any;
   pass: string;
+  
 
 
   constructor(private loginService: LoginService, private auth: AuthService,

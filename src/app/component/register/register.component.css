@@ -21,3 +21,16 @@
 span{
 cursor:pointer;
 }
+
+.btn1{
+  background-color: rgb(88, 88, 230);   /*#8289C4 */
+  color: white;
+  
+}
+.btn1:hover{
+  border-color: white;
+}
+
+/* .btn1{
+  border-color: cornflowerblue;
+} */
