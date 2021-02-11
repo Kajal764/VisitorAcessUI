@@ -1,0 +1,83 @@
+
+  
+ <div *ngIf="isEmployee===true">
+    <app-employeeprofile></app-employeeprofile>
+  </div>  
+  
+  <div *ngIf="!success" style="font-family: 'Times New Roman'" >
+    <div align="center" style="margin-bottom: 100px;">
+      <div class="row-mt-2">
+        <div class="col-md-6">
+          <form #weeklyreport="ngForm" autocomplete="off" (ngSubmit)="submitReport()" class="box">
+            <div class="container">
+              <p>Please fill the Weekly Status Report</p>
+              <hr>
+              <div class="form-group" align="left">
+                <label for="empId"><b>Employee ID</b></label>
+                <input type="text" placeholder="Enter Your Employee ID" class="form-control" name="empId"
+                       id="empId" required [(ngModel)]="weeklyReport.empId" #EmpID="ngModel"
+                       pattern="[0-9]{7}" [class.is-invalid]="EmpID.touched && EmpID.invalid" minlength="7"
+                       maxlength="7">
+                <div *ngIf="EmpID.touched && EmpID.invalid">
+                  <span *ngIf="EmpID.errors.required" style="color:red">EmpID is required</span>
+                  <span *ngIf="EmpID.errors.pattern" style="color:red">Numbers Only</span>
+                  <span *ngIf="EmpID.errors.minlength" style="color:red">ID should be Seven numbers
+                                      only</span>
+                  <span *ngIf="EmpID.errors.maxlength" style="color:red">ID should be Seven numbers
+                                      only</span>
+                </div>
+              </div>
+              <div class="form-group" align="left">
+                <label for="startDate"><b>Start Date</b></label>
+                <input type="date" placeholder="Enter Date" class="form-control" name="startDate"
+                       id="startDate" required [(ngModel)]="weeklyReport.startDate" #StartDate="ngModel"
+                       [class.is-invalid]="StartDate.touched && StartDate.invalid"/>
+                <div *ngIf="StartDate.touched && StartDate.invalid">
+                  <span *ngIf="StartDate.errors.required" style="color:red">Date is required</span>
+                </div>
+              </div>
+              <div class="form-group" align="left">
+                <label for="endDate"><b>End Date</b></label>
+                <input type="date" max="{{currentDate|date:'yyyy-MM-dd'}}" placeholder="Enter Date" class="form-control" name="endDate" id="endDate"
+                       required [(ngModel)]="weeklyReport.endDate" #EndDate="ngModel"
+                       [class.is-invalid]="EndDate.touched && EndDate.invalid"/>
+                <div *ngIf="EndDate.touched && EndDate.invalid">
+                  <span *ngIf="EndDate.errors.required" style="color:red">Date is required</span>
+                </div>
+              </div>
+              
+            
+
+            <div class="form-group" align="left">
+                <label for="sprintDetails"><b>Sprint Details</b></label>
+                <input type="text" placeholder="Sprint Information" class="form-control" required [(ngModel)]="weeklyReport.sprintData" #SprintData="ngModel" 
+                name="sprintDetails" id="sprintDetails" [class.is-invalid]="SprintData.touched && SprintData.invalid"/>
+                <div *ngIf="SprintData.touched && SprintData.invalid">
+                    <span *ngIf="SprintData.errors.required" style="color:red">Sprint Details is required</span>
+                </div>
+            </div>
+
+            <div class="form-group" align="left">
+                <label for="report"><b>Weekly Status</b></label>
+                <textarea class="form-control" required [(ngModel)]="weeklyReport.report" #Report="ngModel" 
+                name="report" id="report" [class.is-invalid]="Report.touched && Report.invalid"></textarea>
+                <div *ngIf="Report.touched && Report.invalid">
+                    <span *ngIf="Report.errors.required" style="color:red">Please enter weekly report</span>
+                </div>
+            </div>
+  
+    
+  
+              <input type="submit" value="Submit" class="btn btn-success btn-block"
+                     [disabled]="weeklyreport.invalid">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="success">
+    <p align="center">Report submitted Successfully!!!</p>
+  </div>
+  

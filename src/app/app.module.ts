@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './component/register/register.component';
@@ -39,6 +39,9 @@ import {FilterPipe} from './component/viewassetlist/FilterPipe';
 import {MatIconModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {FilterUser} from './component/admin/FilterUser';
+import { WeeklyreportComponent } from './component/weeklyreport/weeklyreport.component';
+import { ViewreportComponent } from './component/viewreport/viewreport.component';
+import { ViewreportlistComponent } from './component/viewreportlist/viewreportlist.component';
 
 
 @NgModule({
@@ -69,7 +72,10 @@ import {FilterUser} from './component/admin/FilterUser';
     AssetHistoryComponent,
     AddassetComponent,
     FilterPipe,
-    FilterUser
+    FilterUser,
+    WeeklyreportComponent,
+    ViewreportComponent,
+    ViewreportlistComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +91,11 @@ import {FilterUser} from './component/admin/FilterUser';
   ],
   providers: [AuthGuard,AuthService,LoginService],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmationPopupComponent]
+  entryComponents: [ConfirmationPopupComponent],
+  
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+  ]
 })
 export class AppModule {
 }

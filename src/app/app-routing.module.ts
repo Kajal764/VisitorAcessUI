@@ -24,6 +24,9 @@ import {ViewassetlistComponent} from './component/viewassetlist/viewassetlist.co
 import {AssetHistoryComponent} from './asset-history/asset-history.component';
 import {AddassetComponent} from './addasset/addasset.component';
 import {AuthGuard} from './service/auth.guard';
+import { WeeklyreportComponent } from './component/weeklyreport/weeklyreport.component';
+import { ViewreportComponent } from './component/viewreport/viewreport.component';
+import { ViewreportlistComponent } from './component/viewreportlist/viewreportlist.component';
 
 
 const routes: Routes = [
@@ -116,7 +119,20 @@ const routes: Routes = [
   {
     path: 'addAsset',
     component: AddassetComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'weeklyReport',
+    component: WeeklyreportComponent
+  },
+  {
+    path: 'viewReport',
+    component: ViewreportComponent
+  },
+  {
+    path: 'viewReportList',
+    component: ViewreportlistComponent
   }
+
 ];
 
 @NgModule({
