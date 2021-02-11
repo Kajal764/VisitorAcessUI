@@ -43,7 +43,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'register',
+    path: 'register/:type',
     component: RegisterComponent
   },
   {

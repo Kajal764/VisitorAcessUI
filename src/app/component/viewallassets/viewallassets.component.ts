@@ -13,9 +13,10 @@ import {AuthService} from 'src/app/service/auth.service';
 export class ViewallassetsComponent implements OnInit {
 
   assetList: AssetData[];
+
   assetListFiltered: AssetData[];
   showMessage= false;
-  isListPresent: boolean = true;
+  isListPresent = false;
   role: string;
   assetTypes = ['All', 'Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Extension Cable', 'Other'];
   selectedText: string = 'Pending Approval';
@@ -29,8 +30,8 @@ export class ViewallassetsComponent implements OnInit {
       .subscribe((data) => {
           this.assetList = data;
           this.assetListFiltered = data;
-          if (this.assetList.length === 0) {
-            this.isListPresent = false;
+          if (this.assetList.length !== 0) {
+            this.isListPresent = true;
           }
         },
         (error) => console.log(error));

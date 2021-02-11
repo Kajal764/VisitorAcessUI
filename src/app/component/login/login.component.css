@@ -11,12 +11,17 @@
 
 .p {
   border-radius: 5px;
-  margin-left: 350px;
-  margin-right: 350px;
+  /*margin-left: 350px;*/
+  /*margin-right: 350px;*/
   margin-top: 30px;
+  width: 40%;
+  padding-left: 6%;
   border-radius: 1%;
   border: 1px solid lightgrey;
-  box-shadow: 2px 2px #888888;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  padding-top: 1%;
+  padding-bottom: 2%;
+  z-index: 1;
 }
 
 .bottom {
@@ -31,11 +36,17 @@ h5 {
   color: red;
 }
 
-.icon{
+.icon {
   float: right;
   margin-right: 6px;
   margin-top: -25px;
   position: relative;
   z-index: 2;
-  color:black;
+  color: black;
+}
+
+.logo {
+  width: 20%;
+  height: 30%;
+  margin-top: 7%;
 }

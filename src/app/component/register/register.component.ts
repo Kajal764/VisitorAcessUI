@@ -1,6 +1,6 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {login} from '../../login';
 import {User} from '../../models/User';
@@ -44,14 +44,21 @@ export class RegisterComponent implements OnInit {
   private flag = false;
   public managers: User[];
   private message: any;
+  type:string;
+  variable=false;
 
   constructor(private userService: UserService,
               private router: Router,
-              private ngxNotificationService: NgxNotificationService) {
+              private ngxNotificationService: NgxNotificationService,private route:ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.userService.getAllODC().subscribe((data) => {
+this.type=this.route.snapshot.params.type;
+if(this.type==="Admin")
+this.variable=true;
+
+
+this.userService.getAllODC().subscribe((data) => {
       this.odcs = data;
       this.odcs = this.odcs.filter(m => m.odcId !== 1);
     });
@@ -83,7 +90,10 @@ export class RegisterComponent implements OnInit {
           this.message = response.body.message;
           this.flag = true;
           this.sendNotification('Register Successfully !!!');
+          if(this.type==="None")
           this.router.navigate(['login']);
+          else
+          this.router.navigate(['home-admin']);
           this.selectOdc = [];
           this.roles = [];
         }, (error) => {

@@ -1,7 +1,7 @@
 <app-manager></app-manager>
 
 <div class="d-flex justify-content-center">
-  <div *ngIf="isListPresent== false">
+  <div *ngIf="isListPresent == false">
     <div class="d-flex flex-column">
       <div class="p-2"><img class="image" src="../../../assets/download.png" class="image"></div>
       <div class="text">No Reports found!!!</div>
@@ -11,30 +11,10 @@
 
 
 <div class="d-flex justify-content-center">
-  <div *ngIf="isListPresent=== true" class="container" style="font-family: 'Times New Roman'">
+  <div *ngIf="isListPresent == true" class="container" style="font-family: 'Times New Roman'">
     <div class="d-flex justify-content-between">
       <div style="color: navy;font-weight: bold;font-size: 120%">Report List</div>
-      <!-- <div style="width: 28.5%">
-        <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
-               [(ngModel)]="searchText" placeholder="Search..."
-               autofocus>
-      </div><div style="color: navy;font-weight: bold;font-size: 110%">
-      <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;
-      <select type="text" required placeholder="All"
-              [(ngModel)]="selectedText">
-        <option value="" disabled>Filter the requests</option>
-        <optgroup label="Based On Asset Types"> -->
-          <!-- <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option> -->
-        <!-- </optgroup> -->
-        <!-- <optgroup label="Based On Request Status">
-          <option value="All">All</option>
-          <option value="Pending Approval">Pending Approval</option>
-          <option value="Approved">Approved</option>
-          <option value="Rejected">Rejected</option>
-        </optgroup> -->
-      
-     </div>
-  </div>
+    </div>
     <div style="padding-top: 20px">
       <table class="table table-hover table-bordered ">
         <thead class="thead-light">
@@ -47,25 +27,26 @@
         </tr>
         </thead>
         <tbody>
-          <ng-container *ngFor="let report of weeklyReport">
-              <tr>
-              <td>{{report.empId}}</td>
-              <td>{{report.startDate}}</td>
-              <td>{{report.endDate}}</td>
-              <td>{{report.sprintData}}</td>
-               <td>
-                <button mat-button color="accent" (click)="viewReport(report)">View</button>
-              </td>
-            </tr>
-            <tr *ngIf="!weeklyReport || weeklyReport.length==0">
-              <td colspan="5">
-                No Reports to Display
-              </td>
-            </tr>
-          </ng-container>
+        <ng-container *ngFor="let report of weeklyReport">
+          <tr>
+            <td>{{report.empId}}</td>
+            <td>{{report.startDate}}</td>
+            <td>{{report.endDate}}</td>
+            <td>{{report.sprintData}}</td>
+            <td>
+              <button mat-button color="accent" (click)="viewReport(report)">View</button>
+            </td>
+          </tr>
+          <tr *ngIf="!weeklyReport || weeklyReport.length==0">
+            <td colspan="5">
+              No Reports to Display
+            </td>
+          </tr>
+        </ng-container>
         </tbody>
       </table>
     </div>
+  </div>
 </div>
 
 <!-- <div *ngIf="!showreport">
@@ -77,7 +58,7 @@
          Report - {{report}}
          </div>
         </div>
-  
+
       </div>
   </div>
 </div>   -->

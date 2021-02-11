@@ -104,4 +104,7 @@ export class LoginComponent implements OnInit {
   //   this.lg.role = $event.target.value;
   // }
 
+  redirectToRegister() {
+    this.router.navigate(['register', 'None']);
+  }
 }
