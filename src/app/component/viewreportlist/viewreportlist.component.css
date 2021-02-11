@@ -1,19 +1,32 @@
 .main-container {
-    background-color: #adc7e0;
-    width: 1000px;
-    padding: 50px;
-    margin: 20px;
-    border-radius: 25px;
-    text-align: center;
-  }
-  
+  background-color: #adc7e0;
+  width: 1000px;
+  padding: 50px;
+  margin: 20px;
+  border-radius: 25px;
+  text-align: center;
+}
 
-  
-  .mmm {
-    margin-top: 150px;
-  }
 
-  .mat-form-field + .mat-form-field {
-    margin-left: 8px;
-  }
-  
+.mmm {
+  margin-top: 150px;
+}
+
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.image {
+  margin-top: 20px;
+  width: 80%;
+}
+
+.text {
+  font-family: Roboto;
+  color: navy;
+  margin: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 30px;
+  text-shadow: 3px 2px lightgray;
+}

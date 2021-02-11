@@ -6,7 +6,7 @@
   margin-top: 1%;
   border-radius: 1%;
   border: 1px solid lightgrey;
-  box-shadow: 2px 2px #888888;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 3%;
 }
 
@@ -25,7 +25,7 @@ cursor:pointer;
 .btn1{
   background-color: rgb(88, 88, 230);   /*#8289C4 */
   color: white;
-  
+
 }
 .btn1:hover{
   border-color: white;
@@ -34,3 +34,9 @@ cursor:pointer;
 /* .btn1{
   border-color: cornflowerblue;
 } */
+
+.logo {
+  width: 20%;
+  height: 30%;
+  margin-top: 7%;
+}

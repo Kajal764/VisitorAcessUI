@@ -13,7 +13,7 @@ import {AuthService} from 'src/app/service/auth.service';
 export class ViewallassetsComponent implements OnInit {
 
   assetList: AssetData[];
-  isListPresent: boolean = true;
+  isListPresent = false;
   role: string;
   assetTypes = ['All', 'Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Extension Cable', 'Other'];
   selectedText: string = 'All';
@@ -26,8 +26,8 @@ export class ViewallassetsComponent implements OnInit {
     this.assetService.getAssetList(localStorage.getItem('user'))
       .subscribe((data) => {
           this.assetList = data;
-          if (this.assetList.length === 0) {
-            this.isListPresent = false;
+          if (this.assetList.length !== 0) {
+            this.isListPresent = true;
           }
         },
         (error) => console.log(error));

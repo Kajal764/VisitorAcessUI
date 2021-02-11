@@ -9,6 +9,7 @@
   </div>
 </div>
 
+
 <div class="d-flex justify-content-center">
   <div *ngIf="isListPresent=== true" class="container" style="font-family: 'Times New Roman'">
     <div class="row">
@@ -18,13 +19,13 @@
                 [(ngModel)]="selectedText">
           <option value="" disabled>Filter the requests</option>
           <!-- <optgroup label="Based On Asset Types"> -->
-            <!-- <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option> -->
+          <!-- <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option> -->
           <!-- </optgroup> -->
           <!-- <optgroup label="Based On Request Status"> -->
-            <option value="All">All</option>
-            <option value="Pending Approval">Pending Approval</option>
-            <option value="Approved">Approved</option>
-            <option value="Rejected">Rejected</option>
+          <option value="All">All</option>
+          <option value="Pending Approval">Pending Approval</option>
+          <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
           <!-- </optgroup> -->
         </select>
       </div>
