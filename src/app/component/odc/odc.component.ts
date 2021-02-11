@@ -1,30 +1,34 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {ODCList} from '../../models/ODCList';
-import {ObservedValueOf} from 'rxjs';
 import {Router} from '@angular/router';
-import {User} from '../../models/User';
 import {ConfirmationPopupComponent} from '../confirmation-popup/confirmation-popup.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from 'src/app/service/auth.service';
+import {AuthService} from 'src/app/service/auth.service';
+import {NgxNotificationService} from 'ngx-notification';
 
 @Component({
   selector: 'app-odc',
   templateUrl: './odc.component.html',
   styleUrls: ['./odc.component.css']
 })
-export class OdcComponent implements OnInit {
+export class OdcComponent implements OnInit, OnChanges {
 
-  odcName: any;
+  odcName = '';
   private message: any;
   public odcList: ODCList[];
   private responseData: any;
   public flag: boolean;
   private odcId: number;
+  isEdit = false;
+  public currentOdc: string;
+  Store = 'Store';
 
   constructor(private userService: UserService,
               private router: Router,
-              private modalService: NgbModal,private auth:AuthService) {
+              private modalService: NgbModal,
+              private auth: AuthService,
+              private ngxNotificationService: NgxNotificationService) {
   }
 
   ngOnInit() {
@@ -39,18 +43,31 @@ export class OdcComponent implements OnInit {
   }
 
   addOdc() {
+    if (this.odcName.length === 0) {
+      this.sendNotification('Pleased Enter ODC Name !!!');
+      return;
+    }
     const data = {
-      odcId: 1,
+      odcId: 0,
       odcName: this.odcName
     };
-    this.odcList.push(data);
+    let count = 0;
+    this.odcList.forEach(value => {
+      if (value.odcName === this.odcName) {
+        count = 1;
+      }
+    });
+    if (count === 0) {
+      this.odcList.push(data);
+    }
     this.odcName = '';
     this.userService.addOdc(data)
       .subscribe(res => {
-          this.responseData = res;
+          this.responseData = res.body;
+          this.sendNotification(this.responseData.message);
         },
         error => {
-          this.message = error.error.message;
+          this.sendNotification(error.error.message);
         });
   }
 
@@ -67,7 +84,6 @@ export class OdcComponent implements OnInit {
           this.message = error.error.message;
           this.flag = true;
         });
-
   }
 
   view(odcName: string) {
@@ -94,4 +110,39 @@ export class OdcComponent implements OnInit {
       });
   }
 
+  edit(odc: ODCList) {
+    this.isEdit = true;
+    this.currentOdc = odc.odcName;
+  }
+
+  updateOdc(odc: ODCList) {
+    this.isEdit = false;
+    const data = {
+      odcId: odc.odcId,
+      odcName: odc.odcName
+    };
+    this.userService.editOdc(data).subscribe(res => {
+        this.responseData = res.body;
+        this.sendNotification(this.responseData.message);
+      },
+      error => {
+        this.message = error.error;
+        this.sendNotification(error.error.text);
+      });
+  }
+
+  sendNotification(message: string) {
+    this.ngxNotificationService.sendMessage(message, 'dark', 'bottom-right');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.userService.getAllODC()
+      .subscribe(data => {
+          this.odcList = data;
+        },
+        error => {
+          this.odcId = 1;
+          this.message = error.error.message;
+        });
+  }
 }

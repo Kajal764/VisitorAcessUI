@@ -27,11 +27,11 @@
                     <label><b>Type of Movement</b></label>
                           <br/>
                         <input type="radio" value="Inward" formControlName="movement" (change)="changeMovement($event)" [ngClass]="{'is-invalid': submitted && f.movement.errors && f.movement.touched}">
-                        &nbsp;<span>Inward</span>&nbsp;
+                        &nbsp;<span>Inward <i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;
                           <input type="radio" value="Outward" formControlName="movement" (change)="changeMovement($event)" [ngClass]="{'is-invalid': submitted && f.movement.errors}">
-                          &nbsp; <span>Outward</span>&nbsp;
+                          &nbsp; <span>Outward <i class="fa fa-sign-out" aria-hidden="true"></i></span>&nbsp;
                           <input type="radio" value="Transferred" formControlName="movement" (change)="changeMovement($event)" [ngClass]="{'is-invalid': submitted && f.movement.errors}">
-                          &nbsp; <span>Transferred</span>&nbsp;
+                          &nbsp; <span>Transferred <i class="fa fa-exchange" aria-hidden="true"></i></span>&nbsp;
                       <div *ngIf="f.movement.touched && f.movement.errors && submitted" class="invalid-feedback">
                         <div *ngIf="f.movement.errors.required">Odc Name is required</div>
                     </div>
@@ -63,7 +63,7 @@
 
             &nbsp; &nbsp; &nbsp; &nbsp;
 
-                <div class="form-group col-md-3">
+                <!-- <div class="form-group col-md-3">
                     <label><b>Number of Assets</b></label>
                     <select formControlName="numberOfAssets" class="form-control" (change)="onChangeAssets($event)"
                         [ngClass]="{ 'is-invalid': submitted && f.numberOfAssets.errors }">
@@ -73,8 +73,21 @@
                     <div *ngIf="submitted && f.numberOfAssets.errors" class="invalid-feedback">
                         <div *ngIf="f.numberOfAssets.errors.required">Number of assets is required</div>
                     </div>
+                </div> -->
+                <div class="form-group col-md-3">
+                    <label><b>Number of Assets</b></label>
+                    <input type="number"  min="1"  oninput="this.value = Math.abs(this.value)" formControlName="numberOfAssets" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.numberOfAssets.errors }"
+                            placeholder="Enter Number of Assets" (change)="onChangeAssets($event)"/>
+                    <div *ngIf="submitted && f.numberOfAssets.errors" class="invalid-feedback">
+                        <div *ngIf="f.numberOfAssets.errors.required">Number of assets is required</div>
+                        <div *ngIf="f.numberOfAssets.errors.min">Number of assets should be atleast 1</div>
+                        <div *ngIf="f.numberOfAssets.errors.oninput">Number of assets should be atleast 1</div>
+                        <div *ngIf="f.numberOfAssets.errors.pattern">Number of assets should contain only numbers</div>
+                    </div>
                 </div>
-                &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp;
+                &nbsp; &nbsp;
                 <!-- <div class="form-group">
                     <label><b>Asset Type</b></label>
                     <select formControlName="assettype" class="form-control"
@@ -105,7 +118,7 @@
                 <h5 class="card-title">Asset {{i + 1}}</h5>
                 <div [formGroup]="asset" class="form-row">
                     <div class="form-group col-3">
-                        <label>Asset Serial Number: </label>
+                        <label><b>Asset Serial Number</b></label>
                         <input type="text" formControlName="serialNumber" class="form-control"
                             [ngClass]="{ 'is-invalid':asset.controls.serialNumber.errors && asset.controls.serialNumber.touched}"
                             placeholder="Enter Serial Number" />
@@ -116,7 +129,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group col-3">
+                    <div class="form-group col-2">
                         <label><b>Asset Type</b></label>
                         <select formControlName="type" class="form-control"
                         [ngClass]="{ 'is-invalid':asset.controls.type.errors && asset.controls.type.touched}">
@@ -142,7 +155,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group col-3">
+                    <div class="form-group col-2">
                         <label><b>Status of Asset</b></label>
                         <select formControlName="status" class="form-control"
                         [ngClass]="{ 'is-invalid':asset.controls.status.errors && asset.controls.status.touched}">
@@ -154,10 +167,15 @@
                             <!-- <span *ngIf="asset.controls.name.errors.pattern">Email must be a valid email address</span> -->
                         </div>
                     </div>
+                    <div class="form-group col-2">
+                        <label><b>Delete</b></label><br/>
+                        <button type="button" class="btn btn-danger" (click)="removeData(i)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="card-footer text-center">
+            
             <button class="btn btn-primary mr-1" [disabled]="dynamicForm.invalid">Add Assets</button>
             <!-- <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button> -->
             <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>

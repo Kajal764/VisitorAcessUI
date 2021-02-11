@@ -53,8 +53,7 @@ export class AssetHistoryComponent implements OnInit {
   private getSearchList(search: string) {
     this.assetService.getSearchList(search)
       .subscribe(data => {
-          this.assetList = data;
-          console.log(this.assetList);
+          this.assetList = data.reverse();
           if (this.assetList.length === 0) {
             this.searchDataFound = true;
           }

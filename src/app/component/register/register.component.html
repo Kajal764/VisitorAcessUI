@@ -4,6 +4,8 @@
   </a>
 </nav>
 
+<lib-ngx-notification></lib-ngx-notification>
+
 <br>
 <div class="d-flex justify-content-center">
   <div *ngIf="flag" class="alert alert-secondary " role="alert" style="width: 60%">
@@ -83,13 +85,14 @@
 
       <div class="form-group">
         <label for="mobileNo"><b>Contact Number</b></label>
-        <input type="text" placeholder="Please enter your mobile no. (+91-xxxxxxxxxx)" class="form-control" formControlName="mobileNo"
+        <input type="text" placeholder="Please enter your mobile no. (+91-xxxxxxxxxx 0r 10 digits)" class="form-control"
+               formControlName="mobileNo"
                [ngClass]="{'is-invalid':registrationForm.get('mobileNo').touched && registrationForm.get('mobileNo').invalid}"
-                required/>
+               required/>
         <div *ngIf="registrationForm.get('mobileNo').touched && registrationForm.get('mobileNo').invalid"
              class="invalid-feedback">
           <div *ngIf="registrationForm.get('mobileNo').errors.required">Mobile No required</div>
-          <div *ngIf="registrationForm.get('mobileNo').errors.pattern"> Mobile No should e valid</div>
+          <div *ngIf="registrationForm.get('mobileNo').errors.pattern"> Mobile No should be valid</div>
         </div>
       </div>
 
@@ -146,7 +149,8 @@
 
       <div class="d-flex justify-content-center">
         <div style=" margin-top: 20px;font-size: 15px">Already have an account ?
-          <span style="color: cornflowerblue; font-weight: bold; padding-left: 10px" (click)="redirectToLogin()">Login here</span>
+          <span type="button-link" style="color: cornflowerblue; font-weight: bold; padding-left: 10px"
+                (click)="redirectToLogin()">Login here</span>
         </div>
       </div>
     </form>

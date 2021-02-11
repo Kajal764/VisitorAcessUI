@@ -129,17 +129,6 @@ export class UserService {
     return result;
   }
 
-  // addAsset(asset: AssetData): Observable<AssetData> {
-  //   const body = JSON.stringify(asset);
-  //   const options = {
-  //     headers: new HttpHeaders({
-  //       'content-Type': 'application/json'
-  //     })
-  //   };
-  //   return this.httpClient.post<AssetData>
-  //   ('http://localhost:8080/visitor/asset/addAsset', body, options);
-  // }
-
   addAsset(asset: AssetDto): Observable<AssetDto> {
     const body = JSON.stringify(asset);
     const options = {
@@ -148,8 +137,8 @@ export class UserService {
       })
     };
     return this.httpClient.post<AssetDto>('http://localhost:8080/visitor/asset/addAsset', body, options);
-
   }
+
 
   saveReport(weeklyReport: WeeklyReport) {
     const body = JSON.stringify(weeklyReport);
@@ -163,6 +152,11 @@ export class UserService {
 
   getReport(empId: string) {
     return this.httpClient.get<WeeklyReport[]>(this.baseurl + '/getReports/' + empId)
+  }
+
+  editOdc(data: { odcId: number; odcName: string }) {
+    const apiUrl = this.baseurl + '/editOdc';
+    return this.postData(data, apiUrl)
       .pipe(catchError(this.handleError));
   }
 }

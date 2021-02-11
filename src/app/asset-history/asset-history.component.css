@@ -25,7 +25,7 @@ a {
 }
 
 .card:hover {
-  border: 1px solid lightgrey;
+  border: 2px solid rgb(204, 204, 255);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -39,14 +39,14 @@ a {
   margin: 20px;
   width: 90%;
   height: 50%;
-  margin-top: 35px;
+  margin-top: 50px;
 }
 
 .monitor {
   width: 80%;
   margin: 20px;
   height: 50%;
-  margin-top: 55px;
+  margin-top: 50px;
 }
 
 .cpu {
@@ -75,4 +75,5 @@ a {
   font-size: 20px;
   margin-left: 32px;
   padding-top: 84px;
+
 }

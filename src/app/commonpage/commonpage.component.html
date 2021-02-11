@@ -7,14 +7,14 @@ font-family: 'Times New Roman'">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link"
-           style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;">Dashboard</a>
+        <a class="nav-link" href="commonpage"
+           style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
       </li>
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <button style="padding: 8px 20px;margin-right: 20px" class="btn btn-outline-light my-2 my-sm-0" type="submit"
-              (click)="logout()">Logout
+              (click)="logout()">Logout&nbsp;<i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
       </button>
     </form>
   </div>
@@ -25,14 +25,17 @@ font-family: 'Times New Roman'">
   <div class="d-flex justify-content-center" >
     <div class="b">
       <div class="main-container"  (click)="redirect()" style="color: white;text-decoration: none; font-family: 'Times New Roman'">
-       Employee Service
+        <i class="fa fa-users fa-3x" aria-hidden="true"></i><br>
+        Employee Service
        
        </div>
       </div>
 
     <div class="b">
       <div class="main-container" (click)="redirectTo()" style="color: white;text-decoration: none;font-family: 'Times New Roman'">
-        Asset Management
+        <i class="fa fa-desktop fa-3x"></i><i class="fa fa-plug fa-2x"></i><br>
+        <!-- <i class="fa fa-keyboard-o fa-1x"></i><br> -->
+         Asset Management
       </div>
     </div>
     </div>
