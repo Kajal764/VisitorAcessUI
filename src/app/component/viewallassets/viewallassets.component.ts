@@ -13,10 +13,12 @@ import {AuthService} from 'src/app/service/auth.service';
 export class ViewallassetsComponent implements OnInit {
 
   assetList: AssetData[];
+  assetListFiltered: AssetData[];
+  showMessage= false;
   isListPresent: boolean = true;
   role: string;
   assetTypes = ['All', 'Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Extension Cable', 'Other'];
-  selectedText: string = 'All';
+  selectedText: string = 'Pending Approval';
 
   constructor(private assetService: AssetService, private router: Router, private auth: AuthService) {
   }
@@ -26,11 +28,29 @@ export class ViewallassetsComponent implements OnInit {
     this.assetService.getAssetList(localStorage.getItem('user'))
       .subscribe((data) => {
           this.assetList = data;
+          this.assetListFiltered = data;
           if (this.assetList.length === 0) {
             this.isListPresent = false;
           }
         },
         (error) => console.log(error));
+  }
+
+  onChangeRequest(event){
+    let value = event.target.value;
+    if(value === "All"){
+      this.showMessage = false;
+      this.assetListFiltered = this.assetList;
+    }
+    else{
+      this.showMessage = false;
+      this.assetListFiltered = this.assetList.filter(f=>f.requestStatus===value);
+    }
+    if(this.assetListFiltered.length === 0){
+      this.showMessage  = true;
+    }
+    
+
   }
 
   logout() {

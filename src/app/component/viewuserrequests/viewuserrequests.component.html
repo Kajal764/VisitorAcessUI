@@ -22,7 +22,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
         <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;&nbsp;
         <select type="text" required placeholder="All"
-                 [(ngModel)]="selectedText">
+                 [(ngModel)]="selectedText" (change)="onChangeRequest($event)">
           <option value="" disabled>Filter the requests</option>
           <optgroup label="Based On Request Status">
             <option value="All">All</option>
@@ -47,8 +47,8 @@
         </tr>
         </thead>
         <tbody>
-          <ng-container *ngFor="let request of userRequests">
-            <tr *ngIf="selectedText=='All'|| selectedText==request.status">
+          <ng-container *ngFor="let request of userRequestsFiltered">
+            <tr>
         <!-- <tr *ngFor="let request of userRequests"> -->
           <td>{{request.empId}}</td>
           <td>{{request.startDate}}</td>
@@ -66,6 +66,15 @@
         </ng-container>
         </tbody>
       </table>
+      <div *ngIf="showMessage">
+        <table class="table table-hover table-bordered ">
+        <tr>
+          <td colspan="7" align="center">
+            <b>No Requests to Display</b>
+          </td>
+        </tr>
+      </table>
+      </div>
     </div>
   </div>
 </div>

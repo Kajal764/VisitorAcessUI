@@ -13,6 +13,8 @@ import {AuthService} from 'src/app/service/auth.service';
 export class ManagerodcrequestsComponent implements OnInit {
 
   visitorRequests: VisitorRequest[];
+  visitorRequestsFiltered: VisitorRequest[];
+  showMessage=false;
   success: boolean;
   public flag: boolean;
   selectedText: string = 'All';
@@ -30,6 +32,7 @@ export class ManagerodcrequestsComponent implements OnInit {
     this.userService.getPendingVisitorRequest(localStorage.getItem('user'))
       .subscribe((data) => {
         this.visitorRequests = data;
+        this.visitorRequestsFiltered = data;
         console.log(this.visitorRequests);
         this.visitorRequests.length === 0 ? this.flag = true : this.flag = false;
       }, (error) => {
@@ -93,6 +96,21 @@ export class ManagerodcrequestsComponent implements OnInit {
       this.requests.push(visitorRequests);
     } else {
       this.requests = this.requests.filter(m => m.visitorRequestId !== visitorRequests.visitorRequestId);
+    }
+  }
+
+  onChangeRequest(event){
+    let value = event.target.value;
+    if(value === "All"){
+      this.showMessage = false;
+      this.visitorRequestsFiltered = this.visitorRequests;
+    }
+    else{
+      this.showMessage = false;
+      this.visitorRequestsFiltered = this.visitorRequests.filter(f=>f.status===value);
+    }
+    if(this.visitorRequestsFiltered.length === 0){
+      this.showMessage  = true;
     }
   }
 }

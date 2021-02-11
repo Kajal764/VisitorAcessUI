@@ -11,10 +11,12 @@ import {NgxNotificationService} from 'ngx-notification';
 export class OdcmanagerrequestsComponent implements OnInit {
 
   odcRequests: VisitorRequest[];
+  odcRequestsFiltered: VisitorRequest[];
+  showMessage= false;
   odcName: string;
   success: boolean;
   requestsPresent: boolean;
-  selectedText:string='All';
+  selectedText:string='Pending Approval';
   public message: any;
   public Accept = false;
   requests: VisitorRequest[] = [];
@@ -29,6 +31,7 @@ export class OdcmanagerrequestsComponent implements OnInit {
     this.userService.getOdcManagerRequests(localStorage.getItem('user'))
       .subscribe((data) => {
         this.odcRequests = data;
+        this.odcRequestsFiltered =data;
         this.requestsPresent = true;
         if (this.odcRequests.length === 0) {
           this.requestsPresent = false;
@@ -87,5 +90,20 @@ export class OdcmanagerrequestsComponent implements OnInit {
       this.requests = this.requests.filter(m => m.visitorRequestId !== visitorRequests.visitorRequestId);
     }
     console.log(this.requests);
+  }
+
+  onChangeRequest(event){
+    let value = event.target.value;
+    if(value === "All"){
+      this.showMessage = false;
+      this.odcRequestsFiltered = this.odcRequests;
+    }
+    else{
+      this.showMessage = false;
+      this.odcRequestsFiltered = this.odcRequests.filter(f=>f.status===value);
+    }
+    if(this.odcRequestsFiltered.length === 0){
+      this.showMessage  = true;
+    }
   }
 }

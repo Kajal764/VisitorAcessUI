@@ -20,7 +20,7 @@
       <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">Asset Requests &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;&nbsp;
         <select type="text" required placeholder="All"
-                [(ngModel)]="selectedText">
+                [(ngModel)]="selectedText" (change)="onChangeRequest($event)">
           <option value="" disabled>Filter the requests</option>
           <!-- <optgroup label="Based On Asset Types">
             <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option>
@@ -63,8 +63,8 @@
         </tr>
         </thead>
         <tbody style="font-family: 'Times New Roman'">
-        <ng-container *ngFor="let request of assetRequest">
-          <tr *ngIf="selectedText=='All' || selectedText==request.requestStatus">
+        <ng-container *ngFor="let request of assetRequestFiltered">
+          <tr>
             <!-- <tr *ngFor="let request of assetRequest"> -->
             <input class="form-check-input" type="checkbox"
                    [checked]="Accept"
@@ -89,6 +89,15 @@
         </tr>
         </tbody>
       </table>
+      <div *ngIf="showMessage">
+        <table class="table table-hover table-bordered ">
+        <tr>
+          <td colspan="7" align="center">
+            <b>No Requests to Display</b>
+          </td>
+        </tr>
+      </table>
+      </div>
     </div>
   </div>
 </div>

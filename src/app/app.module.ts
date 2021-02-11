@@ -44,6 +44,7 @@ import { ViewreportComponent } from './component/viewreport/viewreport.component
 import { ViewreportlistComponent } from './component/viewreportlist/viewreportlist.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
