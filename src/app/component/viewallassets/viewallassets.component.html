@@ -17,11 +17,7 @@
         <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;&nbsp;
         <select type="text" required placeholder="All"
                [(ngModel)]="selectedText" (change)="onChangeRequest($event)">
-          <option value="" disabled>Filter the requests</option>
-          <!-- <optgroup label="Based On Asset Types"> -->
-          <!-- <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option> -->
-          <!-- </optgroup> -->
-          <!-- <optgroup label="Based On Request Status"> -->
+          <option value="" disabled>Request Type</option>
           <option value="All">All</option>
           <option value="Pending Approval">Pending Approval</option>
           <option value="Approved">Approved</option>
