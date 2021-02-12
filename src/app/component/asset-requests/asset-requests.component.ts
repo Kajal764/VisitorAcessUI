@@ -12,6 +12,7 @@ import {AssetService} from 'src/app/service/asset.service';
 export class AssetRequestsComponent implements OnInit {
 
   assetRequest: AssetList[];
+  assetRequestFiltered: AssetList[];
   public flag: boolean;
   Accept = false;
   requests: any = [];
@@ -19,7 +20,8 @@ export class AssetRequestsComponent implements OnInit {
   private message: any;
   success: boolean;
   assetTypes = ['All', 'Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Other'];
-  selectedText: string = 'All';
+  selectedText: string = 'Pending Approval';
+  showMessage=false;
 
   constructor(private assetService: AssetService, private router: Router,
               private ngxNotificationService: NgxNotificationService) {
@@ -29,6 +31,7 @@ export class AssetRequestsComponent implements OnInit {
     this.assetService.getPendingAssetRequest(localStorage.getItem('user'))
       .subscribe((data) => {
         this.assetRequest = data;
+        this.assetRequestFiltered = data;
         this.requestsPresent = true;
         if (this.assetRequest.length === 0) {
           this.requestsPresent = false;
@@ -84,6 +87,21 @@ export class AssetRequestsComponent implements OnInit {
       this.requests.push(assetRequests);
     } else {
       this.requests = this.requests.filter(m => m.serialNumber !== assetRequests.serialNumber);
+    }
+  }
+
+  onChangeRequest(event){
+    let value = event.target.value;
+    if(value === "All"){
+      this.showMessage = false;
+      this.assetRequestFiltered = this.assetRequest;
+    }
+    else{
+      this.showMessage = false;
+      this.assetRequestFiltered = this.assetRequest.filter(f=>f.status===value);
+    }
+    if(this.assetRequestFiltered.length === 0){
+      this.showMessage  = true;
     }
   }
 }

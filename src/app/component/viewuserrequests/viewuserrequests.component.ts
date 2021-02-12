@@ -10,10 +10,12 @@ import {UserService} from 'src/app/service/user.service';
 export class ViewuserrequestsComponent implements OnInit {
 
   userRequests: VisitorRequest[];
+  userRequestsFiltered:VisitorRequest[];
   private empId: string;
   public isEmployee: boolean;
   public listFlag: boolean;
-  selectedText:string='All';
+  selectedText:string='Pending Approval';
+  showMessage=false;
   constructor(private userService: UserService) {
   }
 
@@ -27,9 +29,27 @@ export class ViewuserrequestsComponent implements OnInit {
     this.userService.getUserRequest(this.empId)
       .subscribe((data) => {
           this.userRequests = data;
+          this.userRequestsFiltered = data;
           this.userRequests.length === 0 ? this.listFlag = false : this.listFlag = true;
         },
         (error) => console.log(error));
+  }
+
+  onChangeRequest(event){
+    let value = event.target.value;
+    if(value === "All"){
+      this.showMessage = false;
+      this.userRequestsFiltered = this.userRequests;
+    }
+    else{
+      this.showMessage = false;
+      this.userRequestsFiltered = this.userRequests.filter(f=>f.status===value);
+    }
+    if(this.userRequestsFiltered.length === 0){
+      this.showMessage  = true;
+    }
+    
+
   }
 
 }

@@ -16,41 +16,42 @@
       <div style="color: navy;font-weight: bold;font-size: 120%">All Assets</div>
       <div style="width: 28.5%">
         <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
-               [(ngModel)]="searchText" placeholder="Search..."
-               autofocus>
-      </div><div style="color: navy;font-weight: bold;font-size: 110%">
-      <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;
-      <select type="text" required placeholder="All"
-              [(ngModel)]="selectedText">
-        <option value="" disabled>Filter the requests</option>
-        <!-- <optgroup label="Based On Asset Types"> -->
-          <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option>
-        <!-- </optgroup> -->
-        <!-- <optgroup label="Based On Request Status">
-          <option value="All">All</option>
-          <option value="Pending Approval">Pending Approval</option>
-          <option value="Approved">Approved</option>
-          <option value="Rejected">Rejected</option>
-        </optgroup> -->
-      </select>
+          [(ngModel)]="searchText" placeholder="Search..." autofocus>
+      </div>
+      <div style="color: navy;font-weight: bold;font-size: 110%">
+        <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;
+        <select type="text" required placeholder="All" [(ngModel)]="selectedText" (change)="onAssetTypeChange($event)">
+          <!-- <option value="" disabled>Filter the requests By asset type</option> -->
+          <optgroup label="Based On Asset Types">
+            <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option>
+          </optgroup>
+          <optgroup label="Based On ODC Name">
+            <option *ngFor='let odc of odcList' [value]="odc.odcName">{{odc.odcName}}</option>
+          </optgroup>
+        </select>
+        <!-- <select type="text" required placeholder="All"
+             (change)="onOdcNameChange($event)" >
+        <option value="All">All</option>
+        <option *ngFor='let odc of odcList' [value]="odc.odcName">{{odc.odcName}}</option>
+        </select> -->
+      </div>
     </div>
-  </div>
     <div style="padding-top: 20px">
       <table class="table table-hover table-bordered ">
         <thead class="thead-light">
-        <tr>
-          <th scope="col">Request Id</th>
-          <th scope="col">Serial Number</th>
-          <th scope="col">Asset Description</th>
-          <th scope="col">Asset Type</th>
-          <th scope="col">Asset Status</th>
-          <th scope="col">ODC Name</th>
-          <th scope="col">History</th>
-        </tr>
+          <tr>
+            <th scope="col">Request Id</th>
+            <th scope="col">Serial Number</th>
+            <th scope="col">Asset Description</th>
+            <th scope="col">Asset Type</th>
+            <th scope="col">Asset Status</th>
+            <th scope="col">ODC Name</th>
+            <th scope="col">History</th>
+          </tr>
         </thead>
         <tbody>
-          <ng-container *ngFor="let asset of assetList | appFilter: searchText">
-            <tr *ngIf="selectedText=='All' || selectedText==asset.type || selectedText==asset.requestStatus">
+          <ng-container *ngFor="let asset of assetListFiltered | appFilter: searchText">
+            <tr>
               <!-- <tr *ngFor="let asset of assetList | appFilter: searchText"> -->
               <td>{{asset.requestId}}</td>
               <td>{{asset.serialNumber}}</td>
@@ -61,15 +62,23 @@
               <td>
                 <button mat-button color="accent" (click)="viewHistory(asset.serialNumber)">View</button>
               </td>
-            </tr>
-            <tr *ngIf="!assetList || assetList.length==0">
-              <td colspan="7">
-                No Requests to Display
-              </td>
+
             </tr>
           </ng-container>
         </tbody>
       </table>
+
+      <div *ngIf="showMessage">
+        <table class="table table-hover table-bordered ">
+        <tr>
+          <td colspan="7" align="center">
+            <b>No Requests to Display</b>
+          </td>
+        </tr>
+      </table>
+      </div>
     </div>
   </div>
 </div>
+
+

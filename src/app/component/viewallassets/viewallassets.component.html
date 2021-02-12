@@ -16,7 +16,7 @@
       <div class="col-7" style="color: navy;font-weight: bold;font-size: 120%">Asset Requests &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;&nbsp;
         <select type="text" required placeholder="All"
-                [(ngModel)]="selectedText">
+               [(ngModel)]="selectedText" (change)="onChangeRequest($event)">
           <option value="" disabled>Filter the requests</option>
           <!-- <optgroup label="Based On Asset Types"> -->
           <!-- <option *ngFor='let asset of assetTypes' [value]="asset">{{asset}}</option> -->
@@ -28,6 +28,11 @@
           <option value="Rejected">Rejected</option>
           <!-- </optgroup> -->
         </select>
+        <!-- <select type="text" required placeholder="All"
+        [(ngModel)]="selectedText">
+        <option value="" disabled>Filter the requests</option>
+        <option *ngFor='let odc of assetTypes' [value]="asset">{{asset}}</option>
+        </select> -->
       </div>
     </div>
     <!-- <div>
@@ -46,8 +51,8 @@
         </tr>
         </thead>
         <tbody>
-        <ng-container *ngFor="let asset of assetList">
-          <tr *ngIf="selectedText=='All' || selectedText==asset.type || selectedText==asset.requestStatus">
+        <ng-container *ngFor="let asset of assetListFiltered">
+          <tr>
             <td>{{asset.requestId}}</td>
             <td>{{asset.serialNumber}}</td>
             <td>{{asset.description}}</td>
@@ -55,11 +60,11 @@
             <td>{{asset.requestStatus}}</td>
             <td class="btn-link">{{asset.odcName | uppercase}}</td>
           </tr>
-          <tr *ngIf="!assetList || assetList.length==0">
+          <!-- <tr *ngIf="!assetList || assetList.length==0">
             <td colspan="5">
               No Requests to Display
             </td>
-          </tr>
+          </tr> -->
         </ng-container>
 
         <!-- <tr *ngFor="let asset of assetList">
@@ -71,6 +76,15 @@
         </tr> -->
         </tbody>
       </table>
+      <div *ngIf="showMessage">
+        <table class="table table-hover table-bordered ">
+        <tr>
+          <td colspan="7" align="center">
+            <b>No Requests to Display</b>
+          </td>
+        </tr>
+      </table>
+      </div>
     </div>
   </div>
   <!-- <div>
