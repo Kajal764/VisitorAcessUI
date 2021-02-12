@@ -23,7 +23,7 @@
           <label for="firstName"><b>First Name</b></label>
           <input type="text" placeholder="First Name" class="form-control" formControlName="firstName"
                  [ngClass]="{'is-invalid':registrationForm.get('firstName').touched && registrationForm.get('firstName').invalid}"
-                 required/>
+                 required/><i class="fa fa-pencil icon" style="margin-right: 30px;"></i>
           <div *ngIf="registrationForm.get('firstName').touched && registrationForm.get('firstName').invalid"
                class="invalid-feedback">
             <div *ngIf="registrationForm.get('firstName').errors.required"> first name is required.</div>
@@ -35,7 +35,7 @@
           <label for="lastName"><b>Last Name</b></label>
           <input type="text" placeholder="Last Name" class="form-control" formControlName="lastName"
                  [ngClass]="{'is-invalid':registrationForm.get('lastName').touched && registrationForm.get('lastName').invalid}"
-                 required/>
+                 required/><i class="fa fa-pencil icon" style="margin-right: 30px;"></i>
           <div *ngIf="registrationForm.get('lastName').touched && registrationForm.get('lastName').invalid"
                class="invalid-feedback">
             <div *ngIf="registrationForm.get('lastName').errors.required"> last name is required.</div>
@@ -49,7 +49,7 @@
           <label for="empId"><b>Employee ID</b></label>
           <input type="text" placeholder="Employee Id" class="form-control" formControlName="empId"
                  [ngClass]="{'is-invalid':registrationForm.get('empId').touched && registrationForm.get('empId').invalid}"
-                 required/>
+                 required/><i class="fa fa-id-card icon" style="margin-right: 30px;"></i>
           <div *ngIf="registrationForm.get('empId').touched && registrationForm.get('empId').invalid"
                class="invalid-feedback">
             <div *ngIf="registrationForm.get('empId').errors.required">Employee id required</div>
@@ -78,6 +78,7 @@
         <label for="email"><b>Email</b></label>
         <input type="text" class="form-control" placeholder="Please enter your email id" formControlName="email"
                [ngClass]="{'is-invalid':registrationForm.get('email').touched && registrationForm.get('email').invalid}"/>
+               <i class="fa fa-envelope icon" style="margin-right: 30px;"></i>
         <div *ngIf="registrationForm.get('email').touched && registrationForm.get('email').invalid"
              class="invalid-feedback">
           <div *ngIf="registrationForm.get('email').errors.required">Email Name is required</div>
@@ -90,7 +91,7 @@
         <input type="text" placeholder="Please enter your mobile no. (+91-xxxxxxxxxx 0r 10 digits)" class="form-control"
                formControlName="mobileNo"
                [ngClass]="{'is-invalid':registrationForm.get('mobileNo').touched && registrationForm.get('mobileNo').invalid}"
-               required/>
+               required/><i class="fa fa-phone icon" style="margin-right: 30px;"></i>
         <div *ngIf="registrationForm.get('mobileNo').touched && registrationForm.get('mobileNo').invalid"
              class="invalid-feedback">
           <div *ngIf="registrationForm.get('mobileNo').errors.required">Mobile No required</div>
@@ -99,7 +100,9 @@
       </div>
 
       <div class="form-group ">
-        <label for="role" style="margin-right: 20px"><b>Role</b></label>
+        
+        <label for="role" style="margin-right: 20px"><b>Role&nbsp;</b><i class="fa fa-user " ></i></label>
+        
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Employee" style="margin-left: 5px"
                  (change)="getSelectedRole($event)" checked disabled>
@@ -120,7 +123,8 @@
       </div>
 
       <div *ngIf="isEmployee">
-        <label for="manager"><b>Select Manager</b></label>
+         <label for="manager"><b>Select Manager</b>&nbsp;<i class="fa fa-user-circle-o " ></i></label>
+        
         <div class="form-group">
           <select class="form-control" name="managerName" formControlName="managerName">
             <option>Select Manager</option>
