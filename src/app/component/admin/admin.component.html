@@ -2,53 +2,51 @@
 
 <lib-ngx-notification></lib-ngx-notification>
 
-<div style="font-family: 'Times New Roman';">
-  <div class="d-flex justify-content-center">
-    <div>
-      <div class="row">
-        <div class="col-3" style="color: navy;font-weight: bold;font-size: 120%">List Of Employee</div>
-        <div style="width: 28.5%">
-          <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
-                 [(ngModel)]="searchText" placeholder="Search..."
-                 autofocus>
-        </div>
-      </div>
-      <div style="padding-top: 20px;width: 990px">
-        <table class="table table-hover table-bordered ">
-          <thead class="thead-light">
-          <tr>
-            <th scope="col">Employee Id</th>
-            <th scope="col">Role</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Mobile No</th>
-            <th scope="col">Manager Name</th>
-            <th scope="col">Action</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let user of userList  | userFilter: searchText">
-            <th scope="row">{{user.empId}}</th>
-            <td>
-              <ul style="list-style-type:square;">
-                <li *ngFor="let r of user.role">{{r}}</li>
-              </ul>
-            </td>
-            <td>{{user.firstName}}</td>
-            <td>{{user.lastName}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.mobileNo}}</td>
-            <td>{{user.managerName}}</td>
-            <td class="text-danger">
-              <button (click)="openPopup(user)"
-                      type="button" class="btn btn-danger pull-right">Delete
-              </button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="d-flex justify-content-start">
+  <div class="d-flex flex-row" style="font-family: 'Times New Roman';margin-bottom: 20px">
+    <div class="col-6" style="color: navy;font-weight: bold;font-size: 120%;margin-left: 12%">List Of Employee</div>
+    <div class="search">
+      <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+             [(ngModel)]="searchText" placeholder="Search..."
+             autofocus>
     </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <div style="width: 90%;font-family: 'Times New Roman';background-color: whitesmoke">
+    <table class="table table-hover table-bordered ">
+      <thead style="background-color: #8289C4;border-color:lightblue;color: whitesmoke">
+      <tr>
+        <th scope="col">Employee Id</th>
+        <th scope="col">Role</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile No</th>
+        <th scope="col">Manager Name</th>
+        <th scope="col">Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of userList  | userFilter: searchText">
+        <th scope="row">{{user.empId}}</th>
+        <td class="tableData">
+          <ul style="list-style-type:square;">
+            <li *ngFor="let r of user.role">{{r}}</li>
+          </ul>
+        </td>
+        <td class="tableData">{{user.firstName}}</td>
+        <td class="tableData">{{user.lastName}}</td>
+        <td class="tableData">{{user.email}}</td>
+        <td class="tableData">{{user.mobileNo}}</td>
+        <td class="tableData">{{user.managerName}}</td>
+        <td class="text-danger">
+          <button type="button" class="btn btn-danger" (click)="openPopup(user)"><i class="fa fa-trash"
+                                                                                    aria-hidden="true"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
