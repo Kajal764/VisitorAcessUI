@@ -33,6 +33,7 @@ export class ManagerodcrequestsComponent implements OnInit {
       .subscribe((data) => {
         this.visitorRequests = data;
         this.visitorRequestsFiltered = data;
+        this.visitorRequestsFiltered = this.visitorRequestsFiltered.filter(f=>f.status===this.selectedText);
         console.log(this.visitorRequests);
         this.visitorRequests.length === 0 ? this.flag = true : this.flag = false;
       }, (error) => {

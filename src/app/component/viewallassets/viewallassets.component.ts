@@ -30,6 +30,7 @@ export class ViewallassetsComponent implements OnInit {
       .subscribe((data) => {
           this.assetList = data;
           this.assetListFiltered = data;
+          this.assetListFiltered = this.assetListFiltered.filter(f=>f.status===this.selectedText)
           if (this.assetList.length !== 0) {
             this.isListPresent = true;
           }

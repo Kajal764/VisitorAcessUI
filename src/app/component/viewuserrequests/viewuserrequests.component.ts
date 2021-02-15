@@ -30,6 +30,7 @@ export class ViewuserrequestsComponent implements OnInit {
       .subscribe((data) => {
           this.userRequests = data;
           this.userRequestsFiltered = data;
+          this.userRequestsFiltered=this.userRequestsFiltered.filter(f=>f.status===this.selectedText)
           this.userRequests.length === 0 ? this.listFlag = false : this.listFlag = true;
         },
         (error) => console.log(error));

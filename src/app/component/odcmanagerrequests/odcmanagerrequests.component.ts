@@ -32,6 +32,7 @@ export class OdcmanagerrequestsComponent implements OnInit {
       .subscribe((data) => {
         this.odcRequests = data;
         this.odcRequestsFiltered =data;
+        this.odcRequestsFiltered = this.odcRequestsFiltered.filter(f=>f.status===this.selectedText)
         this.requestsPresent = true;
         if (this.odcRequests.length === 0) {
           this.requestsPresent = false;
