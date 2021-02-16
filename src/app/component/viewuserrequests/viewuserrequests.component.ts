@@ -31,6 +31,8 @@ export class ViewuserrequestsComponent implements OnInit {
           this.userRequests = data;
           this.userRequestsFiltered = data;
           this.userRequestsFiltered=this.userRequestsFiltered.filter(f=>f.status===this.selectedText)
+          if(this.userRequestsFiltered.length===0)
+          this.showMessage = true;
           this.userRequests.length === 0 ? this.listFlag = false : this.listFlag = true;
         },
         (error) => console.log(error));

@@ -33,6 +33,8 @@ export class AssetRequestsComponent implements OnInit {
         this.assetRequest = data;
         this.assetRequestFiltered = data;
         this.assetRequestFiltered = this.assetRequestFiltered.filter(f=>f.status===this.selectedText);
+        if(this.assetRequestFiltered.length===0)
+        this.showMessage=true;
         this.requestsPresent = true;
         if (this.assetRequest.length === 0) {
           this.requestsPresent = false;

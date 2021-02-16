@@ -34,6 +34,8 @@ export class ManagerodcrequestsComponent implements OnInit {
         this.visitorRequests = data;
         this.visitorRequestsFiltered = data;
         this.visitorRequestsFiltered = this.visitorRequestsFiltered.filter(f=>f.status===this.selectedText);
+        if(this.visitorRequestsFiltered.length===0)
+        this.showMessage=true;
         console.log(this.visitorRequests);
         this.visitorRequests.length === 0 ? this.flag = true : this.flag = false;
       }, (error) => {

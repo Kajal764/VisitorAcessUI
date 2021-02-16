@@ -31,6 +31,8 @@ export class ViewallassetsComponent implements OnInit {
           this.assetList = data;
           this.assetListFiltered = data;
           this.assetListFiltered = this.assetListFiltered.filter(f=>f.status===this.selectedText)
+          if(this.assetListFiltered.length ===0)
+          this.showMessage = true;
           if (this.assetList.length !== 0) {
             this.isListPresent = true;
           }
