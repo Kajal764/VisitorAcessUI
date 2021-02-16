@@ -31,13 +31,6 @@ export class CommonpageComponent implements OnInit {
     } else {
       this.isAdmin = true;
     }
-    //
-    // $('.main-container,.main').click(function() {
-    //   window.location = $(this).find('a').attr('href');
-    //   return false;
-    // });
-
-
   }
 
   logout() {
@@ -58,18 +51,68 @@ export class CommonpageComponent implements OnInit {
     }
   }
 
-  redirect(){
-if(this.isAdmin===true)
-{
-  this.router.navigate(['/home-admin']);
-}else if(this.isEmployee===true)
-{
-  this.router.navigate(['/raiseOdcRequest']);
-}else if(this.isManager===true){
-  this.router.navigate(['/odc-request']);
-}else{
-  this.router.navigate(['/odcManagerRequests']);
-}
- 
+  redirect() {
+    if (this.isAdmin === true) {
+      this.router.navigate(['/home-admin']);
+    } else if (this.isEmployee === true) {
+      this.router.navigate(['/raiseOdcRequest']);
+    } else if (this.isManager === true) {
+      this.router.navigate(['/odc-request']);
+    } else {
+      this.router.navigate(['/odcManagerRequests']);
+    }
+
+  }
+
+  redirectToListOfEmployee() {
+    this.router.navigate(['/home-admin']);
+  }
+
+  redirectToAddODC() {
+    this.router.navigate(['/admin-odc']);
+  }
+
+  redirectToRegistrationRequest() {
+    this.router.navigate(['/register-request']);
+  }
+
+  redirectToAddEmployee() {
+    this.router.navigate(['/register', 'Admin']);
+  }
+
+  redirectToViewAllAsset() {
+    this.router.navigate(['/viewAssets']);
+  }
+
+  redirectToAddAsset() {
+    this.router.navigate(['/addAsset']);
+  }
+
+  redirectToViewAssetStatus() {
+    this.router.navigate(['/viewAssetList']);
+  }
+
+  redirectToOdcRequest() {
+    this.router.navigate(['/odc-request']);
+  }
+
+  redirectToRaisedOdcRequest() {
+    this.router.navigate(['/raiseOdcRequest']);
+  }
+
+  redirectToViewOdcRequest() {
+    this.router.navigate(['/view-odc-Request']);
+  }
+
+  redirectToOdcManagerRequest() {
+    this.router.navigate(['/odcManagerRequests']);
+  }
+
+  redirectToViewAssetRequest() {
+    this.router.navigate(['/assetRequests']);
+  }
+
+  redirectToWeeklyReport() {
+    this.router.navigate(['/weeklyReport']);
   }
 }

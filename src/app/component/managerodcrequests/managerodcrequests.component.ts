@@ -14,10 +14,10 @@ export class ManagerodcrequestsComponent implements OnInit {
 
   visitorRequests: VisitorRequest[];
   visitorRequestsFiltered: VisitorRequest[];
-  showMessage=false;
+  showMessage = false;
   success: boolean;
   public flag: boolean;
-  selectedText: string = 'All';
+  selectedText: string = 'Pending Approval';
   AcceptedByManager = 'Accepted By Manager';
   RejectedByManager = 'Rejected By Manager';
   PendingApproval = 'Pending Approval';
@@ -102,18 +102,17 @@ export class ManagerodcrequestsComponent implements OnInit {
     }
   }
 
-  onChangeRequest(event){
+  onChangeRequest(event) {
     let value = event.target.value;
-    if(value === "All"){
+    if (value === 'All') {
       this.showMessage = false;
       this.visitorRequestsFiltered = this.visitorRequests;
-    }
-    else{
+    } else {
       this.showMessage = false;
-      this.visitorRequestsFiltered = this.visitorRequests.filter(f=>f.status===value);
+      this.visitorRequestsFiltered = this.visitorRequests.filter(f => f.status === value);
     }
-    if(this.visitorRequestsFiltered.length === 0){
-      this.showMessage  = true;
+    if (this.visitorRequestsFiltered.length === 0) {
+      this.showMessage = true;
     }
   }
 }

@@ -15,7 +15,7 @@ export class ViewallassetsComponent implements OnInit {
   assetList: AssetData[];
 
   assetListFiltered: AssetData[];
-  showMessage= false;
+  showMessage = false;
   isListPresent = false;
   role: string;
   assetTypes = ['All', 'Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Extension Cable', 'Other'];
@@ -40,21 +40,18 @@ export class ViewallassetsComponent implements OnInit {
         (error) => console.log(error));
   }
 
-  onChangeRequest(event){
+  onChangeRequest(event) {
     let value = event.target.value;
-    if(value === "All"){
+    if (value === 'All') {
       this.showMessage = false;
       this.assetListFiltered = this.assetList;
-    }
-    else{
+    } else {
       this.showMessage = false;
-      this.assetListFiltered = this.assetList.filter(f=>f.requestStatus===value);
+      this.assetListFiltered = this.assetList.filter(f => f.requestStatus === value);
     }
-    if(this.assetListFiltered.length === 0){
-      this.showMessage  = true;
+    if (this.assetListFiltered.length === 0) {
+      this.showMessage = true;
     }
-    
-
   }
 
   logout() {

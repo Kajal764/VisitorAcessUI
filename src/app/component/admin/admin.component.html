@@ -16,7 +16,7 @@
 <div class="d-flex justify-content-center">
   <div style="width: 90%;font-family: 'Times New Roman';background-color: whitesmoke">
     <table class="table table-hover table-bordered ">
-      <thead style="background-color: #8289C4;border-color:lightblue;color: whitesmoke">
+      <thead style="background-color:#d2d5f2;border-color:lightblue;color: black">
       <tr>
         <th scope="col">Employee Id</th>
         <th scope="col">Role</th>
@@ -30,7 +30,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let user of userList  | userFilter: searchText">
-        <th scope="row">{{user.empId}}</th>
+        <td scope="row">{{user.empId}}</td>
         <td class="tableData">
           <ul style="list-style-type:square;">
             <li *ngFor="let r of user.role">{{r}}</li>
@@ -42,8 +42,10 @@
         <td class="tableData">{{user.mobileNo}}</td>
         <td class="tableData">{{user.managerName}}</td>
         <td class="text-danger">
-          <button type="button" class="btn btn-danger" (click)="openPopup(user)"><i class="fa fa-trash"
-                                                                                    aria-hidden="true"></i></button>
+          <button class="deleteButton" matTooltip="Delete"
+                  mat-icon-button (click)="openPopup(user)">
+            <mat-icon>delete</mat-icon>
+          </button>
         </td>
       </tr>
       </tbody>

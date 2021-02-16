@@ -10,7 +10,6 @@ font-family: 'Times New Roman'">
         <a class="nav-link" href="commonpage"
            style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
       </li>
-
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <button style="padding: 8px 20px;margin-right: 20px" class="btn btn-outline-light my-2 my-sm-0" type="submit"
@@ -20,68 +19,81 @@ font-family: 'Times New Roman'">
   </div>
 </nav>
 
-<br>
-<div class="mmm">
-  <div class="d-flex justify-content-center" >
-    <div class="b">
-      <div class="main-container"  (click)="redirect()" style="color: white;text-decoration: none; font-family: 'Times New Roman'">
-        <i class="fa fa-users fa-3x" aria-hidden="true"></i><br>
-        Employee Service
-       
-       </div>
-      </div>
 
-    <div class="b">
-      <div class="main-container" (click)="redirectTo()" style="color: white;text-decoration: none;font-family: 'Times New Roman'">
-        <i class="fa fa-desktop fa-3x"></i><i class="fa fa-plug fa-2x"></i><br>
-        <!-- <i class="fa fa-keyboard-o fa-1x"></i><br> -->
-         Asset Management
+<body>
+<div class="container">
+  <div class="card" (click)="redirect()">
+    <div class="face hidden">
+      <div class="content" style="cursor: pointer">
+        <div *ngIf="isAdmin==true">
+          <li class="list-group-item list-group-item-success" (click)="redirectToListOfEmployee()">List Of Employee</li>
+          <li class="list-group-item list-group-item-danger" (click)="redirectToAddODC()">Add ODC</li>
+          <li class="list-group-item list-group-item-primary" (click)="redirectToRegistrationRequest()">Registration Request</li>
+          <li class="list-group-item list-group-item-warning" (click)="redirectToAddEmployee()">Add Employee</li>
+        </div>
+        <div *ngIf="isManager==true">
+          <li class="list-group-item list-group-item-success" (click)="redirectToOdcRequest()">ODC Access Request</li>
+          <li class="list-group-item list-group-item-danger" (click)="redirectToRegistrationRequest()">Registration Request</li>
+          <li class="list-group-item list-group-item-primary" (click)="redirectToRaisedOdcRequest()">Raised ODC Request</li>
+          <li class="list-group-item list-group-item-warning" (click)="redirectToViewOdcRequest()">View ODC Request</li>
+        </div>
+        <div *ngIf="isOdcManager==true">
+          <li class="list-group-item list-group-item-success" (click)="redirectToOdcManagerRequest()">Visitor Access
+            Request
+          </li>
+        </div>
+
+        <div *ngIf="isEmployee==true">
+          <li class="list-group-item list-group-item-success" (click)="redirectToRaisedOdcRequest()">Raised ODC Request</li>
+          <li class="list-group-item list-group-item-danger" (click)="redirectToWeeklyReport()">Weekly Status Report</li>
+          <li class="list-group-item list-group-item-primary" (click)="redirectToViewOdcRequest()">View ODC Request</li>
+        </div>
       </div>
     </div>
+
+    <div class="face front">
+      <i class="fa fa-users fa-3x"></i>
+      <h4>Employee Service</h4>
     </div>
+  </div>
+  <div class="card" (click)="redirectTo()">
+    <div class="face hidden">
+      <div class="content" style="cursor: pointer">
+        <div class="content" style="cursor: pointer">
+          <div *ngIf="isAdmin==true">
+            <li class="list-group-item list-group-item-success" (click)="redirectToViewAllAsset()">View All Asset</li>
+            <li class="list-group-item list-group-item-danger" (click)="redirectToAddAsset()">Add Asset</li>
+            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset Status</li>
+          </div>
+
+          <div *ngIf="isManager==true">
+            <li class="list-group-item list-group-item-danger" (click)="redirectToAddAsset()">Add Asset</li>
+            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset Status</li>
+          </div>
+
+          <div *ngIf="isOdcManager==true">
+            <li class="list-group-item list-group-item-success" (click)="redirectToViewAllAsset()">View All Asset</li>
+            <li class="list-group-item list-group-item-danger" (click)="redirectToAddAsset()">Add Asset</li>
+            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset Status</li>
+            <li class="list-group-item list-group-item-warning" (click)="redirectToViewAssetRequest()">View Asset Request</li>
+          </div>
+
+          <div *ngIf="isEmployee==true">
+            <li class="list-group-item list-group-item-danger" (click)="redirectToAddAsset()">Add Asset</li>
+            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset Status</li>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="face front">
+
+      <i class="fa fa-desktop fa-3x" class="fa fa-desktop fa-3x"></i>
+      <h4>Asset Management</h4>
+    </div>
+  </div>
+
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="main-container">
-  <div *ngIf="isEmployee">
-    <a href="raiseOdcRequest">Employee Service</a>
-    <a href="raiseOdcRequest" style="color: white;text-decoration: none"></a>
-  </div>
-  <div *ngIf="isManager">
-    <a href="odc-request">Employee Service</a>
- 
-    <a href="odc-request" style="color: white;text-decoration: none"></a>
-  </div>
-  <div *ngIf="isOdcManager">
-    <a href="odcManagerRequests" style="color: white;text-decoration: none">Employee Service</a>
-  
-    <a href="odcManagerRequests" style="color: white;text-decoration: none"></a>
-  </div>
-  <div *ngIf="isAdmin">
-    <a href="home-admin" style="color: white;text-decoration: none">Employee Service</a>
-  </div>
-</div> -->
+</body>

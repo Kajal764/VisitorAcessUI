@@ -32,12 +32,12 @@ export class ViewassetlistComponent implements OnInit {
   ngOnInit() {
     this.assetService.getAssetListForOdcManager(localStorage.getItem('user'))
       .subscribe((data) => {
-        this.assetList = data;
-        this.assetListFiltered = data;
-        // this.assetListFiltered = this.assetListFiltered.filter(f=>f.type===this.selectedText);
-        if(this.assetListFiltered.length===0)
-        this.showMessage = true;
-      },
+          this.assetList = data;
+          this.assetListFiltered = data;
+          // this.assetListFiltered = this.assetListFiltered.filter(f=>f.type===this.selectedText);
+          if(this.assetListFiltered.length===0)
+            this.showMessage = true;
+        },
         (error) => this.isListPresent = false);
     this.userService.getAllODC().subscribe((data) =>
       this.odcList = data);

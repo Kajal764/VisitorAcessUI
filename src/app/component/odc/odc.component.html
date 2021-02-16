@@ -16,7 +16,7 @@
       </div>
     </div>
     <table class="table table-hover table-bordered" style="border-color: red">
-      <thead style="background-color: #8289C4;border-color:lightblue;color: whitesmoke">
+      <thead style="background-color: #919bec;border-color:lightblue;color: whitesmoke">
       <tr>
         <th scope="col">ODC Name</th>
         <th scope="col">View ODC Manager</th>
@@ -42,7 +42,7 @@
         </td>
 
         <td class="tableData">
-          <button *ngIf="isEdit==false || odc.odcName!=currentOdc" (click)="edit(odc)"
+          <button *ngIf="isEdit==false || odc.odcName!=currentOdc"
                   mat-icon-button class="icon-label">
             <mat-icon class="icon">edit</mat-icon>
           </button>
