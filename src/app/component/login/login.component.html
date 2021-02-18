@@ -1,4 +1,100 @@
-<nav class="navbar justify-content-center" style="background-color: #8289C4;">
+<div class="backk">
+<nav class="navbar justify-content-center" style="background-color: #0E0D6C;">
+  <a class="navbar-brand">
+    <span style="font-weight: bold;color:white;"> Login here...</span>
+  </a>
+</nav>
+
+<br>
+<div class="d-flex justify-content-center">
+  <div *ngIf="res" class="alert alert-secondary " role="alert" style="width: 60%">
+    {{message}}
+  </div>
+</div>
+<!-- <mat-icon class="icon1">perm_identity</mat-icon> -->
+
+       <!-- <i class="fa fa-user-circle-o fa-5x"  style="color:#DDDDDD;" style="margin-right: 5px;"></i> -->
+
+<div class="d-flex  justify-content-center">
+  <div class="p">
+    <img alt="logo" class="logo" fxHide.xs
+       src="../../../assets/login1.png">
+    <br>
+    <div class="row">
+      <div class="col-md-10">
+        <form #logForm="ngForm">
+          <div class="form-group">
+
+            <label for="empId"> <b><i class="fa fa-id-card" style="margin-right: 7px;"></i>Employee ID</b></label>
+            <input #empId="ngModel" type="text" [(ngModel)]="lg.empId" placeholder="Enter your Employee ID"
+                   name="empId" required class="form-control" required />
+                   
+          </div>
+          <div class="form-group">
+            <label for="password"><b><i class="fa fa-key" style="margin-right: 5px;"></i>Password</b></label><br>
+            <input #password="ngModel" type="password" placeholder="Enter your Password"
+                   [(ngModel)]="lg.password"
+                   name="password" required class="form-control" id="password-field"/>
+            <i id="pass-status" class="fa fa-eye-slash icon" aria-hidden="true" style="margin-right: 30px;"
+               (click)="viewPassword()"></i>
+          </div>
+
+          <label for="role"><b><i class="fa fa-user" style="margin-right: 6px;"></i>Role</b></label><br>
+
+          <input type="radio" id="employee" name="role" value="Employee" style="margin-right:4px;" checked>
+          <label for="employee" >Employee</label>&nbsp;&nbsp;&nbsp;
+          <input type="radio" id="admin" name="role" [(ngModel)]="lg.role" value="Admin" style="margin-right:4px;">
+          <label for="admin">Admin</label>&nbsp;&nbsp;&nbsp;
+          <input type="radio" id="odcManager" name="role" [(ngModel)]="lg.role" value="Odc-Manager" style="margin-right:4px;">
+          <label for="odcManager">ODC Manager</label>&nbsp;&nbsp;&nbsp;
+          <input type="radio" id="manager" name="role" [(ngModel)]="lg.role" value="Manager" style="margin-right:4px;">
+          <label for="manager">Manager</label>
+          <br>
+          <br>
+          <div class="bottom">
+            <input type="submit" class="btn btn-danger" value="Login"
+                   [disabled]="logForm.invalid" (click)="logins()">
+            <br>
+          </div>
+          <div class="d-flex justify-content-center">
+            <div style=" margin-top: 20px;font-size: 15px">Don't have an account ?
+              <span type="button-link" style="color: rgb(0,64,133); font-weight: bold; padding-left: 10px;cursor: pointer"
+                    (click)="redirectToRegister()">Register here</span>
+            </div>
+          </div>
+          <br>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <nav class="navbar justify-content-center" style="background-color: #8289C4;">
   <a class="navbar-brand">
     <span style="font-weight: bold;color:white;"> Login here...</span>
   </a>
@@ -11,9 +107,9 @@
   </div>
 </div>
 
+<img alt="logo" class="logo" fxHide.xs
+       src="../../../assets/login2.png">
 <div class="d-flex  justify-content-center">
-  <img alt="logo" class="logo" fxHide.xs
-       src="../../../assets/kissclipart-login-png-clipart-user-computer-icons-a59899d3a10c7dde-removebg-preview%20(1).jpg">
   <div class="p">
     <br>
     <div class="row">
@@ -21,13 +117,13 @@
         <form #logForm="ngForm">
           <div class="form-group">
 
-            <label for="empId"> <b>Employee ID</b></label>
+            <label for="empId"> <b><i class="fa fa-id-card" style="margin-right: 7px;"></i>Employee ID</b></label>
             <input #empId="ngModel" type="text" [(ngModel)]="lg.empId" placeholder="Enter your Employee ID"
                    name="empId" required class="form-control" required />
-                   <i class="fa fa-id-card icon" style="margin-right: 30px;"></i>
+                   
           </div>
           <div class="form-group">
-            <label for="password"><b>Password</b></label><br>
+            <label for="password"><b><i class="fa fa-key" style="margin-right: 5px;"></i>Password</b></label><br>
             <input #password="ngModel" type="password" placeholder="Enter your Password"
                    [(ngModel)]="lg.password"
                    name="password" required class="form-control" id="password-field"/>
@@ -35,7 +131,7 @@
                (click)="viewPassword()"></i>
           </div>
 
-          <label for="role"><b>Role</b></label><br>
+          <label for="role"><b><i class="fa fa-user" style="margin-right: 6px;"></i>Role</b></label><br>
 
           <input type="radio" id="employee" name="role" value="Employee" checked>
           <label for="employee">Employee</label>&nbsp;
@@ -45,22 +141,12 @@
           <label for="odcManager">ODC Manager</label>&nbsp;
           <input type="radio" id="manager" name="role" [(ngModel)]="lg.role" value="Manager">
           <label for="manager">Manager</label>
-
-          <!-- <label for="role"><b>Role</b></label><br>
-          <select class="form-control" (change)="changeWebsite($event)">
-            <option disabled>Select Role</option>
-            <option *ngFor="let role of listOfRole">{{role}}</option>
-          </select> -->
           <br>
           <br>
           <div class="bottom">
             <input type="submit" class="btn btn-danger" value="Login"
                    [disabled]="logForm.invalid" (click)="logins()">
             <br>
-            <!--            <span type="button-link" style="color: cornflowerblue; font-weight: bold; padding-left: 10px"-->
-            <!--                  >Login here</span>-->
-            <!--            <a [routerLink]="['/register','None']" routerLinkActive="active"-->
-            <!--               class="link">New Registration?</a>-->
           </div>
           <div class="d-flex justify-content-center">
             <div style=" margin-top: 20px;font-size: 15px">Don't have an account ?
@@ -75,4 +161,4 @@
   </div>
 
 
-</div>
+</div> -->

@@ -64,11 +64,11 @@ body {
 
 
 .container .card:nth-child(1) .face.front {
-  background: #8289C4;
+  background: #0E0D6C;;
 }
 
 .container .card:nth-child(2) .face.front {
-  background: #8289C4;
+  background: #0E0D6C;;
 }
 
 .container .card:hover .face.front {
