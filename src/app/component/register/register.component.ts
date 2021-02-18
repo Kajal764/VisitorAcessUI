@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   empId = '^[0-9]\\d{6}$';
 
  // mobilePattern = '^([+]?[9]?[1]?[-]?[0-9]{10})$';              9902200915      +91-9902200915
- mobilePattern='^([6789][0-9]{9})$|([+][9][1][-][6789][0-9]{9})$'
+ mobilePattern='^([6789][0-9]{9})$|([+][9][1][6789][0-9]{9})$'
   
 
   public isEmployee = true;

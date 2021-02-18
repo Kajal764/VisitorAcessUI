@@ -11,12 +11,12 @@
 
 
 <div class="d-flex justify-content-center">
-  <div *ngIf="isListPresent=== true" class="container" style="font-family: 'Times New Roman'">
+  <div *ngIf="isListPresent=== true" class="container">
     <div class="d-flex justify-content-between">
       <div style="color: navy;font-weight: bold;font-size: 120%">All Assets</div>
       <div style="width: 28.5%">
         <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
-          [(ngModel)]="searchText" placeholder="Search..." autofocus>
+               [(ngModel)]="searchText" placeholder="Search..." autofocus>
       </div>
       <div style="color: navy;font-weight: bold;font-size: 110%">
         <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;
@@ -39,43 +39,43 @@
     <div style="padding-top: 20px">
       <table class="table table-hover table-bordered ">
         <thead class="thead-light">
-          <tr>
-            <th scope="col">Request Id</th>
-            <th scope="col">Serial Number</th>
-            <th scope="col">Asset Description</th>
-            <th scope="col">Asset Type</th>
-            <th scope="col">Asset Status</th>
-            <th scope="col">ODC Name</th>
-            <th scope="col">History</th>
-          </tr>
+        <tr>
+          <th scope="col">Request Id</th>
+          <th scope="col">Serial Number</th>
+          <th scope="col">Asset Description</th>
+          <th scope="col">Asset Type</th>
+          <th scope="col">Asset Status</th>
+          <th scope="col">ODC Name</th>
+          <th scope="col">History</th>
+        </tr>
         </thead>
         <tbody>
-          <ng-container *ngFor="let asset of assetListFiltered | appFilter: searchText">
-            <tr>
-              <!-- <tr *ngFor="let asset of assetList | appFilter: searchText"> -->
-              <td>{{asset.requestId}}</td>
-              <td>{{asset.serialNumber}}</td>
-              <td>{{asset.description}}</td>
-              <td>{{asset.type | uppercase}}</td>
-              <td>{{asset.status}}</td>
-              <td class="btn-link">{{asset.odcName}}</td>
-              <td>
-                <button mat-button color="accent" (click)="viewHistory(asset.serialNumber)">View</button>
-              </td>
+        <ng-container *ngFor="let asset of assetListFiltered | appFilter: searchText">
+          <tr>
+            <!-- <tr *ngFor="let asset of assetList | appFilter: searchText"> -->
+            <td>{{asset.requestId}}</td>
+            <td>{{asset.serialNumber}}</td>
+            <td>{{asset.description}}</td>
+            <td>{{asset.type | uppercase}}</td>
+            <td>{{asset.status}}</td>
+            <td class="btn-link">{{asset.odcName}}</td>
+            <td>
+              <button mat-button color="accent" (click)="viewHistory(asset.serialNumber)">View</button>
+            </td>
 
-            </tr>
-          </ng-container>
+          </tr>
+        </ng-container>
         </tbody>
       </table>
 
       <div *ngIf="showMessage">
         <table class="table table-hover table-bordered ">
-        <tr>
-          <td colspan="7" align="center">
-            <b>No Requests to Display</b>
-          </td>
-        </tr>
-      </table>
+          <tr>
+            <td colspan="7" align="center" style="font-weight: bold">
+              No Asset Data to Display
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>

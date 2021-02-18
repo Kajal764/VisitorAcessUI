@@ -1,11 +1,11 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { AssetList } from 'src/app/models/AssetList';
-import { AssetService } from 'src/app/service/asset.service';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/service/user.service';
-import { ODCList } from 'src/app/models/ODCList';
-import { filter } from 'rxjs/operators';
-import { ThrowStmt } from '@angular/compiler';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {AssetList} from 'src/app/models/AssetList';
+import {AssetService} from 'src/app/service/asset.service';
+import {Router} from '@angular/router';
+import {UserService} from 'src/app/service/user.service';
+import {ODCList} from 'src/app/models/ODCList';
+import {filter} from 'rxjs/operators';
+import {ThrowStmt} from '@angular/compiler';
 
 @Component({
   selector: 'app-viewassetlist',
@@ -35,8 +35,9 @@ export class ViewassetlistComponent implements OnInit {
           this.assetList = data;
           this.assetListFiltered = data;
           // this.assetListFiltered = this.assetListFiltered.filter(f=>f.type===this.selectedText);
-          if(this.assetListFiltered.length===0)
+          if (this.assetListFiltered.length === 0) {
             this.showMessage = true;
+          }
         },
         (error) => this.isListPresent = false);
     this.userService.getAllODC().subscribe((data) =>
@@ -50,10 +51,11 @@ export class ViewassetlistComponent implements OnInit {
   onOdcNameChange(e) {
     let value = e.target.value;
     // alert(value);
-    if (value === "All")
+    if (value === 'All') {
       this.assetListFiltered = this.assetList;
-    else
+    } else {
       this.assetListFiltered = this.assetList.filter(f => f.odcName === value);
+    }
     // alert(this.assetListFiltered);
     if (this.assetListFiltered === null) {
       this.showMessage = !this.showMessage;
@@ -61,29 +63,22 @@ export class ViewassetlistComponent implements OnInit {
   }
 
   onAssetTypeChange(event) {
-    let value = event.target.value;
-    if (value === "All"){
+    const value = event.target.value;
+    if (value === 'All') {
       this.showMessage = false;
       this.assetListFiltered = this.assetList;
       return;
     }
     if (this.assetTypes.includes(value)) {
-      // alert(value);
       this.showMessage = false;
       this.assetListFiltered = this.assetList.filter(f => f.type === value);
-      // alert(JSON.stringify(this.assetListFiltered))
-    }
-    else {
+    } else {
       this.showMessage = false;
       this.assetListFiltered = this.assetList.filter(f => f.odcName === value);
     }
-    // alert(this.assetListFiltered.length);
 
     if (this.assetListFiltered.length === 0) {
-      // alert('inside show message')
       this.showMessage = true;
-      // alert(this.showMessage);
-      // this.assetListFiltered =null;
     }
   }
 

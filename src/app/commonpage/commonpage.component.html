@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0E0D6C;;
-font-family: 'Times New Roman'">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #0E0D6C;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -34,8 +33,9 @@ font-family: 'Times New Roman'">
         <div *ngIf="isManager==true">
           <li class="list-group-item list-group-item-success" (click)="redirectToOdcRequest()">ODC Access Request</li>
           <li class="list-group-item list-group-item-danger" (click)="redirectToRegistrationRequest()">Registration Request</li>
-          <li class="list-group-item list-group-item-primary" (click)="redirectToRaisedOdcRequest()">Raised ODC Request</li>
+          <li class="list-group-item list-group-item-primary" (click)="redirectToRaisedOdcRequest()"> ODC Request</li>
           <li class="list-group-item list-group-item-warning" (click)="redirectToViewOdcRequest()">View ODC Request</li>
+          <li class="list-group-item list-group-item-secondary" (click)="redirectToViewReportList()">View Weekly Report</li>
         </div>
         <div *ngIf="isOdcManager==true">
           <li class="list-group-item list-group-item-success" (click)="redirectToOdcManagerRequest()">Visitor Access

@@ -1,12 +1,12 @@
 <!-- Modal -->
 <div class="modal-content">
-  <div class="modal-header" style="background-color:  #8289C4;font-family: 'Times New Roman'">
+  <div class="modal-header" style="background-color:  #8289C4;">
     <h4 class="modal-title" style="color: white">Delete Confirmation</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cancel')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" style="font-size: 20px;font-family: 'Times New Roman'">
+  <div class="modal-body" style="font-size: 20px;">
     Are you sure you want to delete <span style="color: navy;font-weight: bold">{{data}}</span>
     <span *ngIf="isOdc===true"> ODC ?</span>
     <span *ngIf="isOdc===false">'s profile ?</span>

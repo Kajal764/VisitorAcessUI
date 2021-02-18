@@ -115,4 +115,8 @@ export class CommonpageComponent implements OnInit {
   redirectToWeeklyReport() {
     this.router.navigate(['/weeklyReport']);
   }
+
+  redirectToViewReportList() {
+    this.router.navigate(['/viewReportList']);
+  }
 }
