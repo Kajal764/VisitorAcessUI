@@ -1,9 +1,9 @@
 
-  
+
  <div *ngIf="isEmployee===true">
     <app-employeeprofile></app-employeeprofile>
-  </div>  
-  
+  </div>
+
   <div *ngIf="!success" style="font-family: 'Times New Roman'" >
     <div align="center" style="margin-bottom: 100px;">
       <div class="row-mt-2">
@@ -45,12 +45,11 @@
                   <span *ngIf="EndDate.errors.required" style="color:red">Date is required</span>
                 </div>
               </div>
-              
-            
+
 
             <div class="form-group" align="left">
                 <label for="sprintDetails"><b>Sprint Details</b></label>
-                <input type="text" placeholder="Sprint Information" class="form-control" required [(ngModel)]="weeklyReport.sprintData" #SprintData="ngModel" 
+                <input type="text" placeholder="Sprint Information" class="form-control" required [(ngModel)]="weeklyReport.sprintData" #SprintData="ngModel"
                 name="sprintDetails" id="sprintDetails" [class.is-invalid]="SprintData.touched && SprintData.invalid"/>
                 <div *ngIf="SprintData.touched && SprintData.invalid">
                     <span *ngIf="SprintData.errors.required" style="color:red">Sprint Details is required</span>
@@ -59,15 +58,13 @@
 
             <div class="form-group" align="left">
                 <label for="report"><b>Weekly Status</b></label>
-                <textarea class="form-control" required [(ngModel)]="weeklyReport.report" #Report="ngModel" 
+                <textarea class="form-control" required [(ngModel)]="weeklyReport.report" #Report="ngModel"
                 name="report" id="report" [class.is-invalid]="Report.touched && Report.invalid"></textarea>
                 <div *ngIf="Report.touched && Report.invalid">
                     <span *ngIf="Report.errors.required" style="color:red">Please enter weekly report</span>
                 </div>
             </div>
-  
-    
-  
+
               <input type="submit" value="Submit" class="btn btn-success btn-block"
                      [disabled]="weeklyreport.invalid">
             </div>
@@ -76,8 +73,7 @@
       </div>
     </div>
   </div>
-  
+
   <div *ngIf="success">
     <p align="center">Report submitted Successfully!!!</p>
   </div>
-  

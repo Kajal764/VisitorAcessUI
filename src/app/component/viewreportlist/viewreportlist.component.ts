@@ -32,9 +32,7 @@ export class ViewreportlistComponent implements OnInit {
   viewReport(report: WeeklyReport) {
     localStorage.setItem('report', report.report);
     localStorage.setItem('sprintData', report.sprintData);
-    alert(localStorage.getItem('sprintData'));
     this.router.navigate(['/viewReport']);
-
   }
 
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { WeeklyReport } from 'src/app/models/WeeklyReport';
-import { UserService } from 'src/app/service/user.service';
+import {Component, OnInit} from '@angular/core';
+import {WeeklyReport} from 'src/app/models/WeeklyReport';
+import {UserService} from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-weeklyreport',
@@ -10,10 +10,12 @@ import { UserService } from 'src/app/service/user.service';
 export class WeeklyreportComponent implements OnInit {
 
   currentDate: Date = new Date();
-  weeklyReport: WeeklyReport=new WeeklyReport();
-  isEmployee: boolean
-  success:boolean = false
-  constructor(private userService:UserService) { }
+  weeklyReport: WeeklyReport = new WeeklyReport();
+  isEmployee: boolean;
+  success: boolean = false;
+
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
     if (localStorage.getItem('role') === 'Employee') {
@@ -21,14 +23,15 @@ export class WeeklyreportComponent implements OnInit {
     } else {
       this.isEmployee = false;
     }
-    this.weeklyReport.empId=localStorage.getItem("user");
+    this.weeklyReport.empId = localStorage.getItem('user');
   }
 
-  submitReport(){
-    alert(JSON.stringify(this.weeklyReport));
-    this.userService.saveReport(this.weeklyReport).subscribe(data=>{this.weeklyReport=data;this.success=!this.success});
+  submitReport() {
+    this.userService.saveReport(this.weeklyReport).subscribe(data => {
+      this.weeklyReport = data;
+      this.success = !this.success;
+    });
   }
 
-  
 
 }
