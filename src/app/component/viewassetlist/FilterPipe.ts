@@ -3,8 +3,8 @@ import {AssetList} from '../../models/AssetList';
 
 @Pipe({name: 'appFilter'})
 export class FilterPipe implements PipeTransform {
+
   transform(items: AssetList[], searchText: string): any[] {
-    console.log(searchText);
     if (!items) {
       return [];
     }

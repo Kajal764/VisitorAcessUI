@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center" style="font-family: 'Times New Roman';">
+<div class="d-flex justify-content-center">
   <div class="main-container">
     <div class="row">
       <div class="col-7" style="color: rgb(0,64,133);font-weight: bold;font-size: 120%; margin-bottom: 5px">
@@ -20,20 +20,25 @@
       <tr>
         <th scope="col">ODC Name</th>
         <th scope="col">View ODC Manager</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Remove</th>
+        <th scope="col">Edit ODC</th>
+        <th scope="col">Remove ODC</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let odc of odcList">
-        <td class="tableData">
+        <td *ngIf="isEdit==false" class="tableData"
+            style="font-size: 18px;">
+          {{odc.odcName}}
+        </td>
+        <td *ngIf="isEdit==true" class="tableData">
           <input class="input-border"
                  [(ngModel)]="odc.odcName"
-                 style="font-weight: 500;border:none;width: 180px;font-size: 20px; background-color: whitesmoke;"
+                 style="border:none;width: 180px;font-size: 18px; background-color: whitesmoke;"
                  matInput
                  autocomplete="off" maxlength="30"
                  (ngModelChange)="edit(odc)">
         </td>
+
         <td class="tableData">
           <button style="margin-left: 70px;" (click)="view(odc.odcName)"
                   mat-icon-button>
@@ -42,19 +47,18 @@
         </td>
 
         <td class="tableData">
-          <button *ngIf="isEdit==false || odc.odcName!=currentOdc"
+          <button *ngIf="isEdit==false || odc.odcName!=currentOdc" (click)="edit(odc)" style="margin-left: 20px;"
                   mat-icon-button class="icon-label">
             <mat-icon class="icon">edit</mat-icon>
           </button>
-
-          <button *ngIf="isEdit==true && odc.odcName==currentOdc" (click)="updateOdc(odc)"
-                  mat-icon-button class="icon-label">
+          <button *ngIf="isEdit==true && odc.odcName==currentOdc" (click)="updateOdc(odc)" style="margin-left: 20px;"
+                  mat-icon-button class=" icon-label">
             <mat-icon class="icon">check</mat-icon>
           </button>
         </td>
 
         <td class="tableData">
-          <button [disabled]="odc.odcId==1" class="deleteButton" matTooltip="Delete"
+          <button [disabled]="odc.odcId==1" class="deleteButton" matTooltip="Delete" style="margin-left: 37px;"
                   mat-icon-button (click)="openPopup(odc)">
             <mat-icon>delete</mat-icon>
           </button>
@@ -70,7 +74,7 @@
       <input type="text" [(ngModel)]="odcName" required/>
     </ul>
     <div class="d-flex justify-content-center">
-      <button type="button" style="margin-top: 30px; font-weight:bold;background-color: rgb(0,64,133);color: #B8DAFF"
+      <button type="button" style="margin-top: 30px; font-weight:bold;background-color: rgb(0,64,133);color: whitesmoke"
               class="btn btn-primary" (click)="addOdc()">ADD ODC
       </button>
     </div>
