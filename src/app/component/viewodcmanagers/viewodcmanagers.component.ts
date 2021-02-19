@@ -15,11 +15,18 @@ export class ViewodcmanagersComponent implements OnInit {
   odcName: string;
   odcManagersPresent: boolean;
   public isListPresent = true;
+  public firstName;
+  public lastName;
+  public empId;
+
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private auth: AuthService) {
   }
 
   ngOnInit() {
+    this.firstName = localStorage.getItem('fName');
+    this.lastName = localStorage.getItem('lName');
+    this.empId = localStorage.getItem('user');
     this.odcName = this.route.snapshot.params.odcName;
     this.userService.getOdcManagers(this.odcName)
       .subscribe((data) => {

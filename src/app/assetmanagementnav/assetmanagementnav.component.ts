@@ -10,6 +10,10 @@ import {AuthService} from '../service/auth.service';
 export class AssetmanagementnavComponent implements OnInit {
 
 
+  public firstName;
+  public lastName;
+  public empId;
+
   constructor(private router: Router, private auth: AuthService) {
   }
 
@@ -18,6 +22,9 @@ export class AssetmanagementnavComponent implements OnInit {
 
   ngOnInit() {
     this.role = localStorage.getItem('role');
+    this.firstName = localStorage.getItem('fName');
+    this.lastName = localStorage.getItem('lName');
+    this.empId = localStorage.getItem('user');
   }
 
   logout() {
@@ -27,7 +34,7 @@ export class AssetmanagementnavComponent implements OnInit {
       this.router.navigate(['/login']);
       this.auth.logout();
     }
-    
+
   }
 
 }

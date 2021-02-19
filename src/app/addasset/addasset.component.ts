@@ -18,11 +18,11 @@ export class AddassetComponent implements OnInit {
   dynamicForm: FormGroup;
   submitted = false;
   odcs: ODCList[];
-  assetTypes = ['Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens','Extension Cable', 'Other'];
-  reasons = ['Working', 'Not Working', 'Unused','Unknown'];
+  assetTypes = ['Mouse', 'Keyboard', 'Monitor', 'Laptop', 'Laptop Charger', 'Projector', 'Telephone', 'CPU', 'Cables', 'Tokens', 'Extension Cable', 'Other'];
+  reasons = ['Working', 'Not Working', 'Unused', 'Unknown'];
   movementSelected: boolean = false;
   movementValue: string;
-  numberPattern = "^[0-9]\\d{3}$"
+  numberPattern = '^[0-9]\\d{3}$';
 
   constructor(private formBuilder: FormBuilder, private userService: UserService,
               private router: Router, private route: ActivatedRoute, private ngxNotificationService: NgxNotificationService) {
@@ -32,7 +32,7 @@ export class AddassetComponent implements OnInit {
     this.dynamicForm = this.formBuilder.group({
       empId: [localStorage.getItem('user'), Validators.required],
       odcName: ['', Validators.required],
-      numberOfAssets: ['', [Validators.required,Validators.min(1)]],
+      numberOfAssets: ['', [Validators.required, Validators.min(1)]],
       movement: ['', Validators.required],
       // assettype:['',Validators.required],
       // reason:['',Validators.required],
@@ -117,14 +117,14 @@ export class AddassetComponent implements OnInit {
       .subscribe((res) => {
           this.asset = res;
           // alert('success');
-          
-          if(data!=null){
+
+          if (data != null) {
             this.t.clear();
             this.dynamicForm.get('numberOfAssets').setValue(0);
             this.sendNotification('Assets Moved Successfully!!Change number of assets to add more');
-          //   setTimeout(() => {
-          //     this.router.navigate(['viewAssetList']);
-          // }, 5000);
+            //   setTimeout(() => {
+            //     this.router.navigate(['viewAssetList']);
+            // }, 5000);
           }
 
           // this.router.navigate(['viewAssetList'])
@@ -142,8 +142,7 @@ export class AddassetComponent implements OnInit {
   }
 
 
-
-  removeData(i){
+  removeData(i) {
     this.t.removeAt(i);
   }
 

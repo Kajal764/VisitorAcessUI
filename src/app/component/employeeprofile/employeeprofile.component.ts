@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { AuthService } from 'src/app/service/auth.service';
+import {AuthService} from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-employeeprofile',
@@ -9,10 +9,17 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class EmployeeprofileComponent implements OnInit {
 
-  constructor(private router: Router,private auth:AuthService) {
+  public firstName;
+  public lastName;
+  public empId;
+
+  constructor(private router: Router, private auth: AuthService) {
   }
 
   ngOnInit() {
+    this.firstName = localStorage.getItem('fName');
+    this.lastName = localStorage.getItem('lName');
+    this.empId = localStorage.getItem('user');
   }
 
   logout() {

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { AuthService } from 'src/app/service/auth.service';
+import {AuthService} from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -8,11 +8,18 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./admin-navbar.component.css']
 })
 export class AdminNavbarComponent implements OnInit {
+  public firstName;
+  public lastName;
+  public empId;
 
-  constructor(private router: Router,private auth:AuthService) {
+
+  constructor(private router: Router, private auth: AuthService) {
   }
 
   ngOnInit() {
+    this.firstName = localStorage.getItem('fName');
+    this.lastName = localStorage.getItem('lName');
+    this.empId = localStorage.getItem('user');
   }
 
   logout() {
@@ -23,7 +30,6 @@ export class AdminNavbarComponent implements OnInit {
       this.auth.logout();
     }
   }
-
 
 
 }

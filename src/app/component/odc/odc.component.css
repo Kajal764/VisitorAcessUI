@@ -39,3 +39,9 @@ button {
 .tableData {
   border: 1px solid lightblue;
 }
+
+.text {
+  text-align: center;
+  opacity: 0.6;
+  font-size: 15px;
+}

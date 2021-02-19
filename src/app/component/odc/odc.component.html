@@ -16,7 +16,7 @@
       </div>
     </div>
     <table class="table table-hover table-bordered" style="border-color: red">
-      <thead style="background-color: #919bec;border-color:lightblue;color: whitesmoke">
+      <thead style="background-color:#141470;border-color:lightblue;color: whitesmoke">
       <tr>
         <th scope="col">ODC Name</th>
         <th scope="col">View ODC Manager</th>
@@ -28,7 +28,8 @@
       <tr *ngFor="let odc of odcList">
         <td *ngIf="isEdit==false" class="tableData"
             style="font-size: 18px;">
-          {{odc.odcName}}
+          {{odc.odcName}} <br>
+          <span class="text" *ngIf="odc.odcId==1">Default storage space .</span>
         </td>
         <td *ngIf="isEdit==true" class="tableData">
           <input class="input-border"
@@ -37,6 +38,8 @@
                  matInput
                  autocomplete="off" maxlength="30"
                  (ngModelChange)="edit(odc)">
+          <br>
+          <span class="text" *ngIf="odc.odcId==1">Default storage space .</span>
         </td>
 
         <td class="tableData">

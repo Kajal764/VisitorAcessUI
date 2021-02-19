@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   lg: login = new login();
   message: string;
   res = false;
-  public listOfRole = ['Admin', 'Odc-Manager', 'Manager', 'Employee'];
   private selectRole: any;
   pass: string;
 
@@ -30,7 +29,6 @@ export class LoginComponent implements OnInit {
   logins() {
 
     this.loginService.login(this.lg.empId, this.lg.password).subscribe(result => {
-      console.log(result);
       localStorage.setItem('pass', this.lg.password);
       this.pass = localStorage.getItem('pass');
 
@@ -43,6 +41,11 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('role', this.selectRole);
       localStorage.setItem('managerName', result.managerName);
       localStorage.setItem('odcName', result.odc);
+      localStorage.setItem('fName', result.firstName);
+      localStorage.setItem('lName', result.lastName);
+
+      console.log(localStorage.getItem('lName'));
+
       if (result) {
         this.lg = result;
         this.res = false;

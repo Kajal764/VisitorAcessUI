@@ -36,13 +36,13 @@ import {AuthGuard} from './service/auth.guard';
 import {AuthService} from './service/auth.service';
 import {LoginService} from './login.service';
 import {FilterPipe} from './component/viewassetlist/FilterPipe';
-import {MatIconModule} from '@angular/material';
+import {MatIconModule, MatMenuModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {FilterUser} from './component/admin/FilterUser';
 import { WeeklyreportComponent } from './component/weeklyreport/weeklyreport.component';
 import { ViewreportComponent } from './component/viewreport/viewreport.component';
 import { ViewreportlistComponent } from './component/viewreportlist/viewreportlist.component';
-
+import {AvatarModule} from 'ngx-avatar';
 
 
 @NgModule({
@@ -89,11 +89,13 @@ import { ViewreportlistComponent } from './component/viewreportlist/viewreportli
     GridModule,
     MatIconModule,
     MatButtonModule,
+    MatMenuModule,
+    AvatarModule
   ],
   providers: [AuthGuard, AuthService, LoginService],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationPopupComponent],
-  
+
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
   ]

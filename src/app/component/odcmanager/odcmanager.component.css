@@ -3,16 +3,16 @@
     margin: 0px;
     padding: 0px;
   }
-  
+
   .active {
-    color: #8289C4 !important;
+    color: #0E0D6C !important;
     background-color: white !important;
     border-radius: 5px;
     margin: 0px;
     border: #8289C4 1px solid;
     position: relative;
   }
-  
+
   a {
     margin-left: 10px;
     height: 50px;
@@ -20,4 +20,33 @@
     text-align: center;
     cursor: pointer;
   }
-  
+
+
+.profile-div {
+  overflow: hidden;
+  width: 190px;
+  height: 190px;
+  padding: 8px 15px 15px 45px;
+}
+
+.profileName {
+  text-align: center;
+  font-size: 17px;
+  padding-top: 10px;
+  font-family: "Times New Roman";
+  font-weight: bold;
+}
+
+.profileEmail {
+  text-align: center;
+  opacity: 0.6;
+  font-size: 15px;
+  margin-right: 6px;
+}
+
+.signout {
+  margin-top: 15px;
+  margin-left: 25px;
+  background: #0E0D6C;
+  color: white;
+}

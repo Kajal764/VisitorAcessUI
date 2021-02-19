@@ -5,15 +5,22 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a class="nav-link" href="commonpage"
-           style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
-      </li>
+      <!--      <li class="nav-item ">-->
+      <a class="nav-link" href="/commonpage"
+         style="font-weight: bold;font-size: 20px;color: white;margin-right: 20px;"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
+      <!--      </li>-->
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button style="padding: 8px 20px;margin-right: 20px" class="btn btn-outline-light my-2 my-sm-0" type="submit"
-              (click)="logout()">Logout&nbsp;<i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
-      </button>
+      <a class="nav-link" onClick=history.back()
+         style="font-weight: bold;font-size: 20px;color: white;">
+        <i class="fa fa-chevron-circle-left"></i>
+        Back
+      </a>
+      <div style="margin-right: 10px" [matMenuTriggerFor]="menu1">
+        <ngx-avatar size="43" bgColor="white" fgColor="#0E0D6C" textSizeRatio="2"
+                    name="{{firstName}}" [matMenuTriggerFor]="menu1">
+        </ngx-avatar>
+      </div>
     </form>
   </div>
 </nav>
@@ -27,15 +34,21 @@
         <div *ngIf="isAdmin==true">
           <li class="list-group-item list-group-item-success" (click)="redirectToListOfEmployee()">List Of Employee</li>
           <li class="list-group-item list-group-item-danger" (click)="redirectToAddODC()">Add ODC</li>
-          <li class="list-group-item list-group-item-primary" (click)="redirectToRegistrationRequest()">Registration Request</li>
+          <li class="list-group-item list-group-item-primary" (click)="redirectToRegistrationRequest()">Registration
+            Request
+          </li>
           <li class="list-group-item list-group-item-warning" (click)="redirectToAddEmployee()">Add Employee</li>
         </div>
         <div *ngIf="isManager==true">
           <li class="list-group-item list-group-item-success" (click)="redirectToOdcRequest()">ODC Access Request</li>
-          <li class="list-group-item list-group-item-danger" (click)="redirectToRegistrationRequest()">Registration Request</li>
+          <li class="list-group-item list-group-item-danger" (click)="redirectToRegistrationRequest()">Registration
+            Request
+          </li>
           <li class="list-group-item list-group-item-primary" (click)="redirectToRaisedOdcRequest()"> ODC Request</li>
           <li class="list-group-item list-group-item-warning" (click)="redirectToViewOdcRequest()">View ODC Request</li>
-          <li class="list-group-item list-group-item-secondary" (click)="redirectToViewReportList()">View Weekly Report</li>
+          <li class="list-group-item list-group-item-secondary" (click)="redirectToViewReportList()">View Weekly
+            Report
+          </li>
         </div>
         <div *ngIf="isOdcManager==true">
           <li class="list-group-item list-group-item-success" (click)="redirectToOdcManagerRequest()">Visitor Access
@@ -44,8 +57,11 @@
         </div>
 
         <div *ngIf="isEmployee==true">
-          <li class="list-group-item list-group-item-success" (click)="redirectToRaisedOdcRequest()">Raised ODC Request</li>
-          <li class="list-group-item list-group-item-danger" (click)="redirectToWeeklyReport()">Weekly Status Report</li>
+          <li class="list-group-item list-group-item-success" (click)="redirectToRaisedOdcRequest()">Raised ODC
+            Request
+          </li>
+          <li class="list-group-item list-group-item-danger" (click)="redirectToWeeklyReport()">Weekly Status Report
+          </li>
           <li class="list-group-item list-group-item-primary" (click)="redirectToViewOdcRequest()">View ODC Request</li>
         </div>
       </div>
@@ -63,24 +79,34 @@
           <div *ngIf="isAdmin==true">
             <li class="list-group-item list-group-item-success" (click)="redirectToViewAllAsset()">View All Asset</li>
             <li class="list-group-item list-group-item-danger" (click)="redirectToAddAsset()">Add Asset</li>
-            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset Status</li>
+            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset
+              Status
+            </li>
           </div>
 
           <div *ngIf="isManager==true">
             <li class="list-group-item list-group-item-danger" (click)="redirectToAddAsset()">Add Asset</li>
-            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset Status</li>
+            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset
+              Status
+            </li>
           </div>
 
           <div *ngIf="isOdcManager==true">
             <li class="list-group-item list-group-item-success" (click)="redirectToViewAllAsset()">View All Asset</li>
             <li class="list-group-item list-group-item-danger" (click)="redirectToAddAsset()">Add Asset</li>
-            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset Status</li>
-            <li class="list-group-item list-group-item-warning" (click)="redirectToViewAssetRequest()">View Asset Request</li>
+            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset
+              Status
+            </li>
+            <li class="list-group-item list-group-item-warning" (click)="redirectToViewAssetRequest()">View Asset
+              Request
+            </li>
           </div>
 
           <div *ngIf="isEmployee==true">
             <li class="list-group-item list-group-item-danger" (click)="redirectToAddAsset()">Add Asset</li>
-            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset Status</li>
+            <li class="list-group-item list-group-item-primary" (click)="redirectToViewAssetStatus()">View Asset
+              Status
+            </li>
           </div>
 
         </div>
@@ -97,3 +123,25 @@
 
 
 </body>
+
+
+<mat-menu #menu1="matMenu" fxLayout="row" fxLayoutAlign="end start" (click)="$event.stopPropagation()">
+  <div class="profile-div" fxFlex="column">
+    <div>
+      <div (click)="$event.stopPropagation()" fxLayout="column">
+
+        <div style="margin-left: 15px">
+          <ngx-avatar size="75" bgColor="#0E0D6C" fgcolor="white" name="{{firstName}}"></ngx-avatar>
+        </div>
+      </div>
+    </div>
+    <div> Emp ID -<span class="profileName">{{empId}}</span>
+      <div class="profileEmail">
+        {{firstName}}  {{lastName}}
+      </div>
+      <button class="signout" mat-flat-button (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</mat-menu>

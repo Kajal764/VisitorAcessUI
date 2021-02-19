@@ -14,12 +14,18 @@ export class CommonpageComponent implements OnInit {
   isManager = false;
   isOdcManager = false;
   isAdmin = false;
+  public firstName;
+  public lastName;
+  public empId;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private auth: AuthService) {
   }
 
   ngOnInit() {
 
+    this.firstName = localStorage.getItem('fName');
+    this.lastName = localStorage.getItem('lName');
+    this.empId = localStorage.getItem('user');
     this.role = localStorage.getItem('role');
 
     if (this.role === 'Employee') {

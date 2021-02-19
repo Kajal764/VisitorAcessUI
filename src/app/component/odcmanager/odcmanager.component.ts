@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {User} from '../../models/User';
-import { AuthService } from 'src/app/service/auth.service';
+import {AuthService} from 'src/app/service/auth.service';
 
 
 @Component({
@@ -12,10 +12,18 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class OdcmanagerComponent implements OnInit {
 
-  constructor(private router: Router,private auth:AuthService) {
+  public firstName;
+  public lastName;
+  public empId;
+
+
+  constructor(private router: Router, private auth: AuthService) {
   }
 
   ngOnInit() {
+    this.firstName = localStorage.getItem('fName');
+    this.lastName = localStorage.getItem('lName');
+    this.empId = localStorage.getItem('user');
   }
 
   logout() {

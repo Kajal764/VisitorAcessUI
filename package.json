@@ -30,6 +30,7 @@
     "hammerjs": "^2.0.8",
     "jquery": "^3.5.1",
     "ng-bootstrap": "^1.6.3",
+    "ngx-avatar": "^4.0.0",
     "ngx-notification": "^1.0.5",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",

@@ -12,12 +12,18 @@ import { AuthService } from 'src/app/service/auth.service';
 export class ManagerComponent implements OnInit {
 
   public message: any;
+  public firstName: string;
+  public lastName: string;
+  public empId: string;
 
   constructor(private userService: UserService,
               private router: Router,private auth:AuthService) {
   }
 
   ngOnInit() {
+    this.firstName = localStorage.getItem('fName');
+    this.lastName = localStorage.getItem('lName');
+    this.empId = localStorage.getItem('user');
   }
 
   logout() {

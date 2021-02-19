@@ -28,6 +28,10 @@ export class AssetHistoryComponent implements OnInit {
   public role: string;
   public search: any;
   isExtensionCable = 'Extension Cable';
+  public firstName;
+  public lastName;
+  public empId;
+
 
   constructor(private assetService: AssetService,
               private route: ActivatedRoute,
@@ -35,6 +39,9 @@ export class AssetHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.firstName = localStorage.getItem('fName');
+    this.lastName = localStorage.getItem('lName');
+    this.empId = localStorage.getItem('user');
     this.role = localStorage.getItem('role');
     this.search = this.route.snapshot.params.value;
     this.getSearchList(this.search);
