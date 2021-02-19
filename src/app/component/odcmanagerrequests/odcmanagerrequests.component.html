@@ -31,14 +31,14 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
       <i class="fa fa-filter" aria-hidden="true"><b>Filter By</b></i>&nbsp;&nbsp;
       <select type="text" required placeholder="All"
-              [(ngModel)]="selectedText" (change)="onChangeRequest($event)">
-        <option value="" disabled>Filter the requests</option>
-        <optgroup label="Based On Request Status">
+      [(ngModel)]="selectedText"  (change)="onChangeRequest($event)">
+        <!-- <option value="" disabled>Filter the requests</option>
+        <optgroup label="Based On Request Status"> -->
           <option value="All">All</option>
           <option value="Accepted By Manager">Pending Approval</option>
           <option value="Approved">Approved</option>
           <option value="Rejected">Rejected</option>
-        </optgroup>
+        <!-- </optgroup> -->
       </select>
 
     </div>

@@ -34,8 +34,8 @@
             <td>{{report.endDate}}</td>
             <td>{{report.sprintData}}</td>
             <td>
-              {{report.report}}
-<!--              <button mat-button color="accent" (click)="viewReport(report)">View</button>-->
+              <!-- {{report.report}} -->
+             <button mat-button color="accent" (click)="viewReport(report)">View</button>
             </td>
           </tr>
           <tr *ngIf="!weeklyReport || weeklyReport.length==0">
