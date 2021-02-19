@@ -4,7 +4,7 @@
 
 <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
   <div class="card m-3">
-    <h5 class="card-header">Add asset details</h5>
+    <h5 class="card-header">Add asset details &nbsp; <h6 style="color:#0E0D6C;" *ngIf="assetAdded">Assets Moved Successfully!! Change number of Assets to add More</h6></h5>  
     <div class="card-body">
       <div class="form-row">
         <div class="form-group col-md-2.5">
@@ -27,7 +27,7 @@
           <br/>
           <input type="radio" value="Inward" formControlName="movement" (change)="changeMovement($event)"
                  [ngClass]="{'is-invalid': submitted && f.movement.errors && f.movement.touched}">
-          &nbsp;<span>Inward <i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;
+          &nbsp;<span>Inward <i class="fa fa-sign-in" aria-hidden="true"></i></span>&nbsp;&nbsp;&nbsp;
           <input type="radio" value="Outward" formControlName="movement" (change)="changeMovement($event)"
                  [ngClass]="{'is-invalid': submitted && f.movement.errors}">
           &nbsp; <span>Outward <i class="fa fa-sign-out" aria-hidden="true"></i></span>&nbsp;
@@ -77,13 +77,13 @@
         </div> -->
         <div class="form-group col-md-3">
           <label><b>Number of Assets</b></label>
-          <input type="number" min="1" oninput="this.value = Math.abs(this.value)" formControlName="numberOfAssets"
+          <input type="number" min="0" oninput="this.value = Math.abs(this.value)" formControlName="numberOfAssets"
                  class="form-control"
                  [ngClass]="{ 'is-invalid': submitted && f.numberOfAssets.errors }"
                  placeholder="Enter Number of Assets" (change)="onChangeAssets($event)"/>
           <div *ngIf="submitted && f.numberOfAssets.errors" class="invalid-feedback">
             <div *ngIf="f.numberOfAssets.errors.required">Number of assets is required</div>
-            <div *ngIf="f.numberOfAssets.errors.min">Number of assets should be atleast 1</div>
+            <!-- <div *ngIf="f.numberOfAssets.errors.min">Number of assets should be atleast 1</div> -->
             <div *ngIf="f.numberOfAssets.errors.oninput">Number of assets should be atleast 1</div>
             <div *ngIf="f.numberOfAssets.errors.pattern">Number of assets should contain only numbers</div>
           </div>

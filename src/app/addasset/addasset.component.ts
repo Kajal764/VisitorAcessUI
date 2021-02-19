@@ -22,13 +22,21 @@ export class AddassetComponent implements OnInit {
   reasons = ['Working', 'Not Working', 'Unused', 'Unknown'];
   movementSelected: boolean = false;
   movementValue: string;
-  numberPattern = '^[0-9]\\d{3}$';
+  numberPattern = "^[0-9]\\d{3}$"
+  assetAdded = false;
+  // assetForm = new FormArray([]);
 
   constructor(private formBuilder: FormBuilder, private userService: UserService,
               private router: Router, private route: ActivatedRoute, private ngxNotificationService: NgxNotificationService) {
   }
 
   ngOnInit() {
+    // this.assetForm.push(this.formBuilder.group({
+    //   serialNumber: ['', Validators.required],
+    //   description: ['', Validators.required],
+    //   type: ['', Validators.required],
+    //   status: ['', Validators.required]
+    // }));
     this.dynamicForm = this.formBuilder.group({
       empId: [localStorage.getItem('user'), Validators.required],
       odcName: ['', Validators.required],
@@ -86,8 +94,8 @@ export class AddassetComponent implements OnInit {
     if (this.t.length < numberOfAssets) {
       for (let i = this.t.length; i < numberOfAssets; i++) {
         this.t.push(this.formBuilder.group({
-          serialNumber: ['', [Validators.required, Validators.pattern('^[0-9A-Za-z]*$')]],
-          description: ['', [Validators.required, Validators.pattern('^[0-9A-Za-z ]*$')]],
+          serialNumber: ['', Validators.required],
+          description: ['', Validators.required],
           type: ['', Validators.required],
           status: ['', Validators.required]
         }));
@@ -117,14 +125,16 @@ export class AddassetComponent implements OnInit {
       .subscribe((res) => {
           this.asset = res;
           // alert('success');
-
-          if (data != null) {
-            this.t.clear();
+          if(data!=null){
+           this.t.clear();
             this.dynamicForm.get('numberOfAssets').setValue(0);
-            this.sendNotification('Assets Moved Successfully!!Change number of assets to add more');
-            //   setTimeout(() => {
-            //     this.router.navigate(['viewAssetList']);
-            // }, 5000);
+            // this.onChangeAssets(1);
+            this.assetAdded = true;
+            this.sendNotification('Assets Moved Successfully!! Change number of Assets to add More');
+            
+          //   setTimeout(() => {
+          //     this.router.navigate(['viewAssetList']);
+          // }, 5000);
           }
 
           // this.router.navigate(['viewAssetList'])
